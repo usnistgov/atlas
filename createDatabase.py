@@ -5,9 +5,6 @@ MongoClient = pymongo.MongoClient()
 db = MongoClient['atlas']
 use_cases = db['use_cases']
 
-
-
-
 entries = [
 
     {
