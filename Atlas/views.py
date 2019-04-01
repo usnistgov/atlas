@@ -1,6 +1,5 @@
 from .serializers import *
-from rest_framework import viewsets, generics, filters
-from django.template.response import TemplateResponse
+from rest_framework import generics
 from bson.objectid import ObjectId
 
 
@@ -27,6 +26,7 @@ class UseCasesView(generics.ListCreateAPIView):
             field_value = self.request.query_params.get(field)  # get the value of a field from request query parameter
             if field_value:
 
+                # Array Field Types
                 if field in ('cybersecurity_threats',
                              'actors',
                              'organizations',
@@ -37,12 +37,14 @@ class UseCasesView(generics.ListCreateAPIView):
                              'activities'):
                     field_values = field_value.split(',', field_value.count(','))
                     filtering_kwargs[field] = {'$all': field_values}
+
+                # Object Id Field Type
                 elif field == '_id':
 
                     filtering_kwargs[field] = ObjectId(field_value)
 
                 else:
-                    filtering_kwargs[field] = ObjectId(field_value)
+                    filtering_kwargs[field] = field_value
 
         return filtering_kwargs
 
