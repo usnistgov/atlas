@@ -46,13 +46,17 @@ class UseCasesView(generics.ListCreateAPIView):
 
                     field_values = [field_value.strip()for field_value in field_value.split(',', field_value.count(','))]
 
-                    if search_option == 'or':
+                    if search_option == '[or]':
 
                         filtering_kwargs[field] = {'$in': field_values}
 
-                    elif search_option == 'not':
+                    elif search_option == '[!or]':
 
                         filtering_kwargs[field] = {'$not': {'$in': field_values}}
+
+                    elif search_option == '[!and]':
+
+                        filtering_kwargs[field] = {'$not': {'$all': field_values}}
 
                     else:
 
