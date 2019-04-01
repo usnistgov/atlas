@@ -1,11 +1,11 @@
 import pymongo
 
 MongoClient = pymongo.MongoClient()
-db = MongoClient['atlas']
-use_cases = db['use_cases']
+db = MongoClient['Atlas']
+use_cases = db['Atlas_usecases']
 
-civilian_entries = use_cases.find({'actors': {'$in': ['civilians']}})
+entries = use_cases.find({'actors': {'$in': ['law enforcement']}})
 
-for entry in civilian_entries:
+for entry in entries:
 
     print(entry)

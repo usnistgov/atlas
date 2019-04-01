@@ -1,7 +1,7 @@
 import pymongo
 import argparse
 import json
-from  bson import json_util, ObjectId
+from bson import json_util, ObjectId
 
 # To run:
 #
@@ -9,7 +9,7 @@ from  bson import json_util, ObjectId
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(prog='AtlasDatabaseUpdater', description='Program to export changes to Atlas Database  to a JSON file')
+    parser = argparse.ArgumentParser(prog='AtlasDatabaseUpdater', description='Program to export changes to Atlas_Project Database  to a JSON file')
     parser.add_argument('--host', dest='host', help='Database host address', default='localhost')
     parser.add_argument('--action', dest='action', help='Import to or Export From Database')
     parser.add_argument('--input_file', dest='input_file', help='JSON Input Filename')
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     action = args.action
 
     MongoClient = pymongo.MongoClient(host=host)
-    db = MongoClient['atlas']
+    db = MongoClient['Atlas_Project']
     use_cases = db['use_cases']
 
     # Export Use Cases Collection to JSON file

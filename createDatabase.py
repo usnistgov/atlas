@@ -1,13 +1,17 @@
 import pymongo
 from descriptions import *
+from bson.objectid import ObjectId
+from pymongo.collection import BulkWriteError
 
 MongoClient = pymongo.MongoClient()
-db = MongoClient['atlas']
-use_cases = db['use_cases']
+db = MongoClient['Atlas']
+use_cases = db['Atlas_usecases']
+use_cases.delete_many({})
 
 entries = [
 
     {
+        '_id': ObjectId(),
         'name':  'Personal Injury Collision with hazards',
         'cybersecurity_threats': [],
         'description': desc_1,
@@ -191,3 +195,4 @@ entries = [
 ]
 
 use_cases.insert_many(entries)
+#use_cases.insert_one(entries[0])
