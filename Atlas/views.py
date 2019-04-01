@@ -35,8 +35,28 @@ class UseCasesView(generics.ListCreateAPIView):
                              'locations',
                              'information_types',
                              'activities'):
-                    field_values = field_value.split(',', field_value.count(','))
-                    filtering_kwargs[field] = {'$all': field_values}
+
+                    search_option = ''
+
+                    if field_value.find('~') != -1:
+
+                        option_index = field_value.find('~')
+                        search_option = field_value[option_index + 1:]
+                        field_value = field_value[0:option_index]
+
+                    field_values = [field_value.strip()for field_value in field_value.split(',', field_value.count(','))]
+
+                    if search_option == 'or':
+
+                        filtering_kwargs[field] = {'$in': field_values}
+
+                    elif search_option == 'not':
+
+                        filtering_kwargs[field] = {'$not': {'$in': field_values}}
+
+                    else:
+
+                        filtering_kwargs[field] = {'$all': field_values}
 
                 # Object Id Field Type
                 elif field == '_id':
