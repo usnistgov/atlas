@@ -1,5 +1,5 @@
 from .serializers import *
-from rest_framework import generics
+from rest_framework_mongoengine import generics
 from bson.objectid import ObjectId
 
 
@@ -54,7 +54,7 @@ class UseCasesView(generics.ListCreateAPIView):
 
                         filtering_kwargs[field] = {'$not': {'$in': field_values}}
 
-                    elif search_option == '[!and]':
+                    elif search_option == '[!]':
 
                         filtering_kwargs[field] = {'$not': {'$all': field_values}}
 
@@ -78,12 +78,9 @@ class UseCasesView(generics.ListCreateAPIView):
         filtering_kwargs = self.get_kwargs_for_filtering()  # get the fields with values for filtering
 
         if filtering_kwargs:
-            print(filtering_kwargs)
-            query_keys = [i['_id'] for i in UseCases.objects.mongo_find(filtering_kwargs)]
-            queryset = UseCases.objects.filter(_id__in=query_keys)
+            queryset = UseCases.objects(__raw__=filtering_kwargs)
 
         return queryset
-
 
 
 

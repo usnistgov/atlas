@@ -1,20 +1,18 @@
-from djongo import models
+from mongoengine import Document, fields
 
 
-class UseCases(models.Model):
+class UseCases(Document):
 
-    _id = models.ObjectIdField()
-    name = models.CharField(max_length=100, null=False)
-    cybersecurity_threats = models.ListField()
-    description = models.CharField(max_length=2000, null=False)
-    actors = models.ListField()
-    organizations = models.ListField()
-    technologies = models.ListField()
-    discipline = models.ListField()
-    locations = models.ListField()
-    information_types = models.ListField()
-    activities = models.ListField()
-    objects = models.DjongoManager()
+    _id = fields.ObjectIdField(primary_key=True)
+    name = fields.StringField(max_length=100, null=False)
+    cybersecurity_threats = fields.ListField()
+    description = fields.StringField(max_length=2000, null=False)
+    actors = fields.ListField()
+    organizations = fields.ListField()
+    technologies = fields.ListField()
+    discipline = fields.ListField()
+    locations = fields.ListField()
+    information_types = fields.ListField()
+    activities = fields.ListField()
 
-
-
+    meta = {'collection': 'Atlas_usecases'}
