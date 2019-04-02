@@ -19,9 +19,9 @@ class UseCasesView(generics.ListCreateAPIView):
                         'information_types',
                         'activities')
 
-    def get_kwargs_for_filtering(self):
+    def convert_kwargs_to_mongo_query(self):
 
-        filtering_kwargs = {}
+        mongo_query = {}
         for field in self.my_filter_fields:  # iterate over the filter fields
             field_value = self.request.query_params.get(field)  # get the value of a field from request query parameter
             if field_value:
@@ -44,41 +44,42 @@ class UseCasesView(generics.ListCreateAPIView):
                         search_option = field_value[option_index + 1:]
                         field_value = field_value[0:option_index]
 
-                    field_values = [field_value.strip()for field_value in field_value.split(',', field_value.count(','))]
+                    field_values = [field_value.strip() for field_value in field_value.split(',', field_value.count(','))]
 
                     if search_option == '[or]':
 
-                        filtering_kwargs[field] = {'$in': field_values}
+                        mongo_query[field] = {'$in': field_values}
 
                     elif search_option == '[!or]':
 
-                        filtering_kwargs[field] = {'$not': {'$in': field_values}}
+                        mongo_query[field] = {'$not': {'$in': field_values}}
 
                     elif search_option == '[!]':
 
-                        filtering_kwargs[field] = {'$not': {'$all': field_values}}
+                        mongo_query[field] = {'$not': {'$all': field_values}}
 
                     else:
 
-                        filtering_kwargs[field] = {'$all': field_values}
+                        mongo_query[field] = {'$all': field_values}
 
                 # Object Id Field Type
                 elif field == '_id':
 
-                    filtering_kwargs[field] = ObjectId(field_value)
+                    mongo_query[field] = ObjectId(field_value)
 
+                # Any Other Standard Type
                 else:
-                    filtering_kwargs[field] = field_value
+                    mongo_query[field] = field_value
 
-        return filtering_kwargs
+        return mongo_query
 
     def get_queryset(self):
 
         queryset = UseCases.objects.all()
-        filtering_kwargs = self.get_kwargs_for_filtering()  # get the fields with values for filtering
+        mongo_query = self.convert_kwargs_to_mongo_query()  # get the fields with values for filtering
 
-        if filtering_kwargs:
-            queryset = UseCases.objects(__raw__=filtering_kwargs)
+        if mongo_query != {}:
+            queryset = UseCases.objects(__raw__=mongo_query)
 
         return queryset
 

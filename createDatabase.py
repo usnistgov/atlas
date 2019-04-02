@@ -5,7 +5,7 @@ from pymongo.collection import BulkWriteError
 
 MongoClient = pymongo.MongoClient()
 db = MongoClient['Atlas']
-use_cases = db['Atlas_usecases']
+use_cases = db['Atlas_UseCases']
 use_cases.delete_many({})
 
 entries = [

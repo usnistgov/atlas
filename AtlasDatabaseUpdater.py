@@ -22,8 +22,8 @@ if __name__ == '__main__':
     action = args.action
 
     MongoClient = pymongo.MongoClient(host=host)
-    db = MongoClient['Atlas_Project']
-    use_cases = db['use_cases']
+    db = MongoClient['Atlas']
+    use_cases = db['Atlas_UseCases']
 
     # Export Use Cases Collection to JSON file
     if action in ('export', 'Export'):
