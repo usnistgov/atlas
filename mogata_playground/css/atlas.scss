@@ -1,0 +1,55 @@
+/* RGB */
+:root
+$color1: rgba(124, 141, 152, 1);
+$color2: rgba(49, 73, 50, 1);
+$color3: rgba(18, 133, 137, 1);
+$color4: rgba(112, 210, 235, 1);
+$color5: rgba(3, 90, 133, 1);
+
+body{
+    background-color:$color1;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: tomato;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+
+
+div.logo{
+    text-align: center;
+    log
+    width: 95%;
+}
+
+div.logo img{
+    width: 40%;
+}
+
+div.logo h1{
+    font-size: xx-large;
+}
+
+div#search{
+    width: 95%;
+    padding: 10px;
+    text-align: center;
+
+}
+
+div#search input{
+    padding: 4px;
+    width: 50%;
+    border-radius: 15px;
+}

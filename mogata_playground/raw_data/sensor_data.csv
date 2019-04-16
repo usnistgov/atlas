@@ -1,0 +1,7 @@
+Information Type, Confidentiality, Integrity, Availability,
+environmental sensor data, m, h, h,
+equipment/smartsensor, h, h, m,
+geo data / accelerometer, h, m, l,
+location GPS, h, h, h,
+officer status - sensor monitoring, h, h, h,
+personal protective equipment (PPE) responder biometric sensors, h, h, h,
