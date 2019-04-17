@@ -4,7 +4,7 @@ import { createHashHistory } from 'history';
 import { routerMiddleware, routerActions } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 import createRootReducer from '../reducers';
-import * as homeActions from '../actions/home';
+import * as UseCasesActions from '../actions/UseCases';
 import type { UseCasesStateType } from '../reducers/types';
 
 const history = createHashHistory();
@@ -36,7 +36,7 @@ const configureStore = (initialState?:{use_cases: UseCasesStateType}) => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...homeActions
+    ...UseCasesActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */

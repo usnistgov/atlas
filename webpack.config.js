@@ -3,6 +3,11 @@ var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker');
 var ip = require('ip');
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
@@ -182,9 +187,30 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BundleTracker({filename: './webpack-stats.json'})
+    new BundleTracker({filename: './webpack-stats.json'}),
   ], // add all common plugins here
 
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'main',
+          chunks: 'all',
+        },
+      }
+    }
+  },
+
+  devtool: isDevelopment ? 'inline-source-map': false,
   devServer: {
    port: PORT,
    publicPath: PUBLIC_PATH,
