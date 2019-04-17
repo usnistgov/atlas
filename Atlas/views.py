@@ -28,6 +28,7 @@ class UseCasesView(generics.ListCreateAPIView):
             if field != 'format':
 
                 field_value = self.request.query_params.get(field)  # get the value of a field from request query parameter
+                mongo_query[field] = field_value                    # Default search option, ensures that query returns nothing if the field is not in the database
 
                 if field in self.my_filter_fields:
 
@@ -72,8 +73,6 @@ class UseCasesView(generics.ListCreateAPIView):
 
                         mongo_query[field] = ObjectId(field_value)
 
-                mongo_query[field] = field_value
-
         return mongo_query
 
     def get_queryset(self):
@@ -82,6 +81,7 @@ class UseCasesView(generics.ListCreateAPIView):
         mongo_query = self.convert_kwargs_to_mongo_query()  # get the fields with values for filtering
 
         if mongo_query != {}:
+
             queryset = UseCases.objects(__raw__=mongo_query)
 
         return queryset
