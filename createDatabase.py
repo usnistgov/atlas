@@ -1,25 +1,412 @@
 import pymongo
 from descriptions import *
-from bson.objectid import ObjectId
-from pymongo.collection import BulkWriteError
 
 MongoClient = pymongo.MongoClient()
 db = MongoClient['Atlas']
 use_cases = db['Atlas_UseCases']
-use_cases.delete_many({})
+cybersecurity_threats = db['Atlas_cybersecurity_threats']
+actors = db['Atlas_actors']
+responding_organizations = db['Atlas_responding_organizations']
+technologies = db['Atlas_technologies']
+disciplines = db['Atlas_disciplines']
+locations = db['Atlas_locations']
+information_types = db['Atlas_information_types']
+information_categories = db['Atlas_information_categories']
+activities = db['Atlas_activities']
 
-entries = [
+use_cases.delete_many({})
+cybersecurity_threats.delete_many({})
+actors.delete_many({})
+responding_organizations.delete_many({})
+technologies.delete_many({})
+disciplines.delete_many({})
+locations.delete_many({})
+information_types.delete_many({})
+information_categories.delete_many({})
+activities.delete_many({})
+
+cybersecurity_threats_ids = {}
+information_categories_ids = {}
+actors_ids = {}
+responding_organizations_ids = {}
+technologies_ids = {}
+disciplines_ids = {}
+locations_ids = {}
+information_types_ids = {}
+activities_ids = {}
+
+actors.insert_many([
+        {
+            'name': 'patients',
+            'description': ''
+        },
+        {
+            'name': 'paramedics',
+            'description': ''
+        },
+        {
+            'name': 'law enforcement',
+            'description': ''
+        },
+        {
+            'name': 'suspects',
+            'description': ''
+        },
+        {
+            'name': 'civilians',
+            'description': ''
+        },
+        {
+            'name': 'victims',
+            'description': ''
+        },
+        {
+            'name': 'fire fighters',
+            'description': ''
+        },
+        {
+            'name': 'incident commander',
+            'description': ''
+        },
+        {
+            'name': 'cab driver',
+            'description': ''
+        },
+])
+
+for i in actors.find({}):
+    actors_ids[i['name']] = i['_id']
+
+responding_organizations.insert_many([
+        {
+            'name': 'Local EMS',
+            'description': ''
+        },
+        {
+            'name': 'Local Police',
+            'description': ''
+        },
+        {
+            'name': 'Highway Patrol',
+            'description': ''
+        },
+        {
+            'name': 'EMS',
+            'description': ''
+        },
+        {
+            'name': 'Park Police',
+            'description': ''
+        },
+        {
+            'name': 'Fire Department',
+            'description': ''
+        },
+        {
+            'name': 'FEMA',
+            'description': ''
+        },
+        {
+            'name': 'Local Fire',
+            'description': ''
+        }
+])
+
+for i in responding_organizations.find({}):
+    responding_organizations_ids[i['name']] = i['_id']
+
+disciplines.insert_many([
+        {
+            'name': 'EMS',
+            'description': ''
+        },
+        {
+            'name': 'Law Enforcement',
+            'description': ''
+        },
+        {
+            'name': 'Fire',
+            'description': ''
+        }
+])
+
+for i in disciplines.find({}):
+    disciplines_ids[i['name']] = i['_id']
+
+locations.insert_many([
+        {
+            'name': 'highway',
+            'description': ''
+        },
+        {
+            'name': 'hospital',
+            'description': ''
+        },
+        {
+            'name': 'national park',
+            'description': ''
+        },
+        {
+            'name': 'urban area',
+            'description': ''
+        },
+        {
+            'name': 'building',
+            'description': ''
+        },
+        {
+            'name': 'sub-urban area',
+            'description': ''
+        },
+        {
+            'name': 'parks',
+            'description': ''
+        },
+        {
+            'name': 'road',
+            'description': ''
+        },
+        {
+            'name': 'metropolitan city',
+            'description': ''
+        },
+        {
+            'name': 'subway',
+            'description': ''
+        },
+])
+
+for i in locations.find({}):
+    locations_ids[i['name']] = i['_id']
+
+
+information_categories.insert_many([
+    {
+        'name': 'operations data',
+        'description': ''
+    },
+    {
+        'name': 'sensor data',
+        'description': ''
+    },
+    {
+        'name': 'publicly sourced data',
+        'description': ''
+    },
+    {
+        'name': 'situational awareness data',
+        'description': ''
+    },
+    {
+        'name': 'Unknown',
+        'description': ''
+    }
+])
+
+
+for i in information_categories.find({}):
+    information_categories_ids[i['name']] = i['_id']
+
+
+information_types.insert_many([
+    {
+        'name': 'active authentication',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'body camera data',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'comms',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'completed incident command system (ICS) forms/plans',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'crime scene geographic information system (GIS) intel location',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'critical static locations (shelters|ccps|EVAC|LZ)',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'medium',
+            'availability': 'medium'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'deployable assets',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'Emergency Response',
+        'triad_rating': {
+            'confidentiality': 'low',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'evac routes and plans',
+        'triad_rating': {
+            'confidentiality': 'low',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'facial recognition',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'medium'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'first responder assets',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'functional roles',
+        'triad_rating': {
+            'confidentiality': 'medium',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'ICS (incident command system) forms/plans',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'images + media from ng911',
+        'triad_rating': {
+            'confidentiality': 'low',
+            'integrity': 'medium',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'incident action plan',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'Info from multiple CAD LE Location',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'medium',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'law enforcement intel',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'license and plate reader',
+        'triad_rating': {
+            'confidentiality': 'medium',
+            'integrity': 'high',
+            'availability': 'low'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'license plate recognition (LPR)',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+    {
+        'name': 'managing security',
+        'triad_rating': {
+            'confidentiality': 'high',
+            'integrity': 'high',
+            'availability': 'high'
+        },
+        'information_categories': [information_categories_ids.get('operations data')]
+    },
+
+])
+
+for i in information_types.find({}):
+    information_types_ids[i['name']] = i['_id']
+
+
+use_cases.insert_many([
 
     {
-        '_id': ObjectId(),
         'name':  'Personal Injury Collision with hazards',
         'cybersecurity_threats': [],
         'description': desc_1,
-        'actors': ['patients', 'paramedics', 'law enforcement'],
-        'organizations': ['Local EMS', 'Local Police', 'Highway Patrol'],
+        'actors': [actors_ids[x] for x in ['patients', 'paramedics', 'law enforcement']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Police', 'Highway Patrol']],
         'technologies': [],
-        'discipline': ['EMS', 'Fire', 'Law Enforcement'],
-        'locations': ['highway'],
+        'discipline': [disciplines_ids[x] for x in ['EMS', 'Fire', 'Law Enforcement']],
+        'locations': [locations_ids[x] for x in ['highway']],
         'information_types': [],
         'activities': []
     },
@@ -28,11 +415,11 @@ entries = [
         'name': 'Medical emergency',
         'cybersecurity_threats': [],
         'description': desc_2,
-        'actors': ['patients', 'paramedics'],
-        'organizations': ['EMS'],
+        'actors': [actors_ids[x] for x in ['patients', 'paramedics']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['EMS']],
         'technologies': [],
-        'discipline': ['EMS'],
-        'locations': ['hospital'],
+        'discipline': [disciplines_ids[x]for x in ['EMS']],
+        'locations': [locations_ids[x] for x in ['hospital']],
         'information_types': [],
         'activities': []
     },
@@ -41,11 +428,11 @@ entries = [
         'name': 'Search in a national park',
         'cybersecurity_threats': [],
         'description': desc_3,
-        'actors': ['suspects', 'law enforcement'],
-        'organizations': ['Local Police', 'Park Police'],
+        'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local Police', 'Park Police']],
         'technologies': [],
-        'discipline': ['Law Enforcement', 'EMS'],
-        'locations': ['national park'],
+        'discipline': [disciplines_ids[x] for x in ['Law Enforcement', 'EMS']],
+        'locations': [locations_ids[x] for x in ['national park']],
         'information_types': [],
         'activities': []
     },
@@ -54,11 +441,11 @@ entries = [
         'name': 'Rioting in an urban area',
         'cybersecurity_threats': [],
         'description': desc_4,
-        'actors': ['civilians', 'suspects', 'law enforcement', 'paramedics'],
-        'organizations': [],
+        'actors': [actors_ids[x] for x in ['civilians', 'suspects', 'law enforcement', 'paramedics']],
+        'responding_organizations': [],
         'technologies': [],
         'discipline': [],
-        'locations': ['urban area'],
+        'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
     },
@@ -67,11 +454,11 @@ entries = [
         'name': 'Undercover officer',
         'cybersecurity_threats': [],
         'description': desc_5,
-        'actors': ['suspects', 'law enforcement'],
-        'organizations': [],
+        'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
+        'responding_organizations': [],
         'technologies': [],
-        'discipline': ['Law Enforcement'],
-        'locations': ['urban area'],
+        'discipline': [disciplines_ids[x] for x in ['Law Enforcement']],
+        'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
     },
@@ -80,11 +467,11 @@ entries = [
         'name': 'Structure fire',
         'cybersecurity_threats': [],
         'description': desc_6,
-        'actors': ['victims', 'fire fighters'],
-        'organizations': ['Fire Department'],
+        'actors': [actors_ids[x] for x in ['victims', 'fire fighters']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Fire Department']],
         'technologies': [],
-        'discipline': ['Fire'],
-        'locations': ['building'],
+        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'locations': [locations_ids[x] for x in ['building']],
         'information_types': [],
         'activities': []
     },
@@ -93,11 +480,11 @@ entries = [
         'name': 'Wild fire',
         'cybersecurity_threats': [],
         'description': desc_7,
-        'actors': ['civilians', 'fire fighters', 'law enforcement', 'paramedics'],
-        'organizations': ['Local EMS', 'Fire Department', 'Local Police'],
+        'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Fire Department', 'Local Police']],
         'technologies': [],
-        'discipline': ['Fire'],
-        'locations': ['sub-urban area', 'parks'],
+        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'locations': [locations_ids[x] for x in ['sub-urban area', 'parks']],
         'information_types': [],
         'activities': []
     },
@@ -106,8 +493,8 @@ entries = [
         'name': 'Hurricane',
         'cybersecurity_threats': [],
         'description': desc_8,
-        'actors': ['civilians', 'fire fighters', 'law enforcement', 'parmedics'],
-        'organizations': ['Local EMS', 'Fire Department', 'Local Police', 'FEMA'],
+        'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Fire Department', 'Local Police', 'FEMA']],
         'technologies': [],
         'discipline': [],
         'locations': [],
@@ -119,11 +506,11 @@ entries = [
         'name': 'Active shooter',
         'cybersecurity_threats': [],
         'description': desc_9,
-        'actors': ['civilians', 'paramedics', 'law enforcement'],
-        'organizations': ['Local EMS', 'Local Police'],
+        'actors': [actors_ids[x] for x in ['civilians', 'paramedics', 'law enforcement']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Police']],
         'technologies': [],
         'discipline': [],
-        'locations': ['urban area'],
+        'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
     },
@@ -132,11 +519,11 @@ entries = [
         'name': 'Police officer vehicle stop',
         'cybersecurity_threats': [],
         'description': desc_10,
-        'actors': ['suspects', 'law enforcement'],
-        'organizations': [],
+        'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
+        'responding_organizations': [],
         'technologies': [],
         'discipline': [],
-        'locations': ['road'],
+        'locations': [locations_ids[x] for x in ['road']],
         'information_types': [],
         'activities': []
     },
@@ -145,11 +532,11 @@ entries = [
         'name': 'Apartment Building Fire',
         'cybersecurity_threats': [],
         'description': desc_11,
-        'actors': ['cab driver', 'incident commander', 'fire fighters', 'paramedics', 'civilians'],
-        'organizations': ['Local EMS', 'Local Fire'],
+        'actors': [actors_ids[x] for x in ['cab driver', 'incident commander', 'fire fighters', 'paramedics', 'civilians']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Fire']],
         'technologies': [],
-        'discipline': ['Fire', 'EMS'],
-        'locations': ['building', 'metropolitan city'],
+        'discipline': [disciplines_ids[x] for x in ['Fire', 'EMS']],
+        'locations': [locations_ids[x] for x in ['building', 'metropolitan city']],
         'information_types': [],
         'activities': []
     },
@@ -158,11 +545,11 @@ entries = [
         'name': 'Structure Fire -Future Technology Scenario',
         'cybersecurity_threats': [],
         'description': desc_12,
-        'actors': ['fire fighters'],
-        'organizations': ['Local Fire'],
+        'actors': [actors_ids[x] for x in ['fire fighters']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': ['Fire'],
-        'locations': ['building', 'metropolitan city'],
+        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'locations': [locations_ids[x] for x in ['building', 'metropolitan city']],
         'information_types': [],
         'activities': []
     },
@@ -171,11 +558,11 @@ entries = [
         'name': 'Subway Fire',
         'cybersecurity_threats': [],
         'description': desc_13,
-        'actors': ['civilians', 'fire fighters', 'victims'],
-        'organizations': ['Local Fire'],
+        'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'victims']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': ['Fire'],
-        'locations': ['subway', 'metropolitan city'],
+        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'locations': [locations_ids[x] for x in ['subway', 'metropolitan city']],
         'information_types': [],
         'activities': []
     },
@@ -184,15 +571,12 @@ entries = [
         'name': 'WUI Fire',
         'cybersecurity_threats': [],
         'description': desc_14,
-        'actors': ['civilians', 'fire_fighters'],
-        'organizations': ['Local Fire'],
+        'actors': [actors_ids[x] for x in ['civilians', 'fire fighters']],
+        'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': ['Fire'],
+        'discipline': [disciplines_ids[x] for x in ['Fire']],
         'locations': [],
         'information_types': [],
         'activities': []
     }
-]
-
-use_cases.insert_many(entries)
-#use_cases.insert_one(entries[0])
+])
