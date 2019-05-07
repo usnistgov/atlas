@@ -2,6 +2,7 @@ from mongoengine import Document
 from mongoengine.fields import ListField, StringField, DictField, ObjectIdField
 import Atlas_Project.settings as settings
 
+
 class CyberSecurityThreats(Document):
 
     _id = ObjectIdField(primary_key=True)
@@ -21,6 +22,7 @@ class Actors(Document):
 
 
 class RespondingOrganizations(Document):
+
     _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
@@ -38,6 +40,7 @@ class Technologies(Document):
 
 
 class Disciplines(Document):
+
     _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
