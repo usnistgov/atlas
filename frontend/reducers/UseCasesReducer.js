@@ -7,16 +7,16 @@ const initialState = {
 
 };
 
-export default function deviceReducer(state=initialState, action: Action) {
+export default function UseCasesReducer(state=initialState, action: Action) {
 
   switch (action.type) {
-     case UseCasesActions.GET_USECASES:
+     case UseCasesActions.GET_USE_CASES:
         return {...state, isLoadingUseCases: true};
-     case UseCasesActions.GET_USECASES_SUCCESS:
+     case UseCasesActions.GET_USE_CASES_SUCCESS:
         return {...state, isLoadingUseCases: false,  use_cases: action.res};
-     case UseCasesActions.GET_USECASES_ERROR400:
-     case UseCasesActions.GET_USECASES_ERROR500:
-     case UseCasesActions.GET_USECASES_FAILURE:
+     case UseCasesActions.GET_USE_CASES_ERROR400:
+     case UseCasesActions.GET_USE_CASES_ERROR500:
+     case UseCasesActions.GET_USE_CASES_FAILURE:
         return {...state, isLoadingUseCases: false}
 
   }

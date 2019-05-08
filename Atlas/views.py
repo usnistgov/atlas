@@ -33,10 +33,16 @@ class RespondingOrganizationsView(generics.ListCreateAPIView):
     queryset = RespondingOrganizations.objects.all()
 
 
-class DesciplinesView(generics.ListCreateAPIView):
+class DisciplinesView(generics.ListCreateAPIView):
     lookup_field = "_id"
     serializer_class = Disciplines_Serializer
     queryset = Disciplines.objects.all()
+
+
+class LocationsView(generics.ListCreateAPIView):
+    lookup_field = "_id"
+    serializer_class = Locations_Serializer
+    queryset = Locations.objects.all()
 
 
 class InformationTypesView(generics.ListCreateAPIView):

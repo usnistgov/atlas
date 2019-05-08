@@ -13,8 +13,28 @@ export default class Home extends Component<Props> {
   props: Props;
 
   componentDidMount(){
-    const { getUseCases } = this.props;
+    const {
+        getActivities,
+        getActors,
+        getCyberSecurityThreats,
+        getDisciplines,
+        getRespondingOrganizations,
+        getInformationCategories,
+        getInformationTypes,
+        getLocations,
+        getUseCases
+         } = this.props;
+
+    getActivities();
+    getActors();
+    getCyberSecurityThreats();
+    getDisciplines();
+    getRespondingOrganizations();
+    getInformationCategories();
+    getInformationTypes();
+    getLocations();
     getUseCases();
+
   }
 
   shouldComponentUpdate(nextProps){

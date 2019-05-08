@@ -44,6 +44,13 @@ class Disciplines_Serializer(serializers.DocumentSerializer):
         fields = '__all__'
 
 
+class Locations_Serializer(serializers.DocumentSerializer):
+
+    class Meta:
+        model = Locations
+        fields = '__all__'
+
+
 class InformationTypes_Serializer(serializers.DocumentSerializer):
 
     class Meta:
