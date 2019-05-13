@@ -1,3 +1,5 @@
 {
-  "HOME": "/"
+  "USE_CASE_CATALOG": "/",
+  "INFORMATION_TYPE_CATALOG": "/information-type",
+  "GLOSSARY": "/glossary"
 }

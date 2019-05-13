@@ -1,5 +1,6 @@
-var path = require("path")
-var webpack = require('webpack')
+import path from 'path';
+import webpack from 'webpack';
+
 var BundleTracker = require('webpack-bundle-tracker');
 var ip = require('ip');
 
@@ -18,7 +19,6 @@ const PUBLIC_PATH='/Atlas/static/bundles/local/';
 const hotReload = process.env.HOT_RELOAD === '1';
 
 module.exports = {
-  context: __dirname,
   entry: {main: isDevelopment ?
         [
             'babel-polyfill',
@@ -43,7 +43,8 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: 'babel-loader',
+
                 }
             },
             {
@@ -183,8 +184,6 @@ module.exports = {
       publicPath: isDevelopment ? 'http://'+ HOST + ':'+ PORT + PUBLIC_PATH : '',
   },
 
-  externals: [],
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new BundleTracker({filename: './webpack-stats.json'}),
@@ -194,8 +193,7 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
-        parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        parallel: true
       }),
       new OptimizeCSSAssetsPlugin({})
     ],

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import type { Store } from '../reducers/types';
 import Routes from '../Routes';
+import TitleBarPage from '../containers/TitleBarPage'
 
 type Props = {
   store: Store,
@@ -17,6 +18,7 @@ export default class Root extends Component<Props> {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div>
+            <TitleBarPage />
             <Routes />
           </div>
         </ConnectedRouter>

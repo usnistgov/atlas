@@ -1,7 +1,7 @@
 // @flow
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Home from '../components/Home/Home';
+import UseCaseCatalog from '../components/UseCaseCatalog/UseCaseCatalog';
 import * as UseCasesActions from '../actions/UseCases';
 import * as ActivitiesActions from '../actions/Activities';
 import * as ActorsActions from '../actions/Actors';
@@ -34,4 +34,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(UseCaseCatalog);

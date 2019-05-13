@@ -1,0 +1,11 @@
+.componentBody {
+  background-color: dodgerblue;
+  display: flex;
+  height: 87vh;
+  justify-content: center;
+  align-items: center;
+  border-style: outset;
+  border-width: thick;
+  border-color: #EDE6E3;
+  overflow: auto;
+}

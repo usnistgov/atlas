@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './Home.css';
+import styles from './UseCaseCatalog.css';
 import ReactJson from 'react-json-view';
 
 var equal = require('fast-deep-equal');
@@ -9,7 +9,7 @@ type Props = {
     isLoadingUseCases: boolean
 }
 
-export default class Home extends Component<Props> {
+export default class UseCaseCatalog extends Component<Props> {
   props: Props;
 
   componentDidMount(){
@@ -38,8 +38,7 @@ export default class Home extends Component<Props> {
   }
 
   shouldComponentUpdate(nextProps){
-    //return(!equal(nextProps.use_cases, this.props.use_cases))
-    return(true);
+    return(!equal(nextProps.use_cases, this.props.use_cases))
   }
 
   render(){
@@ -48,25 +47,9 @@ export default class Home extends Component<Props> {
 
     if(use_cases !== undefined){
 
-        let listAllUseCases = use_cases.map((element) => {
-
-            return (
-                <ReactJson
-                    key={element['_id']}
-                    src={element}
-                    theme="summerfruit:inverted"
-                    iconStyle="triangle"
-                    displayDataTypes={false}
-                    indentWidth={6}
-                    name={element['name']}
-                    collapsed={true}
-                />
-            )
-        });
-
         return(
             <div className={styles.componentBody}>
-                { listAllUseCases }
+               <h2>Use Case Catalog</h2>
             </div>
          )
     } else {

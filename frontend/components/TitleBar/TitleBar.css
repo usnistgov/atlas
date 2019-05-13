@@ -1,0 +1,45 @@
+.titleBar {
+  display: flex;
+  flex-direction: row;
+  height: 9.5vh;
+  background-image: none;
+  background-color: snow;
+  border-style: outset;
+  border-width: thick;
+  border-color: #EDE6E3;
+  padding-left: 30px;
+  font-size: 25px;
+}
+
+.h2 {
+    color: #36382E;
+    font-weight: bolder;
+
+}
+
+.Logo {
+    width: 8vh;
+    height: 8vh;
+    transform: translate(-35%, 10%);
+}
+
+.alignTitle {
+    transform: translate(0%, -25%);
+}
+
+.alignLinks {
+    transform: translate(0%, 30%);
+}
+
+.Link {
+  color: #36382E;
+  font-size: 20px;
+  font-weight: bolder;
+  padding-left: 30px;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.Link:hover {
+    opacity: 1;
+}

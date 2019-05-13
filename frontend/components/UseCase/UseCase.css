@@ -1,0 +1,8 @@
+componentBody {
+  background-color: #5BC3EB;
+  display: flex;
+  height: 100vh;
+  border-style: outset;
+  border-width: thick;
+  border-color: #EDE6E3;
+}
