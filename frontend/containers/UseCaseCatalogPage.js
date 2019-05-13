@@ -15,7 +15,14 @@ import * as RespondingOrganizationsActions from '../actions/RespondingOrganizati
 function mapStateToProps(state) {
   return {
     use_cases: state.UseCasesReducer.use_cases,
-    isLoadingUseCases: state.UseCasesReducer.isLoadingUseCases
+    actors: state.ActorsReducer.actors,
+    cybersecurity_threats: state.CyberSecurityThreatsReducer.cybersecurity_threats,
+    disciplines: state.DisciplinesReducer.disciplines,
+    activities: state.ActivitiesReducer.activities,
+    responding_organizations: state.RespondingOrganizationsReducer.responding_organizations,
+    information_categories: state.InformationCategoriesReducer.information_categories,
+    information_types: state.InformationTypesReducer.information_types,
+    locations: state.LocationsReducer.locations
   };
 }
 

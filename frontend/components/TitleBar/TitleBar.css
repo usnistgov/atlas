@@ -1,7 +1,7 @@
 .titleBar {
   display: flex;
   flex-direction: row;
-  height: 9.5vh;
+  height: 6vh;
   background-image: none;
   background-color: snow;
   border-style: outset;
@@ -18,13 +18,13 @@
 }
 
 .Logo {
-    width: 8vh;
-    height: 8vh;
+    width: 5vh;
+    height: 5vh;
     transform: translate(-35%, 10%);
 }
 
 .alignTitle {
-    transform: translate(0%, -25%);
+    transform: translate(0%, -10%);
 }
 
 .alignLinks {
