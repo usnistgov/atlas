@@ -77,6 +77,8 @@ actors.insert_many([
 for i in actors.find({}):
     actors_ids[i['name']] = i['_id']
 
+for i, j in actors_ids.items():
+    print(i, j)
 responding_organizations.insert_many([
         {
             'name': 'Local EMS',
@@ -405,7 +407,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['patients', 'paramedics', 'law enforcement']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Police', 'Highway Patrol']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['EMS', 'Fire', 'Law Enforcement']],
+        'disciplines': [disciplines_ids[x] for x in ['EMS', 'Fire', 'Law Enforcement']],
         'locations': [locations_ids[x] for x in ['highway']],
         'information_types': [],
         'activities': []
@@ -418,7 +420,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['patients', 'paramedics']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['EMS']],
         'technologies': [],
-        'discipline': [disciplines_ids[x]for x in ['EMS']],
+        'disciplines': [disciplines_ids[x]for x in ['EMS']],
         'locations': [locations_ids[x] for x in ['hospital']],
         'information_types': [],
         'activities': []
@@ -431,7 +433,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local Police', 'Park Police']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Law Enforcement', 'EMS']],
+        'disciplines': [disciplines_ids[x] for x in ['Law Enforcement', 'EMS']],
         'locations': [locations_ids[x] for x in ['national park']],
         'information_types': [],
         'activities': []
@@ -444,7 +446,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'suspects', 'law enforcement', 'paramedics']],
         'responding_organizations': [],
         'technologies': [],
-        'discipline': [],
+        'disciplines': [],
         'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
@@ -457,7 +459,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
         'responding_organizations': [],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Law Enforcement']],
+        'disciplines': [disciplines_ids[x] for x in ['Law Enforcement']],
         'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
@@ -470,7 +472,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['victims', 'fire fighters']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Fire Department']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire']],
         'locations': [locations_ids[x] for x in ['building']],
         'information_types': [],
         'activities': []
@@ -483,7 +485,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Fire Department', 'Local Police']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire']],
         'locations': [locations_ids[x] for x in ['sub-urban area', 'parks']],
         'information_types': [],
         'activities': []
@@ -496,7 +498,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Fire Department', 'Local Police', 'FEMA']],
         'technologies': [],
-        'discipline': [],
+        'disciplines': [],
         'locations': [],
         'information_types': [],
         'activities': []
@@ -509,7 +511,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'paramedics', 'law enforcement']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Police']],
         'technologies': [],
-        'discipline': [],
+        'disciplines': [],
         'locations': [locations_ids[x] for x in ['urban area']],
         'information_types': [],
         'activities': []
@@ -522,7 +524,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
         'responding_organizations': [],
         'technologies': [],
-        'discipline': [],
+        'disciplines': [],
         'locations': [locations_ids[x] for x in ['road']],
         'information_types': [],
         'activities': []
@@ -535,7 +537,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['cab driver', 'incident commander', 'fire fighters', 'paramedics', 'civilians']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local EMS', 'Local Fire']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire', 'EMS']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire', 'EMS']],
         'locations': [locations_ids[x] for x in ['building', 'metropolitan city']],
         'information_types': [],
         'activities': []
@@ -548,7 +550,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['fire fighters']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire']],
         'locations': [locations_ids[x] for x in ['building', 'metropolitan city']],
         'information_types': [],
         'activities': []
@@ -561,7 +563,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'victims']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire']],
         'locations': [locations_ids[x] for x in ['subway', 'metropolitan city']],
         'information_types': [],
         'activities': []
@@ -574,7 +576,7 @@ use_cases.insert_many([
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters']],
         'responding_organizations': [responding_organizations_ids[x] for x in ['Local Fire']],
         'technologies': [],
-        'discipline': [disciplines_ids[x] for x in ['Fire']],
+        'disciplines': [disciplines_ids[x] for x in ['Fire']],
         'locations': [],
         'information_types': [],
         'activities': []

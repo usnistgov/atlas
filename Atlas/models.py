@@ -45,7 +45,7 @@ class Disciplines(Document):
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
-    meta = {'collection': settings.COLLECTION_NAMES.get('discipline')}
+    meta = {'collection': settings.COLLECTION_NAMES.get('disciplines')}
 
 
 class Locations(Document):
@@ -95,7 +95,7 @@ class UseCases(Document):
     actors = ListField(field=ObjectIdField())
     responding_organizations = ListField(field=ObjectIdField())
     technologies = ListField(field=ObjectIdField())
-    discipline = ListField(field=ObjectIdField())
+    disciplines = ListField(field=ObjectIdField())
     locations = ListField(field=ObjectIdField())
     information_types = ListField(field=ObjectIdField())
     activities = ListField(field=ObjectIdField())

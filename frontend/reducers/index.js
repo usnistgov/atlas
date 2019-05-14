@@ -10,6 +10,7 @@ import InformationCategoriesReducer from './InformationCategoriesReducer';
 import InformationTypesReducer from './InformationTypesReducer';
 import LocationsReducer from './LocationsReducer';
 import RespondingOrganizationsReducer from './RespondingOrganizationsReducer';
+import TechnologiesReducer from './TechnologiesReducer'
 
 export default function createRootReducer(history: History) {
   return combineReducers({
@@ -22,6 +23,7 @@ export default function createRootReducer(history: History) {
     InformationCategoriesReducer,
     InformationTypesReducer,
     LocationsReducer,
-    RespondingOrganizationsReducer
+    RespondingOrganizationsReducer,
+    TechnologiesReducer
   });
 }

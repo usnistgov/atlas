@@ -11,6 +11,7 @@ import * as InformationCategoriesActions from '../actions/InformationCategories'
 import * as InformationTypesActions from '../actions/InformationTypes';
 import * as LocationsActions from '../actions/Locations';
 import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations';
+import * as TechnologiesActions from '../actions/Technologies';
 
 function mapStateToProps(state) {
   return {
@@ -20,6 +21,7 @@ function mapStateToProps(state) {
     disciplines: state.DisciplinesReducer.disciplines,
     activities: state.ActivitiesReducer.activities,
     responding_organizations: state.RespondingOrganizationsReducer.responding_organizations,
+    technologies: state.TechnologiesReducer.technologies,
     information_categories: state.InformationCategoriesReducer.information_categories,
     information_types: state.InformationTypesReducer.information_types,
     locations: state.LocationsReducer.locations
@@ -35,7 +37,8 @@ function mapDispatchToProps(dispatch) {
                                               InformationCategoriesActions,
                                               InformationTypesActions,
                                               LocationsActions,
-                                              RespondingOrganizationsActions), dispatch);
+                                              RespondingOrganizationsActions,
+                                              TechnologiesActions), dispatch);
 }
 
 export default connect(

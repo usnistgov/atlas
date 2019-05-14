@@ -16,6 +16,7 @@ type Props = {
     cybersecurity_threats: object,
     disciplines: object,
     responding_organizations: object,
+    technologies: object,
     information_categories: object,
     information_types: object,
     locations: object
@@ -48,6 +49,7 @@ export default class UseCaseCatalog extends Component<Props> {
         getCyberSecurityThreats,
         getDisciplines,
         getRespondingOrganizations,
+        getTechnologies,
         getInformationCategories,
         getInformationTypes,
         getLocations,
@@ -59,10 +61,11 @@ export default class UseCaseCatalog extends Component<Props> {
     getCyberSecurityThreats();
     getDisciplines();
     getRespondingOrganizations();
+    getTechnologies();
     getInformationCategories();
     getInformationTypes();
     getLocations();
-    getUseCases();
+    getUseCases(this.state);
 
   }
 
@@ -74,10 +77,6 @@ export default class UseCaseCatalog extends Component<Props> {
         return(true);
     }
     return(false);
-  }
-
-  componentDidUpdate(){
-    console.log(this.state);
   }
 
   setSearchOptions(){
@@ -100,6 +99,10 @@ export default class UseCaseCatalog extends Component<Props> {
 
     let respondingOptions = this.props.responding_organizations.map((entry) => {
         return({"value": entry.name,  "label": entry.name, "group": "responding_organizations"});
+    });
+
+    let technologiesOptions = this.props.technologies.map((entry) => {
+        return({"value": entry.name,  "label": entry.name, "group": "technologies"});
     });
 
     let informationTypeOptions = this.props.information_types.map((entry) => {
@@ -130,6 +133,10 @@ export default class UseCaseCatalog extends Component<Props> {
         {
         "label": "Responding Organizations",
         "options": respondingOptions
+        },
+         {
+        "label": "Technologies",
+        "options": technologiesOptions
         },
         {
         "label": "Information Types",
@@ -164,12 +171,23 @@ export default class UseCaseCatalog extends Component<Props> {
               }
     }
 
+  searchUseCases(searchOptions){
+
+    const {
+        getUseCases
+    } = this.props;
+
+    getUseCases(searchOptions);
+  }
+
   handleChange(option){
+
     this.setState(state => {
         return {
             selectedOption: option
             }
-    });
+    }, () => this.searchUseCases(this.state.selectedOption));
+
   }
 
   render(){
@@ -180,6 +198,7 @@ export default class UseCaseCatalog extends Component<Props> {
             cybersecurity_threats,
             disciplines,
             responding_organizations,
+            technologies,
             information_categories,
             information_types,
             locations } = this.props;
@@ -194,32 +213,43 @@ export default class UseCaseCatalog extends Component<Props> {
 
         let listAllUseCases = use_cases.map((use_case) => {
 
-            let use_case_actors = use_case['actors'].map((idx, actor_id) => {
-                return(actors[actor_id])
+            let use_case_actors = use_case['actors'].map((entry_id) => {
+                let entry = actors.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-            let use_case_information_types = use_case['information_types'].map((idx, type_id) => {
-                return(information_types[type_id])
+            let use_case_information_types = use_case['information_types'].map((entry_id) => {
+                let entry = information_types.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-            let use_case_cybersecurity_threats = use_case['cybersecurity_threats'].map((idx, cyber_threat_id) => {
-                return(cybersecurity_threats[cyber_threat_id])
+            let use_case_cybersecurity_threats = use_case['cybersecurity_threats'].map((entry_id) => {
+                let entry = cybersecurity_threats.find(entry => entry._id == entry_id)
+                return(entry)
+            });
+            let use_case_disciplines = use_case['disciplines'].map((entry_id) => {
+                let entry = disciplines.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-            let use_case_disciplines = use_case['discipline'].map((idx, discipline_id) => {
-                return(disciplines[discipline_id])
+            let use_case_responding_organizations = use_case['responding_organizations'].map((entry_id) => {
+                let entry = responding_organizations.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-            let use_case_responding_organizations = use_case['responding_organizations'].map((idx, organization_id) => {
-                return(responding_organizations[organization_id])
+            let use_case_technologies = use_case['technologies'].map((entry_id) => {
+                let entry = technologies.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-             let use_case_activities = use_case['activities'].map((idx, activity_id) => {
-                return(activities[activity_id])
+            let use_case_activities = use_case['activities'].map((entry_id) => {
+                let entry = activities.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
-            let use_case_locations = use_case['locations'].map((idx, location_id) => {
-                return(locations[location_id])
+            let use_case_locations = use_case['locations'].map((entry_id) => {
+                let entry = locations.find(entry => entry._id == entry_id)
+                return(entry)
             });
 
             return (
@@ -274,6 +304,17 @@ export default class UseCaseCatalog extends Component<Props> {
                             classes={styles.attrTable}
                             data={use_case_responding_organizations}
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.getHeaderStyle()}]}
+                            rowStyle={this.getRowStyle}
+                            noDataIndication={noDataIndication}
+                            keyField="_id"
+                            striped
+                            hover
+                            condensed>
+                        </BootstrapTable>
+                        <BootstrapTable
+                            classes={styles.attrTable}
+                            data={use_case_technologies}
+                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
                             keyField="_id"

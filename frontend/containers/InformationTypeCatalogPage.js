@@ -11,6 +11,7 @@ import * as InformationCategoriesActions from '../actions/InformationCategories'
 import * as InformationTypesActions from '../actions/InformationTypes';
 import * as LocationsActions from '../actions/Locations';
 import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations';
+import * as TechnologiesActions from '../actions/Technologies';
 
 function mapStateToProps(state) {
   return {};
@@ -25,7 +26,8 @@ function mapDispatchToProps(dispatch) {
                                               InformationCategoriesActions,
                                               InformationTypesActions,
                                               LocationsActions,
-                                              RespondingOrganizationsActions), dispatch);
+                                              RespondingOrganizationsActions,
+                                              TechnologiesActions), dispatch);
 }
 
 export default connect(

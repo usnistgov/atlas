@@ -73,7 +73,7 @@ class UseCasesView(generics.ListCreateAPIView):
                         'actors',
                         'responding_organizations',
                         'technologies',
-                        'discipline',
+                        'disciplines',
                         'locations',
                         'information_types',
                         'information_categories',
@@ -99,9 +99,9 @@ class UseCasesView(generics.ListCreateAPIView):
                     # Array Field Types
                     if field in ('cybersecurity_threats',
                                  'actors',
-                                 'organizations',
+                                 'responding_organizations',
                                  'technologies',
-                                 'discipline',
+                                 'disciplines',
                                  'locations',
                                  'information_types',
                                  'activities'):

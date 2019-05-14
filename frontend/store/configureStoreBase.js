@@ -13,6 +13,8 @@ import * as InformationCategoriesActions from '../actions/InformationCategories'
 import * as InformationTypesActions from '../actions/InformationTypes';
 import * as LocationsActions from '../actions/Locations';
 import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations';
+import* as TechnologiesActions from '../actions/Technologies';
+
 import type { UseCasesStateType,
               ActivitiesStateType,
               ActorsStateType,
@@ -21,7 +23,8 @@ import type { UseCasesStateType,
               InformationCategoriesStateType,
               InformationTypesStateType,
               LocationsStateType,
-              RespondingOrganizationsStateType
+              RespondingOrganizationsStateType,
+              TechnologiesStateType
               } from '../reducers/types';
 
 const history = createHashHistory();
@@ -37,7 +40,8 @@ const configureStore = (initialState?:{
                                         information_categories: InformationCategoriesStateType,
                                         information_types: InformationTypesStateType,
                                         locations: LocationsStateType,
-                                        responding_organizations: RespondingOrganizationsStateType
+                                        responding_organizations: RespondingOrganizationsStateType,
+                                        technologies: TechnologiesStateType
                                         }) => {
   // Redux Configuration
   const middleware = [];
@@ -71,6 +75,7 @@ const configureStore = (initialState?:{
     ...InformationTypesActions,
     ...LocationsActions,
     ...RespondingOrganizationsActions,
+    ...TechnologiesActions,
     ...UseCasesActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

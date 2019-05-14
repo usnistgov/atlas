@@ -16,6 +16,10 @@ export type RespondingOrganizationsStateType = {
   +responding_organizations: object
 };
 
+export type TechnologiesStateType = {
+  +technologies: object
+};
+
 export type DisciplinesStateType = {
   +disciplines: object
 };
