@@ -3,8 +3,7 @@ import styles from './UseCaseCatalog.css';
 import ReactJson from 'react-json-view';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import Select from 'react-select';
-import makeAnimated from 'react-select/lib/animated';
-
+import UseCasePage from '../../containers/UseCasePage';
 
 var equal = require('fast-deep-equal');
 var searchOptions = [];
@@ -35,11 +34,12 @@ export default class UseCaseCatalog extends Component<Props> {
     super(props);
 
     this.state = {
-        selectedOption: []
+        selectedOption: [],
+        useCaseSelection: null
     };
 
     this.handleChange = this.handleChange.bind(this);
-
+    this.handleUseCaseClick = this.handleUseCaseClick.bind(this);
   }
 
   componentDidMount(){
@@ -153,12 +153,9 @@ export default class UseCaseCatalog extends Component<Props> {
   getHeaderStyle(){
 
     return {
-
-        backgroundColor: 'darkgrey',
-        color: 'snow',
-        fontWeight: 'bolder',
         height: '4vh',
-        textAlign: 'center'
+        backgroundColor: 'darkgrey',
+        fontWeight: 'bolder'
         }
     }
 
@@ -166,29 +163,31 @@ export default class UseCaseCatalog extends Component<Props> {
 
     return {
                 backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
-                color: 'snow',
-                textAlign: 'center'
               }
     }
 
-  searchUseCases(searchOptions){
+  handleChange(option){
 
     const {
-        getUseCases
+      getUseCases
     } = this.props;
-
-    getUseCases(searchOptions);
-  }
-
-  handleChange(option){
 
     this.setState(state => {
         return {
             selectedOption: option
             }
-    }, () => this.searchUseCases(this.state.selectedOption));
+    }, () => getUseCases(this.state.selectedOption));
 
   }
+
+  handleUseCaseClick(use_case){
+    this.setState(state => {
+        return {
+            useCaseSelection: use_case
+        }
+    })
+  }
+
 
   render(){
 
@@ -204,14 +203,15 @@ export default class UseCaseCatalog extends Component<Props> {
             locations } = this.props;
 
     const {
-        selectedOption
+        selectedOption,
+        useCaseSelection
     } = this.state;
 
     if(use_cases !== undefined){
 
         this.setSearchOptions();
 
-        let listAllUseCases = use_cases.map((use_case) => {
+        let catalogView = use_cases.map((use_case) => {
 
             let use_case_actors = use_case['actors'].map((entry_id) => {
                 let entry = actors.find(entry => entry._id == entry_id)
@@ -253,7 +253,7 @@ export default class UseCaseCatalog extends Component<Props> {
             });
 
             return (
-                <div className={styles.catalogBody}>
+                <div className={styles.catalogBody} onClick={() => this.handleUseCaseClick(use_case)}>
                     <h2>{use_case.name}</h2>
                     <div className={styles.useCaseTables}>
                         <BootstrapTable
@@ -350,6 +350,13 @@ export default class UseCaseCatalog extends Component<Props> {
 
         });
 
+        let useCaseView =
+                <UseCasePage
+                    handleUseCaseClick={this.handleUseCaseClick}
+                    getHeaderStyle={this.getHeaderStyle}
+                    getRowStyle={this.getRowStyle}
+                    use_case={useCaseSelection} />
+
         return(
             <div className={styles.componentBody}>
                 <div className={styles.searchContainer}>
@@ -362,7 +369,7 @@ export default class UseCaseCatalog extends Component<Props> {
                         placeholder="Search Use Cases ..."
                     />
                     <div className={styles.useCasesContainer}>
-                        {listAllUseCases}
+                        {useCaseSelection === null ? catalogView: useCaseView}
                     </div>
                 </div>
             </div>
