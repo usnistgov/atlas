@@ -5,7 +5,6 @@ import Atlas_Project.settings as settings
 
 class CyberSecurityThreats(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -14,7 +13,6 @@ class CyberSecurityThreats(Document):
 
 class Actors(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -23,7 +21,6 @@ class Actors(Document):
 
 class RespondingOrganizations(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -32,7 +29,6 @@ class RespondingOrganizations(Document):
 
 class Technologies(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -41,7 +37,6 @@ class Technologies(Document):
 
 class Disciplines(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -50,7 +45,6 @@ class Disciplines(Document):
 
 class Locations(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -59,7 +53,6 @@ class Locations(Document):
 
 class InformationCategories(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -68,7 +61,6 @@ class InformationCategories(Document):
 
 class InformationTypes(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
     triad_rating = DictField(required=True)
@@ -79,7 +71,6 @@ class InformationTypes(Document):
 
 class Activities(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, required=True)
 
@@ -88,7 +79,6 @@ class Activities(Document):
 
 class UseCases(Document):
 
-    _id = ObjectIdField(primary_key=True)
     name = StringField(max_length=100, required=True)
     cybersecurity_threats = ListField(field=ObjectIdField())
     description = StringField(max_length=2000, required=True)

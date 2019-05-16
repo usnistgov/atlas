@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './UseCase.css';
 import BootstrapTable  from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
 
 type Props = {
     use_case: object;
@@ -22,7 +21,6 @@ const noDataIndication = () => (
     </div>
 );
 
- //onClick={() => this.props.handleUseCaseClick(null)}>
 export default class UseCase extends Component<Props> {
   props: Props;
 
@@ -49,46 +47,45 @@ export default class UseCase extends Component<Props> {
              locations } = this.props;
 
      let use_case_actors = use_case['actors'].map((entry_id) => {
-                let entry = actors.find(entry => entry.id == entry_id)
+                let entry = actors.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_information_types = use_case['information_types'].map((entry_id) => {
-                let entry = information_types.find(entry => entry.id == entry_id)
+                let entry = information_types.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_cybersecurity_threats = use_case['cybersecurity_threats'].map((entry_id) => {
-                let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
+                let entry = cybersecurity_threats.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_disciplines = use_case['disciplines'].map((entry_id) => {
-                let entry = disciplines.find(entry => entry.id == entry_id)
+                let entry = disciplines.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_responding_organizations = use_case['responding_organizations'].map((entry_id) => {
-                let entry = responding_organizations.find(entry => entry.id == entry_id)
+                let entry = responding_organizations.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_technologies = use_case['technologies'].map((entry_id) => {
-                let entry = technologies.find(entry => entry.id == entry_id)
+                let entry = technologies.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_activities = use_case['activities'].map((entry_id) => {
-                let entry = activities.find(entry => entry.id == entry_id)
+                let entry = activities.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
      let use_case_locations = use_case['locations'].map((entry_id) => {
-                let entry = locations.find(entry => entry.id == entry_id)
+                let entry = locations.find(entry => entry._id == entry_id)
                 return(entry)
             });
 
-    console.log(actors);
 
     return (
         <div className={styles.componentBody} onClick={() => this.props.handleUseCaseClick(null)}>
@@ -110,10 +107,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'click' }) }
                     keyField="_id"
-                    insertRow
-                    deleteRow
                     striped
                     hover
                     condensed>
@@ -127,7 +121,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -139,7 +132,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -151,7 +143,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -163,7 +154,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -175,7 +165,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -187,7 +176,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover
@@ -199,7 +187,6 @@ export default class UseCase extends Component<Props> {
                     columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
                     rowStyle={this.props.getRowStyle}
                     noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                     keyField="_id"
                     striped
                     hover

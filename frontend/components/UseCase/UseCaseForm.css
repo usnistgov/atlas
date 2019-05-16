@@ -1,0 +1,137 @@
+.componentBody {
+  background-color: #EDE6E3;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-style: outset;
+  border-width: thick;
+}
+
+.useCaseInfo {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
+
+.headerFormat {
+    flex: 0 0 100%;
+    max-height: 45%;
+    min-height: 45%;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.headerFormat h2 {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom: 2px solid;
+}
+
+.headerFormat p {
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.informationTypes {
+    position: relative;
+}
+
+.informationTypes h3 {
+    padding-left: 30px;
+    font-size: 24px;
+}
+
+.informationTypeTable {
+
+    color: snow;
+    border-style: ridge;
+    border-width: thick;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    height: 37vh;
+    width: 100%;
+}
+
+.informationTypeTable thead {
+    display: table;
+    height: 5vh;
+    width: 99.3%;
+    background-color: darkgrey;
+    border-style: outset;
+    border-color: grey;
+    border-width: thick;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.informationTypeTable tbody {
+    display: block;
+    background-color: black;
+    width: 100%;
+    height: 31vh;
+    overflow: auto;
+}
+
+.informationTypeTable tbody tr {
+  display: table;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.useCaseTables {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow: auto;
+    width: 45%;
+    margin: 10px;
+}
+
+.attrTable {
+    color: snow;
+    display: table;
+    border-style: ridge;
+    border-width: thick;
+    margin-left: 60px;
+    margin-bottom: 20px;
+    height: 20vh;
+    width: 30vh;
+
+}
+
+.attrTable thead {
+    background-color: darkgrey;
+    border-style: outset;
+    border-color: grey;
+    border-width: thick;
+}
+
+.attrTable tbody {
+    display: block;
+    background-color: black;
+    color: snow;
+    width: 100%;
+    height: 15vh;
+    overflow: auto;
+}
+
+.attrTable tbody tr {
+
+  display: table;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.noDataIndication {
+
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Test Use Case","description":"Test Entry for Use Cases using the POST method on the REST api", "cybersecurity_threats": [], "actors": [], "disciplines": [] , "responding_organizations": [], "technologies": [], "activities": [], "information_types": [], "locations": [] }' http://127.0.0.1/api/UseCases

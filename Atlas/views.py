@@ -1,5 +1,8 @@
 from .serializers import *
 from rest_framework_mongoengine import generics
+from rest_framework_mongoengine.generics import mixins
+from rest_framework import status
+from rest_framework.response import Response
 from bson.objectid import ObjectId
 import pymongo
 import Atlas_Project.settings as settings
@@ -10,63 +13,56 @@ db = MongoClient[DATABASE_NAME]
 
 
 class CyberSecurityThreatsView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = CyberSecurityThreats_Serializer
     queryset = CyberSecurityThreats.objects.all()
 
 
 class ActorsView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = Actors_Serializer
     queryset = Actors.objects.all()
 
 
 class TechnologiesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = Technologies_Serializer
     queryset = Technologies.objects.all()
 
 
 class RespondingOrganizationsView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = RespondingOrganizations_Serializer
     queryset = RespondingOrganizations.objects.all()
 
 
 class DisciplinesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = Disciplines_Serializer
     queryset = Disciplines.objects.all()
 
 
 class LocationsView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = Locations_Serializer
     queryset = Locations.objects.all()
 
 
 class InformationTypesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = InformationTypes_Serializer
     queryset = InformationTypes.objects.all()
 
 
 class InformationCategoriesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = InformationCategories_Serializer
     queryset = InformationCategories.objects.all()
 
 
 class ActivitiesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
     serializer_class = Activities_Serializer
     queryset = Activities.objects.all()
 
 
-class UseCasesView(generics.ListCreateAPIView):
-    lookup_field = "_id"
+class UseCasesView(mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   generics.ListCreateAPIView):
     serializer_class = UseCase_Serializer
-    my_filter_fields = ('_id',
+    my_filter_fields = ('id',
                         'name',
                         'cybersecurity_threats',
                         'description',
@@ -143,7 +139,7 @@ class UseCasesView(generics.ListCreateAPIView):
                             mongo_query[field] = {'$all': field_ids}
 
                     # Object Id Field Type
-                    elif field == '_id':
+                    elif field == 'id':
 
                         mongo_query[field] = ObjectId(field_value)
 
@@ -159,3 +155,46 @@ class UseCasesView(generics.ListCreateAPIView):
             queryset = UseCases.objects(__raw__=mongo_query)
 
         return queryset
+
+    def put(self, request, *args, **kwargs):
+
+        document = UseCases.objects.with_id(request.data["id"])
+
+        for key in document:
+
+            if key is not "id":
+
+                if key in request.data:
+                    document[key] = request.data[key]
+
+                else:
+                    if key is "description":
+                        return Response(status.HTTP_400_BAD_REQUEST)
+
+                    document[key] = []
+
+        document.save()
+
+        return Response(status.HTTP_200_OK)
+
+    def patch(self, request, *args, **kwargs):
+
+        document = UseCases.objects.with_id(request.data["id"])
+        for key in document:
+            if key in request.data and key is not "id":
+                document[key] = request.data[key]
+
+        document.save()
+        return Response(status.HTTP_200_OK)
+
+    def delete(self, request, *args, **kwargs):
+
+        if "id" in request.data:
+
+            UseCases.objects(id=request.data['id']).delete()
+
+            return Response(status.HTTP_200_OK)
+
+        else:
+            return Response(status.HTTP_404_NOT_FOUND)
+

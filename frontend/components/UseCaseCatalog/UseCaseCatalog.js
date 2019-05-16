@@ -214,41 +214,41 @@ export default class UseCaseCatalog extends Component<Props> {
         let catalogView = use_cases.map((use_case) => {
 
             let use_case_actors = use_case['actors'].map((entry_id) => {
-                let entry = actors.find(entry => entry._id == entry_id)
+                let entry = actors.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_information_types = use_case['information_types'].map((entry_id) => {
-                let entry = information_types.find(entry => entry._id == entry_id)
+                let entry = information_types.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_cybersecurity_threats = use_case['cybersecurity_threats'].map((entry_id) => {
-                let entry = cybersecurity_threats.find(entry => entry._id == entry_id)
+                let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
                 return(entry)
             });
             let use_case_disciplines = use_case['disciplines'].map((entry_id) => {
-                let entry = disciplines.find(entry => entry._id == entry_id)
+                let entry = disciplines.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_responding_organizations = use_case['responding_organizations'].map((entry_id) => {
-                let entry = responding_organizations.find(entry => entry._id == entry_id)
+                let entry = responding_organizations.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_technologies = use_case['technologies'].map((entry_id) => {
-                let entry = technologies.find(entry => entry._id == entry_id)
+                let entry = technologies.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_activities = use_case['activities'].map((entry_id) => {
-                let entry = activities.find(entry => entry._id == entry_id)
+                let entry = activities.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
             let use_case_locations = use_case['locations'].map((entry_id) => {
-                let entry = locations.find(entry => entry._id == entry_id)
+                let entry = locations.find(entry => entry.id == entry_id)
                 return(entry)
             });
 
