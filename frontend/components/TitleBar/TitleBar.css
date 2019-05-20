@@ -1,41 +1,36 @@
 .titleBar {
   display: flex;
   flex-direction: row;
-  height: calc(var(--vh, 1vh) * 10);
+  align-items: center;
+  max-height: 5%;
   background-image: none;
   background-color: snow;
   border-style: outset;
   border-width: thick;
   border-color: #EDE6E3;
-  padding-left: 30px;
-  font-size: 25px;
 }
 
-.h2 {
+.titleBar h2 {
+    font-size: 40px;
+    line-height: 5%;
     color: #36382E;
+    margin-left: 20px;
     font-weight: bolder;
 
 }
 
 .Logo {
-    width: calc(var(--vh, 1vh) * 8);
-    height: calc(var(--vh, 1vh) * 8);
-    transform: translate(-35%, 10%);
-}
-
-.alignTitle {
-    transform: translate(0%, -25%);
-}
-
-.alignLinks {
-    transform: translate(0%, 30%);
+    width: 75px;
+    height: 75px;
+    margin-left: 20px;
+    padding: 5px;
 }
 
 .Link {
   color: #36382E;
   font-size: 20px;
   font-weight: bolder;
-  padding-left: 30px;
+  margin-left: 30px;
   opacity: 0.75;
   text-decoration: none;
 }

@@ -1,20 +1,21 @@
 .componentBody {
+
   background-color: #EDE6E3;
-  display: flex;
-  flex-direction: row;
   border-style: outset;
   border-width: thick;
+  height: auto;
+}
+
+.useCaseBody {
+    display: flex;
 }
 
 .useCaseInfo {
-  display: flex;
   flex-direction: column;
   width: 55%;
 }
 
 .headerFormat {
-    position: relative;
-    flex: 0 0 100%;
     max-height: 45%;
     min-height: 45%;
     max-width: 100%;
@@ -22,14 +23,14 @@
 }
 
 .headerFormat h2 {
-    padding-left: 20px;
-    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     font-size: 30px;
     border-bottom: 2px solid;
 }
 
 .headerFormat p {
-    padding-left: 30px;
+    margin-left: 30px;
     font-size: 16px;
 }
 
@@ -48,22 +49,22 @@
 .informationTypeTable {
 
     display: table;
+    background-color: darkgrey;
     color: snow;
     border-style: ridge;
     border-width: thick;
+    border-color: lightgrey;
     margin-left: 20px;
     margin-bottom: 20px;
-    width: 100%;
+    width: calc(100vw - 675px);
+    height: calc(100vh - 600px);
 }
 
 .informationTypeTable thead {
     display: table;
-    height: calc(var(--vh, 1vh) * 5);
-    width: 99.3%;
+    height: calc(100vh - 1000px);
+    width: calc(100vw - 685px);
     background-color: darkgrey;
-    border-style: outset;
-    border-color: grey;
-    border-width: thick;
     text-align: center;
     table-layout: fixed;
 }
@@ -71,8 +72,8 @@
 .informationTypeTable tbody {
     display: block;
     background-color: black;
-    width: 100%;
-    height: calc(var(--vh, 1vh) * 32);
+    width: calc(100vw - 675px);
+    height: calc(100vh - 450px);
     overflow: auto;
 }
 
@@ -97,21 +98,21 @@
 
 .attrTable {
     color: snow;
+    background-color: darkgrey;
     display: table;
     border-style: ridge;
     border-width: thick;
-    margin-left: 60px;
+    border-color: lightgrey;
+    margin-left: 40px;
     margin-bottom: 20px;
-    height: calc(var(--vh, 1vh) * 20);
-    width: calc(var(--vh, 1vh) * 30);
+    height: calc(100vh - 800px);
+    width: calc(100vw - 1175px);
 
 }
 
 .attrTable thead {
     background-color: darkgrey;
-    border-style: outset;
-    border-color: grey;
-    border-width: thick;
+    table-layout: fixed;
 }
 
 .attrTable tbody {

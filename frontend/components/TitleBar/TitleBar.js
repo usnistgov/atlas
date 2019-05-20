@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Navbar, Nav } from 'react-bootstrap';
 import routes from '../../constants/routes';
 import styles from './TitleBar.css';
 import earthLogo from '../../pictures/OrangeEarthLogo.png';
@@ -17,6 +17,20 @@ export default class TitleBar extends Component<Props> {
     return (
         <div className={styles.titleBar}>
             <img className={styles.Logo} src={earthLogo} />
+            <h2>Atlas</h2>
+            <Link className={styles.Link} to={routes.USE_CASE_CATALOG} >Use Case Catalog</Link>
+            <Link className={styles.Link} to={routes.INFORMATION_TYPE_CATALOG} >Information Type Catalog</Link>
+            <Link className={styles.Link} to={routes.GLOSSARY} >Glossary</Link>
+        </div>
+    )
+
+
+  }
+ }
+
+ /*
+ <div className={styles.titleBar}>
+            <img className={styles.Logo} src={earthLogo} />
             <div className={styles.alignTitle}>
                 <h2>Atlas</h2>
             </div>
@@ -26,8 +40,4 @@ export default class TitleBar extends Component<Props> {
                 <Link className={styles.Link} to={routes.GLOSSARY} >Glossary</Link>
             </div>
         </div>
-    )
-
-
-  }
- }
+ */

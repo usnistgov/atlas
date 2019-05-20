@@ -92,120 +92,120 @@ export default class UseCase extends Component<Props> {
 
     return (
         <div className={styles.componentBody} onClick={() => this.props.handleUseCaseClick(null)}>
-            <div className={styles.useCaseInfo}>
-                <div className={styles.headerFormat}>
-                    <h2>{use_case.name}</h2>
-                    <p>{use_case.description}</p>
+            <div className={styles.useCaseBody}>
+                <div className={styles.useCaseInfo}>
+                    <div className={styles.headerFormat}>
+                        <h2>{use_case.name}</h2>
+                        <p>{use_case.description}</p>
+                    </div>
+                    <div className={styles.informationTypes}>
+                        <h3>Information Types</h3>
+                        <BootstrapTable
+                            classes={styles.informationTypeTable}
+                            data={information_types}
+                            columns={[
+                                {dataField: "_id", text: "ID", hidden: true},
+                                {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
+                                {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
+                                {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()}
+                                ]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'click' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                        </BootstrapTable>
+                    </div>
                 </div>
-                <div className={styles.informationTypes}>
-                    <h3>Information Types</h3>
+                <div className={styles.useCaseTables}>
                     <BootstrapTable
-                    classes={styles.informationTypeTable}
-                    data={information_types}
-                    columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
-                            {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
-                            {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
-                            {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()}
-                            ]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'click' }) }
-                    keyField="_id"
-                    insertRow
-                    deleteRow
-                    striped
-                    hover
-                    condensed>
+                        classes={styles.attrTable}
+                        data={use_case_actors}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_cybersecurity_threats}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_disciplines}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_responding_organizations}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_activities}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_technologies}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
+                    </BootstrapTable>
+                    <BootstrapTable
+                        classes={styles.attrTable}
+                        data={use_case_locations}
+                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
+                        rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
+                        keyField="_id"
+                        striped
+                        hover
+                        condensed>
                     </BootstrapTable>
                 </div>
             </div>
-            <div className={styles.useCaseTables}>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_actors}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_cybersecurity_threats}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_disciplines}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_responding_organizations}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_activities}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_technologies}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-                <BootstrapTable
-                    classes={styles.attrTable}
-                    data={use_case_locations}
-                    columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
-                    rowStyle={this.props.getRowStyle}
-                    noDataIndication={noDataIndication}
-                    cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
-                    keyField="_id"
-                    striped
-                    hover
-                    condensed>
-                </BootstrapTable>
-           </div>
         </div>
     )
 
