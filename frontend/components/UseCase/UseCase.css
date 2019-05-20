@@ -56,15 +56,15 @@
     border-color: lightgrey;
     margin-left: 20px;
     margin-bottom: 20px;
-    width: calc(100vw - 675px);
-    height: calc(100vh - 600px);
+    height: calc(var(--vh, 1vh) * 15);
+    width: calc(var(--vh, 1vh) * 90);
 }
 
 .informationTypeTable thead {
     display: table;
-    height: calc(100vh - 1000px);
-    width: calc(100vw - 685px);
     background-color: darkgrey;
+    height: calc(var(--vh, 1vh) * 5);
+    width: calc(var(--vh, 1vh) * 90);
     text-align: center;
     table-layout: fixed;
 }
@@ -72,8 +72,8 @@
 .informationTypeTable tbody {
     display: block;
     background-color: black;
-    width: calc(100vw - 675px);
-    height: calc(100vh - 450px);
+    height: calc(var(--vh, 1vh) * 35);
+    width: calc(var(--vh, 1vh) * 90);
     overflow: auto;
 }
 
@@ -105,8 +105,8 @@
     border-color: lightgrey;
     margin-left: 40px;
     margin-bottom: 20px;
-    height: calc(100vh - 800px);
-    width: calc(100vw - 1175px);
+    height: calc(var(--vh, 1vh) * 15);
+    width: calc(var(--vh, 1vh) * 30);
 
 }
 
