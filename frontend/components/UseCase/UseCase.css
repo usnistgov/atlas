@@ -57,14 +57,14 @@
     margin-left: 20px;
     margin-bottom: 20px;
     height: calc(var(--vh, 1vh) * 15);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
 }
 
 .informationTypeTable thead {
     display: table;
     background-color: darkgrey;
     height: calc(var(--vh, 1vh) * 5);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
     text-align: center;
     table-layout: fixed;
 }
@@ -73,7 +73,7 @@
     display: block;
     background-color: black;
     height: calc(var(--vh, 1vh) * 35);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
     overflow: auto;
 }
 
