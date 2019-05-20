@@ -1,7 +1,5 @@
 .componentBody {
   background-color: #EDE6E3;
-  height: 80vh;
-  width: 100%;
   display: flex;
   flex-direction: row;
   border-style: outset;
@@ -15,6 +13,7 @@
 }
 
 .headerFormat {
+    position: relative;
     flex: 0 0 100%;
     max-height: 45%;
     min-height: 45%;
@@ -35,7 +34,10 @@
 }
 
 .informationTypes {
-    position: relative;
+    flex: 0 0 100%;
+    max-height: 100%;
+    min-height: 55%;
+    max-width: 100%;
 }
 
 .informationTypes h3 {
@@ -45,18 +47,18 @@
 
 .informationTypeTable {
 
+    display: table;
     color: snow;
     border-style: ridge;
     border-width: thick;
     margin-left: 20px;
     margin-bottom: 20px;
-    height: 37vh;
     width: 100%;
 }
 
 .informationTypeTable thead {
     display: table;
-    height: 5vh;
+    height: calc(var(--vh, 1vh) * 5);
     width: 99.3%;
     background-color: darkgrey;
     border-style: outset;
@@ -70,14 +72,14 @@
     display: block;
     background-color: black;
     width: 100%;
-    height: 31vh;
+    height: calc(var(--vh, 1vh) * 32);
     overflow: auto;
 }
 
 .informationTypeTable tbody tr {
   display: table;
   width: 100%;
-  height: 5vh;
+  height: calc(var(--vh, 1vh) * 5);
   text-align: center;
   table-layout: fixed;
 }
@@ -100,8 +102,8 @@
     border-width: thick;
     margin-left: 60px;
     margin-bottom: 20px;
-    height: 20vh;
-    width: 30vh;
+    height: calc(var(--vh, 1vh) * 20);
+    width: calc(var(--vh, 1vh) * 30);
 
 }
 
@@ -117,7 +119,7 @@
     background-color: black;
     color: snow;
     width: 100%;
-    height: 15vh;
+    height: calc(var(--vh, 1vh) * 15);
     overflow: auto;
 }
 
@@ -125,7 +127,7 @@
 
   display: table;
   width: 100%;
-  height: 5vh;
+  height: calc(var(--vh, 1vh) * 5);
   text-align: center;
   table-layout: fixed;
 }

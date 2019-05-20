@@ -262,10 +262,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -273,10 +270,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Information Types', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -284,10 +278,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -295,10 +286,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -306,10 +294,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -317,10 +302,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -328,10 +310,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
@@ -339,10 +318,7 @@ export default class UseCaseCatalog extends Component<Props> {
                             columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id"
-                            striped
-                            hover
-                            condensed>
+                            keyField="_id">
                         </BootstrapTable>
                     </div>
                 </div>

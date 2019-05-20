@@ -93,7 +93,7 @@ export default class UseCase extends Component<Props> {
     return (
         <div className={styles.componentBody} onClick={() => this.props.handleUseCaseClick(null)}>
             <div className={styles.useCaseInfo}>
-                <div className={styles.headerFormat}>`
+                <div className={styles.headerFormat}>
                     <h2>{use_case.name}</h2>
                     <p>{use_case.description}</p>
                 </div>
@@ -101,7 +101,7 @@ export default class UseCase extends Component<Props> {
                     <h3>Information Types</h3>
                     <BootstrapTable
                     classes={styles.informationTypeTable}
-                    data={use_case_information_types}
+                    data={information_types}
                     columns={[
                             {dataField: "_id", text: "ID", hidden: true},
                             {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
