@@ -4,15 +4,51 @@
   border-style: outset;
   border-width: thick;
   height: auto;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.optionsBar {
+    display: flex;
+    height: 4%;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+}
+
+.backButton {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.backButton:hover {
+    background-color: dodgerblue;
+}
+
+.editButton {
+    margin-left: calc(100vw - 300px);
+}
+
+.editButton:hover {
+    background-color: dodgerblue;
+}
+
+.deleteButton {
+    margin-left: 20px;
+}
+
+.deleteButton:hover {
+    background-color: dodgerblue;
 }
 
 .useCaseBody {
+
     display: flex;
 }
 
 .useCaseInfo {
   flex-direction: column;
-  width: 55%;
+  width: 60%;
 }
 
 .headerFormat {
@@ -27,6 +63,7 @@
     margin-bottom: 20px;
     font-size: 30px;
     border-bottom: 2px solid;
+    text-align: center;
 }
 
 .headerFormat p {
@@ -57,14 +94,14 @@
     margin-left: 20px;
     margin-bottom: 20px;
     height: calc(var(--vh, 1vh) * 15);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
 }
 
 .informationTypeTable thead {
     display: table;
     background-color: darkgrey;
     height: calc(var(--vh, 1vh) * 5);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
     text-align: center;
     table-layout: fixed;
 }
@@ -73,7 +110,7 @@
     display: block;
     background-color: black;
     height: calc(var(--vh, 1vh) * 35);
-    width: calc(var(--vh, 1vh) * 90);
+    width: 100%;
     overflow: auto;
 }
 
@@ -90,10 +127,10 @@
     position: relative;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: right;
     overflow: auto;
-    width: 45%;
-    margin: 10px;
+    width: 40%;
+    margin: 20px;
 }
 
 .attrTable {
@@ -103,8 +140,8 @@
     border-style: ridge;
     border-width: thick;
     border-color: lightgrey;
-    margin-left: 40px;
     margin-bottom: 20px;
+    margin-left: 15px;
     height: calc(var(--vh, 1vh) * 15);
     width: calc(var(--vh, 1vh) * 30);
 

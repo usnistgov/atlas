@@ -19,6 +19,30 @@ export default function UseCasesReducer(state=initialState, action: Action) {
      case UseCasesActions.GET_USE_CASES_FAILURE:
         return {...state, isLoadingUseCases: false}
 
+     case UseCasesActions.POST_USE_CASE:
+     case UseCasesActions.POST_USE_CASE_SUCCESS:
+        return {...state}
+     case UseCasesActions.POST_USE_CASE_ERROR400:
+        console.log(action.res)
+     case UseCasesActions.POST_USE_CASE_ERROR500:
+     case UseCasesActions.POST_USE_CASE_FAILURE:
+
+     case UseCasesActions.PUT_USE_CASE:
+     case UseCasesActions.PUT_USE_CASE_SUCCESS:
+         return {...state}
+     case UseCasesActions.PUT_USE_CASE_ERROR400:
+     case UseCasesActions.PUT_USE_CASE_ERROR500:
+     case UseCasesActions.PUT_USE_CASE_FAILURE:
+
+     case UseCasesActions.DELETE_USE_CASE:
+     case UseCasesActions.DELETE_USE_CASE_SUCCESS:
+         return {...state}
+     case UseCasesActions.DELETE_USE_CASE_ERROR400:
+     case UseCasesActions.DELETE_USE_CASE_ERROR500:
+              console.log(action.res);
+     case UseCasesActions.DELETE_USE_CASE_FAILURE:
+
+
   }
 
   return state

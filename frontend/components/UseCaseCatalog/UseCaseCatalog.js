@@ -4,6 +4,8 @@ import ReactJson from 'react-json-view';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import Select from 'react-select';
 import UseCasePage from '../../containers/UseCasePage';
+import NoteAdd from "@material-ui/icons/NoteAdd";
+import Tooltip from '@material-ui/core/Tooltip';
 
 var equal = require('fast-deep-equal');
 var searchOptions = [];
@@ -38,7 +40,7 @@ export default class UseCaseCatalog extends Component<Props> {
         useCaseSelection: null
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleUseCaseClick = this.handleUseCaseClick.bind(this);
   }
 
@@ -166,7 +168,32 @@ export default class UseCaseCatalog extends Component<Props> {
               }
     }
 
-  handleChange(option){
+  createNewUseCase(){
+
+    let newUseCase = {
+            'id': '',
+            'name': '',
+            'description': '',
+            'actors': [],
+            'information_types': [],
+            'cybersecurity_threats': [],
+            'disciplines': [],
+            'responding_organizations': [],
+            'technologies': [],
+            'activities': [],
+            'locations': []
+        }
+
+    this.setState(state => {
+        return {
+            useCaseSelection: newUseCase
+        }
+    });
+
+  }
+
+
+  handleSearch(option){
 
     const {
       getUseCases
@@ -181,11 +208,16 @@ export default class UseCaseCatalog extends Component<Props> {
   }
 
   handleUseCaseClick(use_case){
+
+    const {
+      getUseCases
+    } = this.props;
+
     this.setState(state => {
         return {
             useCaseSelection: use_case
         }
-    })
+    }, () => getUseCases(this.state))
   }
 
 
@@ -335,15 +367,24 @@ export default class UseCaseCatalog extends Component<Props> {
 
         return(
             <div className={styles.componentBody}>
-                <div className={styles.searchContainer}>
-                    <Select
-                        isMulti
-                        className={styles.searchBar}
-                        value={selectedOption}
-                        options={searchOptions}
-                        onChange={(e) => this.handleChange(e)}
-                        placeholder="Search Use Cases ..."
-                    />
+                <div className={styles.catalogContainer}>
+                    <div className={styles.searchContainer}>
+                        <Select
+                            isMulti
+                            className={styles.searchBar}
+                            value={selectedOption}
+                            options={searchOptions}
+                            onChange={(e) => this.handleSearch(e)}
+                            placeholder="Search Use Cases ..."
+                        />
+                        <Tooltip title="Add New Use Case">
+                            <NoteAdd
+                                className={styles.addButton}
+                                style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                                onClick={() => this.createNewUseCase()}
+                            />
+                        </Tooltip>
+                    </div>
                     <div className={styles.useCasesContainer}>
                         {useCaseSelection === null ? catalogView: useCaseView}
                     </div>
