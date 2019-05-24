@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Modal, Button } from "react-bootstrap";
 import styles from './UseCaseForm.css';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import Check from "@material-ui/icons/Check";
 import Clear from "@material-ui/icons/Clear";
 import KeyboardBackspace from "@material-ui/icons/KeyboardBackspace";
+import Add from "@material-ui/icons/Add";
+import Remove from "@material-ui/icons/Remove";
 import Tooltip from '@material-ui/core/Tooltip';
 
 type Props = {
@@ -44,15 +47,63 @@ export default class UseCase extends Component<Props> {
             responding_organizations: this.props.use_case.responding_organizations,
             activities: this.props.use_case.activities,
             technologies: this.props.use_case.technologies,
-            locations: this.props.use_case.locations
+            locations: this.props.use_case.locations,
+            showModal : false
         }
 
         this.onChange = this.onChange.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
+
+        this.addRow = this.addRow.bind(this);
+        this.deleteRow = this.deleteRow.bind(this);
+
+        this.addRowIcon = this.addRowIcon.bind(this);
+        this.deleteRowIcon = this.deleteRowIcon.bind(this);
   }
 
   formatCIARating(cell, row){
     return cell.confidentiality +  " | " + cell.integrity + " | " + cell.availability;
+  }
+
+  addRow(){
+    this.setState(state => {
+        return {
+            showModal: true
+        }
+    });
+  }
+
+  deleteRow(e, column, columnIndex, row, rowIndex){
+
+    let updatedArray = this.state[column["dataField"]].filter(function(value, index, arr){
+
+        return value !== row['id'];
+
+    });
+
+    this.setState(state => {
+        return {
+            [column["dataField"]] : updatedArray
+        }
+    })
+  }
+
+  addRowIcon(){
+    return(
+        <Add
+            style={{'color': 'green', 'height': '25px', 'width': '25px'}}
+            onClick={() => this.addRow()}
+        />
+    )
+  }
+
+  deleteRowIcon(){
+    return(
+        <Remove
+            style={{'color': 'red', 'height': '30px', 'width': '30px'}}
+        />
+
+    )
   }
 
   onChange(event){
@@ -68,13 +119,13 @@ export default class UseCase extends Component<Props> {
 
   saveChanges(){
 
-    console.log(this.state.id === "");
     if(this.state.id === ""){
         this.props.createUseCase(this.state);
     } else {
         this.props.updateUseCase(this.state);
    }
 
+    this.props.handleUseCaseClick(this.state);
     this.props.stopEditor();
   }
 
@@ -134,22 +185,34 @@ export default class UseCase extends Component<Props> {
 
     return (
         <div className={styles.componentBody}>
+            <Modal show={this.state.showModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Select Row</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Select Row Item</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary">Close</Button>
+                    <Button variant="primary">Add</Button>
+                </Modal.Footer>
+            </Modal>
             <div className={styles.optionsBar}>
                 <Tooltip title="Back to Catalog">
                     <KeyboardBackspace
                         className={styles.backButton}
-                        style={{'color': '#F06449', 'height': '4vh', 'width': '8vh'}}
+                        style={{'color': '#F06449', 'height': '60px', 'width': '70px'}}
                         onClick={() => this.props.handleUseCaseClick(null)}
                     />
                 </Tooltip>
                 <div className={styles.saveButton} onClick={() => this.saveChanges()}>
                     <p>Save Changes</p>
-                    <Check style={{'height': '3vh', 'width': '4vh'}} />
+                    <Check style={{'height': '50px', 'width': '60px'}} />
                 </div>
                 <Tooltip title="Cancel">
                     <Clear
                         className={styles.clearButton}
-                        style={{'color': '#F06449', 'height': '4vh', 'width': '8vh'}}
+                        style={{'color': '#F06449', 'height': '50px', 'width': '50px'}}
                         onClick={() => this.props.stopEditor()}
                     />
                 </Tooltip>
@@ -175,16 +238,22 @@ export default class UseCase extends Component<Props> {
                         <h3>Information Types</h3>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
-                            data={information_types}
+                            data={use_case_information_types}
                             columns={[
                                 {dataField: "_id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
-                                {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()}
-                                ]}
+                                {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
+                                {   isDummyField: true,
+                                    dataField: "information_types",
+                                    text: this.addRowIcon(),
+                                    formatter: this.deleteRowIcon,
+                                    events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                    headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        cellEdit={ cellEditFactory({ mode: 'click' }) }
+                        cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
                         keyField="_id"
                         striped
                         hover
@@ -196,7 +265,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_actors}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "actors",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -208,7 +286,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_cybersecurity_threats}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "cybersecurity_threats",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -220,7 +307,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_disciplines}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "disciplines",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -232,7 +328,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_responding_organizations}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "responding_organizations",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -244,7 +349,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_activities}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "activities",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -256,7 +370,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_technologies}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "technologies",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
@@ -268,7 +391,16 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_locations}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[
+                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()},
+                            {   isDummyField: true,
+                                dataField: "locations",
+                                text: this.addRowIcon(),
+                                formatter: this.deleteRowIcon,
+                                events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
+                                headerStyle: this.props.getHeaderStyle()}
+                            ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: 'dbclick' }) }

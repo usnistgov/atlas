@@ -140,7 +140,7 @@ export default class UseCase extends Component<Props> {
                 <Tooltip title="Back to Catalog">
                     <KeyboardBackspace
                         className={styles.backButton}
-                        style={{'color': '#F06449', 'height': '4vh', 'width': '8vh'}}
+                        style={{'color': '#F06449', 'height': '60px', 'width': '70px'}}
                         onClick={() => this.props.handleUseCaseClick(null)}
                     />
                 </Tooltip>
@@ -169,7 +169,7 @@ export default class UseCase extends Component<Props> {
                         <h3>Information Types</h3>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
-                            data={information_types}
+                            data={use_case_information_types}
                             columns={[
                                 {dataField: "_id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},

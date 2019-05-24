@@ -157,14 +157,15 @@ export default class UseCaseCatalog extends Component<Props> {
     return {
         height: '4vh',
         backgroundColor: 'darkgrey',
-        fontWeight: 'bolder'
+        fontWeight: 'bolder',
+        textAlign: 'center'
         }
     }
 
   getRowStyle(row, rowIdx){
 
     return {
-                backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
+         backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
               }
     }
 
@@ -189,7 +190,6 @@ export default class UseCaseCatalog extends Component<Props> {
             useCaseSelection: newUseCase
         }
     });
-
   }
 
 
