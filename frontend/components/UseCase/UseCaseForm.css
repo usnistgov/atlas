@@ -212,9 +212,11 @@
 
 .addModal {
 
-    color: black;
     background-color: snow;
-    text-align: center;
-    align-items: center;
+    width: 100%;
+}
+
+.addSearchBar {
+    color: black;
     width: 100%;
 }

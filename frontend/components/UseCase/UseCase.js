@@ -173,8 +173,8 @@ export default class UseCase extends Component<Props> {
                             columns={[
                                 {dataField: "_id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
-                                {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
-                                {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()}
+                                {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
+                                {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()}
                                 ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}

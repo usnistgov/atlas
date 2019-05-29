@@ -81,13 +81,17 @@ export default class UseCase extends Component<Props> {
     })
   }
 
-  addRow(row, table){
+  addRow(row, tableName, tableData){
 
-    this.setState(state => {
-        return {
-            [table]: [...state[table], row["id"]]
-        }
-    });
+    if(!this.state[tableData].includes(row["id"])){
+        this.setState(state => {
+            return {
+                [tableData]: [...state[tableData], row["id"]]
+            }
+        });
+    } else {
+        alert("Item: '" + row["name"] + "' is already in " + tableName);
+    }
 
   }
 
@@ -102,19 +106,20 @@ export default class UseCase extends Component<Props> {
 
     return(
         <Popup
+            className={styles.addModal}
             trigger={<Add style={{"color": "green", "height": "25px", "width": "25px"}} />}
             modal
             >
             {close => (
             <div
-                className={styles.addModal}
+                className={styles.addSearchBar}
                 >
                  <Select
                     value={value}
                     options={addOptions}
                     onChange={(e) =>
                             {
-                                this.addRow(e, tableData);
+                                this.addRow(e, tableName, tableData);
                                 close();
                             }
                         }
@@ -144,7 +149,7 @@ export default class UseCase extends Component<Props> {
     let value = event.target.value;
     this.setState(state => {
         return {
-            [label]: [value]
+            [label]: value
             }
     });
   }

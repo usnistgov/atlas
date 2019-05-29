@@ -12,55 +12,98 @@ MongoClient = pymongo.MongoClient()
 db = MongoClient[DATABASE_NAME]
 
 
-class CyberSecurityThreatsView(generics.ListCreateAPIView):
+class baseMongoView(mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.ListCreateAPIView):
+
+    serializer_class = ""
+
+    def __init__(self):
+        self.model = self.serializer_class.Meta.model
+
+    def put(self, request, *args, **kwargs):
+
+        document = self.model.objects.with_id(request.data["id"])
+        keys = (i for i in document)
+
+        for key in keys:
+            document[key] = request.data[key]
+
+        document.save()
+        return Response(status.HTTP_200_OK)
+
+    def patch(self, request, *args, **kwargs):
+
+        document = self.model.objects.with_id(request.data["id"])
+        keys = (i for i in document)
+
+        for key in keys:
+            if key in request.data and key is not "id":
+                document[key] = request.data[key]
+
+        document.save()
+        return Response(status.HTTP_200_OK)
+
+    def delete(self, request, *args, **kwargs):
+
+        if "id" in request.data:
+
+            self.model.objects(id=request.data['id']).delete()
+
+            return Response(status.HTTP_200_OK)
+
+        else:
+            return Response(status.HTTP_404_NOT_FOUND)
+
+
+class CyberSecurityThreatsView(baseMongoView):
+
     serializer_class = CyberSecurityThreats_Serializer
     queryset = CyberSecurityThreats.objects.all()
 
 
-class ActorsView(generics.ListCreateAPIView):
+class ActorsView(baseMongoView):
     serializer_class = Actors_Serializer
     queryset = Actors.objects.all()
 
 
-class TechnologiesView(generics.ListCreateAPIView):
+class TechnologiesView(baseMongoView):
     serializer_class = Technologies_Serializer
     queryset = Technologies.objects.all()
 
 
-class RespondingOrganizationsView(generics.ListCreateAPIView):
+class RespondingOrganizationsView(baseMongoView):
     serializer_class = RespondingOrganizations_Serializer
     queryset = RespondingOrganizations.objects.all()
 
 
-class DisciplinesView(generics.ListCreateAPIView):
+class DisciplinesView(baseMongoView):
     serializer_class = Disciplines_Serializer
     queryset = Disciplines.objects.all()
 
 
-class LocationsView(generics.ListCreateAPIView):
+class LocationsView(baseMongoView):
     serializer_class = Locations_Serializer
     queryset = Locations.objects.all()
 
 
-class InformationTypesView(generics.ListCreateAPIView):
+class InformationTypesView(baseMongoView):
     serializer_class = InformationTypes_Serializer
     queryset = InformationTypes.objects.all()
 
 
-class InformationCategoriesView(generics.ListCreateAPIView):
+class InformationCategoriesView(baseMongoView):
     serializer_class = InformationCategories_Serializer
     queryset = InformationCategories.objects.all()
 
 
-class ActivitiesView(generics.ListCreateAPIView):
+class ActivitiesView(baseMongoView):
     serializer_class = Activities_Serializer
     queryset = Activities.objects.all()
 
 
-class UseCasesView(mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin,
-                   generics.ListCreateAPIView):
+class UseCasesView(baseMongoView):
     serializer_class = UseCase_Serializer
     my_filter_fields = ('id',
                         'name',
@@ -151,50 +194,6 @@ class UseCasesView(mixins.RetrieveModelMixin,
         mongo_query = self.convert_kwargs_to_mongo_query()  # get the fields with values for filtering
 
         if mongo_query != {}:
-
             queryset = UseCases.objects(__raw__=mongo_query)
 
         return queryset
-
-    def put(self, request, *args, **kwargs):
-
-        document = UseCases.objects.with_id(request.data["id"])
-
-        for key in document:
-
-            if key is not "id":
-
-                if key in request.data:
-                    document[key] = request.data[key]
-
-                else:
-                    if key is "description":
-                        return Response(status.HTTP_400_BAD_REQUEST)
-
-                    document[key] = []
-
-        document.save()
-
-        return Response(status.HTTP_200_OK)
-
-    def patch(self, request, *args, **kwargs):
-
-        document = UseCases.objects.with_id(request.data["id"])
-        for key in document:
-            if key in request.data and key is not "id":
-                document[key] = request.data[key]
-
-        document.save()
-        return Response(status.HTTP_200_OK)
-
-    def delete(self, request, *args, **kwargs):
-
-        if "id" in request.data:
-
-            UseCases.objects(id=request.data['id']).delete()
-
-            return Response(status.HTTP_200_OK)
-
-        else:
-            return Response(status.HTTP_404_NOT_FOUND)
-
