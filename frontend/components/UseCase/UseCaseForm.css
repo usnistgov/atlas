@@ -129,10 +129,10 @@
     margin-left: 20px;
     margin-bottom: 20px;
     width: calc(var(--vw, 1vw) * 50);
+    height: calc(var(--vh, 1vh) * 50);
 }
 
 .informationTypeTable thead {
-    height: calc(var(--vh, 1vh) * 7);
     display: table;
     background-color: darkgrey;
     width: 100%;
@@ -181,10 +181,9 @@
 
 .attrTable thead {
     display: table;
-    height: calc(var(--vh, 1vh) * 7);
     background-color: darkgrey;
     width: 100%;
-    text-align: center;
+    text-align: right;
     table-layout: fixed;
 }
 
@@ -192,7 +191,7 @@
     display: block;
     color: snow;
     width : 100%;
-    max-height: calc(var(--vh, 1vh) * 15);
+    max-height: calc(var(--vh, 1vh) * 20);
     overflow: auto;
 }
 
