@@ -18,6 +18,7 @@
 }
 
 .backButton {
+    margin-top: 20px;
     margin-left: 10px;
 }
 
@@ -207,4 +208,13 @@
 .noDataIndication {
 
     justify-content: center;
+}
+
+.addModal {
+
+    color: black;
+    background-color: snow;
+    text-align: center;
+    align-items: center;
+    width: 100%;
 }
