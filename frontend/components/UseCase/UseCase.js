@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './UseCase.css';
-import UseCaseFormPage from '../../containers/UseCaseFormPage';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import Description from "@material-ui/icons/Description";
@@ -33,44 +32,12 @@ export default class UseCase extends Component<Props> {
   constructor(props){
     super(props);
 
-    if(this.props.use_case.id ===  ''){
-
-        this.state = {
-            isEditing: true
-        }
-
-    } else {
-
-        this.state = {
-            isEditing: false
-        }
-
-    }
-
-    this.startEditor = this.startEditor.bind(this);
-    this.stopEditor = this.stopEditor.bind(this);
-
   }
 
   formatCIARating(cell, row){
     return cell.confidentiality +  " | " + cell.integrity + " | " + cell.availability;
   }
 
-  startEditor(){
-    this.setState(state => {
-        return {
-            isEditing: true
-            }
-        });
-  }
-
-  stopEditor(){
-    this.setState(state => {
-        return {
-            isEditing: false
-            }
-        });
-  }
 
   deleteUseCase(){
 
@@ -134,7 +101,7 @@ export default class UseCase extends Component<Props> {
                 return(entry)
             });
 
-    let cleanView =
+    return (
         <div className={styles.componentBody}>
             <div className={styles.optionsBar}>
                 <Tooltip title="Back to Catalog">
@@ -148,7 +115,7 @@ export default class UseCase extends Component<Props> {
                     <Description
                         className={styles.editButton}
                         style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                        onClick={() => this.startEditor() }
+                        onClick={() => this.props.startEditor() }
                     />
                 </Tooltip>
                 <Tooltip title="Delete">
@@ -266,17 +233,6 @@ export default class UseCase extends Component<Props> {
                 </div>
             </div>
         </div>
-
-    let editorView =
-        <UseCaseFormPage
-            handleUseCaseClick={this.props.handleUseCaseClick}
-            getHeaderStyle={this.props.getHeaderStyle}
-            getRowStyle={this.props.getRowStyle}
-            stopEditor={this.stopEditor}
-            use_case={this.props.use_case} />
-
-    return(
-        this.state.isEditing ? editorView: cleanView
-    )
+        );
   }
  }

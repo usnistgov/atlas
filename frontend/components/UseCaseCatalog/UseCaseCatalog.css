@@ -23,7 +23,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  height: calc(100vh - 215px);
+  height: calc(100vh - 200px);
   width: calc(100vw - 100px;);
   border-style: ridge;
   border-width: thick;

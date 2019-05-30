@@ -174,6 +174,7 @@ export default class UseCase extends Component<Props> {
 
   render(){
 
+     console.log(this.state.id);
      const {
         actors,
         information_types,
@@ -243,7 +244,12 @@ export default class UseCase extends Component<Props> {
                     <Clear
                         className={styles.clearButton}
                         style={{"color": "#F06449", "height": "50px", "width": "50px"}}
-                        onClick={() => this.props.stopEditor()}
+                        onClick={() => {
+                            this.props.stopEditor();
+                            if(this.state.name === "" || this.state.description === ""){
+                                this.props.handleUseCaseClick(null);
+                            }
+                            }}
                     />
                 </Tooltip>
             </div>

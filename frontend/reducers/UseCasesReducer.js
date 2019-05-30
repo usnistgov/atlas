@@ -3,8 +3,8 @@ import * as UseCasesActions from '../actions/UseCases'
 
 const initialState = {
     use_cases: [],
-    isLoadingUseCases: true
-
+    isLoadingUseCases: true,
+    latestUseCase: {}
 };
 
 export default function UseCasesReducer(state=initialState, action: Action) {
@@ -21,7 +21,7 @@ export default function UseCasesReducer(state=initialState, action: Action) {
 
      case UseCasesActions.POST_USE_CASE:
      case UseCasesActions.POST_USE_CASE_SUCCESS:
-        return {...state, selected_use_case: action.res}
+        return {...state, latestUseCase: action.res}
      case UseCasesActions.POST_USE_CASE_ERROR400:
         console.log(action.res)
      case UseCasesActions.POST_USE_CASE_ERROR500:

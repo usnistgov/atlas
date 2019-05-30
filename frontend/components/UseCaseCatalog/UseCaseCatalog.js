@@ -4,6 +4,7 @@ import ReactJson from 'react-json-view';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import Select from 'react-select';
 import UseCasePage from '../../containers/UseCasePage';
+import UseCaseFormPage from '../../containers/UseCaseFormPage';
 import NoteAdd from "@material-ui/icons/NoteAdd";
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -37,11 +38,15 @@ export default class UseCaseCatalog extends Component<Props> {
 
     this.state = {
         selectedOption: [],
-        useCaseSelection: null
+        useCaseSelection: null,
+        isEditing: false
     };
 
     this.handleSearch = this.handleSearch.bind(this);
     this.handleUseCaseClick = this.handleUseCaseClick.bind(this);
+    this.startEditor = this.startEditor.bind(this);
+    this.stopEditor = this.stopEditor.bind(this);
+
   }
 
   componentDidMount(){
@@ -187,7 +192,8 @@ export default class UseCaseCatalog extends Component<Props> {
 
     this.setState(state => {
         return {
-            useCaseSelection: newUseCase
+            useCaseSelection: newUseCase,
+            isEditing: true
         }
     });
   }
@@ -210,16 +216,44 @@ export default class UseCaseCatalog extends Component<Props> {
   handleUseCaseClick(use_case){
 
     const {
+      use_cases,
+      getUseCases
+    } = this.props;
+
+    this.setState(state => {
+        let isEditing = state.isEditing;
+
+        if(use_case === null){
+            isEditing = false;
+        }
+
+        return {
+            useCaseSelection: use_case,
+            isEditing: isEditing
+        }
+    }, () => getUseCases(this.state));
+  }
+
+  startEditor(){
+    this.setState(state => {
+        return {
+            isEditing: true
+            }
+        });
+  }
+
+  stopEditor(){
+
+    const {
       getUseCases
     } = this.props;
 
     this.setState(state => {
         return {
-            useCaseSelection: use_case
-        }
-    }, () => getUseCases(this.state))
+            isEditing: false
+            }
+        });
   }
-
 
   render(){
 
@@ -236,7 +270,8 @@ export default class UseCaseCatalog extends Component<Props> {
 
     const {
         selectedOption,
-        useCaseSelection
+        useCaseSelection,
+        isEditing
     } = this.state;
 
     if(use_cases !== undefined){
@@ -358,11 +393,23 @@ export default class UseCaseCatalog extends Component<Props> {
 
         });
 
-        let useCaseView =
+        let UseCaseView =
                 <UseCasePage
                     handleUseCaseClick={this.handleUseCaseClick}
                     getHeaderStyle={this.getHeaderStyle}
                     getRowStyle={this.getRowStyle}
+                    startEditor={this.startEditor}
+                    stopEditor={this.stopEditor}
+                    use_case={useCaseSelection}
+                    />
+
+        let editorView =
+                <UseCaseFormPage
+                    handleUseCaseClick={this.handleUseCaseClick}
+                    getHeaderStyle={this.getHeaderStyle}
+                    getRowStyle={this.getRowStyle}
+                    startEditor={this.startEditor}
+                    stopEditor={this.stopEditor}
                     use_case={useCaseSelection} />
 
         return(
@@ -386,7 +433,7 @@ export default class UseCaseCatalog extends Component<Props> {
                         </Tooltip>
                     </div>
                     <div className={styles.useCasesContainer}>
-                        {useCaseSelection === null ? catalogView: useCaseView}
+                        {useCaseSelection === null ? catalogView: isEditing ? editorView : UseCaseView}
                     </div>
                 </div>
             </div>
