@@ -402,6 +402,7 @@ use_cases.insert_many([
 
     {
         'name':  'Personal Injury Collision with hazards',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_1,
         'actors': [actors_ids[x] for x in ['patients', 'paramedics', 'law enforcement']],
@@ -415,6 +416,7 @@ use_cases.insert_many([
 
     {
         'name': 'Medical emergency',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_2,
         'actors': [actors_ids[x] for x in ['patients', 'paramedics']],
@@ -428,6 +430,7 @@ use_cases.insert_many([
 
     {
         'name': 'Search in a national park',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_3,
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
@@ -441,6 +444,7 @@ use_cases.insert_many([
 
     {
         'name': 'Rioting in an urban area',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_4,
         'actors': [actors_ids[x] for x in ['civilians', 'suspects', 'law enforcement', 'paramedics']],
@@ -454,6 +458,7 @@ use_cases.insert_many([
 
     {
         'name': 'Undercover officer',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_5,
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
@@ -467,6 +472,7 @@ use_cases.insert_many([
 
     {
         'name': 'Structure fire',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_6,
         'actors': [actors_ids[x] for x in ['victims', 'fire fighters']],
@@ -480,6 +486,7 @@ use_cases.insert_many([
 
     {
         'name': 'Wild fire',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_7,
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
@@ -493,6 +500,7 @@ use_cases.insert_many([
 
     {
         'name': 'Hurricane',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_8,
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'law enforcement', 'paramedics']],
@@ -506,6 +514,7 @@ use_cases.insert_many([
 
     {
         'name': 'Active shooter',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_9,
         'actors': [actors_ids[x] for x in ['civilians', 'paramedics', 'law enforcement']],
@@ -519,6 +528,7 @@ use_cases.insert_many([
 
     {
         'name': 'Police officer vehicle stop',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_10,
         'actors': [actors_ids[x] for x in ['suspects', 'law enforcement']],
@@ -532,6 +542,7 @@ use_cases.insert_many([
 
     {
         'name': 'Apartment Building Fire',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_11,
         'actors': [actors_ids[x] for x in ['cab driver', 'incident commander', 'fire fighters', 'paramedics', 'civilians']],
@@ -545,6 +556,7 @@ use_cases.insert_many([
 
     {
         'name': 'Structure Fire -Future Technology Scenario',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_12,
         'actors': [actors_ids[x] for x in ['fire fighters']],
@@ -558,6 +570,7 @@ use_cases.insert_many([
 
     {
         'name': 'Subway Fire',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_13,
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters', 'victims']],
@@ -571,6 +584,7 @@ use_cases.insert_many([
 
     {
         'name': 'WUI Fire',
+        "source": "",
         'cybersecurity_threats': [],
         'description': desc_14,
         'actors': [actors_ids[x] for x in ['civilians', 'fire fighters']],

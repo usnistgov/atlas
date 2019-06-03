@@ -41,6 +41,7 @@ export default class UseCase extends Component<Props> {
         this.state = {
             id: this.props.use_case.id,
             name: this.props.use_case.name,
+            source: this.props.use_case.source,
             description: this.props.use_case.description,
             cybersecurity_threats: this.props.use_case.cybersecurity_threats,
             actors: this.props.use_case.actors,
@@ -147,6 +148,7 @@ export default class UseCase extends Component<Props> {
 
     let label = event.target.attributes.label.value;
     let value = event.target.value;
+
     this.setState(state => {
         return {
             [label]: value
@@ -174,7 +176,6 @@ export default class UseCase extends Component<Props> {
 
   render(){
 
-     console.log(this.state.id);
      const {
         actors,
         information_types,
@@ -271,6 +272,16 @@ export default class UseCase extends Component<Props> {
                         </textarea>
                     </div>
                     <div className={styles.informationTypes}>
+                        <div className={styles.sourceContainer}>
+                            <p>Source: </p>
+                            <input
+                                    label="source"
+                                    className={styles.sourceInput}
+                                    type="text"
+                                    onChange={this.onChange}
+                                    value={this.state.source}>
+                            </input>
+                        </div>
                         <h3>Information Types</h3>
                         <BootstrapTable
                             classes={styles.informationTypeTable}

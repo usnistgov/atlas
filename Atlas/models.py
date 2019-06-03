@@ -80,6 +80,7 @@ class Activities(Document):
 class UseCases(Document):
 
     name = StringField(max_length=100, required=True)
+    source = StringField(max_length=500)
     cybersecurity_threats = ListField(field=ObjectIdField())
     description = StringField(max_length=2000, required=True)
     actors = ListField(field=ObjectIdField())

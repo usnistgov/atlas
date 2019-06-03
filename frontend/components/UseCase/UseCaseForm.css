@@ -70,8 +70,8 @@
 
 .headerFormat {
     flex-direction: column;
-    max-height: 45%;
-    min-height: 45%;
+    max-height: 40%;
+    min-height: 40%;
     max-width: 100%;
 }
 
@@ -109,9 +109,36 @@
 .informationTypes {
     flex: 0 0 100%;
     max-height: 100%;
-    min-height: 55%;
+    min-height: 60%;
     max-width: 100%;
 }
+
+.informationTypes p {
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px double;
+}
+
+.sourceContainer {
+    display: flex;
+}
+
+.sourceInput {
+    width: calc(var(--vw, 1vw) * 45);
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 2px double;
+    -webkit-appearance: none;
+    margin-bottom: 20px;
+}
+
 
 .informationTypes h3 {
     padding-left: 30px;

@@ -83,6 +83,7 @@ export const updateUseCase = (state) => {
         'id': state.id,
         'name': state.name,
         'description': state.description,
+        'source': state.source,
         'actors': state.actors,
         'information_types': state.information_types,
         'cybersecurity_threats': state.cybersecurity_threats,
@@ -112,6 +113,7 @@ export const createUseCase = (state) => {
     let use_case = {
         'name': state.name,
         'description': state.description,
+        'source': state.source,
         'actors': state.actors,
         'information_types': state.information_types,
         'cybersecurity_threats': state.cybersecurity_threats,

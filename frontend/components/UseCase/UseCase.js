@@ -133,6 +133,7 @@ export default class UseCase extends Component<Props> {
                         <p>{this.props.use_case.description}</p>
                     </div>
                     <div className={styles.informationTypes}>
+                        <p>Source: {this.props.use_case.source}</p>
                         <h3>Information Types</h3>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
