@@ -14,7 +14,16 @@ import * as RespondingOrganizationsActions from '../actions/RespondingOrganizati
 import * as TechnologiesActions from '../actions/Technologies';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    actors: state.ActorsReducer.actors,
+    cybersecurity_threats: state.CyberSecurityThreatsReducer.cybersecurity_threats,
+    disciplines: state.DisciplinesReducer.disciplines,
+    activities: state.ActivitiesReducer.activities,
+    responding_organizations: state.RespondingOrganizationsReducer.responding_organizations,
+    technologies: state.TechnologiesReducer.technologies,
+    information_categories: state.InformationCategoriesReducer.information_categories,
+    locations: state.LocationsReducer.locations
+  };
 }
 
 function mapDispatchToProps(dispatch) {

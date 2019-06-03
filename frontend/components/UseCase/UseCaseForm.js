@@ -273,7 +273,7 @@ export default class UseCase extends Component<Props> {
                     </div>
                     <div className={styles.informationTypes}>
                         <div className={styles.sourceContainer}>
-                            <p>Source: </p>
+                            <p className={styles.sourceTitle}>Source: </p>
                             <input
                                     label="source"
                                     className={styles.sourceInput}

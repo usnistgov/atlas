@@ -14,7 +14,10 @@ import * as RespondingOrganizationsActions from '../actions/RespondingOrganizati
 import * as TechnologiesActions from '../actions/Technologies';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+        information_categories: state.InformationCategoriesReducer.information_categories,
+        information_types: state.InformationTypesReducer.information_types,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

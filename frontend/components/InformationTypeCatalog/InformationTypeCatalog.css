@@ -1,14 +1,58 @@
 .componentBody {
+    background-color: dodgerblue;
+    border-color: #EDE6E3;
+    height: auto;
+}
+
+.catalogContainer {
+    background-color: grey;
+    border-style: ridge;
+    border-width: thick;
+    border-color: #EDE6E3;
+}
+
+.catalogContainer h2 {
+    color: snow;
+    margin-left: 20px;
+}
+
+.informationTypesContainer {
   background-color: dodgerblue;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-style: outset;
+  flex: 1;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  width: calc(100vw - 100px;);
+  border-style: ridge;
   border-width: thick;
   border-color: #EDE6E3;
   overflow: auto;
 }
 
-.informationTypeContainer {
+.informationTypeView {
+    background-color: #EDE6E3;
+    border-style: outset;
+    border-width: thick;
+    max-width: 99.5%;
+    max-height: 337px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 16px;
+}
 
+.informationTypeView p {
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.CIARating{
+    margin-left: 20px;
+}
+
+.informationCategoryTag {
+    font-weight: bolder;
+    margin: 10px;
+    width: calc(var(--vw, 1vw) * 8);
+    height: calc(var(--vh, 1vh) * 3);
 }
