@@ -120,6 +120,10 @@ export default class UseCaseCatalog extends Component<Props> {
         return({"value": entry.name,  "label": entry.name, "group": "locations"});
     });
 
+    let useCaseNames = this.props.use_cases.map((entry) => {
+        return({"value": entry.name,  "label": entry.name, "group": "name"});
+    });
+
     searchOptions = [
         {
         "label": "Actors",
@@ -152,6 +156,10 @@ export default class UseCaseCatalog extends Component<Props> {
         {
         "label": "Locations",
         "options": locationOptions
+        },
+        {
+        "label": "Use Cases",
+        "options": useCaseNames
         }
     ]
 

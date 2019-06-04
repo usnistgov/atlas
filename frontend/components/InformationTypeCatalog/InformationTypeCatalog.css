@@ -16,6 +16,13 @@
     margin-left: 20px;
 }
 
+
+.searchBar {
+    margin: 15px;
+    width: 60%;
+    color: black;
+}
+
 .informationTypesContainer {
   background-color: dodgerblue;
   display: flex;
@@ -51,8 +58,22 @@
 }
 
 .informationCategoryTag {
+    background-color:  #F06449;
+    color: snow;
+    font-size: 14px;
     font-weight: bolder;
+    border-radius: 6px;
+    padding: 7px;
     margin: 10px;
-    width: calc(var(--vw, 1vw) * 8);
-    height: calc(var(--vh, 1vh) * 3);
+}
+
+.selectedButton {
+    font-weight: bolder;
+    background-color: #F06449;
+    color: snow;
+
+}
+
+.notSelectedButton {
+    font-weight: bolder;
 }

@@ -53,6 +53,7 @@
     "react-bootstrap": "^1.0.0-beta.8",
     "react-bootstrap-table-next": "^3.1.2",
     "react-dom": "^16.8.6",
+    "react-dropdown-tree-select": "^1.20.1",
     "react-hot-loader": "^4.8.4",
     "react-json-view": "^1.19.1",
     "react-redux": "^7.0.1",
