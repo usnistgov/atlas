@@ -79,6 +79,7 @@ for i in actors.find({}):
 
 for i, j in actors_ids.items():
     print(i, j)
+
 responding_organizations.insert_many([
         {
             'name': 'Local EMS',
@@ -218,6 +219,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -227,6 +229,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -236,6 +239,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -245,6 +249,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -254,6 +259,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -263,6 +269,7 @@ information_types.insert_many([
             'integrity': 'medium',
             'availability': 'medium'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -272,6 +279,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -281,6 +289,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -290,6 +299,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -299,6 +309,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'medium'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -308,6 +319,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -317,6 +329,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -326,6 +339,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -335,6 +349,7 @@ information_types.insert_many([
             'integrity': 'medium',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -344,6 +359,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -353,6 +369,7 @@ information_types.insert_many([
             'integrity': 'medium',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -362,6 +379,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -371,6 +389,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'low'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -380,6 +399,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
     {
@@ -389,6 +409,7 @@ information_types.insert_many([
             'integrity': 'high',
             'availability': 'high'
         },
+        'security_reasoning': '',
         'information_categories': [information_categories_ids.get('operations data')]
     },
 

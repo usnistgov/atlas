@@ -19,7 +19,7 @@
 
 .searchBar {
     margin: 15px;
-    width: 60%;
+    width: 90%;
     color: black;
 }
 
@@ -34,27 +34,140 @@
   border-width: thick;
   border-color: #EDE6E3;
   overflow: auto;
+  border-radius: 6px;
 }
 
 .informationTypeView {
+    display: flex;
+    flex-direction: column;
     background-color: #EDE6E3;
     border-style: outset;
     border-width: thick;
     max-width: 99.5%;
     max-height: 337px;
-    margin-top: 8px;
-    margin-left: 8px;
+    margin: 4px;
     margin-bottom: 16px;
+    border-radius: 12px;
 }
 
-.informationTypeView p {
+.optionsBar {
+    display: flex;
+    width: 99%;
+    height: 5vh;
+    background-color: snow;
+    align-items: center;
+    justify-content: left;
+    line-height: normal;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.informationTypeInfo {
+    display: flex;
+    width: 93%;
+    margin: 12px;
+    margin-left: 24px;
+}
+
+.optionsBar h3 {
+    margin-left: 20px;
     font-weight: bolder;
-    font-size: 20px;
-    margin-left: 20px;
+    font-size: 24px;
+    flex: 1;
 }
 
-.CIARating{
+.informationTypeInfo p {
+}
+
+.nameInput {
+    flex: 1;
     margin-left: 20px;
+    font-size: 24px;
+    font-weight: bolder;
+    line-height: normal;
+    background-color: transparent;
+    outline: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    -webkit-appearance: none;
+}
+
+.descriptionInput {
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    width: 70%;
+    border: none;
+    overflowWrap: "break-word";
+    overflow: auto;
+    -webkit-appearance: none;
+}
+
+.informationTypeActions{
+}
+
+.editButton {
+    justify-content: right;
+}
+
+.editButton:hover {
+    background-color: dodgerblue;
+}
+
+.deleteButton {
+    justify-content: right;
+    margin-left: 10px;
+}
+
+.deleteButton:hover {
+    background-color: dodgerblue;
+}
+
+.mainInfo {
+    flex-direction: column;
+}
+
+.ciaTable {
+
+    display: table;
+    background-color: black;
+    color: snow;
+    text-align: center;
+    border-style: ridge;
+    border-width: thick;
+    border-color: lightgrey;
+    margin-bottom: 20px;
+    width: calc(var(--vw, 1vw) * 30);
+    height: auto;
+}
+
+.ciaTable thead {
+    display: table;
+    background-color: darkgrey;
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.ciaTable tbody {
+    display: block;
+    width: 100%;
+    max-height: calc(var(--vh, 1vh) * 25);
+}
+
+.ciaTable tbody tr {
+  display: table;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 8);
+  text-align: center;
+  table-layout: fixed;
+}
+
+.informationCategories {
+    margin: 10px;
+    margin-left: 30px;
+
 }
 
 .informationCategoryTag {
@@ -67,13 +180,6 @@
     margin: 10px;
 }
 
-.selectedButton {
-    font-weight: bolder;
-    background-color: #F06449;
-    color: snow;
-
-}
-
-.notSelectedButton {
-    font-weight: bolder;
+.ciaButton {
+    margin-left: 5px;
 }

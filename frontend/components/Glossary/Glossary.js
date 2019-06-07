@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styles from './Glossary.css';
 import { Button, ButtonToolbar } from 'react-bootstrap';
+import Tooltip from '@material-ui/core/Tooltip';
+import Description from "@material-ui/icons/Description";
+import Delete from "@material-ui/icons/Delete";
 
 type Props = {
     actors: object,
@@ -92,8 +95,26 @@ export default class Glossary extends Component<Props> {
     let glossaryComponent = this.props[glossarySelection].map((entry) => {
         return (
             <div className={styles.glossaryEntryView}>
+                <div className={styles.glossaryEntryInfo}>
                    <p>Name:   {entry.name}</p>
                    <p>Description:   {entry.description}</p>
+                </div>
+                <div className={styles.glossaryEntryActions}>
+                    <Tooltip title="Edit">
+                        <Description
+                            className={styles.editButton}
+                            style={{'color': '#F06449', 'height': '40px', 'width': '30px'}}
+                            onClick={() => {}}
+                        />
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                        <Delete
+                            className={styles.deleteButton}
+                            style={{'color': '#F06449', 'height': '40px', 'width': '30px'}}
+                            onClick={() => {} }
+                        />
+                    </Tooltip>
+                </div>
             </div>
         )
     })

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import styles from './InformationTypeCatalog.css';
-import { Button, ButtonToolbar, ButtonGroup, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Button, ButtonToolbar, ButtonGroup, ToggleButtonGroup, ToggleButton, DropdownButton, Dropdown} from 'react-bootstrap';
 import Select from 'react-select';
+import Tooltip from '@material-ui/core/Tooltip';
+import Description from "@material-ui/icons/Description";
+import Delete from "@material-ui/icons/Delete";
+import Add from "@material-ui/icons/Add";
+import Remove from "@material-ui/icons/Remove";
+import BootstrapTable  from 'react-bootstrap-table-next';
 
 type Props = {
     information_types: object
@@ -21,8 +27,31 @@ export default class InformationTypeCatalog extends Component<Props> {
             'confidentiality': null,
             'integrity': null,
             'availability': null
-        }
+        },
+        information_types: []
     }
+
+    this.onChange = this.onChange.bind(this);
+    this.startEditor = this.startEditor.bind(this);
+
+  }
+
+  componentWillReceiveProps(newProps){
+     if(newProps.information_types != this.props.information_types){
+         this.setState(state => {
+
+          let info_types = newProps.information_types.map((entry) => {
+
+            entry.isEditing = false;
+            return(entry);
+
+            })
+
+          return {
+                information_types: info_types
+            }
+         });
+     }
   }
 
   componentDidMount(){
@@ -33,6 +62,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     getInformationCategories();
     getInformationTypes();
+
   }
 
   buttonSearch(triad_key, value){
@@ -53,9 +83,9 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }}
                 >
                 {triad_key}:
-                <ToggleButton value={triad_key + '-high'}>High</ToggleButton>
-                <ToggleButton value={triad_key + '-medium'}>Medium</ToggleButton>
-                <ToggleButton value={triad_key + '-low'}>Low</ToggleButton>
+                <ToggleButton className={styles.ciaButton} value={triad_key + '-high'}>High</ToggleButton>
+                <ToggleButton className={styles.ciaButton} value={triad_key + '-medium'}>Medium</ToggleButton>
+                <ToggleButton className={styles.ciaButton} value={triad_key + '-low'}>Low</ToggleButton>
             </ToggleButtonGroup>
             );
 
@@ -110,6 +140,35 @@ export default class InformationTypeCatalog extends Component<Props> {
 
   }
 
+  onChange(information_type){
+
+    let label = event.target.attributes.label.value;
+    let value = event.target.value;
+
+    console.log(label, value);
+    this.setState(state => {
+
+        let entry = state.information_types.find(x => x.id === information_type.id)
+        entry[label] = value
+        return {
+            entry
+            }
+    });
+  }
+
+  startEditor(information_type){
+
+    this.setState(state => {
+
+        let entry = state.information_types.find(x => x.id === information_type.id);
+        entry.isEditing = true;
+
+        return {
+            entry
+        }
+    });
+  }
+
   handleSearch(option, action){
 
     const {
@@ -141,12 +200,32 @@ export default class InformationTypeCatalog extends Component<Props> {
     }
   }
 
+  getHeaderStyle(){
+
+    return {
+        height: '4vh',
+        backgroundColor: 'darkgrey',
+        fontWeight: 'bolder',
+        textAlign: 'center'
+        }
+    }
+
+  getRowStyle(row, rowIdx){
+
+    return {
+         backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
+              }
+    }
+
   render(){
 
     const {
-        information_types,
         information_categories
     } = this.props;
+
+    const {
+        information_types
+    } = this.state;
 
     this.setSearchOptions();
 
@@ -168,20 +247,126 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }
         });
 
-        return (
+        let cleanView = (
             <div key={information_type.id} className={styles.informationTypeView}>
-                <p>{information_type.name}</p>
-                <div className={styles.CIARating}>CIA Rating: <ul>
-                                    <li>Confidentiality: {information_type.triad_rating.confidentiality}</li>
-                                    <li>Integrity: {information_type.triad_rating.integrity}</li>
-                                    <li>Availability: {information_type.triad_rating.availability}</li>
-                               </ul>
+                <div className={styles.optionsBar}>
+                    <h3>{information_type.name}</h3>
+                    <Tooltip title="Edit">
+                        <Description
+                            className={styles.editButton}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                            onClick={() => { this.startEditor(information_type)}}
+                        />
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                        <Delete
+                            className={styles.deleteButton}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                            onClick={() => {} }
+                        />
+                    </Tooltip>
                 </div>
-                <ButtonToolbar>
-                    {information_type_categories}
+                <div className={styles.informationTypeInfo}>
+                    <div className={styles.mainInfo}>
+                         <BootstrapTable
+                            classes={styles.ciaTable}
+                            data={[information_type]}
+                            columns={[
+                                {dataField: "_id", text: "ID", hidden: true},
+                                {dataField: "triad_rating.confidentiality", text: 'Confidentiality', headerStyle: this.getHeaderStyle()},
+                                {dataField: "triad_rating.integrity", text: 'Integrity', headerStyle: this.getHeaderStyle()},
+                                {dataField: "triad_rating.availability", text: 'Availability', headerStyle: this.getHeaderStyle()}
+                                ]}
+                            rowStyle={this.getRowStyle}
+                            keyField="_id">
+                        </BootstrapTable>
+                         <p> Security Reasoning: {information_type.security_reasoning} </p>
+                     </div>
+                <ButtonToolbar className={styles.informationCategories}>
+                        {information_type_categories}
                 </ButtonToolbar>
+                </div>
             </div>
         )
+
+        let editView = (
+            <div key={information_type.id} className={styles.informationTypeView}>
+                <div className={styles.optionsBar}>
+                    <input
+                            label="name"
+                            className={styles.nameInput}
+                            type="text"
+                            onChange={() => this.onChange(information_type)}
+                            value={information_type.name}>
+                        </input>
+                    <Tooltip title="Edit">
+                        <Description
+                            className={styles.editButton}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                            onClick={() => { this.startEditor(information_type)}}
+                        />
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                        <Delete
+                            className={styles.deleteButton}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                            onClick={() => {} }
+                        />
+                    </Tooltip>
+                </div>
+                <div className={styles.informationTypeInfo}>
+                    <div className={styles.mainInfo}>
+                          <BootstrapTable
+                            keyField="id"
+                            classes={styles.ciaTable}
+                            data={[information_type]}
+                            columns={[
+                                {
+                                    dataField: "id",
+                                    text: "ID",
+                                    hidden: true
+                                    },
+                                {
+                                    dataField: "triad_rating.confidentiality",
+                                    text: 'Confidentiality',
+                                    headerStyle: this.getHeaderStyle()
+                                    },
+                                {
+                                    dataField: "triad_rating.integrity",
+                                    text: 'Integrity',
+                                    headerStyle: this.getHeaderStyle()
+                                    },
+                                {
+                                    dataField: "triad_rating.availability",
+                                    text: 'Availability',
+                                    headerStyle: this.getHeaderStyle()
+                                }]}
+                            rowStyle={this.getRowStyle}
+                            >
+                        </BootstrapTable>
+                         <textarea
+                            label="security_reasoning"
+                            className={styles.descriptionInput}
+                            onChange={() => this.onChange(information_type)}
+                            value={information_type.security_reasoning}>
+                        </textarea>
+                     </div>
+                <ButtonToolbar className={styles.informationCategories}>
+                        {information_type_categories}
+                </ButtonToolbar>
+                </div>
+            </div>
+        )
+
+        if(information_type.isEditing){
+            return(
+                editView
+            )
+        } else {
+            return(
+                cleanView
+            )
+        }
     });
 
 
@@ -189,16 +374,16 @@ export default class InformationTypeCatalog extends Component<Props> {
         <div className={styles.componentBody}>
             <div className={styles.catalogContainer}>
                 <Select
-                            isMulti
-                            className={styles.searchBar}
-                            value={this.state.selectedOption}
-                            options={searchOptions}
-                            onChange={(value, action) => {
-                                this.handleSearch(value, action)
-                                }
-                            }
-                            placeholder="Search Information Types ..."
-                        />
+                    isMulti
+                    className={styles.searchBar}
+                    value={this.state.selectedOption}
+                    options={searchOptions}
+                    onChange={(value, action) => {
+                        this.handleSearch(value, action)
+                        }
+                    }
+                    placeholder="Search Information Types ..."
+                />
                 <div className={styles.informationTypesContainer}>
                 {informationTypesViewer}
                 </div>

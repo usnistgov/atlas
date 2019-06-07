@@ -34,30 +34,54 @@
     background-color: #F06449;
     color: snow;
     margin: 10px;
-    width: calc(var(--vw, 1vw) * 9);
-    height: calc(var(--vh, 1vh) * 3);
+    padding: 10px;
+    border-radius: 5px;
 
 }
 
 .notSelectedButton {
     font-weight: bolder;
     margin: 10px;
-    width: calc(var(--vw, 1vw) * 9);
-    height: calc(var(--vh, 1vh) * 3);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .glossaryEntryView {
+    display: flex;
     background-color: #EDE6E3;
     border-style: outset;
     border-width: thick;
     max-width: 99.5%;
     max-height: 337px;
-    margin-top: 8px;
-    margin-left: 8px;
+    margin: 4px;
     margin-bottom: 16px;
+    border-radius: 12px;
 }
 
-.glossaryEntryView p {
+.glossaryEntryInfo p {
+    font-weight: bolder;
+}
+
+.glossaryEntryInfo {
     font-size: 20px;
     margin-left: 30px;
+    width: 92%;
+}
+
+.glossaryEntryActions {
+}
+
+.editButton {
+}
+
+.editButton:hover {
+    background-color: dodgerblue;
+}
+
+.deleteButton {
+    margin-left: 10px;
+}
+
+.deleteButton:hover {
+    background-color: dodgerblue;
 }

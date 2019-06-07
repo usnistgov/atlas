@@ -48,9 +48,9 @@
     border-width: thick;
     max-width: 99.5%;
     max-height: 337px;
-    margin-top: 8px;
-    margin-left: 8px;
+    margin: 4px;
     margin-bottom: 16px;
+    border-radius: 12px;
 }
 
 .catalogBody h2 {
