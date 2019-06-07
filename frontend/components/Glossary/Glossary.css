@@ -58,18 +58,29 @@
     border-radius: 12px;
 }
 
-.glossaryEntryInfo p {
+.optionsBar {
+    display: flex;
+    width: 99%;
+    height: 5vh;
+    background-color: snow;
+    align-items: center;
+    justify-content: left;
+    line-height: normal;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.optionsBar h3 {
+    margin-left: 20px;
     font-weight: bolder;
-}
-
-.glossaryEntryInfo {
     font-size: 20px;
-    margin-left: 30px;
-    width: 92%;
+    flex: 1;
 }
 
-.glossaryEntryActions {
+.descriptionContainer {
+    height: 20vh;
 }
+
 
 .editButton {
 }

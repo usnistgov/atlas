@@ -95,25 +95,25 @@ export default class Glossary extends Component<Props> {
     let glossaryComponent = this.props[glossarySelection].map((entry) => {
         return (
             <div className={styles.glossaryEntryView}>
-                <div className={styles.glossaryEntryInfo}>
-                   <p>Name:   {entry.name}</p>
-                   <p>Description:   {entry.description}</p>
-                </div>
-                <div className={styles.glossaryEntryActions}>
+                <div className={styles.optionsBar}>
+                    <h3>{entry.name}</h3>
                     <Tooltip title="Edit">
                         <Description
                             className={styles.editButton}
-                            style={{'color': '#F06449', 'height': '40px', 'width': '30px'}}
-                            onClick={() => {}}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                            onClick={() => { this.startEditor(information_type)}}
                         />
                     </Tooltip>
                     <Tooltip title="Delete">
                         <Delete
                             className={styles.deleteButton}
-                            style={{'color': '#F06449', 'height': '40px', 'width': '30px'}}
+                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
                             onClick={() => {} }
                         />
                     </Tooltip>
+                </div>
+                <div className={styles.descriptionContainer}>
+                    <p>{entry.description}</p>
                 </div>
             </div>
         )
