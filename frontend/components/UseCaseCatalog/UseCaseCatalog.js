@@ -329,7 +329,9 @@ export default class UseCaseCatalog extends Component<Props> {
 
             return (
                 <div key={use_case.id} className={styles.catalogBody} onClick={() => this.handleUseCaseClick(use_case)}>
-                    <h2>{use_case.name}</h2>
+                    <div className={styles.optionsBar}>
+                        <h2>{use_case.name}</h2>
+                    </div>
                     <div className={styles.useCaseTables}>
                         <BootstrapTable
                             classes={styles.attrTable}
