@@ -288,15 +288,17 @@ export default class UseCase extends Component<Props> {
                             data={use_case_information_types}
                             columns={[
                                 {dataField: "_id", text: "ID", hidden: true},
-                                {dataField: "name", text: "Name", headerStyle: this.props.getHeaderStyle()},
-                                {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
+                                {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
+                                {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
                                 {   isDummyField: true,
                                     dataField: "information_types",
                                     text: this.addRowIcon("Information Types", "information_types"),
                                     formatter: this.deleteRowIcon,
                                     events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                    headerStyle: this.props.getHeaderStyle()}
+                                    headerStyle: {...this.props.getHeaderStyle(), width: '2%'},
+                                    style: { width: '2.5%' }
+                                }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -329,7 +331,8 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Actors", "actors"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
@@ -351,7 +354,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Cybersecurity Threats", "cybersecurity_threats"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -372,7 +377,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Disciplines", "disciplines"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -393,7 +400,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Responding Organizations", "responding_organizations"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -414,7 +423,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Activities", "activities"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -435,7 +446,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Technologies", "technologies"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
@@ -456,7 +469,9 @@ export default class UseCase extends Component<Props> {
                                 text: this.addRowIcon("Locations", "locations"),
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                headerStyle: this.props.getHeaderStyle()}
+                                headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                style: { width: '7%' }
+                            }
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}

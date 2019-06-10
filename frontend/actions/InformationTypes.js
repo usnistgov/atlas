@@ -20,7 +20,7 @@ export const getInformationTypes = (state) => {
             let group = entry.group;
             let value = entry.value;
 
-            if(group === "triad_rating"){
+            if(group === "triad_rating" && value !== null){
                 let values = value.split('-');
                 let triadOption = {[values[0]]: values[1]};
                 triadRating = {...triadRating, ...triadOption};

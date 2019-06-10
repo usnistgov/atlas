@@ -5,7 +5,7 @@
   border-width: thick;
   height: auto;
   margin: 2px;
-  border-radius: 12px;
+  border-radius: 15px;
 }
 
 .optionsBar {
@@ -15,6 +15,7 @@
     width: 100%;
     justify-content: left;
     align-items: center;
+    border-radius: 15px;
 }
 
 .backButton {
@@ -111,14 +112,14 @@
     margin-bottom: 20px;
     width: calc(var(--vw, 1vw) * 50);
     height: calc(var(--vh, 1vh) * 50);
+    border-radius: 15px;
+    font-size: 24px;
 }
 
 .informationTypeTable thead {
     display: table;
-    background-color: darkgrey;
-    width: 100%;
-    text-align: center;
     table-layout: fixed;
+    width: 100%;
 }
 
 .informationTypeTable tbody {
@@ -147,8 +148,8 @@
 }
 
 .attrTable {
-    color: snow;
     background-color: black;
+    color: snow;
     display: table;
     border-style: ridge;
     border-width: thick;
@@ -157,15 +158,12 @@
     width: calc(var(--vw, 1vw) * 20);
     margin-left: 20px;
     margin-bottom: 15px;
+    border-radius: 15px;
+    font-size: 24px;
 
 }
 
 .attrTable thead {
-    display: table;
-    background-color: darkgrey;
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
 }
 
 .attrTable tbody {
@@ -185,6 +183,5 @@
 }
 
 .noDataIndication {
-
     justify-content: center;
 }
