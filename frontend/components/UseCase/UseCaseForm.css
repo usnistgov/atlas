@@ -177,6 +177,7 @@
 
 .informationTypeTable tbody tr {
   display: table;
+  width: 100%;
   height: calc(var(--vh, 1vh) * 5);
   text-align: center;
   table-layout: fixed;
@@ -222,6 +223,7 @@
 .attrTable tbody tr {
 
   display: table;
+  width: 100%;
   height: calc(var(--vh, 1vh) * 5);
   text-align: center;
   table-layout: fixed;
@@ -230,7 +232,6 @@
 .noDataIndication {
 
     justify-content: center;
-    align-items: center;
 }
 
 .addModal {

@@ -50,7 +50,7 @@
 
     background-color: #EDE6E3;
     border-style: outset;
-    border-width: thick;
+    border-width: medium;
     margin: 4px;
     margin-bottom: 16px;
     border-radius: 15px;
@@ -58,13 +58,14 @@
 
 .optionsBar {
     display: flex;
-    width: 99%;
+    width: calc(100vw - 70px);
     height: 20%;
     background-color: snow;
     align-items: center;
     justify-content: center;
+    border-color: snow;
     border-style: outset;
-    border-width: thick;
+    border-width: medium;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -81,7 +82,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     margin-right: 30px;
-    height: 65%;
+    height: 70%;
 }
 
 .attrTable {

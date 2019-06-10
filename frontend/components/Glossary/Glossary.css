@@ -84,13 +84,14 @@
 
 .optionsBar {
     display: flex;
-    width: 99%;
+    width: calc(100vw - 70px);
     height: 8vh;
     background-color: snow;
     align-items: center;
     justify-content: center;
+    border-color: snow;
     border-style: outset;
-    border-width: thick;
+    border-width: medium;
     border-radius: 15px;
     margin-bottom: 15px;
 }

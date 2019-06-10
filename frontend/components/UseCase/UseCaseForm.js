@@ -302,6 +302,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         cellEdit={ cellEditFactory({ mode: "dbclick" }) }
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -331,10 +332,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -353,10 +355,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -375,10 +378,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -397,10 +401,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -419,10 +424,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -441,10 +447,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -463,10 +470,11 @@ export default class UseCase extends Component<Props> {
                                 formatter: this.deleteRowIcon,
                                 events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
                                 headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                style: { width: '7%' }
+                                style: { width: '12%' }
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
+                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
