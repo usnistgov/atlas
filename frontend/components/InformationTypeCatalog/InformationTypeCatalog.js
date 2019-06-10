@@ -203,10 +203,14 @@ export default class InformationTypeCatalog extends Component<Props> {
   getHeaderStyle(){
 
     return {
-        height: '4vh',
+        height: '6vh',
         backgroundColor: 'darkgrey',
         fontWeight: 'bolder',
-        textAlign: 'center'
+        whiteSpace: 'nowrap',
+        headerAlign: 'center',
+        border: 'outset',
+        borderColor: 'darkgrey',
+        borderRadius: '8px'
         }
     }
 
@@ -214,6 +218,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     return {
          backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
+         height: '5vh'
               }
     }
 

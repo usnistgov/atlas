@@ -168,14 +168,13 @@ export default class UseCaseCatalog extends Component<Props> {
   getHeaderStyle(){
 
     return {
-        height: 'calc(var(--vh, 1vh) * 5)',
+        height: '6vh',
         backgroundColor: 'darkgrey',
         fontWeight: 'bolder',
-        whiteSpace: 'nowrap',
         headerAlign: 'center',
         border: 'outset',
         borderColor: 'darkgrey',
-        borderRadius: '6px'
+        borderRadius: '8px'
         }
     }
 
@@ -183,7 +182,7 @@ export default class UseCaseCatalog extends Component<Props> {
 
     return {
          backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
-         height: 'calc(var(--vh, 1vh) * 5)'
+         height: '5vh'
               }
     }
 

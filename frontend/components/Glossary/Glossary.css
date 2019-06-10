@@ -2,6 +2,7 @@
     background-color: dodgerblue;
     border-color: #EDE6E3;
     height: auto;
+    border-radius: 15px;
 }
 
 .catalogContainer {
@@ -20,7 +21,6 @@
 .glossaryContainer {
   background-color: dodgerblue;
   display: flex;
-  flex: 1;
   flex-direction: column;
   height: calc(100vh - 200px);
   width: calc(100vw - 100px;);
@@ -31,21 +31,43 @@
   border-radius: 15px;
 }
 
+.selectionOptions {
+    display: flex;
+    height: 7vh;
+    width: 98%;
+    margin-bottom: 10px;
+
+}
+
+.addButton {
+    margin-left: 20px;
+}
+
 .selectedButton {
+    font-size:  14px;
     font-weight: bolder;
     background-color: #F06449;
     color: snow;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 5px;
+    border-style: outset;
+    border-color: #F06449;
+    border-width: medium;
+    border-radius: 15px;
+    width: 15%;
+    height: 100%;
 
 }
 
 .notSelectedButton {
+    font-size: 14px;
     font-weight: bolder;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 5px;
+    border-style: outset;
+    border-width: medium;
+    border-color: snow;
+    border-radius: 15px;
+    width: 15%;
+    height: 100%;
 }
 
 .glossaryEntryView {
@@ -57,25 +79,26 @@
     max-height: 337px;
     margin: 4px;
     margin-bottom: 16px;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
 .optionsBar {
     display: flex;
-    width: 99.5%;
-    height: 5vh;
+    width: 99%;
+    height: 8vh;
     background-color: snow;
     align-items: center;
-    justify-content: left;
-    line-height: normal;
-    padding: 5px;
-    border-radius: 12px;
+    justify-content: center;
+    border-style: outset;
+    border-width: thick;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 .optionsBar h3 {
     margin-left: 20px;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 100% 100%;
     flex: 1;
 }
 

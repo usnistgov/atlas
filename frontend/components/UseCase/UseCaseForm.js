@@ -26,8 +26,8 @@ type Props = {
 };
 
 const noDataIndication = () => (
-    <div className = {styles.noDataIndication}>
-      <p>None</p>
+    <div className={styles.noDataIndication}>
+      None
     </div>
 );
 
@@ -296,12 +296,11 @@ export default class UseCase extends Component<Props> {
                                     text: this.addRowIcon("Information Types", "information_types"),
                                     formatter: this.deleteRowIcon,
                                     events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                    headerStyle: {...this.props.getHeaderStyle(), width: '2%'},
-                                    style: { width: '2.5%' }
+                                    headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
+                                    style: { width: '6%' }
                                 }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         cellEdit={ cellEditFactory({ mode: "dbclick" }) }
                         keyField="_id"
                         striped
@@ -336,7 +335,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -359,7 +357,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -382,7 +379,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -405,7 +401,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -428,7 +423,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -451,7 +445,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover
@@ -474,7 +467,6 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.props.getRowStyle}
-                        noDataIndication={noDataIndication}
                         keyField="_id"
                         striped
                         hover

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './Glossary.css';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import Tooltip from '@material-ui/core/Tooltip';
+import NoteAdd from "@material-ui/icons/NoteAdd";
 import Description from "@material-ui/icons/Description";
 import Delete from "@material-ui/icons/Delete";
 
@@ -122,8 +123,14 @@ export default class Glossary extends Component<Props> {
     return (
         <div className={styles.componentBody}>
             <div className={styles.catalogContainer}>
-                <ButtonToolbar>
+                <ButtonToolbar className={styles.selectionOptions}>
                     {selectionComponent}
+                    <Tooltip title="Add New Entry">
+                            <NoteAdd
+                                className={styles.addButton}
+                                style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                            />
+                    </Tooltip>
                 </ButtonToolbar>
                 <div className={styles.glossaryContainer}>
                     {glossaryComponent}

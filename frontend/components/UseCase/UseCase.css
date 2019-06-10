@@ -113,7 +113,7 @@
     width: calc(var(--vw, 1vw) * 50);
     height: calc(var(--vh, 1vh) * 50);
     border-radius: 15px;
-    font-size: 24px;
+    font-size: 100% 100%;
 }
 
 .informationTypeTable thead {
@@ -140,11 +140,11 @@
 .useCaseTables {
     flex: 1 1 60%;
     display: flex;
-    justify-content: flex-end;
     flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     margin-top: 30px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .attrTable {
@@ -156,14 +156,15 @@
     border-color: lightgrey;
     height: calc(var(--vh, 1vh) * 25);
     width: calc(var(--vw, 1vw) * 20);
-    margin-left: 20px;
+    margin-left: 15px;
     margin-bottom: 15px;
     border-radius: 15px;
-    font-size: 24px;
+    font-size: 100% 100%;
 
 }
 
 .attrTable thead {
+
 }
 
 .attrTable tbody {
