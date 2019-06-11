@@ -296,8 +296,8 @@ export default class UseCase extends Component<Props> {
                                     text: this.addRowIcon("Information Types", "information_types"),
                                     formatter: this.deleteRowIcon,
                                     events: { onClick: (e, column, columnIndex, row, rowIndex) => this.deleteRow(e, column, columnIndex, row, rowIndex)},
-                                    headerStyle: {...this.props.getHeaderStyle(), width: '6%'},
-                                    style: { width: '6%' }
+                                    headerStyle: {...this.props.getHeaderStyle(), width: '2%'},
+                                    style: { width: '3%' }
                                 }
                             ]}
                         rowStyle={this.props.getRowStyle}

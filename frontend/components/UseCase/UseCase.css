@@ -25,6 +25,7 @@
 
 .backButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .editButton {
@@ -35,6 +36,7 @@
 
 .editButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .deleteButton {
@@ -46,6 +48,7 @@
 
 .deleteButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .useCaseBody {

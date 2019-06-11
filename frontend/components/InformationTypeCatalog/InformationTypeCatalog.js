@@ -203,7 +203,7 @@ export default class InformationTypeCatalog extends Component<Props> {
   getHeaderStyle(){
 
     return {
-        height: '6vh',
+        height: 'calc(var(--vh, 1vh) * 5)',
         backgroundColor: 'darkgrey',
         fontWeight: 'bolder',
         whiteSpace: 'nowrap',
@@ -218,7 +218,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     return {
          backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
-         height: '5vh'
+         height: 'calc(var(--vh, 1vh) * 5)'
               }
     }
 
@@ -389,9 +389,9 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }
                     placeholder="Search Information Types ..."
                 />
-                <div className={styles.informationTypesContainer}>
+            </div>
+            <div className={styles.informationTypesContainer}>
                 {informationTypesViewer}
-                </div>
             </div>
         </div>
     )

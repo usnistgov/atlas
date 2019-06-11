@@ -25,6 +25,7 @@
 
 .backButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .saveButton {
@@ -35,7 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: ridge;
+    border-style: outset;
     border-width: thick;
     border-color: #EDE6E3;
     background-color: lightgreen;
@@ -57,6 +58,7 @@
 
 .clearButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .useCaseBody {

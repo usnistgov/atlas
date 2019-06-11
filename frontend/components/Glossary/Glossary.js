@@ -132,9 +132,9 @@ export default class Glossary extends Component<Props> {
                             />
                     </Tooltip>
                 </ButtonToolbar>
-                <div className={styles.glossaryContainer}>
-                    {glossaryComponent}
-                </div>
+            </div>
+            <div className={styles.glossaryContainer}>
+                {glossaryComponent}
             </div>
         </div>
     )

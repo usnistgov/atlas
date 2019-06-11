@@ -1,5 +1,4 @@
 .componentBody {
-    background-color: dodgerblue;
     border-color: #EDE6E3;
     height: auto;
     border-radius: 15px;
@@ -7,10 +6,11 @@
 
 .catalogContainer {
     background-color: grey;
-    border-style: ridge;
+    border-style: outset;
     border-width: thick;
     border-color: #EDE6E3;
     border-radius: 15px;
+    margin-bottom: 5px;
 }
 
 .catalogContainer h2 {
@@ -22,18 +22,19 @@
   background-color: dodgerblue;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 200px);
-  width: calc(100vw - 100px;);
-  border-style: ridge;
+  height: calc(var(--vh, 1vh) * 85);
+  border-style: outset;
   border-width: thick;
   border-color: #EDE6E3;
   overflow: auto;
+  padding-left: 8px;
+  padding-top: 8px;
   border-radius: 15px;
 }
 
 .selectionOptions {
     display: flex;
-    height: 7vh;
+    height: 50px;
     width: 98%;
     margin-bottom: 10px;
 
@@ -77,21 +78,20 @@
     border-width: thick;
     max-width: 99.5%;
     max-height: 337px;
-    margin: 4px;
     margin-bottom: 16px;
     border-radius: 15px;
 }
 
 .optionsBar {
     display: flex;
-    width: calc(100vw - 70px);
-    height: 8vh;
+    width: 99.6%;
+    height: calc(var(--vh, 1vh) * 4);
     background-color: snow;
     align-items: center;
     justify-content: center;
     border-color: snow;
     border-style: outset;
-    border-width: medium;
+    border-width: thick;
     border-radius: 15px;
     margin-bottom: 15px;
 }
@@ -113,6 +113,7 @@
 
 .editButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .deleteButton {
@@ -121,4 +122,5 @@
 
 .deleteButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }

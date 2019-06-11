@@ -168,7 +168,7 @@ export default class UseCaseCatalog extends Component<Props> {
   getHeaderStyle(){
 
     return {
-        height: '6vh',
+        height: 'calc(var(--vh, 1vh) * 5)',
         backgroundColor: 'darkgrey',
         fontWeight: 'bolder',
         headerAlign: 'center',
@@ -182,7 +182,7 @@ export default class UseCaseCatalog extends Component<Props> {
 
     return {
          backgroundColor: rowIdx % 2 === 0 ? 'black': '#303030',
-         height: '5vh'
+         height: 'calc(var(--vh, 1vh) * 5)'
               }
     }
 
@@ -446,9 +446,9 @@ export default class UseCaseCatalog extends Component<Props> {
                             />
                         </Tooltip>
                     </div>
-                    <div className={styles.useCasesContainer}>
-                        {useCaseSelection === null ? catalogView: isEditing ? editorView : UseCaseView}
-                    </div>
+                </div>
+                <div className={styles.useCasesContainer}>
+                    {useCaseSelection === null ? catalogView: isEditing ? editorView : UseCaseView}
                 </div>
             </div>
          )

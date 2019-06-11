@@ -1,5 +1,4 @@
 .componentBody {
-    background-color: dodgerblue;
     border-color: #EDE6E3;
     height: auto;
     border-radius: 15px;
@@ -7,10 +6,11 @@
 
 .catalogContainer {
     background-color: grey;
-    border-style: ridge;
+    border-style: outset;
     border-width: thick;
     border-color: #EDE6E3;
     border-radius: 15px;
+    margin-bottom: 5px;
 }
 
 .catalogContainer h2 {
@@ -28,14 +28,14 @@
 .informationTypesContainer {
   background-color: dodgerblue;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  height: calc(100vh - 200px);
-  width: calc(100vw - 100px;);
-  border-style: ridge;
+  height: calc(var(--vh, 1vh) * 85);
+  border-style: outset;
   border-width: thick;
   border-color: #EDE6E3;
   overflow: auto;
+  padding-left: 8px;
+  padding-top: 8px;
   border-radius: 15px;
 }
 
@@ -45,22 +45,22 @@
     background-color: #EDE6E3;
     border-style: outset;
     border-width: thick;
-    max-width: 99.5%;
-    max-height: 337px;
-    margin: 4px;
+    width: 99%;
+    height: calc(var(--vh, 1vh) * 30);
     margin-bottom: 16px;
     border-radius: 15px;
 }
 
 .optionsBar {
     display: flex;
-    width: calc(100vw - 70px);
+    width: 99.6%;
+    height: calc(var(--vh, 1vh) * 7);
     background-color: snow;
     align-items: center;
     justify-content: center;
     border-color: snow;
     border-style: outset;
-    border-width: medium;
+    border-width: thick;
     border-radius: 15px;
     margin-bottom: 15px;
 }
@@ -160,7 +160,6 @@
 .ciaTable tbody tr {
   display: table;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 8);
   text-align: center;
   table-layout: fixed;
 }
