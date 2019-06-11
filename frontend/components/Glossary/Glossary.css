@@ -5,6 +5,8 @@
 }
 
 .catalogContainer {
+    display: flex;
+    align-items: center;
     background-color: grey;
     border-style: outset;
     border-width: thick;
@@ -42,6 +44,12 @@
 
 .addButton {
     margin-left: 20px;
+    margin-right: 20px;
+}
+
+.addButton:hover {
+    background-color: lightgreen;
+    border-radius: 15px;
 }
 
 .selectedButton {
@@ -49,6 +57,7 @@
     font-weight: bolder;
     background-color: #F06449;
     color: snow;
+    outline: none;
     margin: 5px;
     border-style: outset;
     border-color: #F06449;
@@ -64,6 +73,7 @@
     font-weight: bolder;
     margin: 5px;
     border-style: outset;
+    outline: none;
     border-width: medium;
     border-color: snow;
     border-radius: 15px;
@@ -84,8 +94,8 @@
 
 .optionsBar {
     display: flex;
-    width: 99.6%;
-    height: calc(var(--vh, 1vh) * 4);
+    width: 99.5%;
+    height: calc(var(--vh, 1vh) * 6);
     background-color: snow;
     align-items: center;
     justify-content: center;

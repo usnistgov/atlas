@@ -37,13 +37,18 @@
 
 .searchBar {
     margin: 15px;
-    width: 60%;
+    width: 90%;
     color: black;
     border-radius: 15px;
 }
 
 .addButton {
     margin-left: 40px;
+}
+
+.addButton:hover {
+    background-color: lightgreen;
+    border-radius: 15px;
 }
 
 .catalogBody {
@@ -53,15 +58,16 @@
     border-width: medium;
     margin-bottom: 16px;
     border-radius: 15px;
+    width: 99%;
+    height: calc(var(--vh, 1vh) * 45);
 }
 
 .optionsBar {
     display: flex;
-    width: 99.6%;
+    width: 99.5%;
     height: calc(var(--vh, 1vh) * 7);
     background-color: snow;
     align-items: center;
-    justify-content: center;
     border-color: snow;
     border-style: outset;
     border-width: thick;
@@ -72,6 +78,7 @@
 .optionsBar h2 {
     font-weight: bolder;
     font-size: 100% 100%;
+    margin-left: 20px;
 }
 
 .useCaseTables {
@@ -92,7 +99,6 @@
     border-width: thick;
     border-color: lightgrey;
     margin-left: 20px;
-    margin-bottom: 20px;
     height: calc(var(--vh, 1vh) * 25);
     width: calc(var(--vw, 1vw) * 20);
     border-radius: 15px;

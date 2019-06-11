@@ -125,13 +125,13 @@ export default class Glossary extends Component<Props> {
             <div className={styles.catalogContainer}>
                 <ButtonToolbar className={styles.selectionOptions}>
                     {selectionComponent}
-                    <Tooltip title="Add New Entry">
+                </ButtonToolbar>
+                 <Tooltip title="Add New Entry">
                             <NoteAdd
                                 className={styles.addButton}
                                 style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
                             />
-                    </Tooltip>
-                </ButtonToolbar>
+                 </Tooltip>
             </div>
             <div className={styles.glossaryContainer}>
                 {glossaryComponent}

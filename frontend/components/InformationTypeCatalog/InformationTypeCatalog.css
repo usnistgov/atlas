@@ -5,6 +5,8 @@
 }
 
 .catalogContainer {
+    display: flex;
+    align-items: center;
     background-color: grey;
     border-style: outset;
     border-width: thick;
@@ -23,6 +25,15 @@
     margin: 15px;
     width: 90%;
     color: black;
+}
+
+.addButton {
+    margin-left: 40px;
+}
+
+.addButton:hover {
+    background-color: lightgreen;
+    border-radius: 15px;
 }
 
 .informationTypesContainer {
@@ -46,14 +57,14 @@
     border-style: outset;
     border-width: thick;
     width: 99%;
-    height: calc(var(--vh, 1vh) * 30);
+    height: calc(var(--vh, 1vh) * 35);
     margin-bottom: 16px;
     border-radius: 15px;
 }
 
 .optionsBar {
     display: flex;
-    width: 99.6%;
+    width: 99.5%;
     height: calc(var(--vh, 1vh) * 7);
     background-color: snow;
     align-items: center;
@@ -115,6 +126,7 @@
 
 .editButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .deleteButton {
@@ -123,6 +135,26 @@
 
 .deleteButton:hover {
     background-color: dodgerblue;
+    border-radius: 15px;
+}
+
+.saveButton {
+
+}
+
+.saveButton:hover {
+    background-color: lightgreen;
+    border-radius: 15px;
+}
+
+.clearButton {
+    position: relative;
+    margin-left: 10px;
+}
+
+.clearButton:hover {
+    background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .mainInfo {

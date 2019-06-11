@@ -218,7 +218,7 @@
     display: block;
     color: snow;
     width: 100%;
-    max-height: calc(var(--vh, 1vh) * 20);
+    max-height: calc(var(--vh, 1vh) * 16);
     overflow: auto;
 }
 

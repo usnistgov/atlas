@@ -7,6 +7,9 @@ import Description from "@material-ui/icons/Description";
 import Delete from "@material-ui/icons/Delete";
 import Add from "@material-ui/icons/Add";
 import Remove from "@material-ui/icons/Remove";
+import NoteAdd from "@material-ui/icons/NoteAdd";
+import Check from "@material-ui/icons/Check";
+import Clear from "@material-ui/icons/Clear";
 import BootstrapTable  from 'react-bootstrap-table-next';
 
 type Props = {
@@ -169,6 +172,19 @@ export default class InformationTypeCatalog extends Component<Props> {
     });
   }
 
+  stopEditor(information_type){
+
+    this.setState(state => {
+
+        let entry = state.information_types.find(x => x.id === information_type.id);
+        entry.isEditing = false;
+
+        return {
+            entry
+        }
+    });
+  }
+
   handleSearch(option, action){
 
     const {
@@ -304,20 +320,19 @@ export default class InformationTypeCatalog extends Component<Props> {
                             onChange={() => this.onChange(information_type)}
                             value={information_type.name}>
                         </input>
-                    <Tooltip title="Edit">
-                        <Description
-                            className={styles.editButton}
-                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => { this.startEditor(information_type)}}
+                    <Tooltip title="Save">
+                        <Check
+                            className={styles.saveButton}
+                            style={{"color": "green", "height": "40px", "width": "50px"}}
                         />
                     </Tooltip>
-                    <Tooltip title="Delete">
-                        <Delete
-                            className={styles.deleteButton}
-                            style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => {} }
-                        />
-                    </Tooltip>
+                    <Tooltip title="Cancel">
+                        <Clear
+                            className={styles.clearButton}
+                            style={{"color": "#F06449", "height": "40px", "width": "40px"}}
+                            onClick={() => this.stopEditor(information_type)}
+                    />
+                </Tooltip>
                 </div>
                 <div className={styles.informationTypeInfo}>
                     <div className={styles.mainInfo}>
@@ -389,6 +404,12 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }
                     placeholder="Search Information Types ..."
                 />
+                <Tooltip title="Add New Information Type">
+                            <NoteAdd
+                                className={styles.addButton}
+                                style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                            />
+                </Tooltip>
             </div>
             <div className={styles.informationTypesContainer}>
                 {informationTypesViewer}
