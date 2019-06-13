@@ -11,15 +11,25 @@
 .optionsBar {
     display: flex;
     position: relative;
-    height: 4%;
-    width: 100%;
+    height: calc(var(--vh, 1vh) * 8);
+    width: 99.5%;
     justify-content: left;
     align-items: center;
+    background-color: snow;
+    border-color: snow;
+    border-style: outset;
+    border-width: thick;
     border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.optionsBar h2 {
+    margin-left: 20px;
+    font-size: 26px;
+    text-align: center;
 }
 
 .backButton {
-    margin-top: 20px;
     margin-left: 10px;
 }
 
@@ -54,7 +64,6 @@
 .useCaseBody {
 
     display: flex;
-    position: relative;
 }
 
 .useCaseInfo {
@@ -63,48 +72,44 @@
 }
 
 .headerFormat {
-    max-height: 40%;
-    min-height: 40%;
-    max-width: 100%;
     overflow: auto;
-}
-
-.headerFormat h2 {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    border-bottom: 2px solid;
-    text-align: center;
 }
 
 .headerFormat p {
     margin-left: 30px;
-    font-size: 16px;
+    font-size: 18px;
+    height: calc(var(--vh, 1vh) * 38.5);
 }
 
 .informationTypes {
-    flex: 0 0 100%;
-    max-height: 100%;
-    min-height: 60%;
-    max-width: 100%;
+    width: 100%;
 }
 
 .sourceTitle {
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 30px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px double;
+    align-items: center;
+    height: calc(var(--vh, 1vh) * 4);
 }
 
 .informationTypes h3 {
+    height: calc(var(--vh, 1vh) * 6);
+    margin-left: 20px;
+    padding-top: 10px;
     padding-left: 30px;
-    font-size: 24px;
+    align-items: center;
+    font-size: 22px;
+    background-color: snow;
+    border-color: snow;
+    border-style: outset;
+    border-width: thick;
+    border-radius: 15px;
 }
 
 .informationTypeTable {
 
+    justify-content: top;
     display: table;
     background-color: black;
     color: snow;
@@ -113,8 +118,7 @@
     border-color: lightgrey;
     margin-left: 20px;
     margin-bottom: 20px;
-    width: calc(var(--vw, 1vw) * 50);
-    height: calc(var(--vh, 1vh) * 50);
+    height: calc(var(--vh, 1vh) * 45);
     border-radius: 15px;
     font-size: 100% 100%;
 }
@@ -128,7 +132,7 @@
 .informationTypeTable tbody {
     display: block;
     width: 100%;
-    max-height: calc(var(--vh, 1vh) * 45);
+    max-height: calc(var(--vh, 1vh) * 40);
     overflow: auto;
 }
 
@@ -141,12 +145,11 @@
 }
 
 .useCaseTables {
-    flex: 1 1 60%;
+    width: 45%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 30px;
     margin-right: 10px;
 }
 
@@ -162,7 +165,7 @@
     margin-left: 15px;
     margin-bottom: 15px;
     border-radius: 15px;
-    font-size: 100% 100%;
+    font-size: 100%;
 
 }
 

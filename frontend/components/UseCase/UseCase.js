@@ -107,10 +107,11 @@ export default class UseCase extends Component<Props> {
                 <Tooltip title="Back to Catalog">
                     <KeyboardBackspace
                         className={styles.backButton}
-                        style={{'color': '#F06449', 'height': '60px', 'width': '70px'}}
+                        style={{'color': '#F06449', 'height': '50px', 'width': '60px'}}
                         onClick={() => this.props.handleUseCaseClick(null)}
                     />
                 </Tooltip>
+                <h2>{this.props.use_case.name}</h2>
                 <Tooltip title="Edit">
                     <Description
                         className={styles.editButton}
@@ -129,7 +130,6 @@ export default class UseCase extends Component<Props> {
             <div className={styles.useCaseBody}>
                 <div className={styles.useCaseInfo}>
                     <div className={styles.headerFormat}>
-                        <h2>{this.props.use_case.name}</h2>
                         <p>{this.props.use_case.description}</p>
                     </div>
                     <div className={styles.informationTypes}>
@@ -139,14 +139,14 @@ export default class UseCase extends Component<Props> {
                             classes={styles.informationTypeTable}
                             data={use_case_information_types}
                             columns={[
-                                {dataField: "_id", text: "ID", hidden: true},
+                                {dataField: "id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()}
                                 ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -157,10 +157,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_actors}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -168,10 +168,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_cybersecurity_threats}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -179,10 +179,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_disciplines}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -190,10 +190,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_responding_organizations}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -201,10 +201,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_activities}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -212,10 +212,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_technologies}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -223,10 +223,10 @@ export default class UseCase extends Component<Props> {
                     <BootstrapTable
                         classes={styles.attrTable}
                         data={use_case_locations}
-                        columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
+                        columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>

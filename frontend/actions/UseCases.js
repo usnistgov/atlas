@@ -146,7 +146,7 @@ export const deleteUseCase = (state) => {
 
     return dispatch => {
         let url = 'api/UseCases';
-        dispatch({'type': PUT_USE_CASE})
+        dispatch({'type': DELETE_USE_CASE})
         return request(
 
             url, {method: "DELETE", body: JSON.stringify(use_case)},

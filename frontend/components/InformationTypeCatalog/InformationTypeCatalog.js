@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import styles from './InformationTypeCatalog.css';
-import { Button, ButtonToolbar, ButtonGroup, ToggleButtonGroup, ToggleButton, DropdownButton, Dropdown} from 'react-bootstrap';
+import { Button,
+         ButtonToolbar,
+         ButtonGroup,
+         ToggleButtonGroup,
+         ToggleButton,
+         DropdownButton,
+         Dropdown,
+         Modal } from 'react-bootstrap';
 import Select from 'react-select';
 import Tooltip from '@material-ui/core/Tooltip';
 import Description from "@material-ui/icons/Description";
@@ -10,13 +17,28 @@ import Remove from "@material-ui/icons/Remove";
 import NoteAdd from "@material-ui/icons/NoteAdd";
 import Check from "@material-ui/icons/Check";
 import Clear from "@material-ui/icons/Clear";
+import Popup from "reactjs-popup";
 import BootstrapTable  from 'react-bootstrap-table-next';
+import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
 
 type Props = {
     information_types: object
 }
 
 var searchOptions = []
+var catalogHeight;
+
+const headerStyle =
+        {
+        height: 'calc(var(--vh, 1vh) * 5)',
+        backgroundColor: 'darkgrey',
+        fontWeight: 'bolder',
+        whiteSpace: 'nowrap',
+        headerAlign: 'center',
+        border: 'outset',
+        borderColor: 'darkgrey',
+        borderRadius: '8px'
+        }
 
 export default class InformationTypeCatalog extends Component<Props> {
   props: Props;
@@ -36,7 +58,9 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     this.onChange = this.onChange.bind(this);
     this.startEditor = this.startEditor.bind(this);
-
+    this.addNewInformationType = this.addNewInformationType.bind(this);
+    this.saveChanges = this.saveChanges.bind(this);
+    this.cancelChanges = this.cancelChanges.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -47,14 +71,14 @@ export default class InformationTypeCatalog extends Component<Props> {
 
             entry.isEditing = false;
             return(entry);
-
-            })
+          });
 
           return {
                 information_types: info_types
             }
          });
      }
+
   }
 
   componentDidMount(){
@@ -66,6 +90,10 @@ export default class InformationTypeCatalog extends Component<Props> {
     getInformationCategories();
     getInformationTypes();
 
+  }
+
+  componentDidUpdate(){
+    this.setSearchOptions();
   }
 
   buttonSearch(triad_key, value){
@@ -101,7 +129,7 @@ export default class InformationTypeCatalog extends Component<Props> {
       });
 
       let informationCategoryOptions = this.props.information_categories.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "information_categories"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "information_categories"});
       });
 
 
@@ -143,12 +171,70 @@ export default class InformationTypeCatalog extends Component<Props> {
 
   }
 
-  onChange(information_type){
+  addNewInformationType(){
 
-    let label = event.target.attributes.label.value;
-    let value = event.target.value;
+    let newInfoType = {
+        'id': '',
+        'name': '',
+        'triad_rating': {
+            'confidentiality': 'medium',
+            'integrity': 'medium',
+            'availability': 'medium'
+        },
+        'security_reasoning': '',
+        'information_categories': [],
+        'isEditing': true
+    }
 
-    console.log(label, value);
+    this.setState(state => {
+        return {
+            information_types: [...state.information_types, newInfoType]
+        }
+    }, () => {
+
+        let catalogElement = document.getElementById("informationTypesCatalog");
+        catalogElement.scrollTop = catalogElement.scrollHeight;
+
+    });
+  }
+
+  deleteInformationType(information_type){
+
+    let deleteConfirm = confirm("Are You Sure You Want to Delete This Information Type?");
+    if(deleteConfirm){
+
+        this.props.deleteInformationType(information_type);
+        this.props.getInformationTypes();
+    }
+  }
+
+  cancelChanges(information_type){
+
+      if(information_type.id === ""){
+        this.props.deleteInformationType(information_type);
+      }
+      this.props.getInformationTypes();
+  }
+
+  saveChanges(information_type){
+
+    if(information_type.name !== ''){
+        if(information_type.id === ''){
+            this.props.createInformationType(information_type);
+        } else {
+            this.props.updateInformationType(information_type);
+        }
+
+        this.stopEditor(information_type);
+        this.props.getInformationTypes();
+
+    } else {
+        alert("Information Type must Have a Name to be Saved !!!");
+    }
+  }
+
+  onChange(label, value, information_type){
+
     this.setState(state => {
 
         let entry = state.information_types.find(x => x.id === information_type.id)
@@ -216,20 +302,6 @@ export default class InformationTypeCatalog extends Component<Props> {
     }
   }
 
-  getHeaderStyle(){
-
-    return {
-        height: 'calc(var(--vh, 1vh) * 5)',
-        backgroundColor: 'darkgrey',
-        fontWeight: 'bolder',
-        whiteSpace: 'nowrap',
-        headerAlign: 'center',
-        border: 'outset',
-        borderColor: 'darkgrey',
-        borderRadius: '8px'
-        }
-    }
-
   getRowStyle(row, rowIdx){
 
     return {
@@ -248,15 +320,46 @@ export default class InformationTypeCatalog extends Component<Props> {
         information_types
     } = this.state;
 
-    this.setSearchOptions();
-
     let informationTypesViewer = information_types.map((information_type) => {
 
+        let tableData = [information_type];
+
         let information_type_categories = information_type.information_categories.map((entry_id) => {
-                let entry = information_categories.find(entry => entry.id == entry_id);
+
+                let entry = information_categories.find(entry => entry.id === entry_id);
                 if(entry !== undefined){
-                    return(
+                    if(information_type.isEditing){
+
+                         return(
                          <Button
+                            key={entry.id}
+                            className={styles.informationCategoryTagEdit}
+                            variant="primary"
+                            value={entry.name}
+                            active
+                            >
+                            <div className={styles.removeButtonContainer}>
+                                {entry.name}
+                                <Tooltip title="Remove Information Category">
+                                    <Remove
+                                        className={styles.removeButton}
+                                        style={{"color": "snow", "height": "30px", "width": "30px"}}
+                                        onClick={(e) => {
+                                                    let new_categories = information_type.information_categories.filter(x => x !== entry_id);
+                                                    this.onChange("information_categories",
+                                                                        new_categories,
+                                                                        information_type)}}
+                                    />
+                                </Tooltip>
+                            </div>
+                         </Button>)
+
+                    } else {
+
+
+                        return(
+                         <Button
+                            key={entry.id}
                             className={styles.informationCategoryTag}
                             variant="primary"
                             value={entry.name}
@@ -266,6 +369,7 @@ export default class InformationTypeCatalog extends Component<Props> {
                             {entry.name}
                          </Button>)
                     }
+                }
         });
 
         let cleanView = (
@@ -283,25 +387,26 @@ export default class InformationTypeCatalog extends Component<Props> {
                         <Delete
                             className={styles.deleteButton}
                             style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => {} }
+                            onClick={() => {this.deleteInformationType(information_type)} }
                         />
                     </Tooltip>
                 </div>
                 <div className={styles.informationTypeInfo}>
                     <div className={styles.mainInfo}>
+                         <p>{information_type.security_reasoning}</p>
                          <BootstrapTable
                             classes={styles.ciaTable}
-                            data={[information_type]}
+                            data={tableData}
                             columns={[
-                                {dataField: "_id", text: "ID", hidden: true},
-                                {dataField: "triad_rating.confidentiality", text: 'Confidentiality', headerStyle: this.getHeaderStyle()},
-                                {dataField: "triad_rating.integrity", text: 'Integrity', headerStyle: this.getHeaderStyle()},
-                                {dataField: "triad_rating.availability", text: 'Availability', headerStyle: this.getHeaderStyle()}
+                                {dataField: "id", text: "ID", hidden: true},
+                                {dataField: "triad_rating.confidentiality", text: 'Confidentiality', editable: false, headerStyle: headerStyle},
+                                {dataField: "triad_rating.integrity", text: 'Integrity', editable: false, headerStyle: headerStyle},
+                                {dataField: "triad_rating.availability", text: 'Availability', editable: false, headerStyle: headerStyle}
                                 ]}
+                            cellEdit={ cellEditFactory({ mode:'dbclick' }) }
                             rowStyle={this.getRowStyle}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
-                         <p> Security Reasoning: {information_type.security_reasoning} </p>
                      </div>
                 <ButtonToolbar className={styles.informationCategories}>
                         {information_type_categories}
@@ -317,76 +422,158 @@ export default class InformationTypeCatalog extends Component<Props> {
                             label="name"
                             className={styles.nameInput}
                             type="text"
-                            onChange={() => this.onChange(information_type)}
+                            onChange={(e) => this.onChange("name", e.target.value, information_type)}
                             value={information_type.name}>
                         </input>
                     <Tooltip title="Save">
                         <Check
                             className={styles.saveButton}
                             style={{"color": "green", "height": "40px", "width": "50px"}}
+                            onClick={() => this.saveChanges(information_type)}
                         />
                     </Tooltip>
                     <Tooltip title="Cancel">
                         <Clear
                             className={styles.clearButton}
                             style={{"color": "#F06449", "height": "40px", "width": "40px"}}
-                            onClick={() => this.stopEditor(information_type)}
+                            onClick={() => {
+                                    this.cancelChanges(information_type);
+                                    this.stopEditor(information_type);
+                                    }
+                            }
                     />
                 </Tooltip>
                 </div>
                 <div className={styles.informationTypeInfo}>
                     <div className={styles.mainInfo}>
+                          <textarea
+                            label="security_reasoning"
+                            className={styles.descriptionInput}
+                            onChange={(e) => this.onChange("security_reasoning", e.target.value, information_type)}
+                            value={information_type.security_reasoning}>
+                          </textarea>
                           <BootstrapTable
                             keyField="id"
                             classes={styles.ciaTable}
-                            data={[information_type]}
+                            data={tableData}
                             columns={[
                                 {
-                                    dataField: "id",
-                                    text: "ID",
-                                    hidden: true
-                                    },
+                                dataField: "id",
+                                text: "ID",
+                                hidden: true
+                                },
                                 {
-                                    dataField: "triad_rating.confidentiality",
-                                    text: 'Confidentiality',
-                                    headerStyle: this.getHeaderStyle()
+                                dataField: "triad_rating.confidentiality",
+                                text: 'Confidentiality',
+                                headerStyle: headerStyle,
+                                editable: true,
+                                editor: {
+                                    type: Type.SELECT,
+                                    options: [
+                                    {
+                                    value: "high",
+                                    label: "high"
                                     },
-                                {
-                                    dataField: "triad_rating.integrity",
-                                    text: 'Integrity',
-                                    headerStyle: this.getHeaderStyle()
+                                    {
+                                    value: "medium",
+                                    label: "medium"
                                     },
+                                    {
+                                    value: "low",
+                                    label: "low"
+                                    }]}
+                                },
                                 {
-                                    dataField: "triad_rating.availability",
-                                    text: 'Availability',
-                                    headerStyle: this.getHeaderStyle()
-                                }]}
+                                dataField: "triad_rating.integrity",
+                                text: 'Integrity',
+                                headerStyle: headerStyle,
+                                editable: true,
+                                editor: {
+                                    type: Type.SELECT,
+                                    options: [
+                                    {
+                                    value: "high",
+                                    label: "high"
+                                    },
+                                    {
+                                    value: "medium",
+                                    label: "medium"
+                                    },
+                                    {
+                                    value: "low",
+                                    label: "low"
+                                    }]}
+                                },
+                                {
+                                dataField: "triad_rating.availability",
+                                text: 'Availability',
+                                headerStyle: headerStyle,
+                                editable: true,
+                                editor: {
+                                    type: Type.SELECT,
+                                    options: [
+                                    {
+                                    value: "high",
+                                    label: "high"
+                                    },
+                                    {
+                                    value: "medium",
+                                    label: "medium"
+                                    },
+                                    {
+                                    value: "low",
+                                    label: "low"
+                                    }]}
+                                }]
+                                }
+                            cellEdit={ cellEditFactory({ mode:'dbclick', blurToSave: true }) }
                             rowStyle={this.getRowStyle}
                             >
                         </BootstrapTable>
-                         <textarea
-                            label="security_reasoning"
-                            className={styles.descriptionInput}
-                            onChange={() => this.onChange(information_type)}
-                            value={information_type.security_reasoning}>
-                        </textarea>
                      </div>
                 <ButtonToolbar className={styles.informationCategories}>
                         {information_type_categories}
+                        <Popup
+                            className={styles.addModal}
+                            trigger={<Tooltip title="Add Information Category"><Add className={styles.addButton} style={{"color": "green", "height": "35px", "width": "35px", "marginTop": "2px"}} /></Tooltip>}
+                            modal
+                        >
+                        {close => {
+
+                            let categoryOptions = searchOptions.filter(x => x.label === "Information Categories");
+                            let selectedCategories = categoryOptions[0]['options'].filter(x => {
+                                if(information_type.information_categories.includes(x.id)){
+                                    return(x)
+                                }
+                            })
+
+
+                            return (
+                            <div className={styles.addSearchBar}>
+                                <Select
+                                    isMulti
+                                    value={selectedCategories}
+                                    options={categoryOptions}
+                                    onChange={(e) =>
+                                        {
+                                            let info_categories = e.map(entry => entry.id);
+                                            this.onChange("information_categories", info_categories, information_type);
+                                            close();
+                                        }
+                                    }
+                                    placeholder={"Add Item to Information Categories"}
+                                />
+                            </div>
+                            )
+                            }
+                        }
+                        </Popup>
                 </ButtonToolbar>
                 </div>
             </div>
         )
 
-        if(information_type.isEditing){
-            return(
-                editView
-            )
-        } else {
-            return(
-                cleanView
-            )
-        }
+        return(information_type.isEditing ? editView : cleanView)
     });
 
 
@@ -408,10 +595,11 @@ export default class InformationTypeCatalog extends Component<Props> {
                             <NoteAdd
                                 className={styles.addButton}
                                 style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                                onClick={() => this.addNewInformationType()}
                             />
                 </Tooltip>
             </div>
-            <div className={styles.informationTypesContainer}>
+            <div id="informationTypesCatalog" className={styles.informationTypesContainer}>
                 {informationTypesViewer}
             </div>
         </div>

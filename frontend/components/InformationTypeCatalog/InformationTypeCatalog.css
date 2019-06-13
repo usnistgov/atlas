@@ -28,7 +28,7 @@
 }
 
 .addButton {
-    margin-left: 40px;
+    margin-left: 10px;
 }
 
 .addButton:hover {
@@ -57,7 +57,7 @@
     border-style: outset;
     border-width: thick;
     width: 99%;
-    height: calc(var(--vh, 1vh) * 35);
+    height: auto;
     margin-bottom: 16px;
     border-radius: 15px;
 }
@@ -73,30 +73,35 @@
     border-style: outset;
     border-width: thick;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .informationTypeInfo {
     display: flex;
+    flex-direction: column;
     width: 93%;
-    margin: 12px;
     margin-left: 24px;
+    margin-bottom: 12px;
 }
 
 .optionsBar h3 {
     margin-left: 20px;
     font-weight: bolder;
-    font-size: 100% 100%;
+    font-size: 22px;
     flex: 1;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .informationTypeInfo p {
+    font-size: 18px;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .nameInput {
-    flex: 1;
+    width: 90%;
+    height: calc(var(--vh, 1vh) * 7);
     margin-left: 20px;
-    font-size: 100% 100%;
+    font-size: 22px;
     font-weight: bolder;
     line-height: normal;
     background-color: transparent;
@@ -104,18 +109,25 @@
     border-left: none;
     border-right: none;
     border-top: none;
+    border-bottom: none;
     -webkit-appearance: none;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .descriptionInput {
-    font-size: 100% 100%;
+    font-size: 18px;
     background-color: transparent;
     outline: none;
-    width: 70%;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    width: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 25);
+    word-wrap: break-word;
+    overflow: auto;
     border: none;
-    overflowWrap: "break-word";
     overflow: auto;
     -webkit-appearance: none;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .informationTypeActions{
@@ -158,28 +170,42 @@
 }
 
 .mainInfo {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.mainInfo p {
+    font-size: 16px;
+    width: calc(var(--vh, 1vh) * 80);
+    height: calc(var(--vh, 1vh) * 25);
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .ciaTable {
 
+    justify-content: right;
     display: table;
     background-color: black;
     color: snow;
     border-style: ridge;
     border-width: thick;
     border-color: lightgrey;
-    margin-bottom: 20px;
+    margin-left: 20px;
     height: calc(var(--vh, 1vh) * 15);
     width: calc(var(--vw, 1vw) * 40);
     border-radius: 15px;
-    font-size: 100% 100%;
+    font-size: 100%;
 }
 
 .ciaTable thead {
     display: table;
     table-layout: fixed;
     width: 100%;
+    outline: none;
 }
 
 .ciaTable tbody {
@@ -197,21 +223,50 @@
 }
 
 .informationCategories {
-    margin: 10px;
-    margin-left: 30px;
-
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 100%;
 }
 
 .informationCategoryTag {
     background-color:  #F06449;
     color: snow;
-    font-size: 14px;
+    height: calc(var(--vh, 1vh) * 6);
+    text-align: center;
+    font-size: 16px;
     font-weight: bolder;
     border-radius: 6px;
-    padding: 7px;
-    margin: 10px;
+}
+
+.informationCategoryTagEdit {
+    background-color:  #F06449;
+    color: snow;
+    height: calc(var(--vh, 1vh) * 6);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    border-radius: 6px;
 }
 
 .ciaButton {
     margin-left: 5px;
+}
+
+.removeButtonContainer {
+    display: flex;
+    align-items: center;
+}
+
+.removeButton{
+    background-color: red;
+    margin-left: 10px;
+    border-radius: 30px;
+    opacity: 0.7;
+}
+
+.removeButton:hover {
+    background-color: red;
+    border-radius: 30px;
+    opacity: 1;
 }

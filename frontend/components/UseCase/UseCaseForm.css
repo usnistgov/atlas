@@ -11,15 +11,25 @@
 .optionsBar {
     display: flex;
     position: relative;
-    height: 4%;
-    width: 100%;
+    height: calc(var(--vh, 1vh) * 8);
+    width: 99.5%;
     justify-content: left;
     align-items: center;
+    background-color: snow;
+    border-color: snow;
+    border-style: outset;
+    border-width: thick;
     border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.optionsBar h2 {
+    margin-left: 20px;
+    font-size: 26px;
+    text-align: center;
 }
 
 .backButton {
-    margin-top: 20px;
     margin-left: 10px;
 }
 
@@ -61,6 +71,15 @@
     border-radius: 15px;
 }
 
+.addButton {
+
+}
+
+.addButton:hover {
+    background-color: snow;
+    border-radius: 6px;
+}
+
 .useCaseBody {
 
     display: flex;
@@ -72,34 +91,31 @@
 }
 
 .headerFormat {
-    flex-direction: column;
-    max-height: 40%;
-    min-height: 40%;
-    max-width: 100%;
+    overflow: auto;
+    margin-top: 16px;
 }
 
 .nameInput {
-    margin-left: 20px;
-    font-size: 30px;
     font-weight: bolder;
-    border-bottom: 2px solid;
-    width: calc(var(--vw, 1vw) * 45);
+    width: 90%;
     line-height: normal;
     background-color: transparent;
     outline: none;
-    text-align: center;
     border-left: none;
     border-right: none;
     border-top: none;
+    border-bottom: none;
     -webkit-appearance: none;
+    margin-left: 10px;
+    font-size: 26px;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .descriptionInput {
-    margin-top: 30px;
     margin-left: 30px;
-    font-size: 16px;
-    height: calc(var(--vh, 1vh) * 35);
-    width: calc(var(--vw, 1vw) * 45);
+    font-size: 18px;
+    height: calc(var(--vh, 1vh) * 42);
+    width: calc(var(--vw, 1vw) * 50);
     line-height: normal;
     background-color: transparent;
     outline: none;
@@ -107,50 +123,58 @@
     overflowWrap: "break-word";
     overflow: auto;
     -webkit-appearance: none;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .informationTypes {
-    flex: 0 0 100%;
-    max-height: 100%;
-    min-height: 60%;
-    max-width: 100%;
+    width: 100%;
 }
 
 .sourceTitle {
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 30px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px double;
 }
 
 
 .sourceContainer {
     display: flex;
+    align-items: center;
+    height: calc(var(--vh, 1vh) * 4);
 }
 
 .sourceInput {
     width: 90%;
+    font-size: 16px;
     background-color: transparent;
     outline: none;
     text-align: center;
     border-left: none;
     border-right: none;
     border-top: none;
-    border-bottom: 2px double;
+    border-bottom: none;
     -webkit-appearance: none;
-    margin-bottom: 20px;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 
 .informationTypes h3 {
+    height: calc(var(--vh, 1vh) * 6);
+    margin-left: 20px;
+    padding-top: 10px;
     padding-left: 30px;
-    font-size: 24px;
+    align-items: center;
+    font-size: 22px;
+    background-color: snow;
+    border-color: snow;
+    border-style: outset;
+    border-width: thick;
+    border-radius: 15px;
 }
 
 .informationTypeTable {
 
+    display: table;
     background-color: black;
     color: snow;
     border-style: ridge;
@@ -158,8 +182,7 @@
     border-color: lightgrey;
     margin-left: 20px;
     margin-bottom: 20px;
-    width: calc(var(--vw, 1vw) * 50);
-    height: calc(var(--vh, 1vh) * 50);
+    height: calc(var(--vh, 1vh) * 45);
     border-radius: 15px;
     font-size: 100% 100%;
 }
@@ -173,7 +196,7 @@
 .informationTypeTable tbody {
     display: block;
     width: 100%;
-    max-height: calc(var(--vh, 1vh) * 45);
+    max-height: calc(var(--vh, 1vh) * 40);
     overflow: auto;
 }
 
@@ -186,12 +209,11 @@
 }
 
 .useCaseTables {
-    flex: 1 1 55%;
+    width: 45%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 30px;
     margin-right: 10px;
 }
 
@@ -206,7 +228,7 @@
     margin-left: 10px;
     margin-bottom: 15px;
     border-radius: 15px;
-    font-size: 100% 100%;
+    font-size: 100%;
 }
 
 .attrTable thead {

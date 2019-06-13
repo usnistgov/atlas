@@ -5,6 +5,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import NoteAdd from "@material-ui/icons/NoteAdd";
 import Description from "@material-ui/icons/Description";
 import Delete from "@material-ui/icons/Delete";
+import Check from "@material-ui/icons/Check";
+import Clear from "@material-ui/icons/Clear";
 
 type Props = {
     actors: object,
@@ -24,10 +26,19 @@ export default class Glossary extends Component<Props> {
     super(props);
 
     this.state = {
-        glossarySelection: "actors"
+        glossarySelection: "actors",
+        actors: [],
+        activities: [],
+        cybersecurity_threats: [],
+        disciplines: [],
+        locations: [],
+        responding_organizations: [],
+        information_categories: [],
+        technologies: []
     }
 
     this.onSelect = this.onSelect.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount(){
@@ -54,6 +65,44 @@ export default class Glossary extends Component<Props> {
 
   }
 
+  componentWillReceiveProps(newProps){
+     if(newProps != this.props){
+
+         this.setState(state => {
+
+            for(let key in newProps){
+                if(state.hasOwnProperty(key)){
+                    state[key] = newProps[key].map((entry) => {
+                        entry.isEditing = false;
+                        return(entry);
+                    });
+                }
+            }
+         });
+     }
+
+  }
+
+  addNewGlossaryEntry(category){
+
+    let newEntry = {
+        'id': '',
+        'name': '',
+        'description': '',
+        'isEditing': true
+    }
+
+    this.setState(state => {
+        return {
+            [category]: [...state[category], newEntry]
+        }
+    }, () => {
+        let catalogElement = document.getElementById("glossaryContainer");
+        catalogElement.scrollTop = catalogElement.scrollHeight;
+
+    });
+  }
+
   onSelect(value){
 
     this.setState(state => {
@@ -61,6 +110,190 @@ export default class Glossary extends Component<Props> {
             glossarySelection: value
         }
     });
+  }
+
+  partialUpdate(category){
+
+    const {
+        getActivities,
+        getActors,
+        getCyberSecurityThreats,
+        getDisciplines,
+        getRespondingOrganizations,
+        getTechnologies,
+        getInformationCategories,
+        getLocations
+         } = this.props;
+
+    switch(category){
+        case "activities":
+            getActivities();
+            break;
+        case "actors":
+            getActors();
+            break;
+        case "cybersecurity_threats":
+            getCyberSecurityThreats();
+            break;
+        case "disciplines":
+            getDisciplines();
+            break;
+        case "responding_organizations":
+            getRespondingOrganizations();
+            break;
+        case "technologies":
+            getTechnologies();
+            break;
+        case "information_categories":
+            getInformationCategories();
+            break;
+        case "locations":
+            getLocations();
+            break;
+    }
+  }
+
+  onChange(category, label, value, glossaryEntry){
+
+    this.setState(state => {
+
+        let entry = state[category].find(x => x.id === glossaryEntry.id);
+        entry[label] = value;
+
+        return {
+            entry
+        }
+    });
+  }
+
+  startEditor(category, glossaryEntry){
+
+    this.setState(state => {
+
+        let entry = state[category].find(x => x.id === glossaryEntry.id);
+        entry.isEditing = true;
+
+        return {
+            entry
+        }
+    });
+  }
+
+  stopEditor(category, glossaryEntry){
+
+    this.setState(state => {
+
+        let entry = state[category].find(x => x.id === glossaryEntry.id);
+        entry.isEditing = false;
+
+        return {
+            entry
+        }
+    }, () => this.partialUpdate(category));
+  }
+
+  saveChanges(category, entry){
+
+    if(entry.name !== ''){
+        if(entry.id === ''){
+            switch(category){
+                case "activities":
+                    this.props.createActivity(entry);
+                    break;
+                case "actors":
+                    this.props.createActor(entry);
+                    break;
+                case "cybersecurity_threats":
+                    this.props.createCyberSecurityThreat(entry);
+                    break;
+                case "disciplines":
+                    this.props.createDiscipline(entry);
+                    break;
+                case "responding_organizations":
+                    this.props.createRespondingOrganization(entry);
+                    break;
+                case "technologies":
+                    this.props.createTechnology(entry);
+                    break;
+                case "information_categories":
+                    this.props.createInformationCategory(entry);
+                    break;
+                case "locations":
+                    this.props.createLocation(entry);
+                    break;
+            }
+
+        } else {
+            switch(category){
+                case "activities":
+                    this.props.updateActivity(entry);
+                    break;
+                case "actors":
+                    this.props.updateActor(entry);
+                    break;
+                case "cybersecurity_threats":
+                    this.props.updateCyberSecurityThreat(entry);
+                    break;
+                case "disciplines":
+                    this.props.updateDiscipline(entry);
+                    break;
+                case "responding_organizations":
+                    this.props.updateRespondingOrganization(entry);
+                    break;
+                case "technologies":
+                    this.props.updateTechnology(entry);
+                    break;
+                case "information_categories":
+                    this.props.updateInformationCategory(entry);
+                    break;
+                case "locations":
+                    this.props.updateLocation(entry);
+                    break;
+            }
+        }
+
+        this.stopEditor(category, entry);
+        this.partialUpdate(category);
+
+    } else {
+        alert("Glossary Entry must Have a Name to be Saved !!!");
+    }
+  }
+
+  deleteGlossaryEntry(category, entry){
+
+    let deleteConfirm = confirm("Are You Sure You Want to Delete This Glossary Entry?");
+    if(deleteConfirm){
+
+        switch(category){
+                case "activities":
+                    this.props.deleteActivity(entry);
+                    break;
+                case "actors":
+                    this.props.deleteActor(entry);
+                    break;
+                case "cybersecurity_threats":
+                    this.props.deleteCyberSecurityThreat(entry);
+                    break;
+                case "disciplines":
+                    this.props.deleteDiscipline(entry);
+                    break;
+                case "responding_organizations":
+                    this.props.deleteRespondingOrganization(entry);
+                    break;
+                case "technologies":
+                    this.props.deleteTechnology(entry);
+                    break;
+                case "information_categories":
+                    this.props.deleteInformationCategory(entry);
+                    break;
+                case "locations":
+                    this.props.deleteLocation(entry);
+                    break;
+            }
+
+        this.partialUpdate(category, entry)
+    }
   }
 
   render(){
@@ -82,6 +315,7 @@ export default class Glossary extends Component<Props> {
     let selectionComponent = Object.entries(selectionOptions).map((option) => {
         return (
                 <Button
+                    key={option[1]}
                     className={this.state.glossarySelection === option[0] ? styles.selectedButton : styles.notSelectedButton}
                     variant="primary"
                     value={option[0]}
@@ -93,8 +327,8 @@ export default class Glossary extends Component<Props> {
         )
     });
 
-    let glossaryComponent = this.props[glossarySelection].map((entry) => {
-        return (
+    let glossaryComponent = this.state[glossarySelection].map((entry) => {
+        let cleanView =  (
             <div className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <h3>{entry.name}</h3>
@@ -102,14 +336,14 @@ export default class Glossary extends Component<Props> {
                         <Description
                             className={styles.editButton}
                             style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => { this.startEditor(information_type)}}
+                            onClick={() => { this.startEditor(glossarySelection, entry)}}
                         />
                     </Tooltip>
                     <Tooltip title="Delete">
                         <Delete
                             className={styles.deleteButton}
                             style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => {} }
+                            onClick={() => { this.deleteGlossaryEntry(glossarySelection, entry)} }
                         />
                     </Tooltip>
                 </div>
@@ -118,6 +352,44 @@ export default class Glossary extends Component<Props> {
                 </div>
             </div>
         )
+
+        let editView =  (
+            <div className={styles.glossaryEntryView}>
+                <div className={styles.optionsBar}>
+                    <input
+                        label="name"
+                        className={styles.nameInput}
+                        type="text"
+                        onChange={(e) => {this.onChange(glossarySelection, "name", e.target.value, entry)}}
+                        value={entry.name}>
+                    </input>
+                    <Tooltip title="Save">
+                        <Check
+                            className={styles.saveButton}
+                            style={{"color": "green", "height": "40px", "width": "50px"}}
+                            onClick={() => {this.saveChanges(glossarySelection, entry)}}
+                        />
+                    </Tooltip>
+                    <Tooltip title="Cancel">
+                        <Clear
+                            className={styles.clearButton}
+                            style={{"color": "#F06449", "height": "40px", "width": "40px"}}
+                            onClick={() => this.stopEditor(glossarySelection, entry)}
+                    />
+                    </Tooltip>
+                </div>
+                <div className={styles.descriptionContainer}>
+                    <textarea
+                            label="description"
+                            className={styles.descriptionInput}
+                            onChange={(e) => this.onChange(glossarySelection, "description", e.target.value, entry)}
+                            value={entry.description}>
+                          </textarea>
+                </div>
+            </div>
+        )
+
+        return(entry.isEditing ? editView: cleanView);
     })
 
     return (
@@ -130,10 +402,11 @@ export default class Glossary extends Component<Props> {
                             <NoteAdd
                                 className={styles.addButton}
                                 style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                                onClick={() => this.addNewGlossaryEntry(glossarySelection)}
                             />
                  </Tooltip>
             </div>
-            <div className={styles.glossaryContainer}>
+            <div id="glossaryContainer" className={styles.glossaryContainer}>
                 {glossaryComponent}
             </div>
         </div>

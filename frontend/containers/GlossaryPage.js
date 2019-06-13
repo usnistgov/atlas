@@ -2,13 +2,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Glossary from '../components/Glossary/Glossary';
-import * as UseCasesActions from '../actions/UseCases';
 import * as ActivitiesActions from '../actions/Activities';
 import * as ActorsActions from '../actions/Actors';
 import * as CyberSecurityThreatsActions from '../actions/CyberSecurityThreats';
 import * as DisciplinesActions from '../actions/Disciplines';
 import * as InformationCategoriesActions from '../actions/InformationCategories';
-import * as InformationTypesActions from '../actions/InformationTypes';
 import * as LocationsActions from '../actions/Locations';
 import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations';
 import * as TechnologiesActions from '../actions/Technologies';
@@ -27,13 +25,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Object.assign({}, UseCasesActions,
-                                              ActivitiesActions,
+  return bindActionCreators(Object.assign({}, ActivitiesActions,
                                               ActorsActions,
                                               CyberSecurityThreatsActions,
                                               DisciplinesActions,
                                               InformationCategoriesActions,
-                                              InformationTypesActions,
                                               LocationsActions,
                                               RespondingOrganizationsActions,
                                               TechnologiesActions), dispatch);

@@ -108,7 +108,7 @@ export default class UseCase extends Component<Props> {
     return(
         <Popup
             className={styles.addModal}
-            trigger={<Add style={{"color": "green", "height": "25px", "width": "25px"}} />}
+            trigger={<Add className={styles.addButton} style={{"color": "green", "height": "25px", "width": "25px"}} />}
             modal
             >
             {close => (
@@ -169,7 +169,7 @@ export default class UseCase extends Component<Props> {
         this.props.stopEditor();
     }
     else {
-        alert("Name and Description Must Not Be Empty to create a new Use Case")
+        alert("Name and Description Must Not Be Empty to Create a New Use Case")
         }
 
   }
@@ -233,10 +233,17 @@ export default class UseCase extends Component<Props> {
                 <Tooltip title="Back to Catalog">
                     <KeyboardBackspace
                         className={styles.backButton}
-                        style={{"color": "#F06449", "height": "60px", "width": "70px"}}
+                        style={{"color": "#F06449", "height": "50px", "width": "60px"}}
                         onClick={() => this.props.handleUseCaseClick(null)}
                     />
                 </Tooltip>
+                <input
+                    label="name"
+                    className={styles.nameInput}
+                    type="text"
+                    onChange={this.onChange}
+                    value={this.state.name}>
+                </input>
                 <div className={styles.saveButton} onClick={() => this.saveChanges()}>
                     <p>Save Changes</p>
                     <Check style={{"height": "50px", "width": "60px"}} />
@@ -257,13 +264,6 @@ export default class UseCase extends Component<Props> {
             <div className={styles.useCaseBody}>
                 <div className={styles.useCaseInfo}>
                     <div className={styles.headerFormat}>
-                        <input
-                            label="name"
-                            className={styles.nameInput}
-                            type="text"
-                            onChange={this.onChange}
-                            value={this.state.name}>
-                        </input>
                         <textarea
                             label="description"
                             className={styles.descriptionInput}
@@ -287,7 +287,7 @@ export default class UseCase extends Component<Props> {
                             classes={styles.informationTypeTable}
                             data={use_case_information_types}
                             columns={[
-                                {dataField: "_id", text: "ID", hidden: true},
+                                {dataField: "id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()},
@@ -303,7 +303,7 @@ export default class UseCase extends Component<Props> {
                         rowStyle={this.props.getRowStyle}
                         cellEdit={ cellEditFactory({ mode: "dbclick" }) }
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -316,7 +316,7 @@ export default class UseCase extends Component<Props> {
                         data={use_case_actors}
                         columns = {
                             [
-                            {   dataField: "_id",
+                            {   dataField: "id",
                                 text: "ID",
                                 hidden: true
                             },
@@ -337,7 +337,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -346,7 +346,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_cybersecurity_threats}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Cybersecurity Threats", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -360,7 +360,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -369,7 +369,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_disciplines}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Disciplines", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -383,7 +383,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -392,7 +392,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_responding_organizations}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Responding Organizations", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -406,7 +406,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -415,7 +415,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_activities}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Activities", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -429,7 +429,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -438,7 +438,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_technologies}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Technologies", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -452,7 +452,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>
@@ -461,7 +461,7 @@ export default class UseCase extends Component<Props> {
                         classes={styles.attrTable}
                         data={use_case_locations}
                         columns={[
-                            {dataField: "_id", text: "ID", hidden: true},
+                            {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Locations", headerStyle: this.props.getHeaderStyle()},
                             {   isDummyField: true,
                                 editable: false,
@@ -475,7 +475,7 @@ export default class UseCase extends Component<Props> {
                             ]}
                         rowStyle={this.props.getRowStyle}
                         noDataIndication={noDataIndication}
-                        keyField="_id"
+                        keyField="id"
                         striped
                         hover
                         condensed>

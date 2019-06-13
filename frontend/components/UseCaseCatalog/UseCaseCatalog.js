@@ -30,6 +30,8 @@ const noDataIndication = () => (
     </div>
 );
 
+var savedScrollTop;
+
 export default class UseCaseCatalog extends Component<Props> {
   props: Props;
 
@@ -76,14 +78,8 @@ export default class UseCaseCatalog extends Component<Props> {
 
   }
 
-  shouldComponentUpdate(nextState, nextProps){
-    if(!equal(nextProps, this.props)){
-        return(true)
-    }
-    if(!equal(nextState, this.state)){
-        return(true);
-    }
-    return(false);
+  componentDidUpdate(){
+    this.setSearchOptions();
   }
 
   setSearchOptions(){
@@ -237,13 +233,14 @@ export default class UseCaseCatalog extends Component<Props> {
 
         if(use_case === null){
             isEditing = false;
+
         }
 
         return {
             useCaseSelection: use_case,
             isEditing: isEditing
         }
-    }, () => getUseCases(this.state));
+    });
   }
 
   startEditor(){
@@ -267,7 +264,7 @@ export default class UseCaseCatalog extends Component<Props> {
         });
   }
 
-  render(){
+  getCatalogView(){
 
     const { use_cases,
             actors,
@@ -280,17 +277,7 @@ export default class UseCaseCatalog extends Component<Props> {
             information_types,
             locations } = this.props;
 
-    const {
-        selectedOption,
-        useCaseSelection,
-        isEditing
-    } = this.state;
-
-    if(use_cases !== undefined){
-
-        this.setSearchOptions();
-
-        let catalogView = use_cases.map((use_case) => {
+    let catalogView = use_cases.map((use_case) => {
 
             let use_case_actors = use_case['actors'].map((entry_id) => {
                 let entry = actors.find(entry => entry.id == entry_id)
@@ -306,6 +293,7 @@ export default class UseCaseCatalog extends Component<Props> {
                 let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
                 return(entry)
             });
+
             let use_case_disciplines = use_case['disciplines'].map((entry_id) => {
                 let entry = disciplines.find(entry => entry.id == entry_id)
                 return(entry)
@@ -340,123 +328,150 @@ export default class UseCaseCatalog extends Component<Props> {
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_actors}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_information_types}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Information Types', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Information Types', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_cybersecurity_threats}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_disciplines}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_responding_organizations}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_technologies}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_activities}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
                             data={use_case_locations}
-                            columns={[{dataField: "_id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.getHeaderStyle()}]}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
                             noDataIndication={noDataIndication}
-                            keyField="_id">
+                            keyField="id">
                         </BootstrapTable>
                     </div>
                 </div>
             )
-
         });
 
-        let UseCaseView =
-                <UseCasePage
-                    handleUseCaseClick={this.handleUseCaseClick}
-                    getHeaderStyle={this.getHeaderStyle}
-                    getRowStyle={this.getRowStyle}
-                    startEditor={this.startEditor}
-                    stopEditor={this.stopEditor}
-                    use_case={useCaseSelection}
-                    />
+        return(catalogView)
+  }
 
-        let editorView =
-                <UseCaseFormPage
-                    handleUseCaseClick={this.handleUseCaseClick}
-                    getHeaderStyle={this.getHeaderStyle}
-                    getRowStyle={this.getRowStyle}
-                    startEditor={this.startEditor}
-                    stopEditor={this.stopEditor}
-                    use_case={useCaseSelection} />
+  getUseCaseView(){
 
-        return(
-            <div className={styles.componentBody}>
-                <div className={styles.catalogContainer}>
-                    <div className={styles.searchContainer}>
-                        <Select
-                            isMulti
-                            className={styles.searchBar}
-                            value={selectedOption}
-                            options={searchOptions}
-                            onChange={(e) => this.handleSearch(e)}
-                            placeholder="Search Use Cases ..."
-                        />
-                        <Tooltip title="Add New Use Case">
-                            <NoteAdd
-                                className={styles.addButton}
-                                style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
-                                onClick={() => this.createNewUseCase()}
-                            />
-                        </Tooltip>
-                    </div>
-                </div>
-                <div className={styles.useCasesContainer}>
-                    {useCaseSelection === null ? catalogView: isEditing ? editorView : UseCaseView}
-                </div>
-            </div>
-         )
+
+
+    return(
+        <UseCasePage
+            handleUseCaseClick={this.handleUseCaseClick}
+            getHeaderStyle={this.getHeaderStyle}
+            getRowStyle={this.getRowStyle}
+            startEditor={this.startEditor}
+            stopEditor={this.stopEditor}
+            use_case={this.state.useCaseSelection}
+         />
+     )
+  }
+
+  getEditView(){
+
+    return(
+        <UseCaseFormPage
+            handleUseCaseClick={this.handleUseCaseClick}
+            getHeaderStyle={this.getHeaderStyle}
+            getRowStyle={this.getRowStyle}
+            startEditor={this.startEditor}
+            stopEditor={this.stopEditor}
+            use_case={this.state.useCaseSelection} />
+    )
+  }
+
+
+  render(){
+
+    const {
+        selectedOption,
+        useCaseSelection,
+        isEditing
+    } = this.state;
+
+    let currentView;
+    this.catalogElement = document.getElementById("UseCaseCatalog");
+
+    if(useCaseSelection === null){
+        currentView = this.getCatalogView()
+
     } else {
 
-        return(
-            <div className={styles.componentBody}></div>
-        )
+        currentView = isEditing ? this.getEditView() : this.getUseCaseView();
+        this.catalogElement.scrollTop = 0;
     }
+
+    return(
+        <div className={styles.componentBody}>
+            <div className={styles.catalogContainer}>
+                <div className={styles.searchContainer}>
+                    <Select
+                        isMulti
+                        className={styles.searchBar}
+                        value={selectedOption}
+                        options={searchOptions}
+                        onChange={(e) => this.handleSearch(e)}
+                        placeholder="Search Use Cases ..."
+                    />
+                    <Tooltip title="Add New Use Case">
+                        <NoteAdd
+                            className={styles.addButton}
+                            style={{'color': 'snow', 'height': '50px', 'width': '40px'}}
+                            onClick={() => this.createNewUseCase()}
+                        />
+                    </Tooltip>
+                </div>
+            </div>
+            <div id="UseCaseCatalog" className={styles.useCasesContainer}>
+                {currentView}
+            </div>
+        </div>
+         )
   }
  }
