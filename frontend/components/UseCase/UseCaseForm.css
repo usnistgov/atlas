@@ -121,6 +121,7 @@
     display: flex;
     align-items: center;
     height: calc(var(--vh, 1vh) * 4);
+    margin-bottom: 18px;
 }
 
 .sourceInput {
@@ -137,19 +138,26 @@
     font-family: Verdana, Geneva, sans-serif;
 }
 
+.informationTypesTitle {
 
-.informationTypes h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: calc(var(--vh, 1vh) * 6);
     margin-left: 20px;
-    padding-top: 10px;
-    padding-left: 30px;
-    align-items: center;
-    font-size: 22px;
+    margin-bottom: 10px;
     background-color: snow;
     border-color: snow;
     border-style: outset;
     border-width: thick;
     border-radius: 15px;
+
+}
+
+.informationTypes h3 {
+
+    padding-left: 30px;
+    font-size: 22px;
 }
 
 .informationTypeTable {

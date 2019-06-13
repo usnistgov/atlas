@@ -285,7 +285,7 @@ export default class UseCase extends Component<Props> {
                                     value={this.state.source}>
                             </input>
                         </div>
-                        <h3>Information Types</h3>
+                        <div className={styles.informationTypesTitle}><h3>Information Types</h3></div>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
                             data={use_case_information_types}
