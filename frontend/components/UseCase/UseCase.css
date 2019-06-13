@@ -10,7 +10,6 @@
 
 .optionsBar {
     display: flex;
-    position: relative;
     height: calc(var(--vh, 1vh) * 8);
     width: 99.5%;
     justify-content: left;
@@ -27,6 +26,7 @@
     margin-left: 20px;
     font-size: 26px;
     text-align: center;
+    width: 90%;
 }
 
 .backButton {
@@ -39,9 +39,6 @@
 }
 
 .editButton {
-    position: absolute;
-    top: 0px;
-    right: 60px;
 }
 
 .editButton:hover {
@@ -50,10 +47,8 @@
 }
 
 .deleteButton {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .deleteButton:hover {

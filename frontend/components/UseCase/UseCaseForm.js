@@ -244,14 +244,17 @@ export default class UseCase extends Component<Props> {
                     onChange={this.onChange}
                     value={this.state.name}>
                 </input>
-                <div className={styles.saveButton} onClick={() => this.saveChanges()}>
-                    <p>Save Changes</p>
-                    <Check style={{"height": "50px", "width": "60px"}} />
-                </div>
+                <Tooltip title="Save">
+                        <Check
+                            className={styles.saveButton}
+                            style={{"color": "green", "height": "40px", "width": "50px"}}
+                            onClick={() => this.saveChanges()}
+                        />
+                    </Tooltip>
                 <Tooltip title="Cancel">
                     <Clear
                         className={styles.clearButton}
-                        style={{"color": "#F06449", "height": "50px", "width": "50px"}}
+                        style={{"color": "#F06449", "height": "40px", "width": "40px"}}
                         onClick={() => {
                             this.props.stopEditor();
                             if(this.state.name === "" || this.state.description === ""){

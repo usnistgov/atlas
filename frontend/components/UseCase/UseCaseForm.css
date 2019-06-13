@@ -10,7 +10,6 @@
 
 .optionsBar {
     display: flex;
-    position: relative;
     height: calc(var(--vh, 1vh) * 8);
     width: 99.5%;
     justify-content: left;
@@ -21,12 +20,6 @@
     border-width: thick;
     border-radius: 15px;
     margin-bottom: 15px;
-}
-
-.optionsBar h2 {
-    margin-left: 20px;
-    font-size: 26px;
-    text-align: center;
 }
 
 .backButton {
@@ -40,30 +33,16 @@
 
 .saveButton {
 
-    position: absolute;
-    top: 0px;
-    right: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-style: outset;
-    border-width: thick;
-    border-color: #EDE6E3;
-    background-color: lightgreen;
-    color: snow;
-    height: 40px;
-    padding-left: 10px;
 }
 
 .saveButton:hover {
-    background-color: green;
+    background-color: lightgreen;
+    border-radius: 15px;
 }
 
 .clearButton {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .clearButton:hover {
@@ -99,6 +78,7 @@
     font-weight: bolder;
     width: 90%;
     line-height: normal;
+    text-align: center;
     background-color: transparent;
     outline: none;
     border-left: none;
