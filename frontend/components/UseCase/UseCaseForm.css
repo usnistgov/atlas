@@ -145,7 +145,7 @@
     align-items: center;
     height: calc(var(--vh, 1vh) * 6);
     margin-left: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-color: snow;
     border-color: snow;
     border-style: outset;

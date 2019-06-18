@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './UseCaseCatalog.css';
 import ReactJson from 'react-json-view';
 import BootstrapTable  from 'react-bootstrap-table-next';
-import Select from 'react-select';
+import Select, { components, makeAnimated } from 'react-select';
 import UseCasePage from '../../containers/UseCasePage';
 import UseCaseFormPage from '../../containers/UseCaseFormPage';
 import NoteAdd from "@material-ui/icons/NoteAdd";
@@ -10,6 +10,61 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 var equal = require('fast-deep-equal');
 var searchOptions = [];
+
+const multiValueStyle = {
+     multiValue: (base, { data }) => {
+
+        let searchColor = '#F06449';
+
+        switch(data.searchOption){
+            case "or":
+                searchColor = "lightgreen";
+                break;
+            case "not":
+                searchColor = "red";
+                break;
+            case "not or":
+                searchColor = "purple"
+                break;
+        }
+
+        return {
+            ...base,
+            backgroundColor: searchColor,
+            height: '5vh',
+            alignItems: 'center',
+            justifyContent: 'center',
+            lineHeight: 'normal',
+            borderRadius: '15px',
+            opacity: '0.7',
+            ':hover': {
+                opacity: '1'
+            }
+        }
+     },
+     multiValueLabel: (base, { data }) => {
+        return {
+            ...base,
+            color: 'snow',
+            fontWeight: 'bolder'
+            }
+     },
+     multiValueRemove: (base, { data }) => {
+        return {
+            ...base,
+            color: 'snow',
+            height: '30px',
+            width: '30px',
+            borderRadius: '15px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ':hover': {
+                backgroundColor: '#F06449',
+                color: 'white',
+            }
+        }
+     }
+};
 
 type Props = {
     use_cases: object,
@@ -44,11 +99,27 @@ export default class UseCaseCatalog extends Component<Props> {
         isEditing: false
     };
 
+    this.multiValue = props => {
+
+        let labelProps = {'children': props['children']}
+
+        return (
+            <components.MultiValue {...props}
+                style={props.getStyles('multiValue', props)}
+            >
+                <components.MultiValueLabel
+                    {...labelProps}
+                    onClick={() => this.handleSearchOptionClick(props.data)}
+                />
+            </components.MultiValue>
+        );
+    };
+
     this.handleSearch = this.handleSearch.bind(this);
     this.handleUseCaseClick = this.handleUseCaseClick.bind(this);
     this.startEditor = this.startEditor.bind(this);
     this.stopEditor = this.stopEditor.bind(this);
-
+    this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
   }
 
   componentDidMount(){
@@ -85,39 +156,39 @@ export default class UseCaseCatalog extends Component<Props> {
   setSearchOptions(){
 
     let actorOptions = this.props.actors.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "actors"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "actors", "searchOption": "and"});
      });
 
     let activitiesOptions = this.props.activities.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "activities"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "activities", "searchOption": "and"});
     });
 
     let cyberOptions = this.props.cybersecurity_threats.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "cybersecurity_threats"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "cybersecurity_threats", "searchOption": "and"});
     });
 
     let disciplineOptions = this.props.disciplines.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "disciplines"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "disciplines", "searchOption": "and"});
     });
 
     let respondingOptions = this.props.responding_organizations.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "responding_organizations"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "responding_organizations", "searchOption": "and"});
     });
 
     let technologiesOptions = this.props.technologies.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "technologies"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "technologies", "searchOption": "and"});
     });
 
     let informationTypeOptions = this.props.information_types.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "information_types"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "information_types", "searchOption": "and"});
     });
 
     let locationOptions = this.props.locations.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "locations"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "locations", "searchOption": "and"});
     });
 
     let useCaseNames = this.props.use_cases.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "name"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "name", "searchOption": "and"});
     });
 
     searchOptions = [
@@ -262,6 +333,36 @@ export default class UseCaseCatalog extends Component<Props> {
             isEditing: false
             }
         });
+  }
+
+  handleSearchOptionClick(option){
+
+    this.setState(state => {
+        let optionToChange = state.selectedOption.filter(x => x.group === option.group);
+
+        let groupOption = optionToChange[0].searchOption;
+
+        for(let entry in optionToChange){
+            switch(groupOption){
+                case "and":
+                    optionToChange[entry]['searchOption'] = "or";
+                    break;
+                case "or":
+                    optionToChange[entry]['searchOption'] = "not";
+                    break;
+                case "not":
+                    optionToChange[entry]['searchOption'] = "not or";
+                    break;
+                case "not or":
+                    optionToChange[entry]['searchOption'] = "and";
+                    break;
+            }
+        }
+
+        return {
+            optionToChange
+        }
+    }, () => this.props.getUseCases(this.state.selectedOption));
   }
 
   getCatalogView(){
@@ -435,6 +536,9 @@ export default class UseCaseCatalog extends Component<Props> {
         isEditing
     } = this.state;
 
+    this.setSearchOptions();
+    const animatedComponents = makeAnimated({ MultiValue: this.multiValue });
+
     let currentView;
     this.catalogElement = document.getElementById("UseCaseCatalog");
 
@@ -453,7 +557,10 @@ export default class UseCaseCatalog extends Component<Props> {
                 <div className={styles.searchContainer}>
                     <Select
                         isMulti
+                        components={animatedComponents}
+                        styles={multiValueStyle}
                         className={styles.searchBar}
+                        classNamePrefix={styles.searchBar}
                         value={selectedOption}
                         options={searchOptions}
                         onChange={(e) => this.handleSearch(e)}

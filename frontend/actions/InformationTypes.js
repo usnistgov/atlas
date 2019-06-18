@@ -30,42 +30,66 @@ export const getInformationTypes = (state) => {
     let triadRating = {};
     let searchString = "";
 
-    if(state !== undefined){
-
+    if(state !== null && state !== undefined){
 
         state.map((entry) => {
 
             let group = entry.group;
             let value = entry.value;
-
-            if(group === "triad_rating" && value !== null){
-                let values = value.split('-');
-                let triadOption = {[values[0]]: values[1]};
-                triadRating = {...triadRating, ...triadOption};
-            }
+            let searchOption = entry.searchOption;
 
             if(!(group in searchObject)){
-                let option = {[group]: [value]};
+                let option = {
+                    [group]: {'values': [value], 'searchOption': searchOption}
+                    }
                 searchObject = {...searchObject, ...option};
             } else {
-                searchObject[group].push(value);
+                searchObject[group]['values'].push(value);
             }
         });
 
         Object.entries(searchObject).forEach((searchItem, key, arr) => {
 
             if(searchItem[0] === "triad_rating"){
-                searchString = searchItem[0] + "=" + JSON.stringify(triadRating);
+                if(searchItem[1]['values'][0] !== null){
+
+                    let valueList = searchItem[1]['values'];
+
+                    for(let entry in valueList){
+                        let values = valueList[entry].split('-');
+                        let triadOption = {
+                            [values[0]]: values[1]
+                         };
+                        triadRating = {...triadRating, ...triadOption};
+                    }
+                    searchString = searchItem[0] + "=" + JSON.stringify(triadRating);
+                }
 
             } else {
 
-                searchString += searchItem[0] + "=" + searchItem[1].join();
+                searchString += searchItem[0] + "=" + searchItem[1]['values'].join();
              }
 
-             if (!(Object.is(arr.length - 1, key))) {
+            switch(searchItem[1]['searchOption']){
+                case "and":
+                    break;
+                case "or":
+                    searchString += "[or]";
+                    break;
+                case "not":
+                    searchString += "[not]";
+                    break;
+                case "not or":
+                    searchString += "[not or]";
+                    break;
+            }
+
+            if (!(Object.is(arr.length - 1, key))) {
                 searchString += "&&"
              }
         });
+
+        //console.log(searchString);
     }
 
     return dispatch => {

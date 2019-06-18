@@ -36,17 +36,34 @@ export const getUseCases = (state) => {
 
             let group = entry.group;
             let value = entry.value;
+            let searchOption = entry.searchOption;
 
             if(!(group in searchObject)){
-                let option = {[group]: [value]};
+                let option = {
+                    [group]: {'values': [value], 'searchOption': searchOption}
+                    };
                 searchObject = {...searchObject, ...option};
             } else {
-                searchObject[group].push(value);
+                searchObject[group]['values'].push(value);
+                searchObject[group]['searchOption'] = searchOption;
             }
         });
 
         Object.entries(searchObject).forEach((searchItem, key, arr) => {
-            searchString += searchItem[0] + "=" + searchItem[1].join();
+            searchString += searchItem[0] + "=" + searchItem[1]['values'].join();
+
+            switch(searchItem[1]['searchOption']){
+                case "and":
+                    break;
+                case "or":
+                    searchString += "[or]";
+                    break;
+                case "not":
+                    searchString += "[not]";
+                case "not or":
+                    searchString += "[not or]";
+                    break;
+            }
 
              if (!(Object.is(arr.length - 1, key))) {
                 searchString += "&&"

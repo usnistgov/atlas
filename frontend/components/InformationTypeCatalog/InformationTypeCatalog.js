@@ -8,7 +8,7 @@ import { Button,
          DropdownButton,
          Dropdown,
          Modal } from 'react-bootstrap';
-import Select from 'react-select';
+import Select, { components, makeAnimated }  from 'react-select';
 import Tooltip from '@material-ui/core/Tooltip';
 import Description from "@material-ui/icons/Description";
 import Delete from "@material-ui/icons/Delete";
@@ -40,6 +40,61 @@ const headerStyle =
         borderRadius: '8px'
         }
 
+const multiValueStyle = {
+     multiValue: (base, { data }) => {
+
+        let searchColor = '#F06449';
+
+        switch(data.searchOption){
+            case "or":
+                searchColor = "lightgreen";
+                break;
+            case "not":
+                searchColor = "red";
+                break;
+            case "not or":
+                searchColor = "purple"
+                break;
+        }
+
+        return {
+            ...base,
+            backgroundColor: searchColor,
+            height: '5vh',
+            alignItems: 'center',
+            justifyContent: 'center',
+            lineHeight: 'normal',
+            borderRadius: '15px',
+            opacity: '0.7',
+            ':hover': {
+                opacity: '1'
+            }
+        }
+     },
+     multiValueLabel: (base, { data }) => {
+        return {
+            ...base,
+            color: 'snow',
+            fontWeight: 'bolder'
+            }
+     },
+     multiValueRemove: (base, { data }) => {
+        return {
+            ...base,
+            color: 'snow',
+            height: '30px',
+            width: '30px',
+            borderRadius: '15px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ':hover': {
+                backgroundColor: '#F06449',
+                color: 'white',
+            }
+        }
+     }
+};
+
 export default class InformationTypeCatalog extends Component<Props> {
   props: Props;
 
@@ -48,6 +103,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     this.state = {
         selectedOption: null,
+        latestAction: null,
         triad_rating: {
             'confidentiality': null,
             'integrity': null,
@@ -56,11 +112,31 @@ export default class InformationTypeCatalog extends Component<Props> {
         information_types: []
     }
 
+    this.multiValue = props => {
+
+        let labelProps = {'children': props['children']}
+
+        return (
+            <components.MultiValue {...props}
+                style={props.getStyles('multiValue', props)}
+            >
+                <components.MultiValueLabel
+                    {...labelProps}
+                    onClick={() => {
+                        this.handleSearch(props.data, {'action': "update_button_search_option"});
+                    }
+                    }
+                 />
+            </components.MultiValue>
+        );
+    };
+
     this.onChange = this.onChange.bind(this);
     this.startEditor = this.startEditor.bind(this);
     this.addNewInformationType = this.addNewInformationType.bind(this);
     this.saveChanges = this.saveChanges.bind(this);
     this.cancelChanges = this.cancelChanges.bind(this);
+    this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -92,25 +168,22 @@ export default class InformationTypeCatalog extends Component<Props> {
 
   }
 
-  componentDidUpdate(){
-    this.setSearchOptions();
-  }
+  buttonSearch(triad_key, value, action){
 
-  buttonSearch(triad_key, value){
-
-        return(
+       let buttonContainer = (
           <ToggleButtonGroup
                 type="radio"
                 name={triad_key}
                 value={value}
                 onChange={(e) => {
                     this.handleSearch(
-                        {"label": this.buttonSearch(triad_key, e),
+                       {
                         "group": "triad_rating",
                         "name": triad_key,
-                        "value": e
-                        }
-                        )
+                        "value": e,
+                        "searchOption": "and"
+                        },
+                        action);
                     }}
                 >
                 {triad_key}:
@@ -120,37 +193,41 @@ export default class InformationTypeCatalog extends Component<Props> {
             </ToggleButtonGroup>
             );
 
+       return(buttonContainer);
   }
 
   setSearchOptions(){
 
       let informationTypeNames = this.props.information_types.map((entry) => {
-        return({"value": entry.name,  "label": entry.name, "group": "name"});
+        return({"id" : entry.id, "value": entry.name,  "label": entry.name, "group": "name", "searchOption": "and"});
       });
 
       let informationCategoryOptions = this.props.information_categories.map((entry) => {
-        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "information_categories"});
+        return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "information_categories", "searchOption": "and"});
       });
 
 
       let CIAOptions = [
       {
-      "label": this.buttonSearch("confidentiality", null),
+      "label": this.buttonSearch("confidentiality", null, {'action': "add_button_search"}),
       "group": "triad_rating",
       "name": "confidentiality",
-      "value": this.state.triad_rating["confidentiality"]
+      "value": this.state.triad_rating["confidentiality"],
+      "searchOption": "and"
       },
       {
-      "label": this.buttonSearch("integrity", null),
+      "label": this.buttonSearch("integrity", null, {'action': "add_button_search"}),
       "group": "triad_rating",
       "name": "integrity",
-      "value": this.state.triad_rating["integrity"]
+      "value": this.state.triad_rating["integrity"],
+      "searchOption": "and"
       },
       {
-      "label": this.buttonSearch("availability", null),
+      "label": this.buttonSearch("availability", null, {'action': "add_button_search"}),
       "group": "triad_rating",
       "name": "availability",
-      "value": this.state.triad_rating["availability"]
+      "value": this.state.triad_rating["availability"],
+      "searchOption": "and"
       }
       ]
 
@@ -168,7 +245,6 @@ export default class InformationTypeCatalog extends Component<Props> {
         "options": informationTypeNames
         }
     ]
-
   }
 
   addNewInformationType(){
@@ -279,26 +355,83 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     if(option.group === "triad_rating"){
 
-        this.setState(state => {
-
-             let selectedOption = state.selectedOption;
-             let entryIndex = state.selectedOption.findIndex(x => x.name === option.name);
-             selectedOption[entryIndex].label = option.label;
-             selectedOption[entryIndex].value = option.value;
-
-             return {
-                selectedOption,
-                triad_rating: {...state.triad_rating, [option.name]: option.value}
-                }
-        }, () => getInformationTypes(this.state.selectedOption));
-
-    } else {
+        option.label = this.buttonSearch(option.name, option.value, {'action': "update_button_search_value"});
 
         this.setState(state => {
+
+            let entryIndex = state.selectedOption.findIndex(x => x.name === option.name);
+            state.selectedOption[entryIndex] = option;
+
             return {
-                selectedOption: option
+                selectedOption: state.selectedOption,
+                triad_rating: {...state.triad_rating, [option.name]: option.value},
+                latestAction: action.action
+            }
+        }, () => {
+
+                //console.log(action.action, this.state.latestAction);
+                if(action.action === "update_button_search_option" && this.state.latestAction === "update_button_search_option"){
+                    this.handleSearchOptionClick(option);
+                } else {
+                    this.props.getInformationTypes(this.state.selectedOption);
                 }
-            }, () => getInformationTypes(this.state.selectedOption));
+            });
+    } else {
+        this.setState(state => {
+
+            let newSearchOptions = option;
+
+            if(action.action === "update_button_search_option"){
+                newSearchOptions = state.selectedOption;
+                let entryIndex = newSearchOptions.findIndex(x => x.id === option.id);
+                newSearchOptions[entryIndex] = option;
+            }
+
+            return {
+                selectedOption: newSearchOptions,
+                latestAction: action.action
+            }
+        }, () => {
+                if(action.action === "update_button_search_option"){
+                    this.handleSearchOptionClick(option);
+                } else {
+                    this.props.getInformationTypes(this.state.selectedOption);
+                }
+            }
+        );
+    }
+  }
+
+  handleSearchOptionClick(option){
+
+    if(option.group !== "name"){
+        this.setState(state => {
+
+            let optionToChange = state.selectedOption.filter(x => x.group === option.group);
+
+            let groupOption = optionToChange[0].searchOption;
+
+            for(let entry in optionToChange){
+                switch(groupOption){
+                    case "and":
+                        optionToChange[entry]['searchOption'] = "or";
+                        break;
+                    case "or":
+                        optionToChange[entry]['searchOption'] = "not";
+                        break;
+                    case "not":
+                        optionToChange[entry]['searchOption'] = "not or";
+                        break;
+                    case "not or":
+                        optionToChange[entry]['searchOption'] = "and";
+                        break;
+                }
+            }
+
+            return {
+                optionToChange
+            }
+        }, () => this.props.getInformationTypes(this.state.selectedOption));
     }
   }
 
@@ -319,6 +452,10 @@ export default class InformationTypeCatalog extends Component<Props> {
     const {
         information_types
     } = this.state;
+
+    this.setSearchOptions();
+
+    const animatedComponents = makeAnimated({ MultiValue: this.multiValue });
 
     let informationTypesViewer = information_types.map((information_type) => {
 
@@ -582,7 +719,11 @@ export default class InformationTypeCatalog extends Component<Props> {
             <div className={styles.catalogContainer}>
                 <Select
                     isMulti
+                    closeOnSelect={true}
+                    components={animatedComponents}
+                    styles={multiValueStyle}
                     className={styles.searchBar}
+                    classNamePrefix={styles.searchBar}
                     value={this.state.selectedOption}
                     options={searchOptions}
                     onChange={(value, action) => {
