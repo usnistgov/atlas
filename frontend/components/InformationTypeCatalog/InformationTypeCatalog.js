@@ -120,6 +120,7 @@ export default class InformationTypeCatalog extends Component<Props> {
                 style={props.getStyles('multiValue', props)}
             >
                 <div onClick={() => {
+                        this.Select.state.menuIsOpen = false;
                         this.handleSearch(props.data, {'action': "update_button_search_option"});
                     }}>
                     <components.MultiValueLabel
@@ -717,6 +718,7 @@ export default class InformationTypeCatalog extends Component<Props> {
         <div className={styles.componentBody}>
             <div className={styles.catalogContainer}>
                 <Select
+                    ref={(ref) => this.Select = ref}
                     isMulti
                     closeOnSelect={true}
                     components={animatedComponents}

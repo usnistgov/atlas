@@ -106,7 +106,10 @@ export default class UseCaseCatalog extends Component<Props> {
             <components.MultiValue {...props}
                 style={props.getStyles('multiValue', props)}
             >
-                <div onClick={() => this.handleSearchOptionClick(props.data)}>
+                <div onClick={() => {
+                    this.Select.state.menuIsOpen = false;
+                    this.handleSearchOptionClick(props.data);
+                    }}>
                     <components.MultiValueLabel
                         {...labelProps}
                     />
@@ -556,6 +559,7 @@ export default class UseCaseCatalog extends Component<Props> {
             <div className={styles.catalogContainer}>
                 <div className={styles.searchContainer}>
                     <Select
+                        ref={(ref) => this.Select = ref}
                         isMulti
                         components={animatedComponents}
                         styles={multiValueStyle}
