@@ -60,7 +60,6 @@ const multiValueStyle = {
         return {
             ...base,
             backgroundColor: searchColor,
-            height: '5vh',
             alignItems: 'center',
             justifyContent: 'center',
             lineHeight: 'normal',

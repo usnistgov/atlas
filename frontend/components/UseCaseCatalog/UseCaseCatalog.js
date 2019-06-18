@@ -31,7 +31,6 @@ const multiValueStyle = {
         return {
             ...base,
             backgroundColor: searchColor,
-            height: '5vh',
             alignItems: 'center',
             justifyContent: 'center',
             lineHeight: 'normal',
@@ -337,32 +336,33 @@ export default class UseCaseCatalog extends Component<Props> {
 
   handleSearchOptionClick(option){
 
-    this.setState(state => {
-        let optionToChange = state.selectedOption.filter(x => x.group === option.group);
+    if(option.group !== "name"){
+        this.setState(state => {
+            let optionToChange = state.selectedOption.filter(x => x.group === option.group);
 
-        let groupOption = optionToChange[0].searchOption;
+            let groupOption = optionToChange[0].searchOption;
 
-        for(let entry in optionToChange){
-            switch(groupOption){
-                case "and":
-                    optionToChange[entry]['searchOption'] = "or";
-                    break;
-                case "or":
-                    optionToChange[entry]['searchOption'] = "not";
-                    break;
-                case "not":
-                    optionToChange[entry]['searchOption'] = "not or";
-                    break;
-                case "not or":
-                    optionToChange[entry]['searchOption'] = "and";
-                    break;
+            for(let entry in optionToChange){
+                switch(groupOption){
+                    case "and":
+                        optionToChange[entry]['searchOption'] = "or";
+                        break;
+                    case "or":
+                        optionToChange[entry]['searchOption'] = "not";
+                        break;
+                    case "not":
+                        optionToChange[entry]['searchOption'] = "not or";
+                        break;
+                    case "not or":
+                        optionToChange[entry]['searchOption'] = "and";
+                        break;
+                }
             }
-        }
-
-        return {
-            optionToChange
-        }
-    }, () => this.props.getUseCases(this.state.selectedOption));
+            return {
+                optionToChange
+            }
+        }, () => this.props.getUseCases(this.state.selectedOption));
+    }
   }
 
   getCatalogView(){
@@ -536,7 +536,6 @@ export default class UseCaseCatalog extends Component<Props> {
         isEditing
     } = this.state;
 
-    this.setSearchOptions();
     const animatedComponents = makeAnimated({ MultiValue: this.multiValue });
 
     let currentView;
