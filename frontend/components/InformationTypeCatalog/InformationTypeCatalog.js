@@ -119,13 +119,13 @@ export default class InformationTypeCatalog extends Component<Props> {
             <components.MultiValue {...props}
                 style={props.getStyles('multiValue', props)}
             >
-                <components.MultiValueLabel
-                    {...labelProps}
-                    onClick={() => {
+                <div onClick={() => {
                         this.handleSearch(props.data, {'action': "update_button_search_option"});
-                    }
-                    }
-                 />
+                    }}>
+                    <components.MultiValueLabel
+                        {...labelProps}
+                    />
+                 </div>
             </components.MultiValue>
         );
     };

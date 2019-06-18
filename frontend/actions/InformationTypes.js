@@ -51,11 +51,12 @@ export const getInformationTypes = (state) => {
         Object.entries(searchObject).forEach((searchItem, key, arr) => {
 
             if(searchItem[0] === "triad_rating"){
-                if(searchItem[1]['values'][0] !== null){
 
-                    let valueList = searchItem[1]['values'];
+                let valueList = searchItem[1]['values'];
 
-                    for(let entry in valueList){
+                for(let entry in valueList){
+
+                    if(valueList[entry] !== null){
                         let values = valueList[entry].split('-');
                         let triadOption = {
                             [values[0]]: values[1]

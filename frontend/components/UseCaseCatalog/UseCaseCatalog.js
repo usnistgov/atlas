@@ -106,10 +106,11 @@ export default class UseCaseCatalog extends Component<Props> {
             <components.MultiValue {...props}
                 style={props.getStyles('multiValue', props)}
             >
-                <components.MultiValueLabel
-                    {...labelProps}
-                    onClick={() => this.handleSearchOptionClick(props.data)}
-                />
+                <div onClick={() => this.handleSearchOptionClick(props.data)}>
+                    <components.MultiValueLabel
+                        {...labelProps}
+                    />
+                </div>
             </components.MultiValue>
         );
     };
