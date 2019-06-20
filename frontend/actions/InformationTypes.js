@@ -63,8 +63,9 @@ export const getInformationTypes = (state) => {
                          };
                         triadRating = {...triadRating, ...triadOption};
                     }
-                    searchString = searchItem[0] + "=" + JSON.stringify(triadRating);
                 }
+                
+                searchString += searchItem[0] + "=" + JSON.stringify(triadRating);
 
             } else {
 
