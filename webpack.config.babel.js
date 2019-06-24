@@ -1,14 +1,26 @@
 import path from 'path';
 import webpack from 'webpack';
+<<<<<<< HEAD
+import WriteFilePlugin from 'write-file-webpack-plugin';
+=======
 
 var BundleTracker = require('webpack-bundle-tracker');
 var ip = require('ip');
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+<<<<<<< HEAD
+const PUBLIC_PATH='/';
+const hotReload = process.env.HOT_RELOAD === '1';
+
+module.exports = {
+  context: __dirname,
+  entry: './frontend/index.js',
+=======
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
@@ -33,6 +45,7 @@ module.exports = {
             './frontend/index.js'
         ]
         },
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   module: {
         rules: [
             {
@@ -42,10 +55,24 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
+<<<<<<< HEAD
+                use: [
+                    {
+                    loader: 'babel-loader',
+                    options: {
+                       cacheDirectory: true
+                        }
+                    },
+                    {
+                    loader: 'react-hot-loader/webpack'
+                    }
+                ]
+=======
                 use: {
                     loader: 'babel-loader',
 
                 }
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
             },
             {
                 test: /\.global\.css$/,
@@ -179,6 +206,27 @@ module.exports = {
   },
 
   output: {
+<<<<<<< HEAD
+      filename: "[name]-[hash].js"
+
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new WriteFilePlugin(),
+    new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jQuery': 'jquery'
+        }),
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      options: {
+        alias: { 'react-dom': '@hot-loader/react-dom'  }
+        }
+    })
+  ],
+=======
       path: isDevelopment ? PUBLIC_PATH : path.resolve('.' + PUBLIC_PATH),
       filename: "[name]-[hash].js",
       publicPath: isDevelopment ? 'http://'+ HOST + ':'+ PORT + PUBLIC_PATH : '',
@@ -189,6 +237,7 @@ module.exports = {
     new BundleTracker({filename: './webpack-stats.json'}),
   ], // add all common plugins here
 
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -201,11 +250,17 @@ module.exports = {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
+<<<<<<< HEAD
+          name: 'Atlas_Project',
+=======
           name: 'main',
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
           chunks: 'all',
         },
       }
     }
+<<<<<<< HEAD
+=======
   },
 
   devtool: isDevelopment ? 'inline-source-map': false,
@@ -222,5 +277,6 @@ module.exports = {
     }
 
 
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   }
 }

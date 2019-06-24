@@ -361,7 +361,10 @@ export default class InformationTypeCatalog extends Component<Props> {
 
             let entryIndex = state.selectedOption.findIndex(x => x.name === option.name);
             state.selectedOption[entryIndex] = option;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
             return {
                 selectedOption: state.selectedOption,
                 triad_rating: {...state.triad_rating, [option.name]: option.value},
@@ -369,7 +372,10 @@ export default class InformationTypeCatalog extends Component<Props> {
             }
         }, () => {
 
+<<<<<<< HEAD
+=======
                 //console.log(action.action, this.state.latestAction);
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
                 if(action.action === "update_button_search_option" && this.state.latestAction === "update_button_search_option"){
                     this.handleSearchOptionClick(option);
                 } else {
@@ -431,8 +437,16 @@ export default class InformationTypeCatalog extends Component<Props> {
             return {
                 optionToChange
             }
+<<<<<<< HEAD
+        }, () => {
+            console.log(this.state.selectedOption);
+            this.props.getInformationTypes(this.state.selectedOption)
+            });
+        }
+=======
         }, () => this.props.getInformationTypes(this.state.selectedOption));
     }
+>>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   }
 
   getRowStyle(row, rowIdx){
