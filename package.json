@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start": "cross-env START_HOT=1 webpack-dev-server --mode development"
+    "start-dev": "cross-env NODE_ENV=development START_HOT=1 webpack-dev-server --config webpack.development.config.babel.js --progress --colors",
+    "start-prod": "cross-env NODE_ENV=production webpack --config webpack.production.config.babel.js --progress --colors"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -33,6 +34,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@hot-loader/react-dom": "^16.8.6",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "babel-cli": "^6.26.0",
@@ -65,7 +67,9 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-bundle-tracker": "^0.4.2-beta",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2",
+    "write-file-webpack-plugin": "^4.5.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^2.0.1",
