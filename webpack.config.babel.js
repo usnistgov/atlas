@@ -1,51 +1,17 @@
 import path from 'path';
 import webpack from 'webpack';
-<<<<<<< HEAD
 import WriteFilePlugin from 'write-file-webpack-plugin';
-=======
-
-var BundleTracker = require('webpack-bundle-tracker');
-var ip = require('ip');
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-<<<<<<< HEAD
 const PUBLIC_PATH='/';
 const hotReload = process.env.HOT_RELOAD === '1';
 
 module.exports = {
-  context: __dirname,
   entry: './frontend/index.js',
-=======
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const isProduction = (NODE_ENV === 'production');
-const isDevelopment = (NODE_ENV === 'development');
-const PORT = process.env.PORT || 3000;
-const HOST = isDevelopment ? 'localhost' : ip.address();
-
-const PUBLIC_PATH='/Atlas/static/bundles/local/';
-const hotReload = process.env.HOT_RELOAD === '1';
-
-module.exports = {
-  entry: {main: isDevelopment ?
-        [
-            'babel-polyfill',
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?' + 'http://' + HOST + ':' + PORT,
-            'webpack/hot/only-dev-server',
-            './frontend/index.js',
-        ]
-        :
-        [
-            'babel-polyfill',
-            './frontend/index.js'
-        ]
-        },
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   module: {
         rules: [
             {
@@ -55,7 +21,6 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-<<<<<<< HEAD
                 use: [
                     {
                     loader: 'babel-loader',
@@ -67,12 +32,6 @@ module.exports = {
                     loader: 'react-hot-loader/webpack'
                     }
                 ]
-=======
-                use: {
-                    loader: 'babel-loader',
-
-                }
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
             },
             {
                 test: /\.global\.css$/,
@@ -206,7 +165,6 @@ module.exports = {
   },
 
   output: {
-<<<<<<< HEAD
       filename: "[name]-[hash].js"
 
   },
@@ -226,18 +184,6 @@ module.exports = {
         }
     })
   ],
-=======
-      path: isDevelopment ? PUBLIC_PATH : path.resolve('.' + PUBLIC_PATH),
-      filename: "[name]-[hash].js",
-      publicPath: isDevelopment ? 'http://'+ HOST + ':'+ PORT + PUBLIC_PATH : '',
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new BundleTracker({filename: './webpack-stats.json'}),
-  ], // add all common plugins here
-
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -250,33 +196,10 @@ module.exports = {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-<<<<<<< HEAD
           name: 'Atlas_Project',
-=======
-          name: 'main',
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
           chunks: 'all',
         },
       }
     }
-<<<<<<< HEAD
-=======
-  },
-
-  devtool: isDevelopment ? 'inline-source-map': false,
-  devServer: {
-   port: PORT,
-   publicPath: PUBLIC_PATH,
-   hot: true,
-   inline: true,
-   historyApiFallback: true,
-   disableHostCheck: true,
-   compress:true,
-   headers: {
-      'Access-Control-Allow-Origin': '*',
-    }
-
-
->>>>>>> 05f6f64fd11b08e711b08523edc1e7c382d417b1
   }
 }
