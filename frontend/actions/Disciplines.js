@@ -27,16 +27,17 @@ export const DELETE_DISCIPLINE_FAILURE = "DELETE_DISCIPLINE_FAILURE";
 export const getDisciplines = () => {
 
     return dispatch => {
-
-        let url = 'api/Disciplines';
-        dispatch({'type': GET_DISCIPLINES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_DISCIPLINES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_DISCIPLINES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_DISCIPLINES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_DISCIPLINES_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/Disciplines';
+            dispatch({'type': GET_DISCIPLINES});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_DISCIPLINES_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_DISCIPLINES_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_DISCIPLINES_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_DISCIPLINES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +50,18 @@ export const updateDiscipline = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Disciplines';
-        dispatch({'type': PUT_DISCIPLINE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Disciplines';
+            dispatch({'type': PUT_DISCIPLINE})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(discipline)},
-            (json) => { dispatch({type: PUT_DISCIPLINE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_DISCIPLINE_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_DISCIPLINE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_DISCIPLINE_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(discipline)},
+                (json) => { dispatch({type: PUT_DISCIPLINE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_DISCIPLINE_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_DISCIPLINE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_DISCIPLINE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +73,18 @@ export const createDiscipline = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Disciplines';
-        dispatch({'type': POST_DISCIPLINE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Disciplines';
+            dispatch({'type': POST_DISCIPLINE})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(discipline)},
-            (json) => { dispatch({type: POST_DISCIPLINE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_DISCIPLINE_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_DISCIPLINE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_DISCIPLINE_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(discipline)},
+                (json) => { dispatch({type: POST_DISCIPLINE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_DISCIPLINE_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_DISCIPLINE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_DISCIPLINE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +95,17 @@ export const deleteDiscipline = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Disciplines';
-        dispatch({'type': DELETE_DISCIPLINE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Disciplines';
+            dispatch({'type': DELETE_DISCIPLINE})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(discipline)},
-            (json) => { dispatch({type: DELETE_DISCIPLINE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_DISCIPLINE_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_DISCIPLINE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_DISCIPLINE_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(discipline)},
+                (json) => { dispatch({type: DELETE_DISCIPLINE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_DISCIPLINE_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_DISCIPLINE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_DISCIPLINE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

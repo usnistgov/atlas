@@ -32,47 +32,61 @@ export const getInformationTypes = (state) => {
 
     if(state !== null && state !== undefined){
 
-        state.map((entry) => {
+        state.selectedOption.map((entry) => {
 
             let group = entry.group;
             let value = entry.value;
             let searchOption = entry.searchOption;
 
-            if(!(group in searchObject)){
-                let option = {
-                    [group]: {'values': [value], 'searchOption': searchOption}
-                    }
-                searchObject = {...searchObject, ...option};
-            } else {
-                searchObject[group]['values'].push(value);
+            if(group !== "triad_rating"){
+                if(!(group in searchObject)){
+                    let option = {
+                        [group]: {'values': [value], 'searchOption': searchOption}
+                        }
+                    searchObject = {...searchObject, ...option};
+                } else {
+                    searchObject[group]['values'].push(value);
+                }
             }
         });
 
-        Object.entries(searchObject).forEach((searchItem, key, arr) => {
+        Object.entries(state.triad_rating).forEach(([key, value]) => {
+            if(key !== "searchOption"){
+                if(value !== null){
+                    value = value.substring(value.indexOf('-') + 1)
 
-            if(searchItem[0] === "triad_rating"){
+                    triadRating = {...triadRating,
+                                    [key]: value};
 
-                let valueList = searchItem[1]['values'];
-
-                for(let entry in valueList){
-
-                    if(valueList[entry] !== null){
-                        let values = valueList[entry].split('-');
-                        let triadOption = {
-                            [values[0]]: values[1]
-                         };
-                        triadRating = {...triadRating, ...triadOption};
-                    }
+                    searchObject = {...searchObject,
+                            triad_rating: {
+                                ...searchObject.triad_rating,
+                                values: triadRating
+                            }
+                    };
                 }
-                
-                searchString += searchItem[0] + "=" + JSON.stringify(triadRating);
-
             } else {
+                searchObject = {...searchObject,
+                            triad_rating: {
+                                ...searchObject.triad_rating,
+                                searchOption: value
+                            }
+                }
+            }
+        });
 
-                searchString += searchItem[0] + "=" + searchItem[1]['values'].join();
-             }
 
-            switch(searchItem[1]['searchOption']){
+        Object.entries(searchObject).forEach(([group, entry], key, arr) => {
+
+            if(group === "triad_rating"){
+                if(Object.keys(entry).length > 1){
+                    searchString += group + "=" + JSON.stringify(entry['values'])
+                }
+            } else {
+                searchString += group + "=" + entry['values'].join();
+            }
+
+            switch(entry['searchOption']){
                 case "and":
                     break;
                 case "or":
@@ -90,29 +104,26 @@ export const getInformationTypes = (state) => {
                 searchString += "&&"
              }
         });
-
-        //console.log(searchString);
     }
 
     return dispatch => {
+        return new Promise((resolve, reject) => {
+            let url = "";
 
-         let url = "";
-
-        if(searchString !== ""){
-
-            url = 'api/InformationTypes?' + searchString;
-        } else {
-
-            url = 'api/InformationTypes';
-        }
-        dispatch({'type': GET_INFORMATION_TYPES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_INFORMATION_TYPES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_INFORMATION_TYPES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_INFORMATION_TYPES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_INFORMATION_TYPES_FAILURE, error: ex}) },
-        )
+            if(searchString !== ""){
+                url = 'api/InformationTypes?' + searchString;
+            } else {
+                url = 'api/InformationTypes';
+            }
+            dispatch({'type': GET_INFORMATION_TYPES});
+            resolve(request(
+                url, {},
+            (json) => { dispatch({type: GET_INFORMATION_TYPES_SUCCESS, res: json}) },
+            (json) => { dispatch({type: GET_INFORMATION_TYPES_ERROR400, res: json}) },
+            (res) => { dispatch({type: GET_INFORMATION_TYPES_ERROR500, res: res}) },
+            (ex) => { dispatch({type: GET_INFORMATION_TYPES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -127,16 +138,18 @@ export const updateInformationType = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationTypes';
-        dispatch({'type': PUT_INFORMATION_TYPE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationTypes';
+            dispatch({'type': PUT_INFORMATION_TYPE})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(information_type)},
-            (json) => { dispatch({type: PUT_INFORMATION_TYPE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_INFORMATION_TYPE_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_INFORMATION_TYPE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_INFORMATION_TYPE_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(information_type)},
+                (json) => { dispatch({type: PUT_INFORMATION_TYPE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_INFORMATION_TYPE_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_INFORMATION_TYPE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_INFORMATION_TYPE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -150,16 +163,19 @@ export const createInformationType = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationTypes';
-        dispatch({'type': POST_INFORMATION_TYPE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationTypes';
+            dispatch({'type': POST_INFORMATION_TYPE})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(information_type)},
-            (json) => { dispatch({type: POST_INFORMATION_TYPE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_INFORMATION_TYPE_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_INFORMATION_TYPE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_INFORMATION_TYPE_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(information_type)},
+                (json) => { dispatch({type: POST_INFORMATION_TYPE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_INFORMATION_TYPE_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_INFORMATION_TYPE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_INFORMATION_TYPE_FAILURE, error: ex}) },
+            ))
+
+       })
     }
 }
 
@@ -170,15 +186,17 @@ export const deleteInformationType = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationTypes';
-        dispatch({'type': DELETE_INFORMATION_TYPE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationTypes';
+            dispatch({'type': DELETE_INFORMATION_TYPE})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(information_type)},
-            (json) => { dispatch({type: DELETE_INFORMATION_TYPE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_INFORMATION_TYPE_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_INFORMATION_TYPE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_INFORMATION_TYPE_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(information_type)},
+                (json) => { dispatch({type: DELETE_INFORMATION_TYPE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_INFORMATION_TYPE_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_INFORMATION_TYPE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_INFORMATION_TYPE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

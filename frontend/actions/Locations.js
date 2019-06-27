@@ -27,16 +27,18 @@ export const DELETE_LOCATION_FAILURE = "DELETE_LOCATION_FAILURE";
 export const getLocations = () => {
 
     return dispatch => {
+        return new Promise((resolve, reject) => {
 
-        let url = 'api/Locations';
-        dispatch({'type': GET_LOCATIONS});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_LOCATIONS_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_LOCATIONS_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_LOCATIONS_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_LOCATIONS_FAILURE, error: ex}) },
-        )
+            let url = 'api/Locations';
+            dispatch({'type': GET_LOCATIONS});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_LOCATIONS_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_LOCATIONS_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_LOCATIONS_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_LOCATIONS_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +51,18 @@ export const updateLocation = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Locations';
-        dispatch({'type': PUT_LOCATION})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Locations';
+            dispatch({'type': PUT_LOCATION})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(location)},
-            (json) => { dispatch({type: PUT_LOCATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_LOCATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_LOCATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_LOCATION_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(location)},
+                (json) => { dispatch({type: PUT_LOCATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_LOCATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_LOCATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_LOCATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +74,18 @@ export const createLocation = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Locations';
-        dispatch({'type': POST_LOCATION})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Locations';
+            dispatch({'type': POST_LOCATION})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(location)},
-            (json) => { dispatch({type: POST_LOCATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_LOCATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_LOCATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_LOCATION_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(location)},
+                (json) => { dispatch({type: POST_LOCATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_LOCATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_LOCATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_LOCATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +96,17 @@ export const deleteLocation = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Locations';
-        dispatch({'type': DELETE_LOCATION})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Locations';
+            dispatch({'type': DELETE_LOCATION})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(location)},
-            (json) => { dispatch({type: DELETE_LOCATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_LOCATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_LOCATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_LOCATION_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(location)},
+                (json) => { dispatch({type: DELETE_LOCATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_LOCATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_LOCATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_LOCATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

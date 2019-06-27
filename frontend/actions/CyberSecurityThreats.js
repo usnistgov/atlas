@@ -27,16 +27,17 @@ export const DELETE_CYBERSECURITY_THREAT_FAILURE = "DELETE_CYBERSECURITY_THREAT_
 export const getCyberSecurityThreats = () => {
 
     return dispatch => {
-
-        let url = 'api/CyberSecurityThreats';
-        dispatch({'type': GET_CYBERSECURITY_THREATS});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_CYBERSECURITY_THREATS_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_CYBERSECURITY_THREATS_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_CYBERSECURITY_THREATS_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_CYBERSECURITY_THREATS_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/CyberSecurityThreats';
+            dispatch({'type': GET_CYBERSECURITY_THREATS});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_CYBERSECURITY_THREATS_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_CYBERSECURITY_THREATS_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_CYBERSECURITY_THREATS_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_CYBERSECURITY_THREATS_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +50,18 @@ export const updateCyberSecurityThreat = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/CyberSecurityThreats';
-        dispatch({'type': PUT_CYBERSECURITY_THREAT})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/CyberSecurityThreats';
+            dispatch({'type': PUT_CYBERSECURITY_THREAT})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(cybersecurity_threat)},
-            (json) => { dispatch({type: PUT_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_CYBERSECURITY_THREAT_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_CYBERSECURITY_THREAT_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(cybersecurity_threat)},
+                (json) => { dispatch({type: PUT_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_CYBERSECURITY_THREAT_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_CYBERSECURITY_THREAT_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +73,18 @@ export const createCyberSecurityThreat = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/CyberSecurityThreats';
-        dispatch({'type': POST_CYBERSECURITY_THREAT})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/CyberSecurityThreats';
+            dispatch({'type': POST_CYBERSECURITY_THREAT})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(cybersecurity_threat)},
-            (json) => { dispatch({type: POST_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_CYBERSECURITY_THREAT_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_CYBERSECURITY_THREAT_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(cybersecurity_threat)},
+                (json) => { dispatch({type: POST_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_CYBERSECURITY_THREAT_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_CYBERSECURITY_THREAT_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +95,17 @@ export const deleteCyberSecurityThreat = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/CyberSecurityThreats';
-        dispatch({'type': DELETE_CYBERSECURITY_THREAT})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/CyberSecurityThreats';
+            dispatch({'type': DELETE_CYBERSECURITY_THREAT})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(cybersecurity_threat)},
-            (json) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(cybersecurity_threat)},
+                (json) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_CYBERSECURITY_THREAT_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

@@ -44,8 +44,9 @@ export default class UseCase extends Component<Props> {
     let deleteConfirm = confirm("Are you sure you want to delete this Use Case?");
     if(deleteConfirm){
 
-        this.props.deleteUseCase(this.props.use_case);
-        this.props.handleUseCaseClick(null);
+        this.props.deleteUseCase(this.props.use_case).then(() => {
+              this.props.handleUseCaseClick(null);
+        });
     }
   }
 

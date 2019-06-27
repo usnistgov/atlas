@@ -27,16 +27,17 @@ export const DELETE_ACTIVITY_FAILURE = "DELETE_ACTIVITY_FAILURE";
 export const getActivities = () => {
 
     return dispatch => {
-
-        let url = 'api/Activities';
-        dispatch({'type': GET_ACTIVITIES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_ACTIVITIES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_ACTIVITIES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_ACTIVITIES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_ACTIVITIES_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/Activities';
+            dispatch({'type': GET_ACTIVITIES});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_ACTIVITIES_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_ACTIVITIES_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_ACTIVITIES_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_ACTIVITIES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +50,18 @@ export const updateActivity = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Activities';
-        dispatch({'type': PUT_ACTIVITY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Activities';
+            dispatch({'type': PUT_ACTIVITY})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(activity)},
-            (json) => { dispatch({type: PUT_ACTIVITY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_ACTIVITY_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_ACTIVITY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_ACTIVITY_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(activity)},
+                (json) => { dispatch({type: PUT_ACTIVITY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_ACTIVITY_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_ACTIVITY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_ACTIVITY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +73,18 @@ export const createActivity = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Activities';
-        dispatch({'type': POST_ACTIVITY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Activities';
+            dispatch({'type': POST_ACTIVITY})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(activity)},
-            (json) => { dispatch({type: POST_ACTIVITY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_ACTIVITY_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_ACTIVITY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_ACTIVITY_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(activity)},
+                (json) => { dispatch({type: POST_ACTIVITY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_ACTIVITY_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_ACTIVITY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_ACTIVITY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +95,17 @@ export const deleteActivity = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Activities';
-        dispatch({'type': DELETE_ACTIVITY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Activities';
+            dispatch({'type': DELETE_ACTIVITY})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(activity)},
-            (json) => { dispatch({type: DELETE_ACTIVITY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_ACTIVITY_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_ACTIVITY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_ACTIVITY_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(activity)},
+                (json) => { dispatch({type: DELETE_ACTIVITY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_ACTIVITY_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_ACTIVITY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_ACTIVITY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

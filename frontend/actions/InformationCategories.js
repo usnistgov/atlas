@@ -27,16 +27,17 @@ export const DELETE_INFORMATION_CATEGORY_FAILURE = "DELETE_INFORMATION_CATEGORY_
 export const getInformationCategories = () => {
 
     return dispatch => {
-
-        let url = 'api/InformationCategories';
-        dispatch({'type': GET_INFORMATION_CATEGORIES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_INFORMATION_CATEGORIES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_INFORMATION_CATEGORIES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_INFORMATION_CATEGORIES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_INFORMATION_CATEGORIES_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationCategories';
+            dispatch({'type': GET_INFORMATION_CATEGORIES});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_INFORMATION_CATEGORIES_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_INFORMATION_CATEGORIES_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_INFORMATION_CATEGORIES_ERROR500, res: res}) },
+            (ex) => { dispatch({type: GET_INFORMATION_CATEGORIES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +50,18 @@ export const updateInformationCategory = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationCategories';
-        dispatch({'type': PUT_INFORMATION_CATEGORY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationCategories';
+            dispatch({'type': PUT_INFORMATION_CATEGORY})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(information_category)},
-            (json) => { dispatch({type: PUT_INFORMATION_CATEGORY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_INFORMATION_CATEGORY_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_INFORMATION_CATEGORY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_INFORMATION_CATEGORY_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(information_category)},
+                (json) => { dispatch({type: PUT_INFORMATION_CATEGORY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_INFORMATION_CATEGORY_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_INFORMATION_CATEGORY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_INFORMATION_CATEGORY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +73,18 @@ export const createInformationCategory = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationCategories';
-        dispatch({'type': POST_INFORMATION_CATEGORY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationCategories';
+            dispatch({'type': POST_INFORMATION_CATEGORY})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(information_category)},
-            (json) => { dispatch({type: POST_INFORMATION_CATEGORY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_INFORMATION_CATEGORY_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_INFORMATION_CATEGORY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_INFORMATION_CATEGORY_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(information_category)},
+                (json) => { dispatch({type: POST_INFORMATION_CATEGORY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_INFORMATION_CATEGORY_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_INFORMATION_CATEGORY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_INFORMATION_CATEGORY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +95,17 @@ export const deleteInformationCategory = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/InformationCategories';
-        dispatch({'type': DELETE_INFORMATION_CATEGORY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/InformationCategories';
+            dispatch({'type': DELETE_INFORMATION_CATEGORY})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(information_category)},
-            (json) => { dispatch({type: DELETE_INFORMATION_CATEGORY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_INFORMATION_CATEGORY_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_INFORMATION_CATEGORY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_INFORMATION_CATEGORY_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(information_category)},
+                (json) => { dispatch({type: DELETE_INFORMATION_CATEGORY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_INFORMATION_CATEGORY_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_INFORMATION_CATEGORY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_INFORMATION_CATEGORY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

@@ -66,16 +66,20 @@ export default class Glossary extends Component<Props> {
   }
 
   componentWillReceiveProps(newProps){
-     if(newProps != this.props){
-
+    if(newProps != this.props){
          this.setState(state => {
+            for(let item in this.state){
+                if(item !== 'glossarySelection'){
 
-            for(let key in newProps){
-                if(state.hasOwnProperty(key)){
-                    state[key] = newProps[key].map((entry) => {
-                        entry.isEditing = false;
-                        return(entry);
-                    });
+                    state[item] = newProps[item].map((entry) => {
+                            let stateEntry = state[item].find(x => x.id === entry.id);
+                            entry.isEditing = false;
+
+                            if(stateEntry !== undefined){
+                                entry.isEditing = stateEntry.isEditing;
+                            }
+                            return(entry);
+                    })
                 }
             }
          });
@@ -157,24 +161,24 @@ export default class Glossary extends Component<Props> {
 
     this.setState(state => {
 
-        let entry = state[category].find(x => x.id === glossaryEntry.id);
-        entry[label] = value;
+        glossaryEntry[label] = value;
 
         return {
-            entry
+            glossaryEntry
         }
     });
   }
 
   startEditor(category, glossaryEntry){
-
     this.setState(state => {
 
-        let entry = state[category].find(x => x.id === glossaryEntry.id);
-        entry.isEditing = true;
-
         return {
-            entry
+            [category]: state[category].map((entry) => {
+                if(entry.id === glossaryEntry.id){
+                    entry.isEditing = true;
+                }
+                return(entry)
+            })
         }
     });
   }
@@ -183,13 +187,19 @@ export default class Glossary extends Component<Props> {
 
     this.setState(state => {
 
-        let entry = state[category].find(x => x.id === glossaryEntry.id);
-        entry.isEditing = false;
-
         return {
-            entry
+            [category]: state[category].map((entry) => {
+                if(entry.id === glossaryEntry.id){
+                    entry.isEditing = false;
+                }
+                return(entry)
+            })
         }
-    }, () => this.partialUpdate(category));
+    });
+  }
+
+  cancelChanges(category, glossaryEntry){
+    this.partialUpdate(category);
   }
 
   saveChanges(category, entry){
@@ -198,62 +208,91 @@ export default class Glossary extends Component<Props> {
         if(entry.id === ''){
             switch(category){
                 case "activities":
-                    this.props.createActivity(entry);
+                    this.props.createActivity(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "actors":
-                    this.props.createActor(entry);
+                    this.props.createActor(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "cybersecurity_threats":
-                    this.props.createCyberSecurityThreat(entry);
+                    this.props.createCyberSecurityThreat(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "disciplines":
-                    this.props.createDiscipline(entry);
+                    this.props.createDiscipline(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "responding_organizations":
-                    this.props.createRespondingOrganization(entry);
+                    this.props.createRespondingOrganization(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "technologies":
-                    this.props.createTechnology(entry);
+                    this.props.createTechnology(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "information_categories":
-                    this.props.createInformationCategory(entry);
+                    this.props.createInformationCategory(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "locations":
-                    this.props.createLocation(entry);
+                    this.props.createLocation(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
             }
 
         } else {
             switch(category){
                 case "activities":
-                    this.props.updateActivity(entry);
+                    this.props.updateActivity(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "actors":
-                    this.props.updateActor(entry);
+                    this.props.updateActor(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "cybersecurity_threats":
-                    this.props.updateCyberSecurityThreat(entry);
+                    this.props.updateCyberSecurityThreat(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "disciplines":
-                    this.props.updateDiscipline(entry);
+                    this.props.updateDiscipline(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "responding_organizations":
-                    this.props.updateRespondingOrganization(entry);
+                    this.props.updateRespondingOrganization(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "technologies":
-                    this.props.updateTechnology(entry);
+                    this.props.updateTechnology(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "information_categories":
-                    this.props.updateInformationCategory(entry);
+                    this.props.updateInformationCategory(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
                 case "locations":
-                    this.props.updateLocation(entry);
+                    this.props.updateLocation(entry).then(() => {
+                        this.stopEditor(category, entry);
+                    });
                     break;
             }
         }
-
-        this.stopEditor(category, entry);
-        this.partialUpdate(category);
 
     } else {
         alert("Glossary Entry must Have a Name to be Saved !!!");
@@ -267,32 +306,46 @@ export default class Glossary extends Component<Props> {
 
         switch(category){
                 case "activities":
-                    this.props.deleteActivity(entry);
+                    this.props.deleteActivity(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "actors":
-                    this.props.deleteActor(entry);
+                    this.props.deleteActor(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "cybersecurity_threats":
-                    this.props.deleteCyberSecurityThreat(entry);
+                    this.props.deleteCyberSecurityThreat(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "disciplines":
-                    this.props.deleteDiscipline(entry);
+                    this.props.deleteDiscipline(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "responding_organizations":
-                    this.props.deleteRespondingOrganization(entry);
+                    this.props.deleteRespondingOrganization(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "technologies":
-                    this.props.deleteTechnology(entry);
+                    this.props.deleteTechnology(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "information_categories":
-                    this.props.deleteInformationCategory(entry);
+                    this.props.deleteInformationCategory(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
                 case "locations":
-                    this.props.deleteLocation(entry);
+                    this.props.deleteLocation(entry).then(() => {
+                        this.partialUpdate(category, entry)
+                    });
                     break;
             }
-
-        this.partialUpdate(category, entry)
     }
   }
 
@@ -315,6 +368,7 @@ export default class Glossary extends Component<Props> {
     let selectionComponent = Object.entries(selectionOptions).map((option) => {
         return (
                 <Button
+                    id={option[1]}
                     key={option[1]}
                     className={this.state.glossarySelection === option[0] ? styles.selectedButton : styles.notSelectedButton}
                     variant="primary"
@@ -329,7 +383,7 @@ export default class Glossary extends Component<Props> {
 
     let glossaryComponent = this.state[glossarySelection].map((entry) => {
         let cleanView =  (
-            <div className={styles.glossaryEntryView}>
+            <div id={entry.id} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <h3>{entry.name}</h3>
                     <Tooltip title="Edit">
@@ -354,7 +408,7 @@ export default class Glossary extends Component<Props> {
         )
 
         let editView =  (
-            <div className={styles.glossaryEntryView}>
+            <div id={entry.id} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <input
                         label="name"
@@ -374,7 +428,11 @@ export default class Glossary extends Component<Props> {
                         <Clear
                             className={styles.clearButton}
                             style={{"color": "#F06449", "height": "40px", "width": "40px"}}
-                            onClick={() => this.stopEditor(glossarySelection, entry)}
+                            onClick={() => {
+                                this.cancelChanges(glossarySelection, entry);
+                                this.stopEditor(glossarySelection, entry);
+                                }
+                            }
                     />
                     </Tooltip>
                 </div>

@@ -59,7 +59,7 @@
     margin-bottom: 16px;
     border-radius: 15px;
     width: 99%;
-    height: calc(var(--vh, 1vh) * 45);
+    height: auto;
 }
 
 .optionsBar {

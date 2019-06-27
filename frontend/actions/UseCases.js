@@ -29,10 +29,9 @@ export const getUseCases = (state) => {
     let searchObject = {};
     let searchString = "";
 
-    if(state.length !== undefined){
+    if(state.selectedOption.length !== undefined){
 
-
-        state.map((entry) => {
+        state.selectedOption.map((entry) => {
 
             let group = entry.group;
             let value = entry.value;
@@ -60,6 +59,7 @@ export const getUseCases = (state) => {
                     break;
                 case "not":
                     searchString += "[not]";
+                    break;
                 case "not or":
                     searchString += "[not or]";
                     break;
@@ -72,24 +72,23 @@ export const getUseCases = (state) => {
     }
 
     return dispatch => {
+        return new Promise((resolve, reject) => {
+            let url = "";
 
-        let url = "";
-
-        if(searchString !== ""){
-
-            url = 'api/UseCases?' + searchString;
-        } else {
-
-            url = 'api/UseCases';
-        }
-        dispatch({'type': GET_USE_CASES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_USE_CASES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_USE_CASES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_USE_CASES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_USE_CASES_FAILURE, error: ex}) },
-        )
+            if(searchString !== ""){
+                url = 'api/UseCases?' + searchString;
+            } else {
+                url = 'api/UseCases';
+            }
+            dispatch({'type': GET_USE_CASES});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_USE_CASES_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_USE_CASES_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_USE_CASES_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_USE_CASES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -112,16 +111,18 @@ export const updateUseCase = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/UseCases';
-        dispatch({'type': PUT_USE_CASE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/UseCases';
+            dispatch({'type': PUT_USE_CASE})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(use_case)},
-            (json) => { dispatch({type: PUT_USE_CASE_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_USE_CASE_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_USE_CASE_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_USE_CASE_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(use_case)},
+                (json) => { dispatch({type: PUT_USE_CASE_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_USE_CASE_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_USE_CASE_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_USE_CASE_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -142,16 +143,18 @@ export const createUseCase = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/UseCases';
-        dispatch({'type': POST_USE_CASE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/UseCases';
+            dispatch({'type': POST_USE_CASE})
+            resolve(request(
 
             url, {method: "POST", body: JSON.stringify(use_case)},
             (json) => { dispatch({type: POST_USE_CASE_SUCCESS, res: json}) },
             (json) => { dispatch({type: POST_USE_CASE_ERROR400, res: json}) },
             (res) => { dispatch({type: POST_USE_CASE_ERROR500, res: res}) },
             (ex) => { dispatch({type: POST_USE_CASE_FAILURE, error: ex}) },
-        )
+            ))
+        })
     }
 }
 
@@ -162,15 +165,17 @@ export const deleteUseCase = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/UseCases';
-        dispatch({'type': DELETE_USE_CASE})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/UseCases';
+            dispatch({'type': DELETE_USE_CASE})
+            resolve(request(
 
             url, {method: "DELETE", body: JSON.stringify(use_case)},
             (json) => { dispatch({type: DELETE_USE_CASE_SUCCESS, res: json}) },
             (json) => { dispatch({type: DELETE_USE_CASE_ERROR400, res: json}) },
             (res) => { dispatch({type: DELETE_USE_CASE_ERROR500, res: res}) },
             (ex) => { dispatch({type: DELETE_USE_CASE_FAILURE, error: ex}) },
-        )
+            ))
+        })
     }
 }

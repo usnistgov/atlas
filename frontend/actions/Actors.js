@@ -27,16 +27,17 @@ export const DELETE_ACTOR_FAILURE = "DELETE_ACTOR_FAILURE";
 export const getActors = () => {
 
     return dispatch => {
-
-        let url = 'api/Actors';
-        dispatch({'type': GET_ACTORS});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_ACTORS_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_ACTORS_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_ACTORS_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_ACTORS_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/Actors';
+            dispatch({'type': GET_ACTORS});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_ACTORS_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_ACTORS_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_ACTORS_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_ACTORS_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +50,18 @@ export const updateActor = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Actors';
-        dispatch({'type': PUT_ACTOR})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Actors';
+            dispatch({'type': PUT_ACTOR})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(actor)},
-            (json) => { dispatch({type: PUT_ACTOR_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_ACTOR_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_ACTOR_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_ACTOR_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(actor)},
+                (json) => { dispatch({type: PUT_ACTOR_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_ACTOR_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_ACTOR_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_ACTOR_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +73,18 @@ export const createActor = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Actors';
-        dispatch({'type': POST_ACTOR})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Actors';
+            dispatch({'type': POST_ACTOR})
+            resolve(request(
 
             url, {method: "POST", body: JSON.stringify(actor)},
             (json) => { dispatch({type: POST_ACTOR_SUCCESS, res: json}) },
             (json) => { dispatch({type: POST_ACTOR_ERROR400, res: json}) },
             (res) => { dispatch({type: POST_ACTOR_ERROR500, res: res}) },
             (ex) => { dispatch({type: POST_ACTOR_FAILURE, error: ex}) },
-        )
+            ))
+        })
     }
 }
 
@@ -90,15 +95,17 @@ export const deleteActor = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Actors';
-        dispatch({'type': DELETE_ACTOR})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Actors';
+            dispatch({'type': DELETE_ACTOR})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(actor)},
-            (json) => { dispatch({type: DELETE_ACTOR_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_ACTOR_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_ACTOR_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_ACTOR_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(actor)},
+                (json) => { dispatch({type: DELETE_ACTOR_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_ACTOR_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_ACTOR_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_ACTOR_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

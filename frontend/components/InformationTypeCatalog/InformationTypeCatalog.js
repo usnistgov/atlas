@@ -101,15 +101,24 @@ export default class InformationTypeCatalog extends Component<Props> {
     super(props);
 
     this.state = {
-        selectedOption: null,
+        selectedOption: [],
         latestAction: null,
         triad_rating: {
             'confidentiality': null,
             'integrity': null,
-            'availability': null
+            'availability': null,
+            'searchOption': "and"
         },
         information_types: []
     }
+
+    this.onChange = this.onChange.bind(this);
+    this.startEditor = this.startEditor.bind(this);
+    this.addNewInformationType = this.addNewInformationType.bind(this);
+    this.saveChanges = this.saveChanges.bind(this);
+    this.cancelChanges = this.cancelChanges.bind(this);
+    this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
+    this.triadButtons = {}
 
     this.multiValue = props => {
 
@@ -119,10 +128,15 @@ export default class InformationTypeCatalog extends Component<Props> {
             <components.MultiValue {...props}
                 style={props.getStyles('multiValue', props)}
             >
-                <div onClick={() => {
-                        this.Select.state.menuIsOpen = false;
-                        this.handleSearch(props.data, {'action': "update_button_search_option"});
-                    }}>
+                <div onClickCapture={(event) => {
+                    this.Select.state.menuIsOpen = false;
+                    if(props.data.group === "triad_rating"){
+                        this.triadButtons[props.data.name].fire = false;
+                        this.triadButtons[props.data.name].props.onChange(props.data.label.props.value);
+                    } else {
+                        this.handleSearchOptionClick(props.data);
+                    }
+                }}>
                     <components.MultiValueLabel
                         {...labelProps}
                     />
@@ -130,31 +144,24 @@ export default class InformationTypeCatalog extends Component<Props> {
             </components.MultiValue>
         );
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.startEditor = this.startEditor.bind(this);
-    this.addNewInformationType = this.addNewInformationType.bind(this);
-    this.saveChanges = this.saveChanges.bind(this);
-    this.cancelChanges = this.cancelChanges.bind(this);
-    this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps){
      if(newProps.information_types != this.props.information_types){
          this.setState(state => {
+            return {
+                information_types: newProps.information_types.map((entry) => {
+                    let stateEntry = state.information_types.find(x => x.id === entry.id);
+                    entry.isEditing = false;
 
-          let info_types = newProps.information_types.map((entry) => {
-
-            entry.isEditing = false;
-            return(entry);
-          });
-
-          return {
-                information_types: info_types
+                    if(stateEntry !== undefined){
+                        entry.isEditing = stateEntry.isEditing;
+                    }
+                    return(entry);
+                })
             }
-         });
+           });
      }
-
   }
 
   componentDidMount(){
@@ -164,32 +171,49 @@ export default class InformationTypeCatalog extends Component<Props> {
     } = this.props;
 
     getInformationCategories();
-    getInformationTypes();
+    getInformationTypes(this.state);
 
   }
 
-  buttonSearch(triad_key, value, action){
+  buttonSearch(triad_key){
 
        let buttonContainer = (
           <ToggleButtonGroup
-                type="radio"
+                ref={ref => { this.triadButtons[triad_key] = ref }}
                 name={triad_key}
-                value={value}
+                value={this.state.triad_rating[triad_key]}
                 onChange={(e) => {
-                    this.handleSearch(
-                       {
-                        "group": "triad_rating",
-                        "name": triad_key,
-                        "value": e,
-                        "searchOption": "and"
+                    this.setState(state => {
+
+                        let entryIndex = state.selectedOption.findIndex(x => x.name === triad_key);
+
+                        state.selectedOption[entryIndex].label =  {
+                             ...state.selectedOption[entryIndex].label,
+                             props: {
+                                ...state.selectedOption[entryIndex].label.props,
+                                value: e
+                            }
                         },
-                        action);
-                    }}
+                        state.latestAction = "set_button_search_value"
+
+                    }, () => {
+
+                        let entry = this.state.selectedOption.find(x => x.name === triad_key);
+                        this.handleSearch(entry, {'action': this.state.latestAction})
+
+                    });
+                }}
                 >
                 {triad_key}:
-                <ToggleButton className={styles.ciaButton} value={triad_key + '-high'}>High</ToggleButton>
-                <ToggleButton className={styles.ciaButton} value={triad_key + '-medium'}>Medium</ToggleButton>
-                <ToggleButton className={styles.ciaButton} value={triad_key + '-low'}>Low</ToggleButton>
+                <ToggleButton
+                    className={styles.ciaButton}
+                    value={triad_key + '-high'}>High</ToggleButton>
+                <ToggleButton
+                    className={styles.ciaButton}
+                    value={triad_key + '-medium'}>Medium</ToggleButton>
+                <ToggleButton
+                    className={styles.ciaButton}
+                    value={triad_key + '-low'}>Low</ToggleButton>
             </ToggleButtonGroup>
             );
 
@@ -207,26 +231,30 @@ export default class InformationTypeCatalog extends Component<Props> {
       });
 
 
+      let confidentialityButton = this.buttonSearch("confidentiality");
+      let integrityButton = this.buttonSearch("integrity");
+      let availabilityButton = this.buttonSearch("availability");
+
       let CIAOptions = [
       {
-      "label": this.buttonSearch("confidentiality", null, {'action': "add_button_search"}),
+      "label": this.buttonSearch("confidentiality"),
       "group": "triad_rating",
       "name": "confidentiality",
-      "value": this.state.triad_rating["confidentiality"],
+      "value": 1,
       "searchOption": "and"
       },
       {
-      "label": this.buttonSearch("integrity", null, {'action': "add_button_search"}),
+      "label": this.buttonSearch("integrity"),
       "group": "triad_rating",
       "name": "integrity",
-      "value": this.state.triad_rating["integrity"],
+      "value": 2,
       "searchOption": "and"
       },
       {
-      "label": this.buttonSearch("availability", null, {'action': "add_button_search"}),
+      "label": this.buttonSearch("availability"),
       "group": "triad_rating",
       "name": "availability",
-      "value": this.state.triad_rating["availability"],
+      "value": 3,
       "searchOption": "and"
       }
       ]
@@ -270,7 +298,6 @@ export default class InformationTypeCatalog extends Component<Props> {
 
         let catalogElement = document.getElementById("informationTypesCatalog");
         catalogElement.scrollTop = catalogElement.scrollHeight;
-
     });
   }
 
@@ -279,30 +306,31 @@ export default class InformationTypeCatalog extends Component<Props> {
     let deleteConfirm = confirm("Are You Sure You Want to Delete This Information Type?");
     if(deleteConfirm){
 
-        this.props.deleteInformationType(information_type);
-        this.props.getInformationTypes();
+        this.props.deleteInformationType(information_type).then(() => {
+             this.props.getInformationTypes(this.state);
+        })
     }
   }
 
   cancelChanges(information_type){
 
-      if(information_type.id === ""){
-        this.props.deleteInformationType(information_type);
-      }
-      this.props.getInformationTypes();
+      this.props.getInformationTypes(this.state);
   }
 
   saveChanges(information_type){
 
     if(information_type.name !== ''){
         if(information_type.id === ''){
-            this.props.createInformationType(information_type);
+            this.props.createInformationType(information_type).then(() => {
+                 this.stopEditor(information_type);
+                 this.props.getInformationTypes(this.state);
+            });
         } else {
-            this.props.updateInformationType(information_type);
+            this.props.updateInformationType(information_type).then(() => {
+                 this.stopEditor(information_type);
+                 this.props.getInformationTypes(this.state);
+            });
         }
-
-        this.stopEditor(information_type);
-        this.props.getInformationTypes();
 
     } else {
         alert("Information Type must Have a Name to be Saved !!!");
@@ -313,10 +341,13 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     this.setState(state => {
 
-        let entry = state.information_types.find(x => x.id === information_type.id)
-        entry[label] = value
         return {
-            entry
+            information_types: state.information_types.map((entry) => {
+                if(entry.id === information_type.id){
+                    entry[label] = value;
+                }
+                return(entry);
+            })
             }
     });
   }
@@ -325,11 +356,13 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     this.setState(state => {
 
-        let entry = state.information_types.find(x => x.id === information_type.id);
-        entry.isEditing = true;
-
         return {
-            entry
+            information_types: state.information_types.map((entry) => {
+                if(entry.id === information_type.id){
+                    entry.isEditing = true;
+                }
+                return(entry);
+            })
         }
     });
   }
@@ -338,11 +371,13 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     this.setState(state => {
 
-        let entry = state.information_types.find(x => x.id === information_type.id);
-        entry.isEditing = false;
-
         return {
-            entry
+            information_types: state.information_types.map((entry) => {
+                if(entry.id === information_type.id){
+                    entry.isEditing = false;
+                }
+                return(entry);
+            })
         }
     });
   }
@@ -355,44 +390,60 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     if(option.group === "triad_rating"){
 
-        option.label = this.buttonSearch(option.name, option.value, {'action': "update_button_search_value"});
+        if(action.action === "set_button_search_value"){
+            if(option.label.props.value === this.state.triad_rating[option.name]){
 
-        this.setState(state => {
+                this.handleSearchOptionClick(option)
 
-            let entryIndex = state.selectedOption.findIndex(x => x.name === option.name);
-            state.selectedOption[entryIndex] = option;
-            return {
-                selectedOption: state.selectedOption,
-                triad_rating: {...state.triad_rating, [option.name]: option.value},
-                latestAction: action.action
+            } else {
+
+                this.setState(state => {
+
+                    return {
+                        triad_rating: {
+                            ...state.triad_rating,
+                            [option.name]: option.label.props.value
+                        },
+                        latestAction: "update_button_search_value"
+                    }
+                }, () => {
+
+                     if([undefined, true].includes(this.triadButtons[option.name].fire)){
+                        getInformationTypes(this.state);
+                     } else {
+                        this.triadButtons[option.name].fire = true;
+                     }
+                });
             }
-        }, () => {
-                if(action.action === "update_button_search_option" && this.state.latestAction === "update_button_search_option"){
-                    this.handleSearchOptionClick(option);
-                } else {
-                    this.props.getInformationTypes(this.state.selectedOption);
-                }
-            });
+        }
     } else {
+
         this.setState(state => {
+            if(action.action === 'remove-value' && action.removedValue.group === "triad_rating"){
+                state.triad_rating[action.removedValue.name] = null;
+                this.triadButtons[action.removedValue.name].fire = undefined;
+            }
 
-            let newSearchOptions = option;
-
-            if(action.action === "update_button_search_option"){
-                newSearchOptions = state.selectedOption;
-                let entryIndex = newSearchOptions.findIndex(x => x.id === option.id);
-                newSearchOptions[entryIndex] = option;
+            if(action.action === 'clear'){
+                state.triad_rating = {
+                    'confidentiality': null,
+                    'integrity': null,
+                    'availability': null,
+                    'searchOption': "and"
+                }
             }
 
             return {
-                selectedOption: newSearchOptions,
+                selectedOption: option,
                 latestAction: action.action
-            }
-        }, () => {
-                if(action.action === "update_button_search_option"){
-                    this.handleSearchOptionClick(option);
+                }
+            }, () => {
+
+                if(action.hasOwnProperty('option') && action.option.group === "triad_rating"){
+                    ;
                 } else {
-                    this.props.getInformationTypes(this.state.selectedOption);
+
+                    getInformationTypes(this.state)
                 }
             }
         );
@@ -404,32 +455,35 @@ export default class InformationTypeCatalog extends Component<Props> {
     if(option.group !== "name"){
         this.setState(state => {
 
-            let optionToChange = state.selectedOption.filter(x => x.group === option.group);
+            switch(option.searchOption){
+                case "and":
+                    option.searchOption = "or";
+                    break;
+                case "or":
+                    option.searchOption = "not";
+                    break;
+                case "not":
+                    option.searchOption = "not or";
+                    break;
+                case "not or":
+                    option.searchOption = "and";
+                    break;
+            }
 
-            let groupOption = optionToChange[0].searchOption;
+                        let groupOption;
 
-            for(let entry in optionToChange){
-                switch(groupOption){
-                    case "and":
-                        optionToChange[entry]['searchOption'] = "or";
-                        break;
-                    case "or":
-                        optionToChange[entry]['searchOption'] = "not";
-                        break;
-                    case "not":
-                        optionToChange[entry]['searchOption'] = "not or";
-                        break;
-                    case "not or":
-                        optionToChange[entry]['searchOption'] = "and";
-                        break;
+            if(option.group === "triad_rating"){
+                    state.triad_rating.searchOption = option.searchOption;
+            }
+
+            state.selectedOption.forEach(entry => {
+                if(entry.group === option.group){
+                    entry.searchOption = option.searchOption;
                 }
-            }
+            });
 
-            return {
-                optionToChange
-            }
         }, () => {
-            this.props.getInformationTypes(this.state.selectedOption)
+                this.props.getInformationTypes(this.state)
             });
         }
   }
@@ -516,14 +570,18 @@ export default class InformationTypeCatalog extends Component<Props> {
                         <Description
                             className={styles.editButton}
                             style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => { this.startEditor(information_type)}}
+                            onClick={() => {
+                                this.startEditor(information_type)
+                                }}
                         />
                     </Tooltip>
                     <Tooltip title="Delete">
                         <Delete
                             className={styles.deleteButton}
                             style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                            onClick={() => {this.deleteInformationType(information_type)} }
+                            onClick={() => {
+                                    this.deleteInformationType(information_type)
+                                    }}
                         />
                     </Tooltip>
                 </div>
@@ -719,15 +777,14 @@ export default class InformationTypeCatalog extends Component<Props> {
                 <Select
                     ref={(ref) => this.Select = ref}
                     isMulti
-                    closeOnSelect={true}
                     components={animatedComponents}
                     styles={multiValueStyle}
                     className={styles.searchBar}
                     classNamePrefix={styles.searchBar}
                     value={this.state.selectedOption}
                     options={searchOptions}
-                    onChange={(value, action) => {
-                        this.handleSearch(value, action)
+                    onChange={(option, action) => {
+                        this.handleSearch(option, action)
                         }
                     }
                     placeholder="Search Information Types ..."

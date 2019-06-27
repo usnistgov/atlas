@@ -28,16 +28,17 @@ export const DELETE_TECHNOLOGY_FAILURE = "DELETE_TECHNOLOGY_FAILURE";
 export const getTechnologies = () => {
 
     return dispatch => {
-
-        let url = 'api/Technologies';
-        dispatch({'type': GET_TECHNOLOGIES});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_TECHNOLOGIES_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_TECHNOLOGIES_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_TECHNOLOGIES_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_TECHNOLOGIES_FAILURE, error: ex}) },
-        )
+        return new Promise((resolve, reject) => {
+            let url = 'api/Technologies';
+            dispatch({'type': GET_TECHNOLOGIES});
+            resolve(request(
+                url, {},
+            (json) => { dispatch({type: GET_TECHNOLOGIES_SUCCESS, res: json}) },
+            (json) => { dispatch({type: GET_TECHNOLOGIES_ERROR400, res: json}) },
+            (res) => { dispatch({type: GET_TECHNOLOGIES_ERROR500, res: res}) },
+            (ex) => { dispatch({type: GET_TECHNOLOGIES_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -50,16 +51,18 @@ export const updateTechnology = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Technologies';
-        dispatch({'type': PUT_TECHNOLOGY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Technologies';
+            dispatch({'type': PUT_TECHNOLOGY})
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(technology)},
-            (json) => { dispatch({type: PUT_TECHNOLOGY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_TECHNOLOGY_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_TECHNOLOGY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_TECHNOLOGY_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(technology)},
+                (json) => { dispatch({type: PUT_TECHNOLOGY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_TECHNOLOGY_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_TECHNOLOGY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_TECHNOLOGY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -71,16 +74,18 @@ export const createTechnology = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Technologies';
-        dispatch({'type': POST_TECHNOLOGY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Technologies';
+            dispatch({'type': POST_TECHNOLOGY})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(technology)},
-            (json) => { dispatch({type: POST_TECHNOLOGY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_TECHNOLOGY_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_TECHNOLOGY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_TECHNOLOGY_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(technology)},
+                (json) => { dispatch({type: POST_TECHNOLOGY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_TECHNOLOGY_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_TECHNOLOGY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_TECHNOLOGY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -91,15 +96,17 @@ export const deleteTechnology = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/Technologies';
-        dispatch({'type': DELETE_TECHNOLOGY})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/Technologies';
+            dispatch({'type': DELETE_TECHNOLOGY})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(technology)},
-            (json) => { dispatch({type: DELETE_TECHNOLOGY_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_TECHNOLOGY_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_TECHNOLOGY_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_TECHNOLOGY_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(technology)},
+                (json) => { dispatch({type: DELETE_TECHNOLOGY_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_TECHNOLOGY_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_TECHNOLOGY_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_TECHNOLOGY_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

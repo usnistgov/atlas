@@ -28,7 +28,7 @@
 }
 
 .addButton {
-    margin-left: 10px;
+    margin-left: 40px;
 }
 
 .addButton:hover {
@@ -121,7 +121,7 @@
     margin-top: 12px;
     margin-bottom: 20px;
     width: calc(var(--vh, 1vh) * 100);
-    height: calc(var(--vh, 1vh) * 25);
+    height: calc(var(--vh, 1vh) * 20);
     word-wrap: break-word;
     overflow: auto;
     border: none;
@@ -180,7 +180,7 @@
 .mainInfo p {
     font-size: 16px;
     width: calc(var(--vh, 1vh) * 80);
-    height: calc(var(--vh, 1vh) * 25);
+    height: calc(var(--vh, 1vh) * 20);
     word-wrap: break-word;
     overflow: auto;
 }

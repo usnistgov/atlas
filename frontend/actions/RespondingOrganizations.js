@@ -27,16 +27,18 @@ export const DELETE_RESPONDING_ORGANIZATION_FAILURE = "DELETE_RESPONDING_ORGANIZ
 export const getRespondingOrganizations= () => {
 
     return dispatch => {
+        return new Promise((resolve, reject) => {
 
-        let url = 'api/RespondingOrganizations';
-        dispatch({'type': GET_RESPONDING_ORGANIZATIONS});
-        return request(
-        url, {},
-        (json) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_SUCCESS, res: json}) },
-        (json) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_ERROR400, res: json}) },
-        (res) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_ERROR500, res: res}) },
-        (ex) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_FAILURE, error: ex}) },
-        )
+            let url = 'api/RespondingOrganizations';
+            dispatch({'type': GET_RESPONDING_ORGANIZATIONS});
+            resolve(request(
+                url, {},
+                (json) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_SUCCESS, res: json}) },
+                (json) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_ERROR400, res: json}) },
+                (res) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_ERROR500, res: res}) },
+                (ex) => { dispatch({type: GET_RESPONDING_ORGANIZATIONS_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -49,16 +51,18 @@ export const updateRespondingOrganization = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/RespondingOrganizations';
-        dispatch({'type': PUT_RESPONDING_ORGANIZATION })
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/RespondingOrganizations';
+            dispatch({'type': PUT_RESPONDING_ORGANIZATION })
+            resolve(request(
 
-            url, {method: "PUT", body: JSON.stringify(responding_organization)},
-            (json) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
-        )
+                url, {method: "PUT", body: JSON.stringify(responding_organization)},
+                (json) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: PUT_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -70,16 +74,18 @@ export const createRespondingOrganization = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/RespondingOrganizations';
-        dispatch({'type': POST_RESPONDING_ORGANIZATION})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/RespondingOrganizations';
+            dispatch({'type': POST_RESPONDING_ORGANIZATION})
+            resolve(request(
 
-            url, {method: "POST", body: JSON.stringify(responding_organization)},
-            (json) => { dispatch({type: POST_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: POST_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: POST_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: POST_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
-        )
+                url, {method: "POST", body: JSON.stringify(responding_organization)},
+                (json) => { dispatch({type: POST_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: POST_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: POST_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: POST_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }
 
@@ -90,15 +96,17 @@ export const deleteRespondingOrganization = (state) => {
     }
 
     return dispatch => {
-        let url = 'api/RespondingOrganizations';
-        dispatch({'type': DELETE_RESPONDING_ORGANIZATION})
-        return request(
+        return new Promise((resolve, reject) => {
+            let url = 'api/RespondingOrganizations';
+            dispatch({'type': DELETE_RESPONDING_ORGANIZATION})
+            resolve(request(
 
-            url, {method: "DELETE", body: JSON.stringify(responding_organization)},
-            (json) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
-            (json) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
-            (res) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
-            (ex) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
-        )
+                url, {method: "DELETE", body: JSON.stringify(responding_organization)},
+                (json) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_SUCCESS, res: json}) },
+                (json) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_ERROR400, res: json}) },
+                (res) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_ERROR500, res: res}) },
+                (ex) => { dispatch({type: DELETE_RESPONDING_ORGANIZATION_FAILURE, error: ex}) },
+            ))
+        })
     }
 }

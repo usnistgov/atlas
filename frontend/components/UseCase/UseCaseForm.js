@@ -161,12 +161,16 @@ export default class UseCase extends Component<Props> {
     if(this.state.name !== "" && this.state.description !== ""){
 
         if(this.state.id === ""){
-            this.props.createUseCase(this.state);
+            this.props.createUseCase(this.state).then(() => {
+                this.props.handleUseCaseClick(this.state);
+                this.props.stopEditor();
+            });
         } else {
-            this.props.updateUseCase(this.state);
+            this.props.updateUseCase(this.state).then(() => {
+                this.props.handleUseCaseClick(this.state);
+                this.props.stopEditor();
+            });
         }
-        this.props.handleUseCaseClick(this.state);
-        this.props.stopEditor();
     }
     else {
         alert("Name and Description Must Not Be Empty to Create a New Use Case")
