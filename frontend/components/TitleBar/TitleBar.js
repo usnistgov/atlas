@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes';
 import styles from './TitleBar.css';
@@ -8,7 +8,7 @@ type Props = {
 
 }
 
-export default class TitleBar extends Component<Props> {
+export default class TitleBar extends PureComponent<Props> {
   props: Props;
 
   render(){

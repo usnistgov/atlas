@@ -25,8 +25,9 @@ type Props = {
     information_types: object
 }
 
-var searchOptions = []
 var catalogHeight;
+var searchOptions = []
+const equal = require('fast-deep-equal');
 
 const headerStyle =
         {
@@ -129,15 +130,19 @@ export default class InformationTypeCatalog extends Component<Props> {
                 style={props.getStyles('multiValue', props)}
             >
                 <div onClickCapture={(event) => {
-                    this.Select.state.menuIsOpen = false;
-                    if(props.data.group === "triad_rating"){
-                        this.triadButtons[props.data.name].fire = false;
-                        this.triadButtons[props.data.name].props.onChange(props.data.label.props.value);
-                    } else {
-                        this.handleSearchOptionClick(props.data);
-                    }
+                    this.Select.setState({'menuIsOpen': false}, () => {
+
+                        if(props.data.group === "triad_rating"){
+                            this.triadButtons[props.data.name].setState({'fire': false});
+                            this.triadButtons[props.data.name].props.onChange(props.data.label.props.value);
+                        } else {
+                            this.handleSearchOptionClick(props.data);
+                        }
+
+                    })
+
                 }}>
-                    <components.MultiValueLabel
+                    <components.MultiValueContainer
                         {...labelProps}
                     />
                  </div>
@@ -197,7 +202,6 @@ export default class InformationTypeCatalog extends Component<Props> {
                         state.latestAction = "set_button_search_value"
 
                     }, () => {
-
                         let entry = this.state.selectedOption.find(x => x.name === triad_key);
                         this.handleSearch(entry, {'action': this.state.latestAction})
 
@@ -388,6 +392,8 @@ export default class InformationTypeCatalog extends Component<Props> {
       getInformationTypes
     } = this.props;
 
+    console.log(action.action);
+
     if(option.group === "triad_rating"){
 
         if(action.action === "set_button_search_value"){
@@ -407,12 +413,7 @@ export default class InformationTypeCatalog extends Component<Props> {
                         latestAction: "update_button_search_value"
                     }
                 }, () => {
-
-                     if([undefined, true].includes(this.triadButtons[option.name].fire)){
-                        getInformationTypes(this.state);
-                     } else {
-                        this.triadButtons[option.name].fire = true;
-                     }
+                     getInformationTypes(this.state);
                 });
             }
         }
@@ -421,7 +422,7 @@ export default class InformationTypeCatalog extends Component<Props> {
         this.setState(state => {
             if(action.action === 'remove-value' && action.removedValue.group === "triad_rating"){
                 state.triad_rating[action.removedValue.name] = null;
-                this.triadButtons[action.removedValue.name].fire = undefined;
+                this.triadButtons[action.removedValue.name].setState({'fire': undefined});
             }
 
             if(action.action === 'clear'){

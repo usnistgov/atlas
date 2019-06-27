@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './UseCase.css';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
@@ -26,7 +26,7 @@ const noDataIndication = () => (
     </div>
 );
 
-export default class UseCase extends Component<Props> {
+export default class UseCase extends PureComponent<Props> {
   props: Props;
 
   constructor(props){

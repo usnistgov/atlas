@@ -31,6 +31,7 @@ const noDataIndication = () => (
     </div>
 );
 
+const equal = require('fast-deep-equal');
 
 export default class UseCase extends Component<Props> {
   props: Props;
@@ -60,6 +61,19 @@ export default class UseCase extends Component<Props> {
 
         this.addRowIcon = this.addRowIcon.bind(this);
         this.deleteRowIcon = this.deleteRowIcon.bind(this);
+
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(!equal(nextProps, this.props)){
+        return true;
+    }
+
+    if(!equal(nextState, this.state)){
+        return true;
+    }
+
+    return false;
 
   }
 

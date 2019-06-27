@@ -19,6 +19,8 @@ type Props = {
     locations: object
 }
 
+const equal = require('fast-deep-equal');
+
 export default class Glossary extends Component<Props> {
   props: Props;
 

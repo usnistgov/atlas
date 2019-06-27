@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start-dev": "cross-env NODE_ENV=development START_HOT=1 webpack-dev-server --config webpack.development.config.babel.js --progress --colors",
-    "start-prod": "cross-env NODE_ENV=production webpack --config webpack.production.config.babel.js --progress --colors"
+    "start-dev": "cross-env NODE_ENV=development START_HOT=1 webpack-dev-server -p --config webpack.development.config.babel.js --progress --colors",
+    "start-prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.babel.js --progress --colors"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -52,6 +52,7 @@
     "node-ip": "^0.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-addons-perf": "^15.4.2",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-bootstrap-table-next": "^3.1.4",
     "react-dom": "^16.8.6",

@@ -8,8 +8,8 @@ import UseCaseFormPage from '../../containers/UseCaseFormPage';
 import NoteAdd from "@material-ui/icons/NoteAdd";
 import Tooltip from '@material-ui/core/Tooltip';
 
-var equal = require('fast-deep-equal');
 var searchOptions = [];
+const equal = require('fast-deep-equal');
 
 const multiValueStyle = {
      multiValue: (base, { data }) => {
@@ -378,7 +378,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             information_types,
             locations } = this.props;
 
-    let catalogView = use_cases.map((use_case) => {
+    const catalogView = use_cases.map((use_case) => {
 
             let use_case_actors = use_case['actors'].map((entry_id) => {
                 let entry = actors.find(entry => entry.id == entry_id)
@@ -500,7 +500,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
 
   getUseCaseView(){
 
-    return(
+    const UseCaseView = (
         <UseCasePage
             handleUseCaseClick={this.handleUseCaseClick}
             getHeaderStyle={this.getHeaderStyle}
@@ -510,11 +510,13 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             use_case={this.state.useCaseSelection}
          />
      )
+
+     return(UseCaseView)
   }
 
   getEditView(){
 
-    return(
+    const editView = (
         <UseCaseFormPage
             handleUseCaseClick={this.handleUseCaseClick}
             getHeaderStyle={this.getHeaderStyle}
@@ -523,6 +525,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             stopEditor={this.stopEditor}
             use_case={this.state.useCaseSelection} />
     )
+    return(editView)
   }
 
 
