@@ -231,6 +231,8 @@ export default class UseCase extends Component<Props> {
     if(this.inConceptLinks(row)){
         return {
          backgroundColor: '#F06449',
+         color: 'white',
+         fontWeight: 'bolder',
          height: 'calc(var(--vh, 1vh) * 5)'
               }
     } else {
