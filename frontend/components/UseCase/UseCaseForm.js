@@ -52,6 +52,7 @@ export default class UseCase extends Component<Props> {
             activities: this.props.use_case.activities,
             technologies: this.props.use_case.technologies,
             locations: this.props.use_case.locations,
+            concept_links: this.props.use_case.concept_links,
             showConceptLinks: false
         }
 
@@ -217,8 +218,8 @@ export default class UseCase extends Component<Props> {
 
   inConceptLinks(row) {
 
-    for(let key in this.props.use_case.concept_links){
-        if(this.props.use_case.concept_links[key].includes(row['id'])){
+    for(let key in this.props.concept_links){
+        if(this.props.concept_links[key].includes(row['id'])){
             return true;
         }
     }

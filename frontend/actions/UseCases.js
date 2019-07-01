@@ -139,7 +139,8 @@ export const createUseCase = (state) => {
         'responding_organizations': state.responding_organizations,
         'technologies': state.technologies,
         'activities': state.activities,
-        'locations': state.locations
+        'locations': state.locations,
+        'concept_links': state.concept_links
     }
 
     return dispatch => {

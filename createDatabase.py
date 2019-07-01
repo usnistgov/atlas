@@ -436,7 +436,8 @@ use_cases.insert_many([
         'concept_links': {
             'actors': [actors_ids[x] for x in ['law enforcement']],
             'disciplines': [disciplines_ids[x] for x in ['Law Enforcement']],
-            'responding_organizations': [responding_organizations_ids[x] for x in ['Local Police']]
+            'responding_organizations': [responding_organizations_ids[x] for x in ['Local Police']],
+            'information_types': [information_types_ids[x] for x in ['law enforcement intel', 'body camera data']]
             }
     },
 
