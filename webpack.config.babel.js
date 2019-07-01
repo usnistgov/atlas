@@ -25,8 +25,7 @@ module.exports = {
                     {
                     loader: 'babel-loader',
                     options: {
-                       cacheDirectory: true,
-                       sourceMap: true
+                       cacheDirectory: true
                         }
                     },
                     {
