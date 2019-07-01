@@ -7,6 +7,7 @@ import Description from "@material-ui/icons/Description";
 import Delete from "@material-ui/icons/Delete";
 import Check from "@material-ui/icons/Check";
 import Clear from "@material-ui/icons/Clear";
+import { DisplayResourceLinks } from './resourceLinks';
 
 type Props = {
     actors: object,
@@ -385,6 +386,9 @@ export default class Glossary extends Component<Props> {
     });
 
     let glossaryComponent = this.state[glossarySelection].map((entry) => {
+
+        let resourceLinks = DisplayResourceLinks(entry);
+
         let cleanView =  (
             <div id={entry.id} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
@@ -407,9 +411,7 @@ export default class Glossary extends Component<Props> {
                 <div className={styles.descriptionContainer}>
                     <p>{entry.description}</p>
                 </div>
-                <div className={styles.sourcesContainer}>
-
-                </div>
+                { resourceLinks }
             </div>
         )
 
@@ -450,9 +452,7 @@ export default class Glossary extends Component<Props> {
                             value={entry.description}>
                           </textarea>
                 </div>
-                <div className={styles.sourcesContainer}>
-
-                </div>
+                { resourceLinks }
             </div>
         )
 

@@ -7,7 +7,7 @@ class Activities(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('activities')}
 
@@ -15,7 +15,7 @@ class Actors(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('actors')}
 
@@ -23,7 +23,7 @@ class CyberSecurityThreats(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('cybersecurity_threats')}
 
@@ -31,7 +31,7 @@ class Disciplines(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('disciplines')}
 
@@ -39,7 +39,7 @@ class RespondingOrganizations(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('responding_organizations')}
 
@@ -48,7 +48,7 @@ class Technologies(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('technologies')}
 
@@ -57,7 +57,7 @@ class Locations(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('locations')}
 
@@ -66,7 +66,7 @@ class InformationCategories(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
-    source = ListField()
+    resource_links = ListField()
 
     meta = {'collection': settings.COLLECTION_NAMES.get('information_categories')}
 

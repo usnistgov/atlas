@@ -38,39 +38,48 @@ activities_ids = {}
 actors.insert_many([
         {
             'name': 'patients',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'paramedics',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'law enforcement',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'suspects',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'civilians',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'victims',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'fire fighters',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'incident commander',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'cab driver',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
 ])
 
@@ -83,35 +92,43 @@ for i, j in actors_ids.items():
 responding_organizations.insert_many([
         {
             'name': 'Local EMS',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Local Police',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Highway Patrol',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'EMS',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Park Police',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Fire Department',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'FEMA',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Local Fire',
-            'description': ''
+            'description': '',
+            'resource_links': []
         }
 ])
 
@@ -121,15 +138,18 @@ for i in responding_organizations.find({}):
 disciplines.insert_many([
         {
             'name': 'EMS',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Law Enforcement',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'Fire',
-            'description': ''
+            'description': '',
+            'resource_links': []
         }
 ])
 
@@ -139,45 +159,130 @@ for i in disciplines.find({}):
 locations.insert_many([
         {
             'name': 'highway',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'hospital',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'national park',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'urban area',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'building',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'sub-urban area',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'parks',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'road',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'metropolitan city',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
         {
             'name': 'subway',
-            'description': ''
+            'description': '',
+            'resource_links': []
         },
 ])
+
+technologies.insert_many(
+    [{
+      "name": "smartphone",
+      "description": "",
+      "resource_links": [
+        {
+          "href": "https://www.nist.gov/communications-technology-laboratory/pscr/process-document-nist-list-certified-devices",
+          "hyperlink_name": "Certified Devices",
+          "description": "The Middle Class Tax Relief and Job Creation Act of 2012 (Act) defined responsibilities for the National Institute of Standards and Technology (NIST) in regards to the Nationwide Public Safety Broadband Network (NPSBN) and the First Responder Nextwork Authority (FN). AT&T was awarded the contract by FN to partner with FN and to build the NPSBN. One requirement of the Act is that the Director of NIST shall ensure the development of a list of certified devices that meet appropriate protocols and standards for access to, use of, or compatibility with the NPSBN that FN and AT&T build and maintain. This requirement is carried out by the Public Safety Communications Research Division (PSCR) of the NIST Communications Technology Laboratory. This document describes the process for creating and maintaining the list."
+        }
+      ]
+    },
+    {
+      "name": "tablet",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "hotspot",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "LTE modem",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "smartwatch",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "fitness tracker",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "drone",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "body worn camera",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "smartglasses",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "bluetooth headset",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "wearable health monitoring sensor",
+      "description": "",
+      "resource_links": []
+    },
+      {
+      "name": "hardware authentication device",
+      "description": "",
+      "resource_links": []
+    },
+    {
+      "name": "LMR handsets",
+      "description": "",
+      "resource_links": []
+    }]
+
+)
 
 for i in locations.find({}):
     locations_ids[i['name']] = i['_id']
@@ -186,23 +291,28 @@ for i in locations.find({}):
 information_categories.insert_many([
     {
         'name': 'operations data',
-        'description': ''
+        'description': '',
+        'resource_links': []
     },
     {
         'name': 'sensor data',
-        'description': ''
+        'description': '',
+        'resource_links': []
     },
     {
         'name': 'publicly sourced data',
-        'description': ''
+        'description': '',
+        'resource_links': []
     },
     {
         'name': 'situational awareness data',
-        'description': ''
+        'description': '',
+        'resource_links': []
     },
     {
         'name': 'Unknown',
-        'description': ''
+        'description': '',
+        'resource_links': []
     }
 ])
 
