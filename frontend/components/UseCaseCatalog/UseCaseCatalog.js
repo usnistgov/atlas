@@ -421,8 +421,8 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             });
 
             return (
-                <div key={use_case.id} className={styles.catalogBody} onClick={() => this.handleUseCaseClick(use_case)}>
-                    <div className={styles.optionsBar}>
+                <div key={use_case.id} className={styles.catalogBody} >
+                    <div className={styles.optionsBar} onClick={() => this.handleUseCaseClick(use_case)}>
                         <h2>{use_case.name}</h2>
                     </div>
                     <div className={styles.useCaseTables}>

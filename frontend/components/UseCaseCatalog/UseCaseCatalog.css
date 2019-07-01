@@ -74,6 +74,7 @@
     border-width: thick;
     border-radius: 15px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .optionsBar h2 {
