@@ -432,7 +432,12 @@ use_cases.insert_many([
         'disciplines': [disciplines_ids[x] for x in ['EMS', 'Fire', 'Law Enforcement']],
         'locations': [locations_ids[x] for x in ['highway']],
         'information_types': [],
-        'activities': []
+        'activities': [],
+        'concept_links': {
+            'actors': [actors_ids[x] for x in ['law enforcement']],
+            'disciplines': [disciplines_ids[x] for x in ['Law Enforcement']],
+            'responding_organizations': [responding_organizations_ids[x] for x in ['Local Police']]
+            }
     },
 
     {

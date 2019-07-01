@@ -86,5 +86,6 @@ class UseCases(Document):
     locations = ListField(field=ObjectIdField())
     information_types = ListField(field=ObjectIdField())
     activities = ListField(field=ObjectIdField())
+    concept_links = DictField(field=ListField(field=ObjectIdField()))
 
     meta = {'collection': settings.COLLECTION_NAMES.get('use_cases')}

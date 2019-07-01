@@ -32,12 +32,38 @@ export default class UseCase extends PureComponent<Props> {
   constructor(props){
     super(props);
 
+    this.state = {
+        showConceptLinks: false
+    }
+
+    this.rowEvents = {
+        onMouseEnter: (e, row, rowIndex) => {
+
+            if(this.inConceptLinks(row)){
+                this.setState(state => {
+                    return {
+                        showConceptLinks: true
+                    }
+                });
+            }
+        },
+
+        onMouseLeave: (e, row, rowIndex) => {
+            this.setState(state => {
+                return {
+                    showConceptLinks: false
+                }
+            })
+        }
+  };
+
+  this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
+
   }
 
   formatCIARating(cell, row){
     return cell.confidentiality +  " | " + cell.integrity + " | " + cell.availability;
   }
-
 
   deleteUseCase(){
 
@@ -49,6 +75,29 @@ export default class UseCase extends PureComponent<Props> {
         });
     }
   }
+
+  inConceptLinks(row) {
+
+    for(let key in this.props.use_case.concept_links){
+        if(this.props.use_case.concept_links[key].includes(row['id'])){
+            return true;
+        }
+    }
+
+    return false;
+  }
+
+  conceptLinkRowStyle(row, rowIdx){
+    if(this.inConceptLinks(row)){
+        return {
+         backgroundColor: '#F06449',
+         height: 'calc(var(--vh, 1vh) * 5)'
+              }
+    } else {
+        return this.props.getRowStyle(row, rowIdx)
+    }
+  }
+
 
   render(){
 
@@ -145,7 +194,8 @@ export default class UseCase extends PureComponent<Props> {
                                 {dataField: "triad_rating", text: "CIA Rating", formatter: this.formatCIARating, headerStyle: this.props.getHeaderStyle()},
                                 {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()}
                                 ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -159,7 +209,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_actors}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -170,7 +221,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_cybersecurity_threats}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -181,7 +233,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_disciplines}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -192,7 +245,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_responding_organizations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -203,7 +257,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_activities}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -214,7 +269,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_technologies}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -225,7 +281,8 @@ export default class UseCase extends PureComponent<Props> {
                         classes={styles.attrTable}
                         data={use_case_locations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped

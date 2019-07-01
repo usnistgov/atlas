@@ -414,6 +414,11 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }
                 }, () => {
                      getInformationTypes(this.state);
+                     /*if([undefined, true].includes(this.triadButtons[option.name].state.fire)){
+                        getInformationTypes(this.state);
+                     } else {
+                        this.triadButtons[option.name].setState({'fire': true});
+                     }*/
                 });
             }
         }

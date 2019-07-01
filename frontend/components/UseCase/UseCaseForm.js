@@ -51,8 +51,30 @@ export default class UseCase extends Component<Props> {
             responding_organizations: this.props.use_case.responding_organizations,
             activities: this.props.use_case.activities,
             technologies: this.props.use_case.technologies,
-            locations: this.props.use_case.locations
+            locations: this.props.use_case.locations,
+            showConceptLinks: false
         }
+
+        this.rowEvents = {
+            onMouseEnter: (e, row, rowIndex) => {
+
+                if(this.inConceptLinks(row)){
+                    this.setState(state => {
+                        return {
+                            showConceptLinks: true
+                        }
+                    });
+                }
+            },
+
+            onMouseLeave: (e, row, rowIndex) => {
+                this.setState(state => {
+                    return {
+                        showConceptLinks: false
+                    }
+                })
+            }
+       };
 
         this.onChange = this.onChange.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
@@ -61,6 +83,7 @@ export default class UseCase extends Component<Props> {
 
         this.addRowIcon = this.addRowIcon.bind(this);
         this.deleteRowIcon = this.deleteRowIcon.bind(this);
+        this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
 
   }
 
@@ -192,6 +215,28 @@ export default class UseCase extends Component<Props> {
 
   }
 
+  inConceptLinks(row) {
+
+    for(let key in this.props.use_case.concept_links){
+        if(this.props.use_case.concept_links[key].includes(row['id'])){
+            return true;
+        }
+    }
+
+    return false;
+  }
+
+  conceptLinkRowStyle(row, rowIdx){
+    if(this.inConceptLinks(row)){
+        return {
+         backgroundColor: '#F06449',
+         height: 'calc(var(--vh, 1vh) * 5)'
+              }
+    } else {
+        return this.props.getRowStyle(row, rowIdx)
+    }
+  }
+
   render(){
 
      const {
@@ -321,7 +366,8 @@ export default class UseCase extends Component<Props> {
                                     style: { width: '5%' }
                                 }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         cellEdit={ cellEditFactory({ mode: "dbclick" }) }
                         noDataIndication={noDataIndication}
                         keyField="id"
@@ -356,7 +402,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '11%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -379,7 +426,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -402,7 +450,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -425,7 +474,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -448,7 +498,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -471,7 +522,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -494,7 +546,8 @@ export default class UseCase extends Component<Props> {
                                 style: { width: '12%' }
                             }
                             ]}
-                        rowStyle={this.props.getRowStyle}
+                        rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
+                        rowEvents={this.rowEvents}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
