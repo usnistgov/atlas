@@ -95,6 +95,7 @@ export default class Glossary extends Component<Props> {
         'id': '',
         'name': '',
         'description': '',
+        'source': '',
         'isEditing': true
     }
 
@@ -406,6 +407,9 @@ export default class Glossary extends Component<Props> {
                 <div className={styles.descriptionContainer}>
                     <p>{entry.description}</p>
                 </div>
+                <div className={styles.sourcesContainer}>
+
+                </div>
             </div>
         )
 
@@ -445,6 +449,9 @@ export default class Glossary extends Component<Props> {
                             onChange={(e) => this.onChange(glossarySelection, "description", e.target.value, entry)}
                             value={entry.description}>
                           </textarea>
+                </div>
+                <div className={styles.sourcesContainer}>
+
                 </div>
             </div>
         )

@@ -58,7 +58,6 @@ export default class UseCase extends Component<Props> {
 
         this.rowEvents = {
             onMouseEnter: (e, row, rowIndex) => {
-
                 if(this.inConceptLinks(row)){
                     this.setState(state => {
                         return {
@@ -218,8 +217,8 @@ export default class UseCase extends Component<Props> {
 
   inConceptLinks(row) {
 
-    for(let key in this.props.concept_links){
-        if(this.props.concept_links[key].includes(row['id'])){
+    for(let key in this.state.concept_links){
+        if(this.state.concept_links[key].includes(row['id'])){
             return true;
         }
     }

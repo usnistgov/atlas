@@ -46,7 +46,8 @@ export const updateDiscipline = (state) => {
     let discipline = {
         'id': state.id,
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {
@@ -69,7 +70,8 @@ export const createDiscipline = (state) => {
 
     let discipline = {
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {

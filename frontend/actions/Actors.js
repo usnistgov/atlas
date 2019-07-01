@@ -46,7 +46,8 @@ export const updateActor = (state) => {
     let actor = {
         'id': state.id,
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {
@@ -69,7 +70,8 @@ export const createActor = (state) => {
 
     let actor = {
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {

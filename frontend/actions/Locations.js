@@ -47,7 +47,8 @@ export const updateLocation = (state) => {
     let location = {
         'id': state.id,
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {
@@ -70,7 +71,8 @@ export const createLocation = (state) => {
 
     let location = {
         'name': state.name,
-        'description': state.description
+        'description': state.description,
+        'source': state.source
     }
 
     return dispatch => {
