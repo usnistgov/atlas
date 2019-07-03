@@ -1,0 +1,21 @@
+{
+	"name": "Personal Injury Collision with hazards",
+	"marked_description": "A high-speed collision between a <span id='link1'>propane</span> tanker and a <span id='link3'>sport utility vehicle (SUV)</span> has occurred on a major highway during rush hour. The tanker is now lying on its side blocking three of the four southbound lanes and is leaking propane on the highway. Four other <span id='link2'>vehicles</span> suffered subsequent accidents as a result of the primary incident.",
+	
+	"information_types": [
+      {
+        "name": "HazardousMaterial",
+        "connections": [
+          "link1",
+          "link3"
+        ]
+      },
+      {
+        "name": "Vehicle",
+        "connections": [
+            "link2",
+            "link3"
+        ]
+      }
+  ]
+}
