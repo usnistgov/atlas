@@ -1,6 +1,8 @@
 import type { Action } from './types';
 import * as InformationTypesActions from '../actions/InformationTypes'
 
+const { sortByName } = require("../utils/utils");
+
 const initialState = {
     information_types: [],
     isLoadingInformationTypes: true,
@@ -15,7 +17,7 @@ export default function InformationTypesReducer(state=initialState, action: Acti
      case InformationTypesActions.GET_INFORMATION_TYPES:
         return {...state,  isLoadingInformationTypes: true};
      case InformationTypesActions.GET_INFORMATION_TYPES_SUCCESS:
-        return {...state, isLoadingInformationTypes: false,  information_types: action.res};
+        return {...state, isLoadingInformationTypes: false,  information_types: action.res.sort(sortByName)};
      case InformationTypesActions.GET_INFORMATION_TYPES_ERROR400:
         console.log(action.res);
         break;

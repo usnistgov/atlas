@@ -1,6 +1,8 @@
 import type { Action } from './types';
 import * as ActorsActions from '../actions/Actors'
 
+const { sortByName } = require("../utils/utils");
+
 const initialState = {
     actors: [],
     isLoadingActors: true,
@@ -16,7 +18,7 @@ export default function ActorsReducer(state=initialState, action: Action) {
      case ActorsActions.GET_ACTORS:
         return {...state,  isLoadingActors: true};
      case ActorsActions.GET_ACTORS_SUCCESS:
-        return {...state, isLoadingActors: false,  actors: action.res};
+        return {...state, isLoadingActors: false,  actors: action.res.sort(sortByName)};
      case ActorsActions.GET_ACTORS_ERROR400:
         console.log(action.res);
         break;

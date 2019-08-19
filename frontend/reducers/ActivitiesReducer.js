@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as ActivitiesActions from '../actions/Activities'
+import * as ActivitiesActions from '../actions/Activities';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     activities: [],
@@ -16,7 +18,7 @@ export default function ActivitiesReducer(state=initialState, action: Action) {
      case ActivitiesActions.GET_ACTIVITIES:
         return {...state,  isLoadingActivities: true};
      case ActivitiesActions.GET_ACTIVITIES_SUCCESS:
-        return {...state, isLoadingActivities: false,  activities: action.res};
+        return {...state, isLoadingActivities: false,  activities: action.res.sort(sortByName)};
      case ActivitiesActions.GET_ACTIVITIES_ERROR400:
         console.log(action.res);
         break;

@@ -92,7 +92,7 @@
 }
 
 .descriptionInput {
-    margin-left: 30px;
+    margin-left: 20px;
     font-size: 18px;
     height: calc(var(--vh, 1vh) * 42);
     width: calc(var(--vw, 1vw) * 50);
@@ -113,7 +113,7 @@
 .sourceTitle {
     font-weight: bolder;
     font-size: 16px;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 
@@ -255,4 +255,31 @@
 .addSearchBar {
     color: black;
     width: 100%;
+}
+
+.cia_table{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.cia_table div{
+    flex: 1;
+    border: solid, white;
+    width: 30%;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+}
+
+.cia_high{
+    background-color: #ff9696;
+}
+
+.cia_medium{
+    background-color: #ffff91;
+}
+
+.cia_low{
+    background-color: #c6ff91;
 }

@@ -86,18 +86,20 @@ export const getInformationTypes = (state) => {
                 searchString += group + "=" + entry['values'].join();
             }
 
-            switch(entry['searchOption']){
-                case "and":
-                    break;
-                case "or":
-                    searchString += "[or]";
-                    break;
-                case "not":
-                    searchString += "[not]";
-                    break;
-                case "not or":
-                    searchString += "[not or]";
-                    break;
+            if(entry.hasOwnProperty('values')){
+                switch(entry['searchOption']){
+                    case "and":
+                        break;
+                    case "or":
+                        searchString += "[or]";
+                        break;
+                    case "not":
+                        searchString += "[not]";
+                        break;
+                    case "not or":
+                        searchString += "[not or]";
+                        break;
+                }
             }
 
             if (!(Object.is(arr.length - 1, key))) {
@@ -105,6 +107,7 @@ export const getInformationTypes = (state) => {
              }
         });
     }
+
 
     return dispatch => {
         return new Promise((resolve, reject) => {

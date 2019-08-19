@@ -41,7 +41,6 @@
   display: flex;
   flex-direction: column;
   height: calc(var(--vh, 1vh) * 85);
-
   border-width: thick;
   border-color: #EDE6E3;
   overflow: auto;
@@ -79,6 +78,7 @@
 .informationTypeInfo {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 93%;
     margin-left: 24px;
     margin-bottom: 12px;
@@ -116,11 +116,10 @@
 
 .descriptionInput {
     font-size: 18px;
-    background-color: transparent;
     outline: none;
     margin-top: 12px;
     margin-bottom: 20px;
-    width: calc(var(--vh, 1vh) * 100);
+    width: 100%;
     height: calc(var(--vh, 1vh) * 20);
     word-wrap: break-word;
     overflow: auto;
@@ -172,6 +171,7 @@
 .mainInfo {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
 
@@ -270,3 +270,30 @@
     border-radius: 30px;
     opacity: 1;
 }
+
+
+/* Tables
+================================== */
+.Rtable {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+}
+.Rtable_cell {
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 50%;
+  padding: 0.8em 1.2em;
+  overflow: hidden;
+  list-style: none;
+  border: solid 3px white;
+}
+
+/* Table column sizing
+================================== */
+.Rtable__2cols > .Rtable-cell  { width: 50%; }
+.Rtable__3cols > .Rtable-cell  { width: 33.33%; }
+.Rtable__4cols > .Rtable-cell  { width: 25%; }
+.Rtable__5cols > .Rtable-cell  { width: 20%; }
+.Rtable__6cols > .Rtable-cell  { width: 16.6%; }

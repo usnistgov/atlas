@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations'
+import * as RespondingOrganizationsActions from '../actions/RespondingOrganizations';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     responding_organizations: [],
@@ -15,7 +17,7 @@ export default function RespondingOrganizationsReducer(state=initialState, actio
      case RespondingOrganizationsActions.GET_RESPONDING_ORGANIZATIONS:
         return {...state,  isLoadingRespondingOrganizations: true};
      case RespondingOrganizationsActions.GET_RESPONDING_ORGANIZATIONS_SUCCESS:
-        return {...state, isLoadingRespondingOrganizations: false,  responding_organizations: action.res};
+        return {...state, isLoadingRespondingOrganizations: false,  responding_organizations: action.res.sort(sortByName)};
      case RespondingOrganizationsActions.GET_RESPONDING_ORGANIZATIONS_ERROR400:
         console.log(action.res);
         break;

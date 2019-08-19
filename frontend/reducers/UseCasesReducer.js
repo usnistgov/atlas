@@ -1,6 +1,8 @@
 import type { Action } from './types';
 import * as UseCasesActions from '../actions/UseCases'
 
+const { sortByName } = require("../utils/utils");
+
 const initialState = {
     use_cases: [],
     isLoadingUseCases: true,
@@ -15,7 +17,7 @@ export default function UseCasesReducer(state=initialState, action: Action) {
      case UseCasesActions.GET_USE_CASES:
         return {...state, isLoadingUseCases: true};
      case UseCasesActions.GET_USE_CASES_SUCCESS:
-        return {...state, isLoadingUseCases: false, use_cases: action.res};
+        return {...state, isLoadingUseCases: false, use_cases: action.res.sort(sortByName)};
      case UseCasesActions.GET_USE_CASES_ERROR400:
         console.log(action.res);
         break;

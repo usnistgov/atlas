@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import routes from '../../constants/routes';
 import styles from './InformationTypeCatalog.css';
 import { Button,
          ButtonToolbar,
@@ -94,6 +95,30 @@ const multiValueStyle = {
         }
      }
 };
+
+const ITDescription = ({information_type: {description}, className: {className} }) => {
+            return (
+                <div className={styles.Rtable_cell}>
+                    <h3>Description:</h3>
+                    <p>{description}</p>
+                </div>
+            )
+  }
+
+const SecurityReasoning = ({information_type: {security_reasoning}}) => {
+            if (security_reasoning){
+
+                return (
+                     <div>
+                        <h3>Security Reasoning:</h3>
+                        <p>{security_reasoning}</p>
+                    </div>
+                )
+            }
+            else{
+                return <div/>
+            }
+}
 
 export default class InformationTypeCatalog extends Component<Props> {
   props: Props;
@@ -284,6 +309,7 @@ export default class InformationTypeCatalog extends Component<Props> {
     let newInfoType = {
         'id': '',
         'name': '',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'medium',
             'integrity': 'medium',
@@ -392,8 +418,6 @@ export default class InformationTypeCatalog extends Component<Props> {
       getInformationTypes
     } = this.props;
 
-    console.log(action.action);
-
     if(option.group === "triad_rating"){
 
         if(action.action === "set_button_search_value"){
@@ -414,11 +438,6 @@ export default class InformationTypeCatalog extends Component<Props> {
                     }
                 }, () => {
                      getInformationTypes(this.state);
-                     /*if([undefined, true].includes(this.triadButtons[option.name].state.fire)){
-                        getInformationTypes(this.state);
-                     } else {
-                        this.triadButtons[option.name].setState({'fire': true});
-                     }*/
                 });
             }
         }
@@ -502,6 +521,23 @@ export default class InformationTypeCatalog extends Component<Props> {
               }
     }
 
+  getCIAStyle(cell, row, rowIndex, colIndex) {
+    let cia_background_color;
+
+    switch(cell){
+        case "high": cia_background_color="#ff9696"; break;
+        case "medium": cia_background_color="#ffff91"; break;
+        case "low": cia_background_color="#c6ff91"; break;
+    }
+
+    return {
+        backgroundColor: cia_background_color,
+        borderRadius: "10px",
+        fontWeight: "Bold",
+        textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+        }
+  }
+
   render(){
 
     const {
@@ -559,7 +595,10 @@ export default class InformationTypeCatalog extends Component<Props> {
                             className={styles.informationCategoryTag}
                             variant="primary"
                             value={entry.name}
-                            onClick={(e) => {}}
+                            onDoubleClick={(e) => {
+                                this.props.history.glossaryOptions = {'glossarySelection': 'information_categories', 'entryId': entry.id}
+                                this.props.history.push(routes.GLOSSARY);
+                            }}
                             active
                             >
                             {entry.name}
@@ -592,25 +631,33 @@ export default class InformationTypeCatalog extends Component<Props> {
                     </Tooltip>
                 </div>
                 <div className={styles.informationTypeInfo}>
-                    <div className={styles.mainInfo}>
-                         <p>{information_type.security_reasoning}</p>
-                         <BootstrapTable
-                            classes={styles.ciaTable}
-                            data={tableData}
-                            columns={[
-                                {dataField: "id", text: "ID", hidden: true},
-                                {dataField: "triad_rating.confidentiality", text: 'Confidentiality', editable: false, headerStyle: headerStyle},
-                                {dataField: "triad_rating.integrity", text: 'Integrity', editable: false, headerStyle: headerStyle},
-                                {dataField: "triad_rating.availability", text: 'Availability', editable: false, headerStyle: headerStyle}
-                                ]}
-                            cellEdit={ cellEditFactory({ mode:'dbclick' }) }
-                            rowStyle={this.getRowStyle}
-                            keyField="id">
-                        </BootstrapTable>
+                    <div className={styles.Rtable} >
+                         <ITDescription information_type={information_type} className={styles.Rtable_cell}/>
+                         <div className={styles.Rtable_cell}>
+                            <h3>Security Classification</h3>
+                             <BootstrapTable
+                                classes={styles.ciaTable}
+                                data={tableData}
+                                columns={[
+                                    {dataField: "id", text: "ID", hidden: true},
+                                    {dataField: "triad_rating.confidentiality", text: 'Confidentiality', editable: false, headerStyle: headerStyle, style: this.getCIAStyle},
+                                    {dataField: "triad_rating.integrity", text: 'Integrity', editable: false, headerStyle: headerStyle, style: this.getCIAStyle},
+                                    {dataField: "triad_rating.availability", text: 'Availability', editable: false, headerStyle: headerStyle, style: this.getCIAStyle}
+                                    ]}
+                                cellEdit={ cellEditFactory({ mode:'dbclick' }) }
+                                rowStyle={this.getRowStyle}
+                                keyField="id">
+                            </BootstrapTable>
+                            <SecurityReasoning information_type={information_type}/>
+                         </div>
+                         <div className={styles.Rtable_cell}>
+                            <h3>Information Categories</h3>
+                            <ButtonToolbar className={styles.informationCategories}>
+                                    {information_type_categories}
+                            </ButtonToolbar>
+                        </div>
+                        <div className={styles.Rtable_cell}/>
                      </div>
-                <ButtonToolbar className={styles.informationCategories}>
-                        {information_type_categories}
-                </ButtonToolbar>
                 </div>
             </div>
         )
@@ -645,130 +692,150 @@ export default class InformationTypeCatalog extends Component<Props> {
                 </Tooltip>
                 </div>
                 <div className={styles.informationTypeInfo}>
-                    <div className={styles.mainInfo}>
+                    <div className={styles.Rtable}>
+                        <div className={styles.Rtable_cell}>
+                          <h3>Description:</h3>
                           <textarea
-                            label="security_reasoning"
+                            label="description"
                             className={styles.descriptionInput}
-                            onChange={(e) => this.onChange("security_reasoning", e.target.value, information_type)}
-                            value={information_type.security_reasoning}>
+                            onChange={(e) => this.onChange("description", e.target.value, information_type)}
+                            value={information_type.description}>
                           </textarea>
-                          <BootstrapTable
-                            keyField="id"
-                            classes={styles.ciaTable}
-                            data={tableData}
-                            columns={[
-                                {
-                                dataField: "id",
-                                text: "ID",
-                                hidden: true
-                                },
-                                {
-                                dataField: "triad_rating.confidentiality",
-                                text: 'Confidentiality',
-                                headerStyle: headerStyle,
-                                editable: true,
-                                editor: {
-                                    type: Type.SELECT,
-                                    options: [
+                        </div>
+                        <div className={styles.Rtable_cell}>
+                            <h3>Security Classification</h3>
+                            <BootstrapTable
+                                keyField="id"
+                                classes={styles.ciaTable}
+                                data={tableData}
+                                columns={[
                                     {
-                                    value: "high",
-                                    label: "high"
+                                    dataField: "id",
+                                    text: "ID",
+                                    hidden: true
                                     },
                                     {
-                                    value: "medium",
-                                    label: "medium"
-                                    },
-                                    {
-                                    value: "low",
-                                    label: "low"
-                                    }]}
-                                },
-                                {
-                                dataField: "triad_rating.integrity",
-                                text: 'Integrity',
-                                headerStyle: headerStyle,
-                                editable: true,
-                                editor: {
-                                    type: Type.SELECT,
-                                    options: [
-                                    {
-                                    value: "high",
-                                    label: "high"
-                                    },
-                                    {
-                                    value: "medium",
-                                    label: "medium"
-                                    },
-                                    {
-                                    value: "low",
-                                    label: "low"
-                                    }]}
-                                },
-                                {
-                                dataField: "triad_rating.availability",
-                                text: 'Availability',
-                                headerStyle: headerStyle,
-                                editable: true,
-                                editor: {
-                                    type: Type.SELECT,
-                                    options: [
-                                    {
-                                    value: "high",
-                                    label: "high"
-                                    },
-                                    {
-                                    value: "medium",
-                                    label: "medium"
-                                    },
-                                    {
-                                    value: "low",
-                                    label: "low"
-                                    }]}
-                                }]
-                                }
-                            cellEdit={ cellEditFactory({ mode:'dbclick', blurToSave: true }) }
-                            rowStyle={this.getRowStyle}
-                            >
-                        </BootstrapTable>
-                     </div>
-                <ButtonToolbar className={styles.informationCategories}>
-                        {information_type_categories}
-                        <Popup
-                            className={styles.addModal}
-                            trigger={<Tooltip title="Add Information Category"><Add className={styles.addButton} style={{"color": "green", "height": "35px", "width": "35px", "marginTop": "2px"}} /></Tooltip>}
-                            modal
-                        >
-                        {close => {
-
-                            let categoryOptions = searchOptions.filter(x => x.label === "Information Categories");
-                            let selectedCategories = categoryOptions[0]['options'].filter(x => {
-                                if(information_type.information_categories.includes(x.id)){
-                                    return(x)
-                                }
-                            })
-
-
-                            return (
-                            <div className={styles.addSearchBar}>
-                                <Select
-                                    isMulti
-                                    value={selectedCategories}
-                                    options={categoryOptions}
-                                    onChange={(e) =>
+                                    dataField: "triad_rating.confidentiality",
+                                    text: 'Confidentiality',
+                                    headerStyle: headerStyle,
+                                    style: this.getCIAStyle,
+                                    editable: true,
+                                    editor: {
+                                        type: Type.SELECT,
+                                        options: [
                                         {
-                                            let info_categories = e.map(entry => entry.id);
-                                            this.onChange("information_categories", info_categories, information_type);
-                                            close();
-                                        }
+                                        value: "high",
+                                        label: "high"
+                                        },
+                                        {
+                                        value: "medium",
+                                        label: "medium"
+                                        },
+                                        {
+                                        value: "low",
+                                        label: "low"
+                                        }]}
+                                    },
+                                    {
+                                    dataField: "triad_rating.integrity",
+                                    text: 'Integrity',
+                                    headerStyle: headerStyle,
+                                    style: this.getCIAStyle,
+                                    editable: true,
+                                    editor: {
+                                        type: Type.SELECT,
+                                        options: [
+                                        {
+                                        value: "high",
+                                        label: "high"
+                                        },
+                                        {
+                                        value: "medium",
+                                        label: "medium"
+                                        },
+                                        {
+                                        value: "low",
+                                        label: "low"
+                                        }]}
+                                    },
+                                    {
+                                    dataField: "triad_rating.availability",
+                                    text: 'Availability',
+                                    headerStyle: headerStyle,
+                                    style: this.getCIAStyle,
+                                    editable: true,
+                                    editor: {
+                                        type: Type.SELECT,
+                                        options: [
+                                        {
+                                        value: "high",
+                                        label: "high"
+                                        },
+                                        {
+                                        value: "medium",
+                                        label: "medium"
+                                        },
+                                        {
+                                        value: "low",
+                                        label: "low"
+                                        }]}
+                                    }]
                                     }
-                                    placeholder={"Add Item to Information Categories"}
-                                />
-                            </div>
-                            )
-                            }
-                        }
-                        </Popup>
-                </ButtonToolbar>
+                                cellEdit={ cellEditFactory({ mode:'dbclick', blurToSave: true }) }
+                                rowStyle={this.getRowStyle}
+                            >
+                            </BootstrapTable>
+                        </div>
+                        <div className={styles.Rtable_cell}>
+                            <ButtonToolbar className={styles.informationCategories}>
+                                {information_type_categories}
+                                <Popup
+                                    className={styles.addModal}
+                                    trigger={<Tooltip title="Add Information Category"><Add className={styles.addButton} style={{"color": "green", "height": "35px", "width": "35px", "marginTop": "2px"}} /></Tooltip>}
+                                    modal
+                                >
+                                {close => {
+
+                                    let categoryOptions = searchOptions.filter(x => x.label === "Information Categories");
+                                    let selectedCategories = categoryOptions[0]['options'].filter(x => {
+                                        if(information_type.information_categories.includes(x.id)){
+                                            return(x)
+                                        }
+                                    })
+
+
+                                    return (
+                                    <div className={styles.addSearchBar}>
+                                        <Select
+                                            isMulti
+                                            value={selectedCategories}
+                                            options={categoryOptions}
+                                            onChange={(e) =>
+                                                {
+                                                    let info_categories = e.map(entry => entry.id);
+                                                    this.onChange("information_categories", info_categories, information_type);
+                                                    close();
+                                                }
+                                            }
+                                            placeholder={"Add Item to Information Categories"}
+                                        />
+                                    </div>
+                                    )
+                                    }
+                                }
+                                </Popup>
+                            </ButtonToolbar>
+                        </div>
+                        <div className={styles.Rtable_cell}>
+                            <h3>Security Reasoning:</h3>
+                            <textarea
+                                label="security_reasoning"
+                                className={styles.descriptionInput}
+                                onChange={(e) => this.onChange("security_reasoning", e.target.value, information_type)}
+                                value={information_type.security_reasoning}>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

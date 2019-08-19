@@ -28,8 +28,19 @@ export default class Glossary extends Component<Props> {
   constructor(props){
     super(props);
 
+    const {
+        getActivities,
+        getActors,
+        getCyberSecurityThreats,
+        getDisciplines,
+        getRespondingOrganizations,
+        getTechnologies,
+        getInformationCategories,
+        getLocations
+         } = props;
+
     this.state = {
-        glossarySelection: "actors",
+        glossarySelection: this.props.history.hasOwnProperty('glossaryOptions') ? this.props.history.glossaryOptions['glossarySelection'] :  "information_categories",
         actors: [],
         activities: [],
         cybersecurity_threats: [],
@@ -40,22 +51,10 @@ export default class Glossary extends Component<Props> {
         technologies: []
     }
 
+    this.glossaryRefs = {};
+
     this.onSelect = this.onSelect.bind(this);
     this.onChange = this.onChange.bind(this);
-  }
-
-  componentDidMount(){
-
-    const {
-        getActivities,
-        getActors,
-        getCyberSecurityThreats,
-        getDisciplines,
-        getRespondingOrganizations,
-        getTechnologies,
-        getInformationCategories,
-        getLocations
-         } = this.props;
 
     getActivities();
     getActors();
@@ -65,6 +64,16 @@ export default class Glossary extends Component<Props> {
     getTechnologies();
     getInformationCategories();
     getLocations();
+  }
+
+  componentDidUpdate(){
+
+    if(this.props.history.hasOwnProperty("glossaryOptions")){
+        let entryId = this.props.history.glossaryOptions['entryId'];
+        this.glossaryRefs[entryId].current.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+        delete this.props.history.glossaryOptions;
+
+      }
 
   }
 
@@ -359,14 +368,15 @@ export default class Glossary extends Component<Props> {
         glossarySelection
     } = this.state
 
-    let selectionOptions = {"actors": "Actors",
-                            "cybersecurity_threats": "Cybersecurity Threats",
+    let selectionOptions = {
+                            "information_categories": "Information Categories",
+                            "actors": "Actors",
                             "disciplines": "Disciplines",
                             "responding_organizations": "Responding Organizations",
                             "activities": "Activities",
                             "technologies": "Technologies",
                             "locations": "Locations",
-                            "information_categories": "Information Categories"
+                            "cybersecurity_threats": "Cybersecurity Threats"
                             };
 
     let selectionComponent = Object.entries(selectionOptions).map((option) => {
@@ -389,8 +399,10 @@ export default class Glossary extends Component<Props> {
 
         let resourceLinks = DisplayResourceLinks(entry);
 
+        this.glossaryRefs[entry.id] = React.createRef();
+
         let cleanView =  (
-            <div id={entry.id} className={styles.glossaryEntryView}>
+            <div id={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <h3>{entry.name}</h3>
                     <Tooltip title="Edit">
@@ -416,7 +428,7 @@ export default class Glossary extends Component<Props> {
         )
 
         let editView =  (
-            <div id={entry.id} className={styles.glossaryEntryView}>
+            <div id={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <input
                         label="name"

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import routes from '../../constants/routes';
 import { Modal, Button } from "react-bootstrap";
 import styles from './UseCaseForm.css';
 import BootstrapTable  from 'react-bootstrap-table-next';
@@ -56,23 +57,41 @@ export default class UseCase extends Component<Props> {
             showConceptLinks: false
         }
 
-        this.rowEvents = {
-            onMouseEnter: (e, row, rowIndex) => {
-                if(this.inConceptLinks(row)){
+        this.rowEvents = (tableName) => {
+
+            return {
+                onMouseEnter: (e, row, rowIndex) => {
+                    if(this.inConceptLinks(row)){
+                        this.setState(state => {
+                            return {
+                                showConceptLinks: true
+                            }
+                        });
+                    }
+                },
+
+                onMouseLeave: (e, row, rowIndex) => {
                     this.setState(state => {
                         return {
-                            showConceptLinks: true
+                            showConceptLinks: false
                         }
-                    });
-                }
-            },
+                    })
+                },
+                onDoubleClick: (e, row, rowIndex) => {
+                    let selectionOptions = {
+                        "Information Categories": "information_categories",
+                        "Actors": "actors",
+                        "Disciplines": "disciplines",
+                        "Responding Organizations": "responding_organizations",
+                        "Activities": "activities",
+                        "Technologies": "technologies",
+                        "Locations": "locations",
+                        "Cybersecurity Threats": "cybersecurity_threats"
+                    };
 
-            onMouseLeave: (e, row, rowIndex) => {
-                this.setState(state => {
-                    return {
-                        showConceptLinks: false
-                    }
-                })
+                    this.props.history.glossaryOptions = {'glossarySelection': selectionOptions[tableName], 'entryId': row['id']}
+                    this.props.history.push(routes.GLOSSARY);
+                }
             }
        };
 
@@ -101,7 +120,27 @@ export default class UseCase extends Component<Props> {
   }
 
   formatCIARating(cell, row){
-    return cell.confidentiality +  " | " + cell.integrity + " | " + cell.availability;
+
+    const style_lookup = {
+        "high": styles.cia_high,
+        "medium": styles.cia_medium,
+        "low": styles.cia_low
+    }
+
+    let c_className = styles.cia_high;
+    return (
+        <div className={styles.cia_table}>
+            <div className={style_lookup[cell.confidentiality]}>
+                {cell.confidentiality}
+             </div>
+             <div className={style_lookup[cell.integrity]}>
+                {cell.integrity }
+            </div>
+            <div className={style_lookup[cell.availability]}>
+                {cell.availability}
+            </div>
+        </div>
+    )
   }
 
   deleteRow(e, column, columnIndex, row, rowIndex){
@@ -369,7 +408,7 @@ export default class UseCase extends Component<Props> {
                                 }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Information Types")}
                         cellEdit={ cellEditFactory({ mode: "dbclick" }) }
                         noDataIndication={noDataIndication}
                         keyField="id"
@@ -405,7 +444,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Actors")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -429,7 +468,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Cybersecurity Threats")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -453,7 +492,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Disciplines")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -477,7 +516,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Responding Organizations")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -501,7 +540,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Activities")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -525,7 +564,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Technologies")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -549,7 +588,7 @@ export default class UseCase extends Component<Props> {
                             }
                             ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Locations")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped

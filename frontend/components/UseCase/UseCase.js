@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import { Redirect } from "react-router-dom";
+import routes from '../../constants/routes';
 import styles from './UseCase.css';
 import BootstrapTable  from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
@@ -6,6 +8,7 @@ import Description from "@material-ui/icons/Description";
 import KeyboardBackspace from "@material-ui/icons/KeyboardBackspace";
 import Delete from "@material-ui/icons/Delete";
 import Tooltip from '@material-ui/core/Tooltip';
+import SanitizedHTML from 'react-sanitized-html';
 
 type Props = {
     use_case: object;
@@ -36,33 +39,72 @@ export default class UseCase extends PureComponent<Props> {
         showConceptLinks: false
     }
 
-    this.rowEvents = {
-        onMouseEnter: (e, row, rowIndex) => {
+    this.rowEvents =  (tableName) => {
 
-            if(this.inConceptLinks(row)){
+        return {
+
+            onMouseEnter: (e, row, rowIndex) => {
+
+                if(this.inConceptLinks(row)){
+                    this.setState(state => {
+                        return {
+                            showConceptLinks: true
+                        }
+                    });
+                }
+            },
+
+            onMouseLeave: (e, row, rowIndex) => {
                 this.setState(state => {
                     return {
-                        showConceptLinks: true
+                        showConceptLinks: false
                     }
-                });
+                })
+            },
+
+            onDoubleClick: (e, row, rowIndex) => {
+               let selectionOptions = {
+                    "Information Categories": "information_categories",
+                    "Actors": "actors",
+                    "Disciplines": "disciplines",
+                    "Responding Organizations": "responding_organizations",
+                    "Activities": "activities",
+                    "Technologies": "technologies",
+                    "Locations": "locations",
+                    "Cybersecurity Threats": "cybersecurity_threats"
+               };
+
+               this.props.history.glossaryOptions = {'glossarySelection': selectionOptions[tableName], 'entryId': row['id']}
+               this.props.history.push(routes.GLOSSARY);
             }
-        },
-
-        onMouseLeave: (e, row, rowIndex) => {
-            this.setState(state => {
-                return {
-                    showConceptLinks: false
-                }
-            })
         }
-  };
+    };
 
-  this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
-
+    this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
   }
 
   formatCIARating(cell, row){
-    return cell.confidentiality +  " | " + cell.integrity + " | " + cell.availability;
+
+    const style_lookup = {
+        "high": styles.cia_high,
+        "medium": styles.cia_medium,
+        "low": styles.cia_low
+    }
+
+    let c_className = styles.cia_high;
+    return (
+        <div className={styles.cia_table}>
+            <div className={style_lookup[cell.confidentiality]}>
+                {cell.confidentiality}
+             </div>
+             <div className={style_lookup[cell.integrity]}>
+                {cell.integrity }
+            </div>
+            <div className={style_lookup[cell.availability]}>
+                {cell.availability}
+            </div>
+        </div>
+    )
   }
 
   deleteUseCase(){
@@ -182,10 +224,14 @@ export default class UseCase extends PureComponent<Props> {
             <div className={styles.useCaseBody}>
                 <div className={styles.useCaseInfo}>
                     <div className={styles.headerFormat}>
-                        <p>{this.props.use_case.description}</p>
+                        <SanitizedHTML
+                            allowedTags={['p','br', 'ul', 'li', 'b', 'h3']}
+                            html={this.props.use_case.description}
+                        >
+                        </SanitizedHTML>
                     </div>
+                    <h3 className={styles.sourceInfo}>Source: {this.props.use_case.source}</h3>
                     <div className={styles.informationTypes}>
-                        <p className={styles.sourceTitle}>Source: {this.props.use_case.source}</p>
                         <div className={styles.informationTypesTitle}><h3>Information Types</h3></div>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
@@ -197,7 +243,7 @@ export default class UseCase extends PureComponent<Props> {
                                 {dataField: "description", text: "Description", headerStyle: this.props.getHeaderStyle()}
                                 ]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Information Types")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -212,7 +258,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_actors}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Actors")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -224,7 +270,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_cybersecurity_threats}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Cybersecurity Threats")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -236,7 +282,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_disciplines}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Disciplines")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -248,7 +294,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_responding_organizations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Responding Organizations")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -260,7 +306,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_activities}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Activities")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -272,7 +318,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_technologies}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Technologies")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped
@@ -284,7 +330,7 @@ export default class UseCase extends PureComponent<Props> {
                         data={use_case_locations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
-                        rowEvents={this.rowEvents}
+                        rowEvents={this.rowEvents("Locations")}
                         noDataIndication={noDataIndication}
                         keyField="id"
                         striped

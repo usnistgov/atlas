@@ -20,3 +20,14 @@ export function request(url, options, success, error400, error, failure) {
       }
     }).catch((ex) => { return failure(ex) })
 }
+
+export function sortByName(a, b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase() ){
+            return -1;
+        }
+        if( a.name.toLowerCase() > b.name.toLowerCase() ){
+            return 1;
+        }
+
+        return 0;
+}

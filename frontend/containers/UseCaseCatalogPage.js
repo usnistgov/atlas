@@ -1,6 +1,7 @@
 // @flow
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import UseCaseCatalog from '../components/UseCaseCatalog/UseCaseCatalog';
 import * as UseCasesActions from '../actions/UseCases';
 import * as ActivitiesActions from '../actions/Activities';
@@ -41,7 +42,7 @@ function mapDispatchToProps(dispatch) {
                                               TechnologiesActions), dispatch);
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(UseCaseCatalog);
+)(UseCaseCatalog));

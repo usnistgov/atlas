@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as TechnologiesActions from '../actions/Technologies'
+import * as TechnologiesActions from '../actions/Technologies';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     technologies: [],
@@ -16,7 +18,7 @@ export default function TechnologiesReducer(state=initialState, action: Action) 
      case TechnologiesActions.GET_TECHNOLOGIES:
         return {...state,  isLoadingTechnologies: true};
      case TechnologiesActions.GET_TECHNOLOGIES_SUCCESS:
-        return {...state, isLoadingTechnologies: false,  technologies: action.res};
+        return {...state, isLoadingTechnologies: false,  technologies: action.res.sort(sortByName)};
      case TechnologiesActions.GET_TECHNOLOGIES_ERROR400:
         console.log(action.res);
         break;

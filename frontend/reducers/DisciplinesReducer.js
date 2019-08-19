@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as DisciplinesActions from '../actions/Disciplines'
+import * as DisciplinesActions from '../actions/Disciplines';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     disciplines: [],
@@ -16,7 +18,7 @@ export default function DisciplinesReducer(state=initialState, action: Action) {
      case DisciplinesActions.GET_DISCIPLINES:
         return {...state,  isLoadingDisciplines: true};
      case DisciplinesActions.GET_DISCIPLINES_SUCCESS:
-        return {...state, isLoadingDisciplines: false,  disciplines: action.res};
+        return {...state, isLoadingDisciplines: false,  disciplines: action.res.sort(sortByName)};
      case DisciplinesActions.GET_DISCIPLINES_ERROR400:
         console.log(action.res);
         break;

@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as LocationsActions from '../actions/Locations'
+import * as LocationsActions from '../actions/Locations';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     locations: [],
@@ -16,7 +18,7 @@ export default function LocationsReducer(state=initialState, action: Action) {
      case LocationsActions.GET_LOCATIONS:
         return {...state,  isLoadingLocations: true};
      case LocationsActions.GET_LOCATIONS_SUCCESS:
-        return {...state, isLoadingLocations: false,  locations: action.res};
+        return {...state, isLoadingLocations: false,  locations: action.res.sort(sortByName)};
      case LocationsActions.GET_LOCATIONS_ERROR400:
         console.log(action.res);
         break;

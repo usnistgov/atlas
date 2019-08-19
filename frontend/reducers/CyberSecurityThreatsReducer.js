@@ -1,5 +1,7 @@
 import type { Action } from './types';
-import * as CyberSecurityThreatsActions from '../actions/CyberSecurityThreats'
+import * as CyberSecurityThreatsActions from '../actions/CyberSecurityThreats';
+
+const { sortByName } = require("../utils/utils");
 
 const initialState = {
     cybersecurity_threats: [],
@@ -15,7 +17,7 @@ export default function CyberSecurityThreatsReducer(state=initialState, action: 
      case CyberSecurityThreatsActions.GET_CYBERSECURITY_THREATS:
         return {...state, isLoadingCyberSecurityThreats: true};
      case CyberSecurityThreatsActions.GET_CYBERSECURITY_THREATS_SUCCESS:
-        return {...state, isLoadingCyberSecurityThreats: false, cybersecurity_threats: action.res};
+        return {...state, isLoadingCyberSecurityThreats: false, cybersecurity_threats: action.res.sort(sortByName)};
      case CyberSecurityThreatsActions.GET_CYBERSECURITY_THREATS_ERROR400:
         console.log(action.res);
         break;

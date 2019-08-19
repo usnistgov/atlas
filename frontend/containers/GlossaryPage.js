@@ -1,6 +1,7 @@
 // @flow
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Glossary from '../components/Glossary/Glossary';
 import * as ActivitiesActions from '../actions/Activities';
 import * as ActorsActions from '../actions/Actors';
@@ -35,7 +36,7 @@ function mapDispatchToProps(dispatch) {
                                               TechnologiesActions), dispatch);
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Glossary);
+)(Glossary));

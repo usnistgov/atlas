@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import routes from '../../constants/routes';
 import styles from './UseCaseCatalog.css';
 import ReactJson from 'react-json-view';
 import BootstrapTable  from 'react-bootstrap-table-next';
@@ -117,6 +118,27 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             </components.MultiValue>
         );
     };
+
+    this.rowEvents = (tableName) => {
+
+            return {
+                onDoubleClick: (e, row, rowIndex) => {
+                    let selectionOptions = {
+                        "Information Categories": "information_categories",
+                        "Actors": "actors",
+                        "Disciplines": "disciplines",
+                        "Responding Organizations": "responding_organizations",
+                        "Activities": "activities",
+                        "Technologies": "technologies",
+                        "Locations": "locations",
+                        "Cybersecurity Threats": "cybersecurity_threats"
+                    };
+
+                    this.props.history.glossaryOptions = {'glossarySelection': selectionOptions[tableName], 'entryId': row['id']}
+                    this.props.history.push(routes.GLOSSARY);
+                }
+            }
+       };
 
     this.handleSearch = this.handleSearch.bind(this);
     this.handleUseCaseClick = this.handleUseCaseClick.bind(this);
@@ -428,25 +450,19 @@ export default class UseCaseCatalog extends PureComponent<Props> {
                     <div className={styles.useCaseTables}>
                         <BootstrapTable
                             classes={styles.attrTable}
-                            data={use_case_actors}
-                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.getHeaderStyle()}]}
-                            rowStyle={this.getRowStyle}
-                            noDataIndication={noDataIndication}
-                            keyField="id">
-                        </BootstrapTable>
-                        <BootstrapTable
-                            classes={styles.attrTable}
                             data={use_case_information_types}
                             columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Information Types', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Information Types")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
                         <BootstrapTable
                             classes={styles.attrTable}
-                            data={use_case_cybersecurity_threats}
-                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.getHeaderStyle()}]}
+                            data={use_case_actors}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Actors")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
@@ -455,6 +471,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
                             data={use_case_disciplines}
                             columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Disciplines")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
@@ -463,14 +480,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
                             data={use_case_responding_organizations}
                             columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
-                            noDataIndication={noDataIndication}
-                            keyField="id">
-                        </BootstrapTable>
-                        <BootstrapTable
-                            classes={styles.attrTable}
-                            data={use_case_technologies}
-                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
-                            rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Responding Organizations")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
@@ -479,6 +489,16 @@ export default class UseCaseCatalog extends PureComponent<Props> {
                             data={use_case_activities}
                             columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Activities")}
+                            noDataIndication={noDataIndication}
+                            keyField="id">
+                        </BootstrapTable>
+                        <BootstrapTable
+                            classes={styles.attrTable}
+                            data={use_case_technologies}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.getHeaderStyle()}]}
+                            rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Technologies")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
@@ -487,6 +507,16 @@ export default class UseCaseCatalog extends PureComponent<Props> {
                             data={use_case_locations}
                             columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.getHeaderStyle()}]}
                             rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Locations")}
+                            noDataIndication={noDataIndication}
+                            keyField="id">
+                        </BootstrapTable>
+                        <BootstrapTable
+                            classes={styles.attrTable}
+                            data={use_case_cybersecurity_threats}
+                            columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.getHeaderStyle()}]}
+                            rowStyle={this.getRowStyle}
+                            rowEvents={this.rowEvents("Cybersecurity Threats")}
                             noDataIndication={noDataIndication}
                             keyField="id">
                         </BootstrapTable>
