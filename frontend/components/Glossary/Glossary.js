@@ -40,7 +40,7 @@ export default class Glossary extends Component<Props> {
          } = props;
 
     this.state = {
-        glossarySelection: this.props.history.hasOwnProperty('glossaryOptions') ? this.props.history.glossaryOptions['glossarySelection'] :  "information_categories",
+        glossarySelection: this.props.history.hasOwnProperty('glossarySearch') ? this.props.history.glossarySearch['glossarySelection'] :  "information_categories",
         actors: [],
         activities: [],
         cybersecurity_threats: [],
@@ -87,10 +87,12 @@ export default class Glossary extends Component<Props> {
 
   componentDidUpdate(props, state){
 
-    if(this.props.history.hasOwnProperty("glossaryOptions")){
-        let entryId = this.props.history.glossaryOptions['entryId'];
-        this.glossaryRefs[entryId].current.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
-        delete this.props.history.glossaryOptions;
+    if(this.props.history.hasOwnProperty("glossarySearch")){
+        let entryId = this.props.history.glossarySearch['entryId'];
+        let searchRef = this.glossaryRefs[entryId];
+
+        searchRef.current.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+        delete this.props.history.glossarySearch;
 
       }
 
@@ -399,7 +401,7 @@ export default class Glossary extends Component<Props> {
         this.glossaryRefs[entry.id] = React.createRef();
 
         let cleanView =  (
-            <div id={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
+            <div key={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <h3>{entry.name}</h3>
                     <Tooltip title="Edit">
@@ -425,7 +427,7 @@ export default class Glossary extends Component<Props> {
         )
 
         let editView =  (
-            <div id={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
+            <div key={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
                 <div className={styles.optionsBar}>
                     <input
                         label="name"

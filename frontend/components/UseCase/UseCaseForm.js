@@ -89,8 +89,13 @@ export default class UseCase extends Component<Props> {
                         "Cybersecurity Threats": "cybersecurity_threats"
                     };
 
-                    this.props.history.glossaryOptions = {'glossarySelection': selectionOptions[tableName], 'entryId': row['id']}
-                    this.props.history.push(routes.GLOSSARY);
+                    if(tableName === "Information Types"){
+                        this.props.history.informationTypeSearch = {'entryId': row['id']}
+                        this.props.history.push(routes.INFORMATION_TYPE_CATALOG);
+                    } else {
+                        this.props.history.glossarySearch = {'glossarySelection': selectionOptions[tableName], 'entryId': row['id']}
+                        this.props.history.push(routes.GLOSSARY);
+                    }
                 }
             }
        };

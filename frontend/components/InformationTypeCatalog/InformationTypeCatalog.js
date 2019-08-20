@@ -143,6 +143,8 @@ export default class InformationTypeCatalog extends Component<Props> {
         information_types: []
     }
 
+    this.informationTypeRefs = {};
+
     this.onChange = this.onChange.bind(this);
     this.startEditor = this.startEditor.bind(this);
     this.addNewInformationType = this.addNewInformationType.bind(this);
@@ -196,6 +198,20 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     return state;
   }
+
+  componentDidUpdate(props, state){
+
+    if(this.props.history.hasOwnProperty("informationTypeSearch")){
+        let entryId = this.props.history.informationTypeSearch['entryId'];
+        let searchRef = this.informationTypeRefs[entryId];
+
+        searchRef.current.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+        delete this.props.history.informationTypeSearch;
+
+      }
+
+  }
+
 
   buttonSearch(triad_key){
 
@@ -548,6 +564,8 @@ export default class InformationTypeCatalog extends Component<Props> {
 
         let tableData = [information_type];
 
+        this.informationTypeRefs[information_type.id] = React.createRef();
+
         let information_type_categories = information_type.information_categories.map((entry_id) => {
 
                 let entry = information_categories.find(entry => entry.id === entry_id);
@@ -604,7 +622,7 @@ export default class InformationTypeCatalog extends Component<Props> {
         });
 
         let cleanView = (
-            <div key={information_type.id} className={styles.informationTypeView}>
+            <div key={information_type.id} ref={this.informationTypeRefs[information_type.id]} className={styles.informationTypeView}>
                 <div className={styles.optionsBar}>
                     <h3>{information_type.name}</h3>
                     <Tooltip title="Edit">
@@ -659,7 +677,7 @@ export default class InformationTypeCatalog extends Component<Props> {
         )
 
         let editView = (
-            <div key={information_type.id} className={styles.informationTypeView}>
+            <div key={information_type.id} ref={this.informationTypeRefs[information_type.id]} className={styles.informationTypeView}>
                 <div className={styles.optionsBar}>
                     <input
                             label="name"
