@@ -66,7 +66,26 @@ export default class Glossary extends Component<Props> {
     getLocations();
   }
 
-  componentDidUpdate(){
+  static getDerivedStateFromProps(props, state){
+
+    for(let item in state){
+        if(item !== 'glossarySelection'){
+
+            state[item] = props[item].map((entry) => {
+                let stateEntry = state[item].find(x => x.id === entry.id);
+
+                if(stateEntry !== undefined){
+                    entry.isEditing = stateEntry.isEditing;
+                }
+                return(entry);
+            })
+        }
+    }
+
+    return state;
+  }
+
+  componentDidUpdate(props, state){
 
     if(this.props.history.hasOwnProperty("glossaryOptions")){
         let entryId = this.props.history.glossaryOptions['entryId'];
@@ -74,28 +93,6 @@ export default class Glossary extends Component<Props> {
         delete this.props.history.glossaryOptions;
 
       }
-
-  }
-
-  componentWillReceiveProps(newProps){
-    if(newProps != this.props){
-         this.setState(state => {
-            for(let item in this.state){
-                if(item !== 'glossarySelection'){
-
-                    state[item] = newProps[item].map((entry) => {
-                            let stateEntry = state[item].find(x => x.id === entry.id);
-                            entry.isEditing = false;
-
-                            if(stateEntry !== undefined){
-                                entry.isEditing = stateEntry.isEditing;
-                            }
-                            return(entry);
-                    })
-                }
-            }
-         });
-     }
 
   }
 

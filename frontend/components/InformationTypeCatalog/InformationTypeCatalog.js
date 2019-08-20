@@ -126,6 +126,11 @@ export default class InformationTypeCatalog extends Component<Props> {
   constructor(props){
     super(props);
 
+    const {
+        getInformationCategories,
+        getInformationTypes,
+    } = props;
+
     this.state = {
         selectedOption: [],
         latestAction: null,
@@ -174,35 +179,22 @@ export default class InformationTypeCatalog extends Component<Props> {
             </components.MultiValue>
         );
     };
-  }
-
-  componentWillReceiveProps(newProps){
-     if(newProps.information_types != this.props.information_types){
-         this.setState(state => {
-            return {
-                information_types: newProps.information_types.map((entry) => {
-                    let stateEntry = state.information_types.find(x => x.id === entry.id);
-                    entry.isEditing = false;
-
-                    if(stateEntry !== undefined){
-                        entry.isEditing = stateEntry.isEditing;
-                    }
-                    return(entry);
-                })
-            }
-           });
-     }
-  }
-
-  componentDidMount(){
-    const {
-        getInformationCategories,
-        getInformationTypes,
-    } = this.props;
 
     getInformationCategories();
     getInformationTypes(this.state);
+  }
 
+  static getDerivedStateFromProps(props, state){
+
+    state['information_types'] = props.information_types.map((entry) => {
+        let stateEntry = state.information_types.find(x => x.id === entry.id);
+        if(stateEntry !== undefined){
+            entry.isEditing = stateEntry.isEditing;
+        }
+        return(entry);
+    });
+
+    return state;
   }
 
   buttonSearch(triad_key){
@@ -568,6 +560,10 @@ export default class InformationTypeCatalog extends Component<Props> {
                             className={styles.informationCategoryTagEdit}
                             variant="primary"
                             value={entry.name}
+                            onDoubleClick={(e) => {
+                                this.props.history.glossaryOptions = {'glossarySelection': 'information_categories', 'entryId': entry.id}
+                                this.props.history.push(routes.GLOSSARY);
+                            }}
                             active
                             >
                             <div className={styles.removeButtonContainer}>
