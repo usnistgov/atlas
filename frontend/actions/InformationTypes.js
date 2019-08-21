@@ -135,6 +135,7 @@ export const updateInformationType = (state) => {
     let information_type = {
         'id': state.id,
         'name': state.name,
+        'description': state.description,
         'triad_rating': state.triad_rating,
         'security_reasoning': state.security_reasoning,
         'information_categories': state.information_categories
@@ -160,6 +161,7 @@ export const createInformationType = (state) => {
 
     let information_type = {
         'name': state.name,
+        'description': state.description,
         'triad_rating': state.triad_rating,
         'security_reasoning': state.security_reasoning,
         'information_categories': state.information_categories

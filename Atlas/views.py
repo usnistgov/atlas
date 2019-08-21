@@ -27,7 +27,7 @@ class baseMongoView(mixins.RetrieveModelMixin,
 
         document = self.model.objects.with_id(request.data["id"])
         keys = (i for i in document)
-
+        print(request.data)
         for key in keys:
             document[key] = request.data[key]
 

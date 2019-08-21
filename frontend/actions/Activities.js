@@ -47,7 +47,7 @@ export const updateActivity = (state) => {
         'id': state.id,
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {
@@ -71,7 +71,7 @@ export const createActivity = (state) => {
     let activity = {
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {

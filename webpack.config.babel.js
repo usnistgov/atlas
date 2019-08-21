@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -186,9 +186,10 @@ module.exports = {
   ],
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
+        sourceMap: true,
         cache: true,
-        parallel: true
+        parallel: true,
       }),
       new OptimizeCSSAssetsPlugin({})
     ],

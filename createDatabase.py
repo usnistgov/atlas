@@ -324,6 +324,7 @@ for i in information_categories.find({}):
 information_types.insert_many([
     {
         'name': 'active authentication',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -334,6 +335,7 @@ information_types.insert_many([
     },
     {
         'name': 'body camera data',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -344,6 +346,7 @@ information_types.insert_many([
     },
     {
         'name': 'comms',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -354,6 +357,7 @@ information_types.insert_many([
     },
     {
         'name': 'completed incident command system (ICS) forms/plans',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -364,6 +368,7 @@ information_types.insert_many([
     },
     {
         'name': 'crime scene geographic information system (GIS) intel location',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -374,6 +379,7 @@ information_types.insert_many([
     },
     {
         'name': 'critical static locations (shelters|ccps|EVAC|LZ)',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'medium',
@@ -384,6 +390,7 @@ information_types.insert_many([
     },
     {
         'name': 'deployable assets',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -394,6 +401,7 @@ information_types.insert_many([
     },
     {
         'name': 'Emergency Response',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'low',
             'integrity': 'high',
@@ -404,6 +412,7 @@ information_types.insert_many([
     },
     {
         'name': 'evac routes and plans',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'low',
             'integrity': 'high',
@@ -414,6 +423,7 @@ information_types.insert_many([
     },
     {
         'name': 'facial recognition',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -424,6 +434,7 @@ information_types.insert_many([
     },
     {
         'name': 'first responder assets',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -434,6 +445,7 @@ information_types.insert_many([
     },
     {
         'name': 'functional roles',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'medium',
             'integrity': 'high',
@@ -444,6 +456,7 @@ information_types.insert_many([
     },
     {
         'name': 'ICS (incident command system) forms/plans',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -454,6 +467,7 @@ information_types.insert_many([
     },
     {
         'name': 'images + media from ng911',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'low',
             'integrity': 'medium',
@@ -464,6 +478,7 @@ information_types.insert_many([
     },
     {
         'name': 'incident action plan',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -474,6 +489,7 @@ information_types.insert_many([
     },
     {
         'name': 'Info from multiple CAD LE Location',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'medium',
@@ -484,6 +500,7 @@ information_types.insert_many([
     },
     {
         'name': 'law enforcement intel',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -494,6 +511,7 @@ information_types.insert_many([
     },
     {
         'name': 'license and plate reader',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'medium',
             'integrity': 'high',
@@ -504,6 +522,7 @@ information_types.insert_many([
     },
     {
         'name': 'license plate recognition (LPR)',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',
@@ -514,6 +533,7 @@ information_types.insert_many([
     },
     {
         'name': 'managing security',
+        'description': '',
         'triad_rating': {
             'confidentiality': 'high',
             'integrity': 'high',

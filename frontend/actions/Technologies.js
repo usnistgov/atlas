@@ -48,7 +48,7 @@ export const updateTechnology = (state) => {
         'id': state.id,
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {
@@ -72,7 +72,7 @@ export const createTechnology = (state) => {
     let technology = {
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {

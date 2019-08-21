@@ -48,7 +48,7 @@ export const updateRespondingOrganization = (state) => {
         'id': state.id,
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {
@@ -72,7 +72,7 @@ export const createRespondingOrganization = (state) => {
     let responding_organization = {
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {

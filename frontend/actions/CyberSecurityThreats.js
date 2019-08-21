@@ -47,7 +47,7 @@ export const updateCyberSecurityThreat = (state) => {
         'id': state.id,
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {
@@ -71,7 +71,7 @@ export const createCyberSecurityThreat = (state) => {
     let cybersecurity_threat = {
         'name': state.name,
         'description': state.description,
-        'source': state.source
+        'resource_links': state.resource_links
     }
 
     return dispatch => {
