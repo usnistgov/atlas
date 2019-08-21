@@ -404,7 +404,7 @@ export default class Glossary extends Component<Props> {
 
     const {
         glossarySelection
-    } = this.state
+    } = this.state;
 
     let selectionOptions = {
                             "information_categories": "Information Categories",

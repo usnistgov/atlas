@@ -189,7 +189,6 @@ export default class InformationTypeCatalog extends Component<Props> {
 
   static getDerivedStateFromProps(props, state){
 
-    console.log(state.latestAction);
     const stateUpdateOptions = ['start-up',
                                 'start-editor',
                                 'stop-editor',
@@ -639,7 +638,7 @@ export default class InformationTypeCatalog extends Component<Props> {
                             variant="primary"
                             value={entry.name}
                             onDoubleClick={(e) => {
-                                this.props.history.glossaryOptions = {'glossarySelection': 'information_categories', 'entryId': entry.id}
+                                this.props.history.glossarySearch = {'glossarySelection': 'information_categories', 'entryId': entry.id}
                                 this.props.history.push(routes.GLOSSARY);
                             }}
                             active
