@@ -3,7 +3,7 @@ from mongoengine.fields import ListField, StringField, DictField, ObjectIdField
 import Atlas_Project.settings as settings
 
 
-class Activities(Document):
+class activities(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -11,7 +11,7 @@ class Activities(Document):
 
     meta = {'collection': settings.COLLECTION_NAMES.get('activities')}
 
-class Actors(Document):
+class actors(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -19,7 +19,7 @@ class Actors(Document):
 
     meta = {'collection': settings.COLLECTION_NAMES.get('actors')}
 
-class CyberSecurityThreats(Document):
+class cybersecurity_threats(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -27,7 +27,7 @@ class CyberSecurityThreats(Document):
 
     meta = {'collection': settings.COLLECTION_NAMES.get('cybersecurity_threats')}
 
-class Disciplines(Document):
+class disciplines(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -35,7 +35,7 @@ class Disciplines(Document):
 
     meta = {'collection': settings.COLLECTION_NAMES.get('disciplines')}
 
-class RespondingOrganizations(Document):
+class responding_organizations(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -44,7 +44,7 @@ class RespondingOrganizations(Document):
     meta = {'collection': settings.COLLECTION_NAMES.get('responding_organizations')}
 
 
-class Technologies(Document):
+class technologies(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -53,7 +53,7 @@ class Technologies(Document):
     meta = {'collection': settings.COLLECTION_NAMES.get('technologies')}
 
 
-class Locations(Document):
+class locations(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -62,7 +62,7 @@ class Locations(Document):
     meta = {'collection': settings.COLLECTION_NAMES.get('locations')}
 
 
-class InformationCategories(Document):
+class information_categories(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -71,7 +71,7 @@ class InformationCategories(Document):
     meta = {'collection': settings.COLLECTION_NAMES.get('information_categories')}
 
 
-class InformationTypes(Document):
+class information_types(Document):
 
     name = StringField(max_length=100, required=True)
     description = StringField(max_length=2000, null=True)
@@ -82,7 +82,7 @@ class InformationTypes(Document):
     meta = {'collection': settings.COLLECTION_NAMES.get('information_types')}
 
 
-class UseCases(Document):
+class use_cases(Document):
 
     name = StringField(max_length=100, required=True)
     source = StringField(max_length=500)

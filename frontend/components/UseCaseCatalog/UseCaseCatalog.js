@@ -322,8 +322,11 @@ export default class UseCaseCatalog extends PureComponent<Props> {
 
     const {
       use_cases,
-      getUseCases
+      getUseCases,
+      updateUseCase
     } = this.props;
+
+    const useCaseStaticFields = ['id', 'name', 'description', 'source', 'concept_links']
 
     this.setState(state => {
         let isEditing = state.isEditing;
@@ -337,7 +340,9 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             useCaseSelection: use_case,
             isEditing: isEditing
         }
-    }, () => getUseCases(this.state));
+    }, () => {
+            getUseCases(this.state);
+    });
   }
 
   startEditor(){
