@@ -1,0 +1,126 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccba"
+        },
+        "description": "smartphone\n=",
+        "name": "smartphone",
+        "resource_links": [
+            {
+                "description": "The Middle Class Tax Relief and Job Creation Act of 2012 (Act) defined responsibilities for the National Institute of Standards and Technology (NIST) in regards to the Nationwide Public Safety Broadband Network (NPSBN) and the First Responder Nextwork Authority (FN). AT&T was awarded the contract by FN to partner with FN and to build the NPSBN. One requirement of the Act is that the Director of NIST shall ensure the development of a list of certified devices that meet appropriate protocols and standards for access to, use of, or compatibility with the NPSBN that FN and AT&T build and maintain. This requirement is carried out by the Public Safety Communications Research Division (PSCR) of the NIST Communications Technology Laboratory. This document describes the process for creating and maintaining the list.",
+                "href": "https://www.nist.gov/communications-technology-laboratory/pscr/process-document-nist-list-certified-devices",
+                "hyperlink_name": "Certified Devices"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccbb"
+        },
+        "description": "",
+        "name": "tablet",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccbc"
+        },
+        "description": "",
+        "name": "hotspot",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccbd"
+        },
+        "description": "",
+        "name": "LTE modem",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccbe"
+        },
+        "description": "",
+        "name": "smartwatch",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccbf"
+        },
+        "description": "",
+        "name": "fitness tracker",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc0"
+        },
+        "description": "",
+        "name": "drone",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc1"
+        },
+        "description": "",
+        "name": "body worn camera",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc2"
+        },
+        "description": "",
+        "name": "smartglasses",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc3"
+        },
+        "description": "",
+        "name": "bluetooth headset",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc4"
+        },
+        "description": "",
+        "name": "wearable health monitoring sensor",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc5"
+        },
+        "description": "",
+        "name": "hardware authentication device",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc6"
+        },
+        "description": "",
+        "name": "LMR handsets",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1f916d08d7bb5408e21146"
+        },
+        "description": "A portable computing device that: (i) has a small form factor such that it can easily be carried by a single individual; (ii) is designed to operate without a physical connection (e.g., wirelessly transmit or receive information); (iii) possesses local, non-removable or removable data storage; and (iv) includes a self-contained power source. Mobile devices may also include voice communication capabilities, on-board sensors that allow the devices to capture information, and/or built-in features for synchronizing local data with remote locations.",
+        "name": "Mobile Device",
+        "resource_links": [
+            {
+                "description": "NIST Special Publication 800-53",
+                "href": "http://dx.doi.org/10.6028/NIST.SP.800-53r4",
+                "hyperlink_name": "Security and Privacy Controls for Federal Information Systems and Organizations"
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccad"
+        },
+        "description": "",
+        "name": "EMS",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccae"
+        },
+        "description": "",
+        "name": "Law Enforcement",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccaf"
+        },
+        "description": "",
+        "name": "Fire",
+        "resource_links": []
+    }
+]
