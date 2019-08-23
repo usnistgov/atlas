@@ -52,6 +52,18 @@ class baseMongoView(mixins.RetrieveModelMixin,
 
             self.model.objects(id=request.data['id']).delete()
 
+            if self.model._class_name not in ['information_types', 'use_cases']:
+
+                use_cases = db[settings.COLLECTION_NAMES['use_cases']]
+                information_types = db[settings.COLLECTION_NAMES['information_types']]
+
+                use_cases.update_many({str(self.model._class_name): ObjectId(request.data['id'])},
+                                      {'$pull': {str(self.model._class_name): ObjectId(request.data['id'])}})
+
+                information_types.update_many({str(self.model._class_name): ObjectId(request.data['id'])},
+                                              {'$pull': {str(self.model._class_name): ObjectId(request.data['id'])}})
+
+
             return Response(status.HTTP_200_OK)
 
         else:
@@ -61,42 +73,42 @@ class baseMongoView(mixins.RetrieveModelMixin,
 class CyberSecurityThreatsView(baseMongoView):
 
     serializer_class = CyberSecurityThreats_Serializer
-    queryset = CyberSecurityThreats.objects.all()
+    queryset = cybersecurity_threats.objects.all()
 
 
 class ActorsView(baseMongoView):
     serializer_class = Actors_Serializer
-    queryset = Actors.objects.all()
+    queryset = actors.objects.all()
 
 
 class TechnologiesView(baseMongoView):
     serializer_class = Technologies_Serializer
-    queryset = Technologies.objects.all()
+    queryset = technologies.objects.all()
 
 
 class RespondingOrganizationsView(baseMongoView):
     serializer_class = RespondingOrganizations_Serializer
-    queryset = RespondingOrganizations.objects.all()
+    queryset = responding_organizations.objects.all()
 
 
 class DisciplinesView(baseMongoView):
     serializer_class = Disciplines_Serializer
-    queryset = Disciplines.objects.all()
+    queryset = disciplines.objects.all()
 
 
 class LocationsView(baseMongoView):
     serializer_class = Locations_Serializer
-    queryset = Locations.objects.all()
+    queryset = locations.objects.all()
 
 
 class InformationCategoriesView(baseMongoView):
     serializer_class = InformationCategories_Serializer
-    queryset = InformationCategories.objects.all()
+    queryset = information_categories.objects.all()
 
 
 class ActivitiesView(baseMongoView):
     serializer_class = Activities_Serializer
-    queryset = Activities.objects.all()
+    queryset = activities.objects.all()
 
 
 class InformationTypesView(baseMongoView):
@@ -205,10 +217,10 @@ class InformationTypesView(baseMongoView):
 
     def get_queryset(self):
 
-        queryset = InformationTypes.objects.all()
+        queryset = information_types.objects.all()
         mongo_query = self.convert_kwargs_to_mongo_query()  # get the fields with values for filtering
         if mongo_query != {}:
-            queryset = InformationTypes.objects(__raw__=mongo_query)
+            queryset = information_types.objects(__raw__=mongo_query)
 
         return queryset
 
@@ -300,10 +312,10 @@ class UseCasesView(baseMongoView):
 
     def get_queryset(self):
 
-        queryset = UseCases.objects.all()
+        queryset = use_cases.objects.all()
         mongo_query = self.convert_kwargs_to_mongo_query()  # get the fields with values for filtering
 
         if mongo_query != {}:
-            queryset = UseCases.objects(__raw__=mongo_query)
+            queryset = use_cases.objects(__raw__=mongo_query)
 
         return queryset

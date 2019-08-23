@@ -3,4 +3,4 @@ from .models import *
 
 # Register your models here
 
-admin.register(UseCases)
+admin.register(use_cases)

@@ -194,7 +194,8 @@ export default class InformationTypeCatalog extends Component<Props> {
                                 'stop-editor',
                                 'update-button-search-value',
                                 'set-button-search-value',
-                                'remove-value'
+                                'remove-value',
+                                'clear'
                                 ];
 
     if(stateUpdateOptions.includes(state.latestAction)){
