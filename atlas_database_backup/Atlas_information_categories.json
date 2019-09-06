@@ -1,0 +1,167 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc7"
+        },
+        "description": "",
+        "name": "operations data",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc8"
+        },
+        "description": "Data corresponding to body sensor's worn by first responders. This can include vitals readings and location information.",
+        "name": "First responder body sensor data",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccc9"
+        },
+        "description": "Data collected from the public. This could be data extracted from social media or data explicitly sent to public safety entities. For example, video and images texted directly to a PSAP.",
+        "name": "publicly sourced data",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccca"
+        },
+        "description": "Data whose value correspond to their real time availability and integrity.  ",
+        "name": "situational awareness data",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cccc"
+        },
+        "description": "A data type for a single or set of related actions, events, or process steps.",
+        "name": "Activity Type",
+        "resource_links": [
+            {
+                "description": "NIEM Type.",
+                "href": "https://beta.movement.niem.gov/#/details?entityID=nc:ActivityType",
+                "hyperlink_name": "NIEM Namespace: NIEM Core. - ActivityType"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cccd"
+        },
+        "description": "A data type for a device.",
+        "name": "Device Type",
+        "resource_links": [
+            {
+                "description": "NIEM Type.",
+                "href": "https://beta.movement.niem.gov/#/details?entityID=nc:DeviceType",
+                "hyperlink_name": "NIEM Namespace: NIEM Core. - DeviceType"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccce"
+        },
+        "description": "A data type for a human being.",
+        "name": "Person Type",
+        "resource_links": [
+            {
+                "description": "NIEM Type.",
+                "href": "https://beta.movement.niem.gov/#/details?entityID=nc:PersonType",
+                "hyperlink_name": "NIEM Namespace: NIEM Core. - PersonType"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cccf"
+        },
+        "description": "A data type for a conveyance designed to carry an operator, passengers and/or cargo, over land.",
+        "name": "Vehicle Type",
+        "resource_links": [
+            {
+                "description": "NIEM Type.",
+                "href": "https://beta.movement.niem.gov/#/details?entityID=nc:VehicleType",
+                "hyperlink_name": "NIEM Namespace: NIEM Core. - VehicleType"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1cb3db08d7bb382c6ae0eb"
+        },
+        "description": "Information gathered about a patient that is intended to be passed along to another healthcare entity. For example, information that may be loaded into a hospital's patient management system.",
+        "name": "Healthcare Information",
+        "resource_links": [
+            {
+                "description": "HL7 - Fast Healthcare Interoperability Resources",
+                "href": "https://www.hl7.org/fhir/",
+                "hyperlink_name": "HL7 FHIR"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1d123508d7bb382c6ae0ec"
+        },
+        "description": "",
+        "name": "Authentication Data",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1d124a08d7bb382c6ae0ed"
+        },
+        "description": "",
+        "name": "Authentication and Identity Management",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1fab0908d7bb5408e21148"
+        },
+        "description": "Information having an implicit or explicit association with a location relative to the Earth. This data can be incorporated and used by Geographic Information Systems (GIS)",
+        "name": "Geographic Data",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://en.wikipedia.org/wiki/Geographic_data_and_information",
+                "hyperlink_name": "Geographic data and information"
+            },
+            {
+                "description": "Standard representation of geographic point location by coordinates",
+                "href": "https://www.iso.org/standard/53539.html",
+                "hyperlink_name": "ISO 6709:2008/Cor 1:2009"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1fc62a08d7bb5408e2114f"
+        },
+        "description": "",
+        "name": "Criminal Justice Information Service (CJIS)",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://www.fbi.gov/services/cjis",
+                "hyperlink_name": "Criminal Justice Information Services"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d5eecdf99f441f46a91d6f4"
+        },
+        "description": "Data used to model incidents.",
+        "name": "Modeling Data",
+        "resource_links": [
+            {
+                "desdes": "The Interagency Modeling and Atmospheric Assessment Center coordinates and disseminates Federal atmospheric dispersion modeling and hazard prediction products. These products provide the Federal position during actual or potential incidents involving hazardous material releases",
+                "href": "https://www.fema.gov/imaac",
+                "hyperlink_name": "Interagency Modeling and Atmospheric Assessment Center"
+            }
+        ]
+    }
+]

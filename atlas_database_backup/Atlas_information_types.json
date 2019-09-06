@@ -1,0 +1,2453 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd0"
+        },
+        "description": "Mobile application ",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "Mobile App Authentication Token",
+        "security_reasoning": "As all mobile technology interaction will revolve around user authentication, Confidentiality, Integrity, and Availability will be critical to ensure ",
+        "triad_rating": {
+            "availability": "low",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd1"
+        },
+        "description": "Video that is captured by a device and delivered to another viewer in real time. Examples include streaming body camera data.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "Real time video",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd2"
+        },
+        "description": "Voice transmitted through an LTE network",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "Voice Data",
+        "security_reasoning": "Communications data is paramount during public safety operations.",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd3"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "completed incident command system (ICS) forms/plans",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd4"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "crime scene geographic information system (GIS) intel location",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd5"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "critical static locations (shelters|ccps|EVAC|LZ)",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "high",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd6"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "deployable assets",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd7"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "Emergency Response",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd8"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "evac routes and plans",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccd9"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "facial recognition",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccda"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "first responder assets",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccdb"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "functional roles",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "medium",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccdc"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "ICS (incident command system) forms/plans",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccdd"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "images + media from ng911",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccde"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "incident action plan",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccdf"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "Info from multiple CAD LE Location",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce0"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "law enforcement intel",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce1"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "license and plate reader",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "low",
+            "confidentiality": "medium",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce2"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "license plate number",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce3"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            }
+        ],
+        "name": "managing security",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce5"
+        },
+        "description": "A kind of activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityCategoryText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce6"
+        },
+        "description": "A person or organization to contact for additional information about an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityContactEntity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce7"
+        },
+        "description": "A date of an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityDate",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "low",
+            "confidentiality": "low",
+            "integrity": "low"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce8"
+        },
+        "description": "A description of an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cce9"
+        },
+        "description": "A result or outcome of an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityDisposition",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccea"
+        },
+        "description": "An identification that references an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cceb"
+        },
+        "description": "A name of an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityName",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccec"
+        },
+        "description": "A reason for an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityReasonText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cced"
+        },
+        "description": "A status of an activity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccc"
+            }
+        ],
+        "name": "ActivityStatus",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccee"
+        },
+        "description": "An augmentation point for nc:DeviceType.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceAugmentationPoint",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccef"
+        },
+        "description": "A data concept for a kind of communication device.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceCategoryAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf0"
+        },
+        "description": "An identification number of a device specified as an electronic serial number assigned to every GSM and UMTS cellular phone by the specific manufacturer.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceESNIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf1"
+        },
+        "description": "An Internet Protocol (IP) address or Uniform Resource Locator (URL) of a device that uniquely identifies a specific site on the Internet or another network.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceElectronicAddress",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf2"
+        },
+        "description": "An identification number of a device specified as an International Mobile Equipment Identity assigned to every mobile phone by the manufacturer.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceIMEIIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf3"
+        },
+        "description": "A piece of contact information stored on a device.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccd"
+            }
+        ],
+        "name": "DeviceStoredContactInformation",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf4"
+        },
+        "description": "A means of contacting a person at work.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "EmploymentContactInformation",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "medium",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf5"
+        },
+        "description": "A manner of pronunciation; a way of pronouncing words that may indicate the place of origin or social background of the speaker.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonAccentText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf6"
+        },
+        "description": "A general description of the age of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonAgeDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf7"
+        },
+        "description": "A measurement of the age of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonAgeMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf8"
+        },
+        "description": "An augmentation point for PersonType.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonAugmentationPoint",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccf9"
+        },
+        "description": "A date a person was born.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "Person Birth Date",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "low",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccfa"
+        },
+        "description": "A location where a person was born.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonBirthLocation",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccfb"
+        },
+        "description": "A data concept for a blood group and RH factor of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "Person Blood Type Abstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "low",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccfc"
+        },
+        "description": "A data concept for the availability of an X-ray for a specific body part for a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonBodyXRaysAvailableAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccfd"
+        },
+        "description": "A data concept for a person's physique or body shape.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonBuildAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccfe"
+        },
+        "description": "A capacity or ability of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonCapability",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccff"
+        },
+        "description": "True if a person is circumcised; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonCircumcisionIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd00"
+        },
+        "description": "A data concept for a country that assigns rights, duties, and privileges to a person because of the birth or naturalization of the person in that country.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonCitizenshipAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd01"
+        },
+        "description": "An appearance or condition of the skin of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonComplexionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd02"
+        },
+        "description": "A date a person died or was declared legally dead.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDeathDate",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd03"
+        },
+        "description": "A number of people dependent upon a person as their primary means of support.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDependentQuantity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd04"
+        },
+        "description": "A description of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd05"
+        },
+        "description": "A photograph or image of a person in a digital format.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDigitalImage",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd06"
+        },
+        "description": "An image of a handwritten signature of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDigitizedSignatureImage",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd07"
+        },
+        "description": "A description of something a person wears to conceal or mislead others as to the true appearance or identity of that person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonDisguiseDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd08"
+        },
+        "description": "A highest level of education a person has obtained.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonEducationLevelText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd09"
+        },
+        "description": "A means of contacting someone in the event of an emergency.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonEmergencyContactInformation",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0a"
+        },
+        "description": "A data concept for a cultural lineage of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonEthnicityAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0b"
+        },
+        "description": "A data concept for a color of the eyes of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonEyeColorAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0c"
+        },
+        "description": "A data concept for a kind of glasses or other eyewear.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonEyewearAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0d"
+        },
+        "description": "A data concept for a kind of facial hair.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonFacialHairAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0e"
+        },
+        "description": "A description of the way a person looks and is presented overall.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonGeneralAppearanceDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd0f"
+        },
+        "description": "An overall appearance of the hair of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHairAppearanceText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd10"
+        },
+        "description": "A kind of hair of a person, such as wavy or straight.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHairCategoryText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd11"
+        },
+        "description": "A data concept for a color of the hair of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHairColorAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd12"
+        },
+        "description": "A data concept for a length of hair of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHairLengthAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd13"
+        },
+        "description": "A data concept for a style or cut of hair worn by a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHairStyleAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd14"
+        },
+        "description": "A hand with which a person is more adept using.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHandednessText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd15"
+        },
+        "description": "A description of the height of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHeightDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd16"
+        },
+        "description": "A measurement of the height of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd17"
+        },
+        "description": "A means of contacting a person at home.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHomeContactInformation",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd18"
+        },
+        "description": "A human resources or employment identification assigned to a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonHumanResourceIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd19"
+        },
+        "description": "A form of physical harm or damage sustained by a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonInjury",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1a"
+        },
+        "description": "A description of adornments a person wears.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonJewelryDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1b"
+        },
+        "description": "True if a person understands and speaks English; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonLanguageEnglishIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1c"
+        },
+        "description": "A disorder of a person which can cause difficulties in learning something.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonLearningDisabilityText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1d"
+        },
+        "description": "An identification that references a license certification or registration of a person for some purpose.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonLicenseIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1e"
+        },
+        "description": "True if a person is alive; false if a person is dead.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonLivingIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd1f"
+        },
+        "description": "A state of health for a person, on-going or present.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMedicalCondition",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd20"
+        },
+        "description": "A description of the overall health of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMedicalDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd21"
+        },
+        "description": "True if a medical history file is known to exist for a person; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMedicalFileIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd22"
+        },
+        "description": "A medication and dosage required for a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMedicationRequiredText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd23"
+        },
+        "description": "A mental condition of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMentalStateText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd24"
+        },
+        "description": "A service of a person in a military.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMilitarySummary",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd25"
+        },
+        "description": "A description of a state of feeling of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonMoodDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd26"
+        },
+        "description": "A combination of names and/or titles by which a person is known.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "Person Name",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "low",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd27"
+        },
+        "description": "An identification that references a person within a country but is not based on fingerprint.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonNationalIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd28"
+        },
+        "description": "A data concept for a country of a person's citizenship or a country in which a person is deemed a national.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonNationalityAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd29"
+        },
+        "description": "True if a person has given consent to be used as an organ donor upon death; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonOrganDonatorIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2a"
+        },
+        "description": "A data concept for an organ a person is willing to donate upon death.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonOrganDonorAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2b"
+        },
+        "description": "An identification with a kind that is not explicitly defined in the standard that refers to a person within a certain domain.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonOtherIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2c"
+        },
+        "description": "An identification of a passport issued to a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonPassportIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2d"
+        },
+        "description": "A physical disability of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonPhysicalDisabilityText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2e"
+        },
+        "description": "A prominent or easily identifiable aspect of  a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonPhysicalFeature",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd2f"
+        },
+        "description": "A capacity of a person for a language with which that person has the strongest familiarity.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonPrimaryLanguage",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd30"
+        },
+        "description": "A data concept for a classification of a person based on factors such as geographical locations and genetics.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonRaceAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd31"
+        },
+        "description": "A data concept for a religion to which a person subscribes or believes; a categorization of spiritual beliefs.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonReligionAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd32"
+        },
+        "description": "A data concept for a manner of residence a person has in a city, town, community, or other area..",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonResidentAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd33"
+        },
+        "description": "A unique identification reference to a living person; assigned by the United States Social Security Administration.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSSNIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd34"
+        },
+        "description": "A capacity of a person for a language with which that person is not completely fluent.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSecondaryLanguage",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd35"
+        },
+        "description": "A data concept for a formal authorization granting a person access to classified or restricted information.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSecurityClearanceAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd36"
+        },
+        "description": "A data concept for a gender or sex of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSexAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd37"
+        },
+        "description": "A target gender of the sexual interest of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSexualOrientationText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd38"
+        },
+        "description": "A data concept for a color or tone of the skin of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSkinToneAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd39"
+        },
+        "description": "A description of a pattern of speech with which a person speaks.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonSpeechDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3a"
+        },
+        "description": "An identification of a person based on a state-issued ID card.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonStateIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3b"
+        },
+        "description": "An identification used to refer to a specific person within the tax system of a country.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonTaxIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3c"
+        },
+        "description": "True if a person is a citizen of the United States; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonUSCitizenIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3d"
+        },
+        "description": "A data concept for a legal status of a union between two people.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonUnionStatusAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3e"
+        },
+        "description": "A prescription a person needs for corrective lenses or contacts.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonVisionPrescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd3f"
+        },
+        "description": "A description of the weight of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonWeightDescriptionText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd40"
+        },
+        "description": "A measurement of the weight of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd41"
+        },
+        "description": "An X-Ray image of a person or part of a person.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccce"
+            }
+        ],
+        "name": "PersonXRayImage",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd42"
+        },
+        "description": "An augmentation point for VehicleType.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleAugmentationPoint",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd43"
+        },
+        "description": "A count of common axles of rotation of one or more wheels of a vehicle, whether power driven or freely rotating.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleAxleQuantity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd44"
+        },
+        "description": "True if a vehicle is a commercial motor vehicle; false otherwise.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleCMVIndicator",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd45"
+        },
+        "description": "A color of the interior of a vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleColorInteriorText",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd46"
+        },
+        "description": "An observed, estimated, or measured weight of the conveyance.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleCurrentWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd47"
+        },
+        "description": "A number of doors on a vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleDoorQuantity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd48"
+        },
+        "description": "A sum of values specified by the manufacturer(s) for a truck tractor or trailer for the units that make up a combination.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleGrossLadenSumWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd49"
+        },
+        "description": "A value specified by the manufacturer for a single unit truck, truck tractor, or trailer.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleGrossLadenUnitWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4a"
+        },
+        "description": "A unique identification for a specific vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleIdentification",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4b"
+        },
+        "description": "A manufacturer's suggested retail price of a vehicle; a price at which a manufacturer recommends a vehicle be sold.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleMSRPAmount",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4c"
+        },
+        "description": "A data concept for a manufacturer of a vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleMakeAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4d"
+        },
+        "description": "A maximum load weight intended for the vehicle to transport, assigned at the point of manufacture.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleMaximumLoadWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4e"
+        },
+        "description": "A data concept for a specific design or class of vehicle made by a manufacturer.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleModelAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd4f"
+        },
+        "description": "A reading of a vehicle odometer to the nearest mile or kilometer.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleOdometerReadingMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd50"
+        },
+        "description": "A total number of people a vehicle is designed to safely transport.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehiclePassengerSafeQuantity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd51"
+        },
+        "description": "A total number of seats available in a vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleSeatingQuantity",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd52"
+        },
+        "description": "A data concept for a kind of transmission unit in a vehicle.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleTransmissionCategoryAbstract",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd53"
+        },
+        "description": "A weight of a vehicle fully equipped for service, not including the weight of the payload.",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010cccf"
+            }
+        ],
+        "name": "VehicleUnladenWeightMeasure",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "-",
+            "confidentiality": "-",
+            "integrity": "-"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1fb1b3564a993760bd3e5d"
+        },
+        "description": "A structural diagram of the layout of a building",
+        "information_categories": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccc7"
+            },
+            {
+                "$oid": "5d1fab0908d7bb5408e21148"
+            }
+        ],
+        "name": "Building floor plans",
+        "security_reasoning": "Building floor plans are mostly a matter of public record, thus making their confidentiality requirements quiet low. The integrity and avialability of this data is moderate due as ernonious, out of date, or temapered information could endanger responders.",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "low",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1fb7ef08d7bb5408e2114a"
+        },
+        "description": "the real time location of a first responder.",
+        "information_categories": [
+            {
+                "$oid": "5d1fab0908d7bb5408e21148"
+            }
+        ],
+        "name": "First responder Location",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "high",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1fc32908d7bb5408e2114c"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1cb3db08d7bb382c6ae0eb"
+            }
+        ],
+        "name": "Patient Vitals",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "medium",
+            "confidentiality": "medium",
+            "integrity": "medium"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d1fc5df08d7bb5408e2114e"
+        },
+        "description": "",
+        "information_categories": [
+            {
+                "$oid": "5d1fc62a08d7bb5408e2114f"
+            }
+        ],
+        "name": "Criminal background data",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "5d5eec8099f441f46a91d6f3"
+        },
+        "description": "Data used to model atmospheric conditions for hazard dispersion. ",
+        "information_categories": [
+            {
+                "$oid": "5d5eecdf99f441f46a91d6f4"
+            }
+        ],
+        "name": "Atmospheric modeling data",
+        "security_reasoning": "",
+        "triad_rating": {
+            "availability": "low",
+            "confidentiality": "low",
+            "integrity": "low"
+        }
+    }
+]

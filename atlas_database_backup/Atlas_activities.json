@@ -1,0 +1,76 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1f6dfd08d7bb5408e21143"
+        },
+        "description": "Establishing and enforcing an area for public safety operations to occur in unimpeded.",
+        "name": "Deploy protection line",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "http://www.ce.siue.edu/faculty/hzhou/Information%20CD/Menu%20Files/Materials/89-Model%20Procedures%20Guide%20for%20Highway%20Incidents.pdf",
+                "hyperlink_name": "Model Procedures Guide for Highway Incidents"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1f70aed1d1a624d8cb7014"
+        },
+        "description": "Safetly routing traffic arround an area involved in public safety incident",
+        "name": "Establish temporary traffic control",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "http://www.ce.siue.edu/faculty/hzhou/Information%20CD/Menu%20Files/Materials/89-Model%20Procedures%20Guide%20for%20Highway%20Incidents.pdf",
+                "hyperlink_name": "Model Procedures Guide for Highway Incidents"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1f7154d1d1a624d8cb7015"
+        },
+        "description": "The process of determining the priority of patients' treatments based on the severity of their condition",
+        "name": "Triage patients",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://en.wikipedia.org/wiki/Triage",
+                "hyperlink_name": "Wikipedia: Triage"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1fb58108d7bb5408e21149"
+        },
+        "description": "The process through which law enforcement systematically searches a building.",
+        "name": "Building sweep",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1fb8e008d7bb5408e2114b"
+        },
+        "description": "The processed through which first responders systematically assist in removing individuals from a building.",
+        "name": "Building evacuation",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1fc4e808d7bb5408e2114d"
+        },
+        "description": "",
+        "name": "License plate lookup",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d5eefdb99f441f46a91d6f5"
+        },
+        "description": "During an incident involving hazards that can move (i.e. through the atmosphere, in the water, or over land), public safety often employees modeling techniques in order to make informed decisions concerning course of action and/or evacuation.",
+        "name": "Hazard Modeling",
+        "resource_links": []
+    }
+]

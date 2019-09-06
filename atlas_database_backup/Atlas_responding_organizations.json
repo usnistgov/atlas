@@ -1,0 +1,82 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cca7"
+        },
+        "description": "A state level police organization. In some states they are equivalent to the State Police. However, in others, their scope is limited to the enforcement of traffic law.",
+        "name": "Highway Patrol",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://en.wikipedia.org/wiki/Highway_patrol#United_States",
+                "hyperlink_name": "Wikipedia: United States Highway Patrol"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cca8"
+        },
+        "description": "Emergency Medical Services",
+        "name": "EMS",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccab"
+        },
+        "description": "Federal Emergency Management Agency",
+        "name": "FEMA",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://www.fema.gov/",
+                "hyperlink_name": "FEMA Homepage"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccac"
+        },
+        "description": "A fire department operating under the authority of a town, village or other local government organization.",
+        "name": "Municipal fire Department",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1f952b08d7bb5408e21147"
+        },
+        "description": "A police body unique to each U.S. state, having statewide authority to conduct law enforcement activities and criminal investigations.",
+        "name": "State Police",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://en.wikipedia.org/wiki/State_police_(United_States)",
+                "hyperlink_name": "Wikipedia: State Police"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1f9d8c564a993760bd3e5c"
+        },
+        "description": "a full-service law enforcement agency with responsibilities and jurisdiction in those National Park Service areas primarily located in the Washington, D.C., San Francisco, and New York City areas and certain other government lands. The Park Police is a unit of the National Park Service, which is a bureau of the Department of the Interior. ",
+        "name": "United States Park Police",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://en.wikipedia.org/wiki/United_States_Park_Police",
+                "hyperlink_name": "Wikipedia: United States Park Police"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d5ef28499f441f46a91d6f6"
+        },
+        "description": "",
+        "name": "State Department of Safety",
+        "resource_links": []
+    }
+]

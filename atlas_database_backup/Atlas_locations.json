@@ -1,0 +1,82 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb0"
+        },
+        "description": "",
+        "name": "highway",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb1"
+        },
+        "description": "",
+        "name": "hospital",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb2"
+        },
+        "description": "",
+        "name": "national park",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb3"
+        },
+        "description": "",
+        "name": "urban area",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb4"
+        },
+        "description": "",
+        "name": "building",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb5"
+        },
+        "description": "",
+        "name": "sub-urban area",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb6"
+        },
+        "description": "",
+        "name": "parks",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb7"
+        },
+        "description": "",
+        "name": "road",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb8"
+        },
+        "description": "",
+        "name": "metropolitan city",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010ccb9"
+        },
+        "description": "",
+        "name": "subway",
+        "resource_links": []
+    }
+]

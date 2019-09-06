@@ -1,0 +1,341 @@
+[
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd54"
+        },
+        "activities": [
+            {
+                "$oid": "5d1f6dfd08d7bb5408e21143"
+            },
+            {
+                "$oid": "5d1f70aed1d1a624d8cb7014"
+            },
+            {
+                "$oid": "5d1f7154d1d1a624d8cb7015"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cc9c"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9d"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9e"
+            }
+        ],
+        "concept_links": {
+            "actors": [
+                {
+                    "$oid": "5d1c050308d7bb53c010cc9e"
+                }
+            ],
+            "disciplines": [
+                {
+                    "$oid": "5d1c050308d7bb53c010ccae"
+                }
+            ],
+            "information_types": [
+                {
+                    "$oid": "5d1c050308d7bb53c010cce0"
+                },
+                {
+                    "$oid": "5d1c050308d7bb53c010ccd1"
+                }
+            ],
+            "responding_organizations": [
+                {
+                    "$oid": "5d1c050308d7bb53c010cca6"
+                }
+            ]
+        },
+        "cybersecurity_threats": [],
+        "description": "<h3>Situation</h3>\nA three-car accident occurs in the outside lane (right shoulder) of a six-lane divided highway, 100 yards past an off-ramp. Only the outside lane is blocked by the vehicles. The time of day is 10:00 a.m. The driver in one of the cars is trapped and injured. Another of the involved vehicles has a minor gasoline leak.",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccad"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccaf"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccae"
+            }
+        ],
+        "information_types": [
+            {
+                "$oid": "5d1c050308d7bb53c010cce7"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccd0"
+            }
+        ],
+        "locations": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccb0"
+            }
+        ],
+        "name": "THREE-CAR MOTOR VEHICLE ACCIDENT",
+        "responding_organizations": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca7"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccac"
+            }
+        ],
+        "source": "",
+        "technologies": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccba"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd5c"
+        },
+        "activities": [
+            {
+                "$oid": "5d1f6dfd08d7bb5408e21143"
+            },
+            {
+                "$oid": "5d1fb58108d7bb5408e21149"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca0"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9d"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9e"
+            }
+        ],
+        "cybersecurity_threats": [],
+        "description": "<h3>Situation</h3>\n<p>State police respond to reports of an active shooter in a office building. The incident commander is coordinating the sweep of the building in search of the perpetrator. Utilizing <b>building plans</b> The incident commander is able to guide law enforcement responders through the building. The commander is monitoring the <b>locations</b> of each of the officers engaged in the sweep. When </p>\n\n<p>Paramedics are staging themselves outside the building in preparation to triage victims</p>\n",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccae"
+            }
+        ],
+        "information_types": [
+            {
+                "$oid": "5d1fb1b3564a993760bd3e5d"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccd2"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccd1"
+            },
+            {
+                "$oid": "5d1fb7ef08d7bb5408e2114a"
+            }
+        ],
+        "locations": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccb4"
+            }
+        ],
+        "name": "Search for an Active shooter",
+        "responding_organizations": [
+            {
+                "$oid": "5d1f952b08d7bb5408e21147"
+            }
+        ],
+        "source": "https://www.apcointl.org/training-and-certification/continuing-dispatch-education-cde/resources-for-active-shooter-incidents/",
+        "technologies": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccba"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccc1"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccbd"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd5d"
+        },
+        "activities": [
+            {
+                "$oid": "5d1fc4e808d7bb5408e2114d"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cc9f"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9e"
+            }
+        ],
+        "cybersecurity_threats": [],
+        "description": "On a traffic stop, an officer uses an app to contact the communications center and check out the vehicle, provide the location, a vehicle description, and run the license plate and driver ID against local, State, and Federal records.",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccae"
+            }
+        ],
+        "information_types": [
+            {
+                "$oid": "5d1c050308d7bb53c010cce2"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccf9"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cd26"
+            }
+        ],
+        "locations": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccb7"
+            }
+        ],
+        "name": "Vehicle stop",
+        "responding_organizations": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca7"
+            }
+        ],
+        "source": "",
+        "technologies": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccba"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccbb"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d1c050308d7bb53c010cd5e"
+        },
+        "activities": [
+            {
+                "$oid": "5d1fb8e008d7bb5408e2114b"
+            },
+            {
+                "$oid": "5d1f7154d1d1a624d8cb7015"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca4"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cca3"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cca2"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cc9d"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cca0"
+            }
+        ],
+        "cybersecurity_threats": [],
+        "description": "<h3>Situation</h3>\n<p>At 15:17, a 9-1-1 call from a cab driver indicated that the apartment building on a street in downtown is smoking and appears to be on fire. The dispatcher notified the fire department to send a fire engine and a fire ladder, and to send the battalion chief as the fire's incident commander. The nearest ambulance was alerted by the dispatcher to proceed to the scene. The dispatcher notified a neighboring jurisdiction to also send an engine to the fire.</p>\n\n<h3>Considerations</h3>\n\n<ul>\n    <li>The building had eight apartments on each of three floors.</li>\n    <li>The main fire was discovered in a second floor apartment kitchen where an electric range was burning.</li>\n    <li>Two adults and two children were trapped in the apartment suffering from smoke inhalation.</l>\n    <li>Social media messages were used to post the status of the response</li>\n</ul>",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccaf"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccad"
+            }
+        ],
+        "information_types": [
+            {
+                "$oid": "5d1fb1b3564a993760bd3e5d"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccda"
+            },
+            {
+                "$oid": "5d1fc32908d7bb5408e2114c"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cd26"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccf9"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccfb"
+            }
+        ],
+        "locations": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccb4"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccb8"
+            }
+        ],
+        "name": "Apartment Building Fire",
+        "responding_organizations": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca5"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccac"
+            }
+        ],
+        "source": "https://nvlpubs.nist.gov/nistpubs/ir/2017/NIST.IR.8181.pdf",
+        "technologies": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccba"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccbb"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5d5ee9f399f441f46a91d6f0"
+        },
+        "activities": [
+            {
+                "$oid": "5d5eefdb99f441f46a91d6f5"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca2"
+            },
+            {
+                "$oid": "5d5eea6799f441f46a91d6f1"
+            }
+        ],
+        "concept_links": {},
+        "cybersecurity_threats": [],
+        "description": "<p>\nA train carrying <b>hazardous chemcials</b> derails 12 miles south of Silver City, Utah. Unknown amounts of various chemicals leaking from overturned railcars: phosphoric acid, sodium bicarbonate, diesel fuel, propane and 53% phosphoric anhydride. It is determined that destroying the railcars is the most expedient method for clearing the tracks. Using <b>modeling data</b> gathered from various sources, the <b>State Fire Marshal</b> safely destroys the derailed train cars.\n</p>\n\n",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccaf"
+            }
+        ],
+        "information_types": [],
+        "locations": [],
+        "name": "Train Derailment with Hazardous Chemicals",
+        "responding_organizations": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccab"
+            }
+        ],
+        "source": "Utah State Fire Marshal",
+        "technologies": []
+    }
+]
