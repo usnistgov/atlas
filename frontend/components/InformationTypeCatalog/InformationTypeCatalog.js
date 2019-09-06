@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import routes from '../../constants/routes';
 import styles from './InformationTypeCatalog.css';
 import { Button,
@@ -202,7 +203,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
         if(!equal(props.information_types, state.information_types)){
 
-                state.information_types = props.information_types.map((entry, index, array) => {
+                state.information_types = _.map(props.information_types, (entry) => {
                     let stateEntry = state.information_types.find(x => x.id === entry.id);
 
                     if(stateEntry !== undefined){
@@ -589,7 +590,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
     const animatedComponents = makeAnimated({ MultiValue: this.multiValue });
 
-    let informationTypesViewer = information_types.map((information_type) => {
+    let informationTypesViewer = _.map(information_types, (information_type) => {
 
         let tableData = [information_type];
 

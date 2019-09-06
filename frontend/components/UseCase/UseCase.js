@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import routes from '../../constants/routes';
 import styles from './UseCase.css';
@@ -9,18 +9,11 @@ import KeyboardBackspace from "@material-ui/icons/KeyboardBackspace";
 import Delete from "@material-ui/icons/Delete";
 import Tooltip from '@material-ui/core/Tooltip';
 import SanitizedHTML from 'react-sanitized-html';
+import Switch from 'react-switch';
+import UseCaseForceGraph from '../UseCaseGraph/UseCaseForceGraph';
 
 type Props = {
     use_case: object;
-    actors: object,
-    cybersecurity_threats: object,
-    disciplines: object,
-    activities: object,
-    responding_organizations: object,
-    technologies: object,
-    information_categories: object,
-    information_types: object,
-    locations: object
 };
 
 const noDataIndication = () => (
@@ -29,14 +22,16 @@ const noDataIndication = () => (
     </div>
 );
 
-export default class UseCase extends PureComponent<Props> {
+export default class UseCase extends Component<Props> {
   props: Props;
 
   constructor(props){
     super(props);
 
     this.state = {
+        showGraphView: false,
         showConceptLinks: false
+
     }
 
     this.rowEvents =  (tableName) => {
@@ -86,9 +81,14 @@ export default class UseCase extends PureComponent<Props> {
     };
 
     this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
+    this.formatCIARating = this.formatCIARating.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
+
   }
 
   formatCIARating(cell, row){
+
+    let ciaEntry = this.props.information_types.find(x => x.id === row.id);
 
     const style_lookup = {
         "high": styles.cia_high,
@@ -99,14 +99,14 @@ export default class UseCase extends PureComponent<Props> {
     let c_className = styles.cia_high;
     return (
         <div className={styles.cia_table}>
-            <div className={style_lookup[cell.confidentiality]}>
-                {cell.confidentiality}
+            <div className={style_lookup[ciaEntry.triad_rating.confidentiality]}>
+                {ciaEntry.triad_rating.confidentiality}
              </div>
-             <div className={style_lookup[cell.integrity]}>
-                {cell.integrity }
+             <div className={style_lookup[ciaEntry.triad_rating.integrity]}>
+                {ciaEntry.triad_rating.integrity }
             </div>
-            <div className={style_lookup[cell.availability]}>
-                {cell.availability}
+            <div className={style_lookup[ciaEntry.triad_rating.availability]}>
+                {ciaEntry.triad_rating.availability}
             </div>
         </div>
     )
@@ -147,86 +147,26 @@ export default class UseCase extends PureComponent<Props> {
     }
   }
 
+  handleSwitch(checked){
+    this.setState(state => {
+        return {
+            showGraphView: checked
+        }
+    });
+  }
 
-  render(){
+  getGraphView(){
+    return(<div className={styles.useCaseBody}>
+                <UseCaseForceGraph
+                    use_case={this.props.use_case}
+                />
+           </div>)
+  }
 
-     const { actors,
-             activities,
-             cybersecurity_threats,
-             disciplines,
-             responding_organizations,
-             technologies,
-             information_categories,
-             information_types,
-             locations } = this.props;
+  getPlainView(){
 
-     let use_case_actors = this.props.use_case['actors'].map((entry_id) => {
-                let entry = actors.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_information_types = this.props.use_case['information_types'].map((entry_id) => {
-                let entry = information_types.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_cybersecurity_threats = this.props.use_case['cybersecurity_threats'].map((entry_id) => {
-                let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_disciplines = this.props.use_case['disciplines'].map((entry_id) => {
-                let entry = disciplines.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_responding_organizations = this.props.use_case['responding_organizations'].map((entry_id) => {
-                let entry = responding_organizations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_technologies = this.props.use_case['technologies'].map((entry_id) => {
-                let entry = technologies.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_activities = this.props.use_case['activities'].map((entry_id) => {
-                let entry = activities.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_locations = this.props.use_case['locations'].map((entry_id) => {
-                let entry = locations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-    return (
-        <div className={styles.componentBody}>
-            <div className={styles.optionsBar}>
-                <Tooltip title="Back to Catalog">
-                    <KeyboardBackspace
-                        className={styles.backButton}
-                        style={{'color': '#F06449', 'height': '50px', 'width': '60px'}}
-                        onClick={() => this.props.handleUseCaseClick(null)}
-                    />
-                </Tooltip>
-                <h2>{this.props.use_case.name}</h2>
-                <Tooltip title="Edit">
-                    <Description
-                        className={styles.editButton}
-                        style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                        onClick={() => this.props.startEditor() }
-                    />
-                </Tooltip>
-                <Tooltip title="Delete">
-                    <Delete
-                        className={styles.deleteButton}
-                        style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
-                        onClick={() => this.deleteUseCase() }
-                    />
-                </Tooltip>
-            </div>
-            <div className={styles.useCaseBody}>
+    return(
+        <div className={styles.useCaseBody}>
                 <div className={styles.useCaseInfo}>
                     <div className={styles.headerFormat}>
                         <SanitizedHTML
@@ -240,7 +180,7 @@ export default class UseCase extends PureComponent<Props> {
                         <div className={styles.informationTypesTitle}><h3>Information Types</h3></div>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
-                            data={use_case_information_types}
+                            data={this.props.use_case.information_types}
                             columns={[
                                 {dataField: "id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
@@ -260,7 +200,7 @@ export default class UseCase extends PureComponent<Props> {
                 <div className={styles.useCaseTables}>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_actors}
+                        data={this.props.use_case.actors}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Actors', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Actors")}
@@ -272,7 +212,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_cybersecurity_threats}
+                        data={this.props.use_case.cybersecurity_threats}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Cybersecurity Threats', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Cybersecurity Threats")}
@@ -284,7 +224,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_disciplines}
+                        data={this.props.use_case.disciplines}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Disciplines', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Disciplines")}
@@ -296,7 +236,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_responding_organizations}
+                        data={this.props.use_case.responding_organizations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Responding Organizations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Responding Organizations")}
@@ -308,7 +248,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_activities}
+                        data={this.props.use_case.activities}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Activities', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Activities")}
@@ -320,7 +260,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_technologies}
+                        data={this.props.use_case.technologies}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Technologies', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Technologies")}
@@ -332,7 +272,7 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_locations}
+                        data={this.props.use_case.locations}
                         columns={[{dataField: "id", text: "ID", hidden: true}, {dataField: "name", text: 'Locations', headerStyle: this.props.getHeaderStyle()}]}
                         rowStyle={this.state.showConceptLinks ? this.conceptLinkRowStyle : this.props.getRowStyle}
                         rowEvents={this.rowEvents("Locations")}
@@ -344,6 +284,64 @@ export default class UseCase extends PureComponent<Props> {
                     </BootstrapTable>
                 </div>
             </div>
+    )
+  }
+
+  render(){
+
+    let viewName;
+    let useCaseCurrentView;
+
+    if(this.state.showGraphView){
+        viewName = "Graph View";
+        useCaseCurrentView = this.getGraphView();
+    } else {
+        viewName = "Regular View";
+        useCaseCurrentView = this.getPlainView();
+    }
+
+    return (
+        <div className={styles.componentBody}>
+            <div className={styles.optionsBar}>
+                <Tooltip title="Back to Catalog">
+                    <KeyboardBackspace
+                        className={styles.backButton}
+                        style={{'color': '#F06449', 'height': '50px', 'width': '60px'}}
+                        onClick={() => this.props.handleUseCaseClick(null)}
+                    />
+                </Tooltip>
+                <h2>{this.props.use_case.name}</h2>
+                <div className={styles.viewSwitcher}>
+                    <Tooltip title={viewName}>
+                        <label htmlFor="normal-switch">
+                            <Switch
+                                onChange={this.handleSwitch}
+                                checked={this.state.showGraphView}
+                                uncheckedIcon={false}
+                                checkedIcon={false}
+                                width={48}
+                                onColor='#F06449'
+                                id="normal-switch"
+                            />
+                        </label>
+                    </Tooltip>
+                </div>
+                <Tooltip title="Edit">
+                    <Description
+                        className={styles.editButton}
+                        style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                        onClick={() => this.props.startEditor() }
+                    />
+                </Tooltip>
+                <Tooltip title="Delete">
+                    <Delete
+                        className={styles.deleteButton}
+                        style={{'color': '#F06449', 'height': '50px', 'width': '40px'}}
+                        onClick={() => this.deleteUseCase() }
+                    />
+                </Tooltip>
+            </div>
+            { useCaseCurrentView }
         </div>
         );
   }

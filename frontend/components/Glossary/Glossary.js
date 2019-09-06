@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import styles from './Glossary.css';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -87,11 +88,11 @@ export default class Glossary extends Component<Props> {
 
     if(stateUpdateOptions.includes(state.latestAction)){
 
-        stateData.map(item => {
+        _.map(stateData, item => {
 
             if(!equal(props[item], state[item])){
 
-                state[item] = props[item].map((entry, index, array) => {
+                state[item] = _.map(props[item], (entry) => {
                     let stateEntry = state[item].find(x => x.id === entry.id);
 
                     if(stateEntry !== undefined){
@@ -235,7 +236,7 @@ export default class Glossary extends Component<Props> {
     this.setState(state => {
 
         return {
-            [category]: state[category].map((entry) => {
+            [category]: _.map(state[category], (entry) => {
                 if(entry.id === glossaryEntry.id){
                     entry.isEditing = false;
                     entry.action = option;
@@ -433,7 +434,7 @@ export default class Glossary extends Component<Props> {
         )
     });
 
-    let glossaryComponent = this.state[glossarySelection].map((entry) => {
+    let glossaryComponent = _.map(this.state[glossarySelection], (entry) => {
 
         let resourceLinks = DisplayResourceLinks(entry);
 

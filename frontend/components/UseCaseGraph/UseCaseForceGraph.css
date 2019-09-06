@@ -1,0 +1,39 @@
+g {
+  font-family: Helvetica;
+}
+
+.node circle {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.link {
+}
+
+.useCaseGraph {
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  padding: 5px 10px;
+  margin: 10px;
+  height: 850px;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #999999;
+  border-radius: 3px;
+}
+
+.noDataIndication {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
+  padding: 5px 10px;
+  margin: 10px;
+  height: 475px;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #999999;
+  border-radius: 3px;
+}

@@ -101,6 +101,7 @@ export default class UseCase extends Component<Props> {
        };
 
         this.onChange = this.onChange.bind(this);
+        this.formatCIARating = this.formatCIARating.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
 
         this.deleteRow = this.deleteRow.bind(this);
@@ -111,20 +112,9 @@ export default class UseCase extends Component<Props> {
 
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    if(!equal(nextProps, this.props)){
-        return true;
-    }
-
-    if(!equal(nextState, this.state)){
-        return true;
-    }
-
-    return false;
-
-  }
-
   formatCIARating(cell, row){
+
+    let ciaEntry = this.props.information_types.find(x => x.id === row.id);
 
     const style_lookup = {
         "high": styles.cia_high,
@@ -135,14 +125,14 @@ export default class UseCase extends Component<Props> {
     let c_className = styles.cia_high;
     return (
         <div className={styles.cia_table}>
-            <div className={style_lookup[cell.confidentiality]}>
-                {cell.confidentiality}
+            <div className={style_lookup[ciaEntry.triad_rating.confidentiality]}>
+                {ciaEntry.triad_rating.confidentiality}
              </div>
-             <div className={style_lookup[cell.integrity]}>
-                {cell.integrity }
+             <div className={style_lookup[ciaEntry.triad_rating.integrity]}>
+                {ciaEntry.triad_rating.integrity }
             </div>
-            <div className={style_lookup[cell.availability]}>
-                {cell.availability}
+            <div className={style_lookup[ciaEntry.triad_rating.availability]}>
+                {ciaEntry.triad_rating.availability}
             </div>
         </div>
     )
@@ -152,7 +142,7 @@ export default class UseCase extends Component<Props> {
 
     let updatedArray = this.state[column["dataField"]].filter((value, index, arr) => {
 
-        return value !== row["id"];
+        return value["id"] !== row["id"];
 
     });
 
@@ -165,10 +155,10 @@ export default class UseCase extends Component<Props> {
 
   addRow(row, tableName, tableData){
 
-    if(!this.state[tableData].includes(row["id"])){
+    if(!this.state[tableData].find(x => x.id === row.id)){
         this.setState(state => {
             return {
-                [tableData]: [...state[tableData], row["id"]]
+                [tableData]: [...state[tableData], row]
             }
         });
     } else {
@@ -179,7 +169,7 @@ export default class UseCase extends Component<Props> {
 
   addRowIcon(tableName, tableData){
 
-    let addOptions = this.props[tableData].map((entry) => {
+    let addOptions = _.map(this.props[tableData], (entry) => {
         return({"label": entry.name, "id": entry.id, "name": entry.name, "description": entry.description});
      });
 
@@ -239,16 +229,32 @@ export default class UseCase extends Component<Props> {
 
   saveChanges(){
 
+    let UseCaseChanges = {
+        'id': this.state.id,
+        'name': this.state.name,
+        'description': this.state.description,
+        'source': this.state.source,
+        'actors': this.state.actors.map(entry => { return entry.id }),
+        'information_types': this.state.information_types.map(entry => { return entry.id }),
+        'cybersecurity_threats': this.state.cybersecurity_threats.map(entry => { return entry.id }),
+        'disciplines': this.state.disciplines.map(entry => { return entry.id }),
+        'responding_organizations': this.state.responding_organizations.map(entry => { return entry.id }),
+        'technologies': this.state.technologies.map(entry => { return entry.id }),
+        'activities': this.state.activities.map(entry => { return entry.id }),
+        'locations': this.state.locations.map(entry => { return entry.id }),
+        'concept_links': this.state.concept_links
+    }
+
     if(this.state.name !== "" && this.state.description !== ""){
 
         if(this.state.id === ""){
-            this.props.createUseCase(this.state).then(() => {
-                this.props.handleUseCaseClick(this.state);
+            this.props.createUseCase(UseCaseChanges).then(() => {
+                this.props.handleUseCaseClick(UseCaseChanges);
                 this.props.stopEditor();
             });
         } else {
-            this.props.updateUseCase(this.state).then(() => {
-                this.props.handleUseCaseClick(this.state);
+            this.props.updateUseCase(UseCaseChanges).then(() => {
+                this.props.handleUseCaseClick(UseCaseChanges);
                 this.props.stopEditor();
             });
         }
@@ -284,57 +290,6 @@ export default class UseCase extends Component<Props> {
   }
 
   render(){
-
-     const {
-        actors,
-        information_types,
-        cybersecurity_threats,
-        disciplines,
-        responding_organizations,
-        technologies,
-        activities,
-        locations
-     } = this.props;
-
-     let use_case_actors = this.state.actors.map((entry_id) => {
-                let entry = actors.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_information_types = this.state.information_types.map((entry_id) => {
-                let entry = information_types.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_cybersecurity_threats = this.state.cybersecurity_threats.map((entry_id) => {
-                let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_disciplines = this.state.disciplines.map((entry_id) => {
-                let entry = disciplines.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_responding_organizations = this.state.responding_organizations.map((entry_id) => {
-                let entry = responding_organizations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_technologies = this.state.technologies.map((entry_id) => {
-                let entry = technologies.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_activities = this.state.activities.map((entry_id) => {
-                let entry = activities.find(entry => entry.id == entry_id)
-                return(entry)
-            });
-
-     let use_case_locations = this.state.locations.map((entry_id) => {
-                let entry = locations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
 
     return (
         <div className={styles.componentBody}>
@@ -397,7 +352,7 @@ export default class UseCase extends Component<Props> {
                         <div className={styles.informationTypesTitle}><h3>Information Types</h3></div>
                         <BootstrapTable
                             classes={styles.informationTypeTable}
-                            data={use_case_information_types}
+                            data={this.state.information_types}
                             columns={[
                                 {dataField: "id", text: "ID", hidden: true},
                                 {dataField: "name", text: 'Name', headerStyle: this.props.getHeaderStyle()},
@@ -426,7 +381,7 @@ export default class UseCase extends Component<Props> {
                 <div className={styles.useCaseTables}>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_actors}
+                        data={this.state.actors}
                         columns = {
                             [
                             {   dataField: "id",
@@ -458,7 +413,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_cybersecurity_threats}
+                        data={this.state.cybersecurity_threats}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Cybersecurity Threats", headerStyle: this.props.getHeaderStyle()},
@@ -482,7 +437,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_disciplines}
+                        data={this.state.disciplines}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Disciplines", headerStyle: this.props.getHeaderStyle()},
@@ -506,7 +461,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_responding_organizations}
+                        data={this.state.responding_organizations}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Responding Organizations", headerStyle: this.props.getHeaderStyle()},
@@ -530,7 +485,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_activities}
+                        data={this.state.activities}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Activities", headerStyle: this.props.getHeaderStyle()},
@@ -554,7 +509,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_technologies}
+                        data={this.state.technologies}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Technologies", headerStyle: this.props.getHeaderStyle()},
@@ -578,7 +533,7 @@ export default class UseCase extends Component<Props> {
                     </BootstrapTable>
                     <BootstrapTable
                         classes={styles.attrTable}
-                        data={use_case_locations}
+                        data={this.state.locations}
                         columns={[
                             {dataField: "id", text: "ID", hidden: true},
                             {dataField: "name", text: "Locations", headerStyle: this.props.getHeaderStyle()},

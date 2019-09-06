@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import _ from 'lodash';
 import routes from '../../constants/routes';
 import styles from './UseCaseCatalog.css';
 import ReactJson from 'react-json-view';
@@ -87,7 +88,7 @@ const noDataIndication = () => (
 
 var savedScrollTop;
 
-export default class UseCaseCatalog extends PureComponent<Props> {
+export default class UseCaseCatalog extends Component<Props> {
   props: Props;
 
   constructor(props){
@@ -181,39 +182,39 @@ export default class UseCaseCatalog extends PureComponent<Props> {
 
   setSearchOptions(){
 
-    let actorOptions = this.props.actors.map((entry) => {
+    let actorOptions = _.map(this.props.actors, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "actors", "searchOption": "and"});
      });
 
-    let activitiesOptions = this.props.activities.map((entry) => {
+    let activitiesOptions = _.map(this.props.activities, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "activities", "searchOption": "and"});
     });
 
-    let cyberOptions = this.props.cybersecurity_threats.map((entry) => {
+    let cyberOptions = _.map(this.props.cybersecurity_threats, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "cybersecurity_threats", "searchOption": "and"});
     });
 
-    let disciplineOptions = this.props.disciplines.map((entry) => {
+    let disciplineOptions = _.map(this.props.disciplines, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "disciplines", "searchOption": "and"});
     });
 
-    let respondingOptions = this.props.responding_organizations.map((entry) => {
+    let respondingOptions = _.map(this.props.responding_organizations, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "responding_organizations", "searchOption": "and"});
     });
 
-    let technologiesOptions = this.props.technologies.map((entry) => {
+    let technologiesOptions = _.map(this.props.technologies, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "technologies", "searchOption": "and"});
     });
 
-    let informationTypeOptions = this.props.information_types.map((entry) => {
+    let informationTypeOptions = _.map(this.props.information_types, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "information_types", "searchOption": "and"});
     });
 
-    let locationOptions = this.props.locations.map((entry) => {
+    let locationOptions = _.map(this.props.locations, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "locations", "searchOption": "and"});
     });
 
-    let useCaseNames = this.props.use_cases.map((entry) => {
+    let useCaseNames = _.map(this.props.use_cases, (entry) => {
         return({"id": entry.id, "value": entry.name,  "label": entry.name, "group": "name", "searchOption": "and"});
     });
 
@@ -321,12 +322,10 @@ export default class UseCaseCatalog extends PureComponent<Props> {
   handleUseCaseClick(use_case){
 
     const {
-      use_cases,
       getUseCases,
       updateUseCase
     } = this.props;
 
-    const useCaseStaticFields = ['id', 'name', 'description', 'source', 'concept_links']
 
     this.setState(state => {
         let isEditing = state.isEditing;
@@ -341,6 +340,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             isEditing: isEditing
         }
     }, () => {
+
             getUseCases(this.state);
     });
   }
@@ -410,47 +410,23 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             information_types,
             locations } = this.props;
 
-    const catalogView = use_cases.map((use_case) => {
+    const catalogView = _.map(use_cases, (use_case) => {
 
-            let use_case_actors = use_case['actors'].map((entry_id) => {
-                let entry = actors.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_actors = actors.filter(x => use_case.actors.includes(x.id));
 
-            let use_case_information_types = use_case['information_types'].map((entry_id) => {
-                let entry = information_types.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_information_types = information_types.filter(x => use_case.information_types.includes(x.id))
 
-            let use_case_cybersecurity_threats = use_case['cybersecurity_threats'].map((entry_id) => {
-                let entry = cybersecurity_threats.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_cybersecurity_threats = cybersecurity_threats.filter(x => use_case.cybersecurity_threats.includes(x.id));
 
-            let use_case_disciplines = use_case['disciplines'].map((entry_id) => {
-                let entry = disciplines.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_disciplines = disciplines.filter(x => use_case.disciplines.includes(x.id));
 
-            let use_case_responding_organizations = use_case['responding_organizations'].map((entry_id) => {
-                let entry = responding_organizations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_responding_organizations = responding_organizations.filter(x => use_case.responding_organizations.includes(x.id));
 
-            let use_case_technologies = use_case['technologies'].map((entry_id) => {
-                let entry = technologies.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_technologies = technologies.filter(x => use_case.technologies.includes(x.id));
 
-            let use_case_activities = use_case['activities'].map((entry_id) => {
-                let entry = activities.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_activities = activities.filter(x => use_case.activities.includes(x.id));
 
-            let use_case_locations = use_case['locations'].map((entry_id) => {
-                let entry = locations.find(entry => entry.id == entry_id)
-                return(entry)
-            });
+            let use_case_locations = locations.filter(x => use_case.locations.includes(x.id));
 
             return (
                 <div key={use_case.id} className={styles.catalogBody} >
@@ -538,7 +514,7 @@ export default class UseCaseCatalog extends PureComponent<Props> {
         return(catalogView)
   }
 
-  getUseCaseView(){
+  getUseCaseView(UseCase){
 
     const UseCaseView = (
         <UseCasePage
@@ -547,14 +523,14 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             getRowStyle={this.getRowStyle}
             startEditor={this.startEditor}
             stopEditor={this.stopEditor}
-            use_case={this.state.useCaseSelection}
+            use_case={UseCase}
          />
      )
 
      return(UseCaseView)
   }
 
-  getEditView(){
+  getEditView(UseCase){
 
     const editView = (
         <UseCaseFormPage
@@ -563,13 +539,24 @@ export default class UseCaseCatalog extends PureComponent<Props> {
             getRowStyle={this.getRowStyle}
             startEditor={this.startEditor}
             stopEditor={this.stopEditor}
-            use_case={this.state.useCaseSelection} />
+            use_case={UseCase} />
     )
     return(editView)
   }
 
 
   render(){
+
+    const { use_cases,
+            actors,
+            activities,
+            cybersecurity_threats,
+            disciplines,
+            responding_organizations,
+            technologies,
+            information_categories,
+            information_types,
+            locations } = this.props;
 
     const {
         selectedOption,
@@ -583,13 +570,29 @@ export default class UseCaseCatalog extends PureComponent<Props> {
     const animatedComponents = makeAnimated({ MultiValue: this.multiValue });
 
     this.catalogElement = document.getElementById("UseCaseCatalog");
+    currentView = this.getCatalogView();
 
-    if(useCaseSelection === null){
-        currentView = this.getCatalogView()
+    if(useCaseSelection){
 
-    } else {
+        let UseCase = {...this.state.useCaseSelection};
 
-        currentView = isEditing ? this.getEditView() : this.getUseCaseView();
+        UseCase.actors = actors.filter(x => this.state.useCaseSelection.actors.includes(x.id));
+
+        UseCase.information_types = information_types.filter(x => this.state.useCaseSelection.information_types.includes(x.id));
+
+        UseCase.cybersecurity_threats = cybersecurity_threats.filter(x => this.state.useCaseSelection.cybersecurity_threats.includes(x.id));
+
+        UseCase.disciplines = disciplines.filter(x => this.state.useCaseSelection.disciplines.includes(x.id));
+
+        UseCase.responding_organizations = responding_organizations.filter(x => this.state.useCaseSelection.responding_organizations.includes(x.id));
+
+        UseCase.technologies = technologies.filter(x => this.state.useCaseSelection.technologies.includes(x.id));
+
+        UseCase.activities = activities.filter(x => this.state.useCaseSelection.activities.includes(x.id));
+
+        UseCase.locations = locations.filter(x => this.state.useCaseSelection.locations.includes(x.id));
+
+        currentView = isEditing ? this.getEditView(UseCase) : this.getUseCaseView(UseCase);
         this.catalogElement.scrollTop = 0;
     }
 

@@ -25,8 +25,8 @@
 .optionsBar h2 {
     margin-left: 20px;
     font-size: 26px;
-    text-align: center;
-    width: 90%;
+    text-align: right;
+    width: 55%;
 }
 
 .backButton {
@@ -221,4 +221,13 @@
 
 .cia_low{
     background-color: #c6ff91;
+}
+
+.viewSwitcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 35%;
+    margin-left: 30px;
+    align-items: center;
 }

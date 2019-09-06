@@ -1,6 +1,7 @@
- import React from 'react';
+import React from 'react';
+import styles from './Glossary.css';
 
- export function DisplayResourceLinks(props){
+export function DisplayResourceLinks(props){
         const resource_links = props.resource_links;
 
         if (resource_links){
@@ -20,7 +21,7 @@
                     buffer.push(<hr/>);
                     buffer.push(new_resource);
                  }
-                return <div key={l}>{buffer}</div>
+                return <div key={l} className={styles.resourceLinks}>{buffer}</div>
             }
             else{
                 return <p/>;
