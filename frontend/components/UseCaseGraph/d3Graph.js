@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import * as d3 from 'd3';
-import Node from './GraphNode';
-import Link from './GraphLink';
 
 const equal = require('fast-deep-equal');
 

@@ -3,8 +3,6 @@ import styles from './UseCaseForceGraph.css';
 import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import * as d3 from 'd3';
-import Node from './GraphNode';
-import Link from './GraphLink';
 import ForceGraph from './d3Graph';
 
 type Props = {
