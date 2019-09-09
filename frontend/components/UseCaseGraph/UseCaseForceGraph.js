@@ -127,7 +127,7 @@ export default class UseCaseForceGraph extends Component<Props> {
 
   render(){
     return(
-        <div className={styles.useCaseGraph}>
+        <div className={styles.useCaseGraphContainer}>
             <ForceGraph
                 nodes={this.state.nodes}
                 links={this.state.links}

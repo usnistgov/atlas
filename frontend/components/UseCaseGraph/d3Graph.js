@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './UseCaseForceGraph.css';
 import ReactDOM from 'react-dom';
 import * as d3 from 'd3';
 
@@ -9,6 +10,27 @@ type Props = {
     links: object
 };
 
+/*
+this.updateNode = (selection) => {
+
+        selection.attr("transform", (d) => "translate(" + Math.max(d.size, Math.min(this.props.width - d.size, d.x)) + ","
+                                                        + Math.max(d.size, Math.min(this.props.height - d.size, d.y)) + ")");
+    };
+
+    this.enterLink = (selection) => {
+        selection.classed('link', true)
+            .attr("stroke", (d) => d.color)
+            .attr("stroke-width", 5);
+    };
+
+    this.updateLink = (selection) => {
+        selection.attr("x1", (d) => Math.max(d.source.size, Math.min(this.props.width - d.source.size, d.source.x)))
+            .attr("y1", (d) => Math.max(d.source.size, Math.min(this.props.height - d.source.size, d.source.y)))
+            .attr("x2", (d) => Math.max(d.target.size, Math.min(this.props.width - d.target.size, d.target.x)))
+            .attr("y2", (d) => Math.max(d.target.size, Math.min(this.props.height - d.target.size, d.target.y)));
+    };
+*/
+
 export default class ForceGraph extends Component<Props> {
   props: Props;
 
@@ -18,7 +40,7 @@ export default class ForceGraph extends Component<Props> {
 
     this.simulation = d3.forceSimulation()
         .force("center", d3.forceCenter().x(this.center.x).y(this.center.y))
-        .force("charge",d3.forceManyBody().strength([-(this.props.width - this.props.height)]))
+        .force("charge",d3.forceManyBody().strength([-500]))
         .force("link", d3.forceLink().id(d => d.key).distance((link) => {
                             if(link.target.data.id === 0){
                                 return 40;
@@ -72,8 +94,7 @@ export default class ForceGraph extends Component<Props> {
 
     this.updateNode = (selection) => {
 
-        selection.attr("transform", (d) => "translate(" + Math.max(d.size, Math.min(this.props.width - d.size, d.x)) + ","
-                                                        + Math.max(d.size, Math.min(this.props.height - d.size, d.y)) + ")");
+        selection.attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
     };
 
     this.enterLink = (selection) => {
@@ -83,10 +104,10 @@ export default class ForceGraph extends Component<Props> {
     };
 
     this.updateLink = (selection) => {
-        selection.attr("x1", (d) => Math.max(d.source.size, Math.min(this.props.width - d.source.size, d.source.x)))
-            .attr("y1", (d) => Math.max(d.source.size, Math.min(this.props.height - d.source.size, d.source.y)))
-            .attr("x2", (d) => Math.max(d.target.size, Math.min(this.props.width - d.target.size, d.target.x)))
-            .attr("y2", (d) => Math.max(d.target.size, Math.min(this.props.height - d.target.size, d.target.y)));
+        selection.attr("x1", (d) => d.source.x)
+            .attr("y1", (d) => d.source.y)
+            .attr("x2", (d) => d.target.x)
+            .attr("y2", (d) => d.target.y);
     };
 
     this.updateGraph = (selection) => {
@@ -96,8 +117,16 @@ export default class ForceGraph extends Component<Props> {
             .call(this.updateLink);
     };
 
-    this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.graph));
-    this.d3Graph.call(this.updateGraph);
+
+    this.d3GraphContainer = d3.select(ReactDOM.findDOMNode(this.refs.svg))
+        .attr("width", this.props.width)
+        .attr("height", this.props.height)
+        .call(d3.zoom().on('zoom', () => {
+                            this.d3Graph.attr('transform', d3.event.transform)
+                            }))
+
+    this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.graph))
+                        .call(this.updateGraph);
 
     this.simulation.on('tick', () => {
       // after force calculation starts, call updateGraph
@@ -135,11 +164,13 @@ export default class ForceGraph extends Component<Props> {
     return false;
   }
 
+
+
   render(){
 
     return (
-        <svg width={this.props.width} height={this.props.height}>
-            <g ref='graph' />
+        <svg ref="svg" className={styles.useCaseGraph}>
+            <g ref="graph" />
         </svg>
     );
   }
