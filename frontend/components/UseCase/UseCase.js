@@ -83,6 +83,7 @@ export default class UseCase extends Component<Props> {
     this.conceptLinkRowStyle = this.conceptLinkRowStyle.bind(this);
     this.formatCIARating = this.formatCIARating.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
+    this.useCaseContainerRef = React.createRef();
 
   }
 
@@ -156,9 +157,12 @@ export default class UseCase extends Component<Props> {
   }
 
   getGraphView(){
-    return(<div className={styles.useCaseBody}>
+
+    return(<div ref={this.useCaseContainerRef} className={styles.useCaseBody}>
                 <UseCaseForceGraph
                     use_case={this.props.use_case}
+                    width={this.useCaseContainerRef.current.offsetWidth}
+                    height={this.useCaseContainerRef.current.offsetHeight}
                 />
            </div>)
   }
@@ -166,7 +170,7 @@ export default class UseCase extends Component<Props> {
   getPlainView(){
 
     return(
-        <div className={styles.useCaseBody}>
+        <div ref={this.useCaseContainerRef} className={styles.useCaseBody}>
                 <div className={styles.useCaseInfo}>
                     <div className={styles.headerFormat}>
                         <SanitizedHTML

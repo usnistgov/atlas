@@ -18,9 +18,6 @@ type Props = {
     locations: object
 };
 
-var width = 1300;
-var height = 800;
-
 
 export default class UseCaseForceGraph extends Component<Props> {
   props: Props;
@@ -29,12 +26,10 @@ export default class UseCaseForceGraph extends Component<Props> {
     super(props);
 
     this.staticFields = ['id', 'name', 'description', 'source', 'concept_links'];
-
     this.state = {
         nodes: [],
         links: []
     }
-
   }
 
   componentDidMount(){
@@ -131,15 +126,15 @@ export default class UseCaseForceGraph extends Component<Props> {
     }
 
   render(){
-
     return(
         <div className={styles.useCaseGraph}>
             <ForceGraph
                 nodes={this.state.nodes}
                 links={this.state.links}
+                width={this.props.width - 40}
+                height={this.props.height}
             />
         </div>
         )
-
     }
 }
