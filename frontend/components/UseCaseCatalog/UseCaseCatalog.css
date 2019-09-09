@@ -65,8 +65,8 @@
 
 .optionsBar {
     display: flex;
-    width: 99.5%;
-    height: calc(var(--vh, 1vh) * 7);
+    width: 100%;
+    height: auto;
     background-color: snow;
     align-items: center;
     border-color: snow;

@@ -709,7 +709,7 @@ export default class InformationTypeCatalog extends Component<Props> {
 
         let editView = (
             <div key={information_type.id} ref={this.informationTypeRefs[information_type.id]} className={styles.informationTypeView}>
-                <div className={styles.optionsBar}>
+                <div className={styles.optionsBarEdit}>
                     <input
                             label="name"
                             className={styles.nameInput}

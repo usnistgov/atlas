@@ -97,16 +97,30 @@
 
 .optionsBar {
     display: flex;
-    width: 99.5%;
-    height: calc(var(--vh, 1vh) * 6);
+    width: 100%;
+    height: auto;
     background-color: snow;
     align-items: center;
     justify-content: center;
     border-color: snow;
-
     border-width: thick;
     border-radius: 15px;
     margin-bottom: 15px;
+}
+
+.optionsBarEdit {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: snow;
+    align-items: center;
+    justify-content: center;
+    border-color: snow;
+    border-width: thick;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .optionsBar h3 {
@@ -147,8 +161,7 @@
 
 .nameInput {
     width: 90%;
-    height: calc(var(--vh, 1vh) * 7);
-    margin-left: 10px;
+    height: auto;
     font-size: 22px;
     font-weight: bolder;
     line-height: normal;

@@ -1,7 +1,6 @@
 .componentBody {
 
   background-color: #EDE6E3;
-
   border-width: thick;
   height: auto;
   margin: 2px;
@@ -10,16 +9,17 @@
 
 .optionsBar {
     display: flex;
-    height: calc(var(--vh, 1vh) * 8);
-    width: 99.5%;
+    height: auto;
+    width: 100%;
     justify-content: left;
     align-items: center;
     background-color: snow;
     border-color: snow;
-
     border-width: thick;
     border-radius: 15px;
     margin-bottom: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .backButton {

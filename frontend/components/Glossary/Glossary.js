@@ -468,7 +468,7 @@ export default class Glossary extends Component<Props> {
 
         let editView =  (
             <div key={entry.id} ref={this.glossaryRefs[entry.id]} className={styles.glossaryEntryView}>
-                <div className={styles.optionsBar}>
+                <div className={styles.optionsBarEdit}>
                     <input
                         label="name"
                         className={styles.nameInput}
