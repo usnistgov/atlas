@@ -52,6 +52,17 @@ export default class UseCaseForceGraph extends Component<Props> {
             'cybersecurity_threats': 'teal'
      }
 
+     let categoryNames = {
+        "information_types": "Information Types",
+        "actors": "Actors",
+        "disciplines": "Disciplines",
+        "responding_organizations": "Responding Organizations",
+        "activities": "Activities",
+        "technologies": "Technologies",
+        "locations": "Locations",
+        "cybersecurity_threats": "Cybersecurity Threats"
+        };
+
     let createNodes = [{
         'key': nodeCount,
         'data': {'name': this.props.use_case.name, 'id': -1, 'color': 'dodgerblue'},
@@ -65,7 +76,7 @@ export default class UseCaseForceGraph extends Component<Props> {
             ++nodeCount;
             let newNodes = [{
                     'key': nodeCount,
-                    'data': {'name': category, 'id': 0, 'color': colorCategories[category]},
+                    'data': {'name': categoryNames[category], 'id': 0, 'color': colorCategories[category]},
                     'size': 75,
                     'weight': 5
             }];

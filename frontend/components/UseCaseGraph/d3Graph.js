@@ -47,8 +47,14 @@ export default class ForceGraph extends Component<Props> {
                                 return 200;
                             }
                     }))
-        .force("collide",d3.forceCollide().radius(d => {
-                return d.size + 10
+        .force("collide",d3.forceCollide().radius(node => {
+                if(node.data.id === -1){
+                    return node.size + (6 * node.data.name.length)
+                } else if (node.data.id === 0){
+                    return node.size + (3 * node.data.name.length)
+                } else {
+                    return node.size + 20
+                }
             }))
         .force("x", d3.forceX().x(this.center.x))
         .force("y", d3.forceY().y(this.center.y))
@@ -78,10 +84,10 @@ export default class ForceGraph extends Component<Props> {
         selection.classed('node', true);
 
         selection.append('circle')
-            .attr("r", (d) => d.size)
+            .attr("r", (node) => node.size)
             .attr("stroke", "white")
             .attr("stroke-width", "2px")
-            .attr("fill", (d) => d.data.color)
+            .attr("fill", (node) => node.data.color)
             .call(d3.drag()
                 .on("start", this.dragstarted)
                 .on("drag", this.dragged)
@@ -89,26 +95,49 @@ export default class ForceGraph extends Component<Props> {
 
         selection.append('text')
             .attr("fill", "white")
+            .attr("stroke", (node) => {
+                if(node.data.id === -1 || node.data.id === 0){
+                    return "black"
+                }
+            })
             .attr("text-anchor", "middle")
-            .text((d) => d.data.name);
+            .attr("font-size", (node) => {
+                if(node.data.id === -1){
+                    return "36px"
+                } else if(node.data.id === 0){
+                    return "24px"
+                } else {
+                    return "20px"
+                }
+            })
+            .attr("font-weight", (node) => {
+                if(node.data.id === -1){
+                    return "bolder"
+                } else if(node.data.id === 0){
+                    return "bold"
+                } else {
+                    return "medium"
+                }
+            })
+            .text((node) => node.data.name);
     };
 
     this.updateNode = (selection) => {
 
-        selection.attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
+        selection.attr("transform", (node) => "translate(" + node.x + "," + node.y + ")");
     };
 
     this.enterLink = (selection) => {
         selection.classed('link', true)
-            .attr("stroke", (d) => d.color)
+            .attr("stroke", (link) => link.color)
             .attr("stroke-width", 5);
     };
 
     this.updateLink = (selection) => {
-        selection.attr("x1", (d) => d.source.x)
-            .attr("y1", (d) => d.source.y)
-            .attr("x2", (d) => d.target.x)
-            .attr("y2", (d) => d.target.y);
+        selection.attr("x1", (link) => link.source.x)
+            .attr("y1", (link) => link.source.y)
+            .attr("x2", (link) => link.target.x)
+            .attr("y2", (link) => link.target.y);
     };
 
     this.updateGraph = (selection) => {
