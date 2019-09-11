@@ -169,9 +169,12 @@ export default class UseCase extends Component<Props> {
 
   addRowIcon(tableName, tableData){
 
-    let addOptions = _.map(this.props[tableData], (entry) => {
-        return({"label": entry.name, "id": entry.id, "name": entry.name, "description": entry.description});
-     });
+    let addOptions = _.compact(_.map(this.props[tableData], (entry) => {
+        let stateEntry = this.state[tableData].find(x => x.id === entry.id);
+        if(stateEntry === undefined){
+            return({"label": entry.name, "id": entry.id, "name": entry.name, "description": entry.description});
+        }
+     }));
 
     let value;
     let placeholderMessage = "Add Item to " + tableName + " Table";

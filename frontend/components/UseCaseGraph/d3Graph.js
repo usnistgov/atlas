@@ -40,7 +40,7 @@ export default class ForceGraph extends Component<Props> {
 
     this.simulation = d3.forceSimulation()
         .force("center", d3.forceCenter(this.center.x, this.center.y))
-        .force("charge", d3.forceManyBody().strength(-2000).distanceMax(800))
+        .force("charge", d3.forceManyBody().strength(-2000).distanceMax(600))
         .force("link", d3.forceLink().id(d => d.key).distance((link) => {
                             if(link.target.data.id === 0){
                                 return 50;
