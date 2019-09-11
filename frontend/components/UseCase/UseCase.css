@@ -20,11 +20,20 @@
     margin-bottom: 15px;
 }
 
-.optionsBar h2 {
-    margin-left: 20px;
+.useCaseTitle {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.useCaseTitle h2 {
     font-size: 26px;
-    text-align: right;
-    width: 50%;
+}
+
+.viewSwitcher {
+    margin-left: 30px;
 }
 
 .backButton {
@@ -221,11 +230,11 @@
     background-color: #c6ff91;
 }
 
-.viewSwitcher {
+.useCaseTitle {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    width: 40%;
+    width: 90%;
+    justify-content: center;
     margin-left: 30px;
     align-items: center;
 }

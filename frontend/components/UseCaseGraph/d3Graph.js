@@ -39,7 +39,8 @@ export default class ForceGraph extends Component<Props> {
     this.center = {'x': (this.props.width / 2), 'y': (this.props.height / 2)}
 
     this.simulation = d3.forceSimulation()
-        .force("charge", d3.forceManyBody().strength(-1000).distanceMax(600))
+        .force("center", d3.forceCenter(this.center.x, this.center.y))
+        .force("charge", d3.forceManyBody().strength(-2000).distanceMax(800))
         .force("link", d3.forceLink().id(d => d.key).distance((link) => {
                             if(link.target.data.id === 0){
                                 return 50;
@@ -56,8 +57,6 @@ export default class ForceGraph extends Component<Props> {
                     return node.size + 20
                 }
             }))
-        .force("x", d3.forceX().x(this.center.x))
-        .force("y", d3.forceY().y(this.center.y))
 
     this.dragstarted = (d) => {
         if (!d3.event.active) this.simulation.alphaTarget(0.3).restart();

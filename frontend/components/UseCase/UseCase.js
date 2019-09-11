@@ -314,10 +314,10 @@ export default class UseCase extends Component<Props> {
                         onClick={() => this.props.handleUseCaseClick(null)}
                     />
                 </Tooltip>
-                <h2>{this.props.use_case.name}</h2>
-                <div className={styles.viewSwitcher}>
+                <div className={styles.useCaseTitle}>
+                    <h2>{this.props.use_case.name}</h2>
                     <Tooltip title={viewName}>
-                        <label htmlFor="normal-switch">
+                        <label className={styles.viewSwitcher} htmlFor="normal-switch">
                             <Switch
                                 onChange={this.handleSwitch}
                                 checked={this.state.showGraphView}
