@@ -1,4 +1,3 @@
-# Atlas Project
 <p align="center">
 <img src="frontend/pictures/OrangeEarthLogo.png"></img>
 </p>
