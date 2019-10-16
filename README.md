@@ -47,7 +47,7 @@ ___
 To run the application first make sure that MongoDB, Python3, and Yarn or NPM is isntalled on your system. After these dependencies are installed run the following to install the necessary packages to run the REST API:
 
 ```
-pip install -r requirements.txt
+pip(3) install -r requirements.txt
 ```
 
 This should install Django an dthe necessary Python packages to set up the REST API. From here you need to install the necessary javascript packages using the package.json file in the repository. We recommend using Yarn as your installation tool but it could also be done using NPM. 
@@ -71,7 +71,7 @@ python(3) AtlasDatabaseUpdater.py --host [host address (default is localhost] --
 Now that the database is imported all that is left is to run the application. To run the application you must first start the Web Server with the REST API using:
 
 ```
-python3 manage.py runserver [optionally provide host address and port number if not running on localhost]
+python(3) manage.py runserver [optionally provide host address and port number if not running on localhost]
 ```
 
 Now that the REST API is running you can run the web application using: 
