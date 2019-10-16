@@ -1,6 +1,9 @@
-# Atlas Project
-
-![](frontend/pictures/OrangeEarthLogo.png)
+<p align="center">
+ <h1>AtlasProject<h1>
+  </p>
+<p align="center">
+<img src="frontend/pictures/OrangeEarthLogo.png"></img>
+</p>
 
 Web Application built with MongoDB, Django, Redux, ReactJS, and D3 that allows public 
 safety proefssionals to enter information related to scenarios that they encounter 
