@@ -1,3 +1,4 @@
+<h1 align="center">Atlas Project</h1>
 <p align="center">
 <img src="frontend/pictures/OrangeEarthLogo.png"></img>
 </p>
