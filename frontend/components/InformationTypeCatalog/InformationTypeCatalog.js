@@ -193,6 +193,7 @@ export default class InformationTypeCatalog extends Component<Props> {
     const stateUpdateOptions = ['start-up',
                                 'start-editor',
                                 'stop-editor',
+                                'select-option',
                                 'update-button-search-value',
                                 'set-button-search-value',
                                 'remove-value',
