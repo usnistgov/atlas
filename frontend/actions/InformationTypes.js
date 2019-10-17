@@ -31,6 +31,7 @@ export const getInformationTypes = (state) => {
     let searchString = "";
 
     if(state !== null && state !== undefined){
+        const triadValuesPresent = Object.values(state.triad_rating).some(x => (x !== null && !['and', 'or', 'not', 'not or'].includes(x)));
 
         state.selectedOption.map((entry) => {
 
@@ -65,7 +66,8 @@ export const getInformationTypes = (state) => {
                             }
                     };
                 }
-            } else {
+            } else if(triadValuesPresent){
+
                 searchObject = {...searchObject,
                             triad_rating: {
                                 ...searchObject.triad_rating,
@@ -74,7 +76,6 @@ export const getInformationTypes = (state) => {
                 }
             }
         });
-
 
         Object.entries(searchObject).forEach(([group, entry], key, arr) => {
 
@@ -100,11 +101,11 @@ export const getInformationTypes = (state) => {
                         searchString += "[not or]";
                         break;
                 }
-            }
+             }
 
             if (!(Object.is(arr.length - 1, key))) {
-                searchString += "&&"
-             }
+                    searchString += "&&"
+                }
         });
     }
 
@@ -205,3 +206,4 @@ export const deleteInformationType = (state) => {
         })
     }
 }
+
