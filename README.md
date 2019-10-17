@@ -40,7 +40,7 @@ The keyword(s) selected in the search bar will automatically filter entries for 
   
   <img src="NOTOR_Search_Tags.png"></img> Entries with neither of the keywords in them are returned.
   
-To switch between the search option for keywords, just click on the keyword in the search bar. All keywords pertaining to one subcomponent will change color when on eof the keywords is clicked, but all others will remain the same. 
+To switch between the search option for keywords, just click on the keyword in the search bar. All keywords pertaining to one subcomponent will change color when one of the keywords is clicked, but all others will remain the same. 
 
 ___
 
