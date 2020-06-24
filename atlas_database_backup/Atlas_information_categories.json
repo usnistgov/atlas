@@ -3,9 +3,16 @@
         "_id": {
             "$oid": "5d1c050308d7bb53c010ccc7"
         },
-        "description": "",
+        "description": "information used directly by public safety command and control for active operations",
         "name": "operations data",
-        "resource_links": []
+        "resource_links": [
+            {
+                "bib_ref": "Ogata",
+                "description": "NIST Workshop Report",
+                "href": "https://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8135.pdf",
+                "hyperlink_name": "NISTIR 8135 Identifying and Categorizing Data Types for Public Safety Mobile Applications: Workshop Report"
+            }
+        ]
     },
     {
         "_id": {
@@ -39,7 +46,7 @@
         "name": "Activity Type",
         "resource_links": [
             {
-                "description": "NIEM Type.",
+                "description": "NIEM Type",
                 "href": "https://beta.movement.niem.gov/#/details?entityID=nc:ActivityType",
                 "hyperlink_name": "NIEM Namespace: NIEM Core. - ActivityType"
             }
@@ -53,7 +60,7 @@
         "name": "Device Type",
         "resource_links": [
             {
-                "description": "NIEM Type.",
+                "description": "NIEM Type",
                 "href": "https://beta.movement.niem.gov/#/details?entityID=nc:DeviceType",
                 "hyperlink_name": "NIEM Namespace: NIEM Core. - DeviceType"
             }
@@ -67,7 +74,7 @@
         "name": "Person Type",
         "resource_links": [
             {
-                "description": "NIEM Type.",
+                "description": "NIEM Type",
                 "href": "https://beta.movement.niem.gov/#/details?entityID=nc:PersonType",
                 "hyperlink_name": "NIEM Namespace: NIEM Core. - PersonType"
             }
@@ -81,7 +88,7 @@
         "name": "Vehicle Type",
         "resource_links": [
             {
-                "description": "NIEM Type.",
+                "description": "NIEM Type",
                 "href": "https://beta.movement.niem.gov/#/details?entityID=nc:VehicleType",
                 "hyperlink_name": "NIEM Namespace: NIEM Core. - VehicleType"
             }
@@ -125,7 +132,7 @@
         "name": "Geographic Data",
         "resource_links": [
             {
-                "description": "",
+                "description": "Wikipedia Description",
                 "href": "https://en.wikipedia.org/wiki/Geographic_data_and_information",
                 "hyperlink_name": "Geographic data and information"
             },
@@ -161,6 +168,20 @@
                 "desdes": "The Interagency Modeling and Atmospheric Assessment Center coordinates and disseminates Federal atmospheric dispersion modeling and hazard prediction products. These products provide the Federal position during actual or potential incidents involving hazardous material releases",
                 "href": "https://www.fema.gov/imaac",
                 "hyperlink_name": "Interagency Modeling and Atmospheric Assessment Center"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5eed25178012999334da8101"
+        },
+        "description": "Information relating to a someone who is receiving medical care",
+        "name": "patient information",
+        "resource_links": [
+            {
+                "description": "HL7 FHIR standard for health care data exchange",
+                "href": "https://www.hl7.org/fhir/patient-definitions.html#Patient",
+                "hyperlink_name": "HL7 Patient"
             }
         ]
     }

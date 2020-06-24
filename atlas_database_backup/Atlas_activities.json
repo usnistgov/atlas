@@ -17,7 +17,7 @@
         "_id": {
             "$oid": "5d1f70aed1d1a624d8cb7014"
         },
-        "description": "Safetly routing traffic arround an area involved in public safety incident",
+        "description": "Safety routing traffic around an area involved in public safety incident",
         "name": "Establish temporary traffic control",
         "resource_links": [
             {
@@ -72,5 +72,47 @@
         "description": "During an incident involving hazards that can move (i.e. through the atmosphere, in the water, or over land), public safety often employees modeling techniques in order to make informed decisions concerning course of action and/or evacuation.",
         "name": "Hazard Modeling",
         "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee2904300cb135c1fa67a23"
+        },
+        "description": "",
+        "name": "Fire fighting operations",
+        "resource_links": [
+            {
+                "description": "Stowell, Frederick M., and Lynne Murnane. Essentials of fire fighting. Stillwater, OK: Fire Protection Publications, 2013. Print."
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5ee2921a00cb135c1fa67a24"
+        },
+        "description": "Using social media to distribute information to the general public.",
+        "name": "Social Media Announcements ",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee39bad00cb135c1fa67a29"
+        },
+        "description": "",
+        "name": "9-1-1 Call",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee3a0af00cb135c1fa67a2a"
+        },
+        "description": "the act of assigning appropriate resources (emergency responders) to an incident, monitoring the response, relaying relevant information, and logging transactions associated with the emergency response.",
+        "name": "dispatch",
+        "resource_links": [
+            {
+                "description": "Adapted from the definition of Dispatch System",
+                "href": "https://cdn.ymaws.com/www.nena.org/resource/resmgr/standards/NENA-ADM-000.23-2020_FINAL_2.pdf",
+                "hyperlink_name": "NENA Master Glossary of 9-1-1 Terminology"
+            }
+        ]
     }
 ]

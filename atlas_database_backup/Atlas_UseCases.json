@@ -222,7 +222,19 @@
         },
         "activities": [
             {
+                "$oid": "5ee39bad00cb135c1fa67a29"
+            },
+            {
                 "$oid": "5d1fb8e008d7bb5408e2114b"
+            },
+            {
+                "$oid": "5ee3a0af00cb135c1fa67a2a"
+            },
+            {
+                "$oid": "5ee2904300cb135c1fa67a23"
+            },
+            {
+                "$oid": "5ee2921a00cb135c1fa67a24"
             },
             {
                 "$oid": "5d1f7154d1d1a624d8cb7015"
@@ -230,29 +242,32 @@
         ],
         "actors": [
             {
-                "$oid": "5d1c050308d7bb53c010cca4"
+                "$oid": "5d1c050308d7bb53c010cca0"
             },
             {
-                "$oid": "5d1c050308d7bb53c010cca3"
+                "$oid": "5ee2941e00cb135c1fa67a25"
             },
             {
                 "$oid": "5d1c050308d7bb53c010cca2"
             },
             {
+                "$oid": "5d1c050308d7bb53c010cca3"
+            },
+            {
                 "$oid": "5d1c050308d7bb53c010cc9d"
             },
             {
-                "$oid": "5d1c050308d7bb53c010cca0"
+                "$oid": "5d1c050308d7bb53c010cc9c"
             }
         ],
         "cybersecurity_threats": [],
-        "description": "<h3>Situation</h3>\n<p>At 15:17, a 9-1-1 call from a cab driver indicated that the apartment building on a street in downtown is smoking and appears to be on fire. The dispatcher notified the fire department to send a fire engine and a fire ladder, and to send the battalion chief as the fire's incident commander. The nearest ambulance was alerted by the dispatcher to proceed to the scene. The dispatcher notified a neighboring jurisdiction to also send an engine to the fire.</p>\n\n<h3>Considerations</h3>\n\n<ul>\n    <li>The building had eight apartments on each of three floors.</li>\n    <li>The main fire was discovered in a second floor apartment kitchen where an electric range was burning.</li>\n    <li>Two adults and two children were trapped in the apartment suffering from smoke inhalation.</l>\n    <li>Social media messages were used to post the status of the response</li>\n</ul>",
+        "description": "<h3>Situation</h3>\n<p>At 15:17, a 9-1-1 call from a cab driver indicated that the apartment building on a street in downtown is smoking and appears to be on fire. The dispatcher notified the fire department to send a fire engine and a fire ladder, and to send the battalion chief as the fire's incident commander. The nearest ambulance was alerted by the dispatcher to proceed to the scene. The dispatcher notified a neighboring jurisdiction to also send an engine to the fire.</p>\n\n<h3>Considerations</h3>\n\n<ul>\n    <li>The building had eight apartments on each of three floors.</li>\n    <li>The main fire was discovered in a second floor apartment kitchen where an electric range was burning.</li>\n    <li>Two adults and two children were trapped in the apartment suffering from smoke inhalation.</li>\n    <li>Social media messages were used to post the status of the response</li>\n</ul>",
         "disciplines": [
             {
-                "$oid": "5d1c050308d7bb53c010ccaf"
+                "$oid": "5d1c050308d7bb53c010ccad"
             },
             {
-                "$oid": "5d1c050308d7bb53c010ccad"
+                "$oid": "5d1c050308d7bb53c010ccaf"
             }
         ],
         "information_types": [
@@ -266,13 +281,13 @@
                 "$oid": "5d1fc32908d7bb5408e2114c"
             },
             {
-                "$oid": "5d1c050308d7bb53c010cd26"
-            },
-            {
                 "$oid": "5d1c050308d7bb53c010ccf9"
             },
             {
                 "$oid": "5d1c050308d7bb53c010ccfb"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cd26"
             }
         ],
         "locations": [
@@ -286,19 +301,16 @@
         "name": "Apartment Building Fire",
         "responding_organizations": [
             {
-                "$oid": "5d1c050308d7bb53c010cca5"
-            },
-            {
-                "$oid": "5d1c050308d7bb53c010ccac"
+                "$oid": "5ee2996000cb135c1fa67a28"
             }
         ],
         "source": "https://nvlpubs.nist.gov/nistpubs/ir/2017/NIST.IR.8181.pdf",
         "technologies": [
             {
-                "$oid": "5d1c050308d7bb53c010ccba"
+                "$oid": "5ee2961e00cb135c1fa67a27"
             },
             {
-                "$oid": "5d1c050308d7bb53c010ccbb"
+                "$oid": "5d1c050308d7bb53c010ccba"
             }
         ]
     },
@@ -336,6 +348,47 @@
             }
         ],
         "source": "Utah State Fire Marshal",
+        "technologies": []
+    },
+    {
+        "_id": {
+            "$oid": "5edfa2a9bd581026bd6e7d1a"
+        },
+        "activities": [
+            {
+                "$oid": "5d1fb8e008d7bb5408e2114b"
+            },
+            {
+                "$oid": "5ee2904300cb135c1fa67a23"
+            }
+        ],
+        "actors": [
+            {
+                "$oid": "5d1c050308d7bb53c010cca0"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010cca2"
+            }
+        ],
+        "concept_links": {},
+        "cybersecurity_threats": [],
+        "description": "<p><b>Region:</b> Midwest: East North Central</p><p><b>Location:</b> Rural </p><p><b>Time of year:</b>Tuesday in May</p><p>A report was received at 14:45 of a small outdoor fire on the side of a small road. When responders arrived on scene, the fire had grown significantly, requiring multiple responding organizations.</p><b>Considerations</b>: <ul><li>Initial weather condition: temperature 82\u00b0F, humidity 26%.</li><li>Initial winds were sustained at 12 mph (miles per hour), gusting to 21 mph out of the South-Southeast.</li><li>Wind direction changed frequently, and in different directions.</li><li>The area includes hundreds of buildings and primary residences.</li><li>Citizens were evacuated.</li><li>Various aircraft, tractor plows, and heavy dozers were resources used.</li><li>Fire, police, EMS, energy/natural resources, forest service, and highway departments responded.</li><li>Fire burned approximately 7400 acres.</li><li>Fire was finally 100% contained 2 days later</li></ul>",
+        "disciplines": [
+            {
+                "$oid": "5d1c050308d7bb53c010ccad"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccaf"
+            },
+            {
+                "$oid": "5d1c050308d7bb53c010ccae"
+            }
+        ],
+        "information_types": [],
+        "locations": [],
+        "name": "WUI Fire - Midwest",
+        "responding_organizations": [],
+        "source": "https://nvlpubs.nist.gov/nistpubs/ir/2017/NIST.IR.8181.pdf",
         "technologies": []
     }
 ]

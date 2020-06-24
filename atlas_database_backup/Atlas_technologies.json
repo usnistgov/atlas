@@ -3,7 +3,7 @@
         "_id": {
             "$oid": "5d1c050308d7bb53c010ccba"
         },
-        "description": "smartphone\n=",
+        "description": "smartphone",
         "name": "smartphone",
         "resource_links": [
             {
@@ -74,7 +74,7 @@
             "$oid": "5d1c050308d7bb53c010ccc2"
         },
         "description": "",
-        "name": "smartglasses",
+        "name": "smart glasses",
         "resource_links": []
     },
     {
@@ -82,7 +82,7 @@
             "$oid": "5d1c050308d7bb53c010ccc3"
         },
         "description": "",
-        "name": "bluetooth headset",
+        "name": "Bluetooth headset",
         "resource_links": []
     },
     {
@@ -120,6 +120,18 @@
                 "description": "NIST Special Publication 800-53",
                 "href": "http://dx.doi.org/10.6028/NIST.SP.800-53r4",
                 "hyperlink_name": "Security and Privacy Controls for Federal Information Systems and Organizations"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5ee2961e00cb135c1fa67a27"
+        },
+        "description": "A computer-based system, which aids PSAP Telecommunicators by automating selected dispatching and record keeping activities.",
+        "name": "Computer Aided Dispatch (CAD) system",
+        "resource_links": [
+            {
+                "description": "D. Group, A. Committee, and R. W. Group, \u201cMaster Glossary Of 9-1-1 Terminology \u00a9 Copyright 2020 National Emergency Number Association , Inc . NENA Master Glossary of 9-1-1 Terminology,\u201d 2020."
             }
         ]
     }

@@ -78,5 +78,19 @@
         "description": "",
         "name": "State Department of Safety",
         "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee2996000cb135c1fa67a28"
+        },
+        "description": "An organization providing rescue, fire suppression, and related activities, including any public, governmental, private, industrial, or military organization engaging in this type of activity.",
+        "name": "fire department",
+        "resource_links": [
+            {
+                "description": "",
+                "href": "https://www.nfpa.org/-/media/Files/Codes-and-standards/Glossary-of-terms/glossary_of_terms_2019.ashx",
+                "hyperlink_name": "National Fire Protection Association: Glossary of Terms"
+            }
+        ]
     }
 ]

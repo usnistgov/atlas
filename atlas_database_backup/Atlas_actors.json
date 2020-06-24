@@ -3,7 +3,7 @@
         "_id": {
             "$oid": "5d1c050308d7bb53c010cc9c"
         },
-        "description": "change it up",
+        "description": "",
         "name": "patients",
         "resource_links": []
     },
@@ -77,6 +77,22 @@
         },
         "description": "",
         "name": "fire marshal",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee2941e00cb135c1fa67a25"
+        },
+        "description": "",
+        "name": "dispatcher",
+        "resource_links": []
+    },
+    {
+        "_id": {
+            "$oid": "5ee2947600cb135c1fa67a26"
+        },
+        "description": "Individual responsible for the management of all incident operations",
+        "name": "incident commander",
         "resource_links": []
     }
 ]

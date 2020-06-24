@@ -183,7 +183,7 @@
         "_id": {
             "$oid": "5d1c050308d7bb53c010ccda"
         },
-        "description": "",
+        "description": "A catchall term used to describe the list of equipment, vehicles, and tools available to public safety during an incident.",
         "information_categories": [
             {
                 "$oid": "5d1c050308d7bb53c010ccc7"
@@ -192,9 +192,9 @@
         "name": "first responder assets",
         "security_reasoning": "",
         "triad_rating": {
-            "availability": "high",
-            "confidentiality": "high",
-            "integrity": "high"
+            "availability": "medium",
+            "confidentiality": "low",
+            "integrity": "medium"
         }
     },
     {
@@ -723,17 +723,17 @@
         "_id": {
             "$oid": "5d1c050308d7bb53c010ccf9"
         },
-        "description": "A date a person was born.",
+        "description": "The date of a person's birth.",
         "information_categories": [
             {
                 "$oid": "5d1c050308d7bb53c010ccce"
             }
         ],
-        "name": "Person Birth Date",
+        "name": "patient birth date",
         "security_reasoning": "",
         "triad_rating": {
             "availability": "medium",
-            "confidentiality": "low",
+            "confidentiality": "medium",
             "integrity": "medium"
         }
     },
@@ -763,13 +763,16 @@
         "information_categories": [
             {
                 "$oid": "5d1c050308d7bb53c010ccce"
+            },
+            {
+                "$oid": "5eed25178012999334da8101"
             }
         ],
-        "name": "Person Blood Type Abstract",
+        "name": "Blood Type",
         "security_reasoning": "",
         "triad_rating": {
             "availability": "medium",
-            "confidentiality": "low",
+            "confidentiality": "medium",
             "integrity": "medium"
         }
     },
@@ -1543,7 +1546,7 @@
         "security_reasoning": "",
         "triad_rating": {
             "availability": "medium",
-            "confidentiality": "low",
+            "confidentiality": "medium",
             "integrity": "medium"
         }
     },
@@ -2365,13 +2368,10 @@
         "information_categories": [
             {
                 "$oid": "5d1c050308d7bb53c010ccc7"
-            },
-            {
-                "$oid": "5d1fab0908d7bb5408e21148"
             }
         ],
-        "name": "Building floor plans",
-        "security_reasoning": "Building floor plans are mostly a matter of public record, thus making their confidentiality requirements quiet low. The integrity and avialability of this data is moderate due as ernonious, out of date, or temapered information could endanger responders.",
+        "name": "building floor plans",
+        "security_reasoning": "Building floor plans are mostly a matter of public record, thus making their confidentiality requirements quiet low. The integrity and availability of this data is moderate, as erroneous, out of date, or tempered information could endanger responders and interfere with their mission.",
         "triad_rating": {
             "availability": "medium",
             "confidentiality": "low",
