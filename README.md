@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 <h1>Atlas Project</h1>
 <img src="frontend/pictures/OrangeEarthLogo.png"></img>
@@ -5,6 +6,14 @@
 
 ___
 
+=======
+<h1 align="center">Atlas Project</h1>
+<p align="center">
+<img src="frontend/pictures/OrangeEarthLogo.png"></img>
+</p>
+
+___
+>>>>>>> 92a0f077f9a2a39c7db236cb3e7afb77335e2876
 Web Application built with MongoDB, Django, Redux, ReactJS, and D3 that allows public 
 safety proefssionals to enter information related to scenarios that they encounter 
 on the job to help organize and link related incidents and organizations based on common
@@ -33,11 +42,16 @@ The Use Case Catalog and Information Type Catalog pages both contain a search ba
 The keyword(s) selected in the search bar will automatically filter entries for those keyword(s) and will default to being orange. The color of the keywords in teh search bar indicates what kind of search it is attempting to do:
 
   <img src="AND_Search_Tags.png"></img> Entries including both keywords together are returned. 
+<<<<<<< HEAD
   
   <img src="OR_Search_Tags.png"></img>  Entries including either keyword in them are returned.
   
   <img src="NOT_Search_Tags.png"></img> Entries without both of the keywords together in them are returned.
   
+=======
+  <img src="OR_Search_Tags.png"></img>  Entries including either keyword in them are returned.
+  <img src="NOT_Search_Tags.png"></img> Entries without both of the keywords together in them are returned.
+>>>>>>> 92a0f077f9a2a39c7db236cb3e7afb77335e2876
   <img src="NOTOR_Search_Tags.png"></img> Entries with neither of the keywords in them are returned.
   
 To switch between the search option for keywords, just click on the keyword in the search bar. All keywords pertaining to one subcomponent will change color when one of the keywords is clicked, but all others will remain the same. 
@@ -92,4 +106,13 @@ yarn start-opt
 
 to run the optimized version , which takes longer to build. 
 
+<<<<<<< HEAD
 After the application is running you can visit the address in your web browser to start using Atlas. The default address is http://localhost:8000
+=======
+After the application is running you can visit the address in your web browser to start using Atlas. The default address is http://localhost:8000
+
+
+
+
+
+>>>>>>> 92a0f077f9a2a39c7db236cb3e7afb77335e2876
